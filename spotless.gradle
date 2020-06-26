@@ -1,0 +1,14 @@
+apply plugin: "com.diffplug.gradle.spotless"
+
+spotless {
+    kotlin {
+        target "**/*.kt"
+        ktlint()
+        trimTrailingWhitespace()
+    }
+
+    groovyGradle {
+        target '**/*.gradle'
+        greclipse().configFile(rootProject.file('greclipse.properties'))
+    }
+}
