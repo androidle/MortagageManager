@@ -1,14 +1,17 @@
 package com.leevinapp.monitor
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.View
+import com.leevinapp.monitor.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
 
-    fun f() {
+    fun openVideo(view: View) {
+        startActivity(Intent(this, VideoPlayerActivity::class.java))
     }
 }

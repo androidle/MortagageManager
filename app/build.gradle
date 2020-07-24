@@ -15,6 +15,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters 'armeabi-v7a','arm64-v8a'
+        }
     }
 
     buildTypes {
@@ -37,6 +41,15 @@ android {
     androidExtensions {
         experimental = true
     }
+
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'x86', 'armeabi-v7a','x86_64'
+            universalApk true
+        }
+    }
 }
 
 dependencies {
@@ -46,6 +59,13 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
+
+    // ks play
+    def ksyplayer_version = "2.2.4"
+    implementation "com.ksyun.media:libksyplayer-java:$ksyplayer_version"
+    implementation "com.ksyun.media:libksyplayer-armv7a:$ksyplayer_version"
+    implementation "com.ksyun.media:libksyplayer-arm64:$ksyplayer_version"
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
