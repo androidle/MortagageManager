@@ -1,4 +1,4 @@
-package com.leevinapp.monitor
+package com.leevinapp.monitor.common
 
 import android.content.Context
 

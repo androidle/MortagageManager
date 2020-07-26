@@ -62,6 +62,11 @@ dependencies {
     implementation deps.constraint_layout
     implementation deps.arch_core.runtime
 
+    // Navigation
+    implementation deps.navigation.runtime_ktx
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
+
     // unit test
     testImplementation deps.junit
 

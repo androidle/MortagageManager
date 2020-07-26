@@ -14,4 +14,8 @@ class MainActivity : BaseActivity() {
     fun openVideo(view: View) {
         startActivity(Intent(this, VideoPlayerActivity::class.java))
     }
+
+    fun gotoHomeActivity(view: View) {
+        startActivity(Intent(this, HomeActivity::class.java))
+    }
 }
