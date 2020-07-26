@@ -4,13 +4,13 @@ apply plugin: 'kotlin-android-extensions'
 apply from: '../jacoco.gradle'
 apply from: '../spotless.gradle'
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion build_versions.compile_sdk
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
         applicationId "com.leevinapp.monitor"
-        minSdkVersion 19
-        targetSdkVersion 29
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
         versionCode 1
         versionName "1.0"
 
@@ -43,6 +43,7 @@ android {
     }
 
     splits {
+        // todo
         abi {
             enable true
             reset()
@@ -53,14 +54,18 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation deps.kotlin.stdlib
+    implementation deps.app_compat
+    implementation deps.material
+    implementation deps.core_ktx
+    implementation deps.constraint_layout
+    implementation deps.arch_core.runtime
 
-    // ks play
+    // unit test
+    testImplementation deps.junit
+
+    // todo
     def ksyplayer_version = "2.2.4"
     implementation "com.ksyun.media:libksyplayer-java:$ksyplayer_version"
     implementation "com.ksyun.media:libksyplayer-armv7a:$ksyplayer_version"
