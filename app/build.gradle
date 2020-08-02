@@ -97,6 +97,10 @@ dependencies {
 
     implementation project(':core')
 
-    implementation project(':features:home')
+    implementation project(path: ':features:home')
+    implementation project(path: ':features:mine')
+    implementation project(path: ':features:project')
+    implementation project(path: ':features:enterprise')
+
 
 }

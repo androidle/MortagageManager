@@ -8,7 +8,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.leevinapp.monitor.base.BaseActivity
 import com.leevinapp.monitor.core.common.extensions.setupWithNavController
 
-class HomeActivity :BaseActivity() {
+class HomeActivity : BaseActivity() {
 
     private var currentNavController: LiveData<NavController>? = null
 
@@ -34,7 +34,7 @@ class HomeActivity :BaseActivity() {
     private fun setupBottomNavigationBar() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
 
-        val navGraphIds = listOf(R.navigation.home, R.navigation.project,R.navigation.enterprise, R.navigation.mine)
+        val navGraphIds = listOf(R.navigation.home, R.navigation.project, R.navigation.enterprise, R.navigation.mine)
 
         // Setup the bottom navigation view with a list of navigation graphs
         val controller = bottomNavigationView.setupWithNavController(

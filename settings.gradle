@@ -1,3 +1,6 @@
+include ':features:enterprise'
+include ':features:project'
+include ':features:mine'
 include ':app'
 rootProject.name = "monitor"
 include ':features:home'
