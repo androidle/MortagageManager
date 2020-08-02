@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.leevinapp.monitor.base.BaseActivity
-import com.leevinapp.monitor.extensions.setupWithNavController
+import com.leevinapp.monitor.core.common.extensions.setupWithNavController
 
 class HomeActivity :BaseActivity() {
 
@@ -46,7 +46,7 @@ class HomeActivity :BaseActivity() {
 
         // Whenever the selected controller changes, setup the action bar.
         controller.observe(this, Observer { navController ->
-            // TODO: 2020/7/26  
+            // TODO: 2020/7/26
 //            setupActionBarWithNavController(navController)
         })
         currentNavController = controller

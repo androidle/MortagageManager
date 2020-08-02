@@ -1,24 +1,20 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply from: '../jacoco.gradle'
-apply from: '../spotless.gradle'
+
 android {
     compileSdkVersion build_versions.compile_sdk
     buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-        applicationId "com.leevinapp.monitor"
         minSdkVersion build_versions.min_sdk
         targetSdkVersion build_versions.target_sdk
+
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        ndk {
-            abiFilters 'armeabi-v7a','arm64-v8a'
-        }
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -27,29 +23,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    dataBinding {
-        enabled = true
-    }
-    androidExtensions {
-        experimental = true
-    }
-
-    splits {
-        // todo
-        abi {
-            enable true
-            reset()
-            include 'x86', 'armeabi-v7a','x86_64'
-            universalApk true
-        }
+        jvmTarget = '1.8'
     }
 }
 
@@ -60,43 +39,16 @@ dependencies {
     implementation deps.material
     implementation deps.core_ktx
     implementation deps.constraint_layout
-    implementation deps.arch_core.runtime
 
     // Navigation
     implementation deps.navigation.runtime_ktx
     implementation deps.navigation.fragment_ktx
     implementation deps.navigation.ui_ktx
 
-    // network
 
-    // gson
-
-    // image
-
-    // dagger
-
-    // rxJava or coroutines
-
-    // Stetho debug bridge for applications via Chrome Developer Tools
-
-    // unit test
     testImplementation deps.junit
-    // Mockito
-
-    // Mockk
-
-    // todo
-    def ksyplayer_version = "2.2.4"
-    implementation "com.ksyun.media:libksyplayer-java:$ksyplayer_version"
-    implementation "com.ksyun.media:libksyplayer-armv7a:$ksyplayer_version"
-    implementation "com.ksyun.media:libksyplayer-arm64:$ksyplayer_version"
-
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-
     implementation project(':core')
-
-    implementation project(':features:home')
-
 }

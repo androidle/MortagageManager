@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.leevinapp.monitor.extensions
+package com.leevinapp.monitor.core.common.extensions
 
 import android.content.Intent
 import android.util.SparseArray
@@ -26,7 +26,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.leevinapp.monitor.R
+import com.leevinapp.monitor.core.R
 
 /**
  * Manages the various graphs needed for a [BottomNavigationView].

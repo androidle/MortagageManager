@@ -3,9 +3,9 @@ package com.leevinapp.monitor
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.leevinapp.monitor.base.BaseActivity
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : BaseActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

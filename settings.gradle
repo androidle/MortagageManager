@@ -1,2 +1,4 @@
 include ':app'
 rootProject.name = "monitor"
+include ':features:home'
+include ':core'

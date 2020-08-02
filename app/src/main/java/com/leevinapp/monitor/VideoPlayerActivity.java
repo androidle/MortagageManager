@@ -6,14 +6,14 @@ import android.view.SurfaceView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.ksyun.media.player.IMediaPlayer;
 import com.ksyun.media.player.KSYMediaPlayer;
-import com.leevinapp.monitor.base.BaseActivity;
 
 import java.io.IOException;
 
-public class VideoPlayerActivity extends BaseActivity {
+public class VideoPlayerActivity extends AppCompatActivity {
 
     // 播放器的对象
     private KSYMediaPlayer ksyMediaPlayer;
