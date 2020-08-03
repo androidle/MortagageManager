@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.leevinapp.monitor.core.common.extensions
+package com.leevinapp.monitor.core.common.ui.extensions
 
 import android.content.Intent
 import android.util.SparseArray

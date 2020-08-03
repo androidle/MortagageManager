@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.leevinapp.monitor.base.BaseActivity
-import com.leevinapp.monitor.core.common.extensions.setupWithNavController
+import com.leevinapp.monitor.core.common.ui.extensions.setupWithNavController
 
 class HomeActivity : BaseActivity() {
 

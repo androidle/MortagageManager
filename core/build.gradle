@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply from: '../jacoco.gradle'
 apply from: '../spotless.gradle'
 
@@ -46,6 +47,10 @@ dependencies {
     implementation deps.navigation.runtime_ktx
     implementation deps.navigation.fragment_ktx
     implementation deps.navigation.ui_ktx
+
+    // dagger
+    implementation deps.dagger.runtime
+    kapt deps.dagger.compiler
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

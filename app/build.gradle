@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply from: '../jacoco.gradle'
 apply from: '../spotless.gradle'
 android {
@@ -68,16 +69,18 @@ dependencies {
     implementation deps.navigation.ui_ktx
 
     // network
-
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.rxjava2_adapter
+    implementation deps.okhttp_logging_interceptor
     // gson
-
-    // image
-
+    implementation deps.gson
     // dagger
+    implementation deps.dagger.runtime
+    kapt deps.dagger.compiler
+    // rxJava or coroutines todo
 
-    // rxJava or coroutines
 
-    // Stetho debug bridge for applications via Chrome Developer Tools
 
     // unit test
     testImplementation deps.junit
@@ -85,11 +88,21 @@ dependencies {
 
     // Mockk
 
+    // leak canary
+
     // todo
+    implementation  deps.timber
+
+
     def ksyplayer_version = "2.2.4"
     implementation "com.ksyun.media:libksyplayer-java:$ksyplayer_version"
     implementation "com.ksyun.media:libksyplayer-armv7a:$ksyplayer_version"
     implementation "com.ksyun.media:libksyplayer-arm64:$ksyplayer_version"
+
+
+    // Stetho debug bridge for applications via Chrome Developer Tools
+    debugImplementation deps.stesho
+    debugImplementation deps.stesho_okhttp
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
