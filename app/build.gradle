@@ -56,13 +56,9 @@ dependencies {
     implementation deps.dagger.runtime
     kapt deps.dagger.compiler
     // rxJava or coroutines todo
-
-    // unit test
-    testImplementation deps.junit
-
-    // Mockk
-
-    // leak canary
+    implementation deps.rxjava2
+    implementation deps.rx_android
+    implementation deps.rx_kotlin
 
     // todo
     implementation deps.timber
@@ -74,6 +70,14 @@ dependencies {
     implementation "com.ksyun.media:libksyplayer-arm64:$ksyplayer_version"
 
 
+    // unit test
+    testImplementation deps.junit
+
+    // Mockk
+    testImplementation "io.mockk:mockk:$versions.mockk"
+    androidTestImplementation "io.mockk:mockk-android:$versions.mockk"
+    // leak canary
+    debugImplementation deps.leakcanary
     // Stetho debug bridge for applications via Chrome Developer Tools
     debugImplementation deps.stesho
     debugImplementation deps.stesho_okhttp
@@ -88,6 +92,4 @@ dependencies {
     implementation project(path: ':features:mine')
     implementation project(path: ':features:project')
     implementation project(path: ':features:enterprise')
-
-
 }
