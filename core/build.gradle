@@ -4,7 +4,6 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply from: rootProject.file('./android_common.gradle')
 apply from: '../jacoco.gradle'
-apply from: '../spotless.gradle'
 
 android {
     buildTypes {

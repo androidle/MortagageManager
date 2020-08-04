@@ -11,5 +11,5 @@ class CoreModule(private val application: Application) {
 
     @Singleton
     @Provides
-    fun provideContext() : Context = application
+    fun provideContext(): Context = application
 }

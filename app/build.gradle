@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply from: rootProject.file('./android_common.gradle')
 apply from: '../jacoco.gradle'
-apply from: '../spotless.gradle'
+
 android {
     defaultConfig {
         applicationId "com.leevinapp.monitor"
@@ -57,10 +57,8 @@ dependencies {
     kapt deps.dagger.compiler
     // rxJava or coroutines todo
 
-
     // unit test
     testImplementation deps.junit
-    // Mockito
 
     // Mockk
 

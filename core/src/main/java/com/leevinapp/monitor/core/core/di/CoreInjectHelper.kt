@@ -2,8 +2,8 @@ package com.leevinapp.monitor.core.core.di
 
 import android.content.Context
 
-interface CoreComponentProvider{
-    fun provideCoreComponent() : CoreComponent
+interface CoreComponentProvider {
+    fun provideCoreComponent(): CoreComponent
 }
 class CoreInjectHelper {
     companion object {

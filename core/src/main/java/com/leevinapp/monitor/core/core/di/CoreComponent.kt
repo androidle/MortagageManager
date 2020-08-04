@@ -8,5 +8,5 @@ import javax.inject.Singleton
 @Component(modules = [CoreModule::class])
 interface CoreComponent {
 
-    fun context() : Context
+    fun context(): Context
 }
