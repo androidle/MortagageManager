@@ -1,11 +1,13 @@
 package com.leevinapp.monitor.core.common.ui.base
 
 import android.app.Application
+import com.facebook.stetho.Stetho
 import com.leevinapp.monitor.core.BuildConfig
 import com.leevinapp.monitor.core.core.di.CoreComponent
 import com.leevinapp.monitor.core.core.di.CoreComponentProvider
 import com.leevinapp.monitor.core.core.di.CoreModule
 import com.leevinapp.monitor.core.core.di.DaggerCoreComponent
+import timber.log.Timber
 
 abstract class BaseApplication : Application(), CoreComponentProvider {
 
@@ -23,9 +25,11 @@ abstract class BaseApplication : Application(), CoreComponentProvider {
 
     private fun initDebugUtils() {
         if (BuildConfig.DEBUG) {
-            // TODO: 2020/8/3
+            Stetho.initializeWithDefaults(this)
+            Timber.plant(Timber.DebugTree())
         }
     }
+
     override fun provideCoreComponent(): CoreComponent {
         return coreComponent
     }

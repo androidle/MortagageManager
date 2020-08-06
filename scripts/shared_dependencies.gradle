@@ -1,0 +1,54 @@
+dependencies {
+    implementation deps.kotlin.stdlib
+    // ui
+    implementation deps.app_compat
+    implementation deps.material
+    implementation deps.core_ktx
+    implementation deps.constraint_layout
+    implementation deps.coordinatorlayout
+    implementation deps.viewpager2
+    implementation deps.arch_core.runtime
+
+    // Navigation
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
+    implementation deps.navigation.fragment_ktx
+
+    // network
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.rxjava2_adapter
+    implementation deps.okhttp_logging_interceptor
+    implementation deps.gson
+
+    // rxJava or coroutines todo
+    implementation deps.rxjava2
+    implementation deps.rx_android
+    implementation deps.rx_kotlin
+
+    implementation deps.dagger.runtime
+    kapt deps.dagger.compiler
+    implementation deps.timber
+
+    // player
+    def ksyplayer_version = "2.2.4"
+    implementation "com.ksyun.media:libksyplayer-java:$ksyplayer_version"
+    implementation "com.ksyun.media:libksyplayer-armv7a:$ksyplayer_version"
+    implementation "com.ksyun.media:libksyplayer-arm64:$ksyplayer_version"
+
+    // Stetho debug bridge for applications via Chrome Developer Tools
+    debugImplementation deps.stesho
+    debugImplementation deps.stesho_okhttp
+    debugImplementation deps.leakcanary
+
+    // test todo
+    testImplementation deps.junit
+    testImplementation "io.mockk:mockk:$versions.mockk"
+    androidTestImplementation "io.mockk:mockk-android:$versions.mockk"
+    testImplementation deps.retrofit.mock
+
+
+    androidTestImplementation deps.navigation.testing
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

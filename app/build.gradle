@@ -2,7 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply from: rootProject.file('./android_common.gradle')
+apply from: rootProject.file('./scripts/android_common.gradle')
+apply from: rootProject.file('./scripts/shared_dependencies.gradle')
 apply from: '../jacoco.gradle'
 
 android {
@@ -33,63 +34,4 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation deps.kotlin.stdlib
-    implementation deps.app_compat
-    implementation deps.material
-    implementation deps.core_ktx
-    implementation deps.constraint_layout
-    implementation deps.arch_core.runtime
-
-    // Navigation
-    implementation deps.navigation.runtime_ktx
-    implementation deps.navigation.fragment_ktx
-    implementation deps.navigation.ui_ktx
-
-    // network
-    implementation deps.retrofit.runtime
-    implementation deps.retrofit.gson
-    implementation deps.retrofit.rxjava2_adapter
-    implementation deps.okhttp_logging_interceptor
-    // gson
-    implementation deps.gson
-    // dagger
-    implementation deps.dagger.runtime
-    kapt deps.dagger.compiler
-    // rxJava or coroutines todo
-    implementation deps.rxjava2
-    implementation deps.rx_android
-    implementation deps.rx_kotlin
-
-    // todo
-    implementation deps.timber
-
-
-    def ksyplayer_version = "2.2.4"
-    implementation "com.ksyun.media:libksyplayer-java:$ksyplayer_version"
-    implementation "com.ksyun.media:libksyplayer-armv7a:$ksyplayer_version"
-    implementation "com.ksyun.media:libksyplayer-arm64:$ksyplayer_version"
-
-
-    // unit test
-    testImplementation deps.junit
-
-    // Mockk
-    testImplementation "io.mockk:mockk:$versions.mockk"
-    androidTestImplementation "io.mockk:mockk-android:$versions.mockk"
-    // leak canary
-    debugImplementation deps.leakcanary
-    // Stetho debug bridge for applications via Chrome Developer Tools
-    debugImplementation deps.stesho
-    debugImplementation deps.stesho_okhttp
-
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-
-    implementation project(':core')
-
-    implementation project(path: ':features:home')
-    implementation project(path: ':features:mine')
-    implementation project(path: ':features:project')
-    implementation project(path: ':features:enterprise')
 }

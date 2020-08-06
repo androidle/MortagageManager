@@ -1,7 +1,9 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply from: rootProject.file('./android_common.gradle')
+apply plugin: 'kotlin-kapt'
+apply from: rootProject.file('./scripts/android_common.gradle')
+apply from: rootProject.file('./scripts/shared_dependencies.gradle')
 android {
     buildTypes {
         release {
@@ -13,21 +15,5 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation deps.kotlin.stdlib
-    implementation deps.app_compat
-    implementation deps.material
-    implementation deps.core_ktx
-    implementation deps.constraint_layout
-
-    // Navigation
-    implementation deps.navigation.runtime_ktx
-    implementation deps.navigation.fragment_ktx
-    implementation deps.navigation.ui_ktx
-
-
-    testImplementation deps.junit
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
     implementation project(':core')
 }

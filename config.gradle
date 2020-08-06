@@ -46,6 +46,8 @@ versions.stesho = "1.5.1"
 versions.leakcanary = "2.2"
 versions.mockk = "1.10.0"
 versions.rxkotlin = "2.4.0"
+versions.coordinatorlayout = "1.1.0"
+versions.viewpager2 = "1.0.0"
 ext.versions = versions
 
 def build_versions = [:]
@@ -157,6 +159,10 @@ deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${ve
 deps.paging_ktx = "androidx.paging:paging-runtime-ktx:$versions.paging"
 
 deps.recyclerview = "androidx.recyclerview:recyclerview:$versions.recyclerview"
+
+deps.coordinatorlayout = "androidx.coordinatorlayout:coordinatorlayout:$versions.coordinatorlayout"
+
+deps.viewpager2 = "androidx.viewpager2:viewpager2:$versions.viewpager2"
 
 deps.spotless_gradle_plugin = "com.diffplug.spotless:spotless-plugin-gradle:$versions.spotless_gradle_plugin"
 
