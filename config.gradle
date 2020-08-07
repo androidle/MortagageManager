@@ -1,3 +1,8 @@
+def configs = [:]
+configs.isModule = false
+configs.appId = "com.leevinapp.monitor"
+ext.configs = configs
+
 def versions = [:]
 versions.activity = '1.1.0'
 versions.android_gradle_plugin = '4.0.0'
