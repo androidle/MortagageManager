@@ -10,18 +10,18 @@ class EncryptedSharedPreferenceStorageTest {
 
     @Test
     fun setString() {
-        val sharedPreferencesEditor:SharedPreferences.Editor = mockk(relaxed = true) {
-            every { putString(any(),any()) } returns this
+        val sharedPreferencesEditor: SharedPreferences.Editor = mockk(relaxed = true) {
+            every { putString(any(), any()) } returns this
         }
 
-        val sharedPreferences:SharedPreferences = mockk {
+        val sharedPreferences: SharedPreferences = mockk {
             every { edit() } returns sharedPreferencesEditor
         }
 
         val encryptedSharedPreferenceStorage = EncryptedSharedPreferenceStorage(sharedPreferences)
-        encryptedSharedPreferenceStorage.setString("test_key","test_value")
+        encryptedSharedPreferenceStorage.setString("test_key", "test_value")
         verify { sharedPreferences.edit() }
-        verify { sharedPreferencesEditor.putString("test_key","test_value") }
+        verify { sharedPreferencesEditor.putString("test_key", "test_value") }
         verify { sharedPreferencesEditor.apply() }
     }
 

@@ -13,14 +13,14 @@ import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.TimeZone
 import java.util.Locale
+import java.util.TimeZone
 
 class DateTypeAdapter : JsonSerializer<Date>, JsonDeserializer<Date> {
     private val dateFormat: DateFormat
 
     init {
-        dateFormat = SimpleDateFormat(DATE_FORMAT_UTC,Locale.CHINA)
+        dateFormat = SimpleDateFormat(DATE_FORMAT_UTC, Locale.CHINA)
         dateFormat.timeZone = TimeZone.getTimeZone("UTC")
     }
 
