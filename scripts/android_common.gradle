@@ -1,8 +1,6 @@
 android {
     compileSdkVersion build_versions.compile_sdk
     buildToolsVersion build_versions.build_tools
-    
-    resourcePrefix "${project.name}_"
 
     defaultConfig {
         minSdkVersion build_versions.min_sdk

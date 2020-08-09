@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/home"
-    app:startDestination="@+id/homeFragment"
+    android:id="@+id/nav_logon"
+    app:startDestination="@+id/logonFragment"
     tools:ignore="UnusedNavigation">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/logonFragment"
         android:name="com.leevinapp.monitor.logon.LogonFragment"
         android:label="@string/logon"
         tools:layout="@layout/logon_fragment"

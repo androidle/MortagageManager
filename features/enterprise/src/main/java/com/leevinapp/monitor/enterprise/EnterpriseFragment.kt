@@ -17,7 +17,7 @@ class EnterpriseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_enterprise, container, false)
+        val view = inflater.inflate(R.layout.enterprise_fragment, container, false)
         return view
     }
 }

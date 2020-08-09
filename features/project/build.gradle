@@ -5,6 +5,7 @@ apply plugin: 'kotlin-kapt'
 apply from: rootProject.file('./scripts/android_common.gradle')
 apply from: rootProject.file('./scripts/shared_dependencies.gradle')
 android {
+    resourcePrefix "${project.name}_"
     buildTypes {
         release {
             minifyEnabled false

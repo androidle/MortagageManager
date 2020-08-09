@@ -11,7 +11,7 @@
         android:id="@+id/homeFragment"
         android:name="com.leevinapp.monitor.home.HomeFragment"
         android:label="@string/home"
-        tools:layout="@layout/fragment_home"
+        tools:layout="@layout/home_fragment"
         >
     </fragment>
 </navigation>

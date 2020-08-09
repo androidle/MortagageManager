@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="home">Home</string>
-    <string name="project">project</string>
-    <string name="enterprise">enterprise</string>
-    <string name="mine">mine</string>
 </resources>

@@ -13,4 +13,7 @@
             android:label="@string/mine"
             tools:layout="@layout/mine_fragment">
     </fragment>
+
+    <include app:graph="@navigation/logon" />
+
 </navigation>
