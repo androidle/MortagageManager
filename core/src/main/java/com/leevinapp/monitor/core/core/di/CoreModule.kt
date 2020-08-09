@@ -7,6 +7,7 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import com.leevinapp.monitor.core.core.storage.EncryptedSharedPreferenceStorage
 import com.leevinapp.monitor.core.core.storage.Storage
+import com.leevinapp.monitor.core.core.user.UserManager
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -36,5 +37,11 @@ class CoreModule(private val application: Application) {
     @Provides
     fun provideStorage(sharedPreferences: SharedPreferences): Storage {
         return EncryptedSharedPreferenceStorage(sharedPreferences)
+    }
+
+    @Singleton
+    @Provides
+    fun provideUserManager(): UserManager {
+        return UserManager()
     }
 }

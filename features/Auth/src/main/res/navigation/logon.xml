@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_logon"
+    app:startDestination="@+id/logonFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/logonFragment"
+        android:name="com.leevinapp.monitor.auth.ui.LogonFragment"
+        android:label="@string/auth_logon"
+        tools:layout="@layout/auth_fragment_logon"
+        >
+
+        <deepLink app:uri="Monitor://LogonFragment"/>
+    </fragment>
+</navigation>

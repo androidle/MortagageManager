@@ -15,9 +15,9 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/Auth" />
             <option value="$PROJECT_DIR$/features/enterprise" />
             <option value="$PROJECT_DIR$/features/home" />
-            <option value="$PROJECT_DIR$/features/logon" />
             <option value="$PROJECT_DIR$/features/mine" />
             <option value="$PROJECT_DIR$/features/project" />
           </set>

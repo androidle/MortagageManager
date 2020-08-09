@@ -17,5 +17,5 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':core')
-    implementation project(path: ':features:logon')
+    implementation project(path: ':features:auth')
 }

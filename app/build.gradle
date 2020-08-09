@@ -40,5 +40,4 @@ dependencies {
     implementation project(path: ':features:mine')
     implementation project(path: ':features:project')
     implementation project(path: ':features:enterprise')
-    implementation project(path: ':features:logon')
 }
