@@ -1,7 +1,9 @@
 package com.leevinapp.monitor.core.core.network
 
+import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.leevinapp.monitor.core.BuildConfig
+import com.leevinapp.monitor.core.core.network.mock.MockApiUtil
 import dagger.Module
 import dagger.Provides
 import java.util.concurrent.TimeUnit
@@ -49,5 +51,11 @@ class NetworkModule {
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .build()
+    }
+
+    @Singleton
+    @Provides
+    fun providerMockApiUtil(context: Context): MockApiUtil {
+        return MockApiUtil(context)
     }
 }

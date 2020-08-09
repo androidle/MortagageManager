@@ -5,6 +5,7 @@ import android.content.Context
 interface CoreComponentProvider {
     fun provideCoreComponent(): CoreComponent
 }
+@Suppress("UNREACHABLE_CODE")
 class CoreInjectHelper {
     companion object {
         fun provideCoreComponent(context: Context): CoreComponent {

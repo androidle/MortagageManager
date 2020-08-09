@@ -6,7 +6,7 @@ import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
 import dagger.Component
 
 @FeatureScope
-@Component(modules = [AuthModule::class] ,dependencies = [CoreComponent::class])
+@Component(modules = [AuthModule::class], dependencies = [CoreComponent::class])
 interface AuthComponent {
     fun inject(fragment: LogonFragment)
 }

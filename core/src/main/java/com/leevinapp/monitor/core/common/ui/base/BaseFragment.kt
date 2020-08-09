@@ -1,5 +1,6 @@
 package com.leevinapp.monitor.core.common.ui.base
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -14,5 +15,13 @@ abstract class BaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Timber.e("${this.javaClass.simpleName}====onViewCreated=====")
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        onInitDependencyInjection()
+    }
+
+    open fun onInitDependencyInjection() {
     }
 }

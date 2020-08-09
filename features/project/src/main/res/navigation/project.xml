@@ -27,7 +27,7 @@
         android:id="@+id/projectFragment"
         android:name="com.leevinapp.monitor.project.ProjectFragment"
         android:label="@string/project"
-        tools:layout="@layout/fragment_project">
+        tools:layout="@layout/project_fragment">
         <deepLink
             android:id="@+id/deepLink"
             app:uri="www.example.com/user/{userName}"

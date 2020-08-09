@@ -7,8 +7,8 @@ class EncryptedSharedPreferenceStorage(private val sharedPreferences: SharedPref
         sharedPreferences.edit().putString(key, value).apply()
     }
 
-    override fun getString(key: String, default: String): String {
-        return sharedPreferences.getString(key, default) ?: default
+    override fun getString(key: String, defaultValue: String): String {
+        return sharedPreferences.getString(key, defaultValue) ?: defaultValue
     }
 
     override fun remove(key: String) {
