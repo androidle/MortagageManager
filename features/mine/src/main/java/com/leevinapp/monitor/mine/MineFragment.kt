@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.mine_fragment.*
 
 /**
  * Shows a register form to showcase UI state persistence. It has a button that goes to [Registered]
@@ -19,5 +20,12 @@ class MineFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_mine, container, false)
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        button_unlogon.setOnClickListener {
+            // todo go to logon page
+        }
     }
 }

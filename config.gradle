@@ -1,5 +1,5 @@
 def configs = [:]
-configs.isModule = false
+configs.isModule = true
 configs.appId = "com.leevinapp.monitor"
 ext.configs = configs
 

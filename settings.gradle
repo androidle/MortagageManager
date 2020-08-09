@@ -1,7 +1,8 @@
+rootProject.name = "monitor"
+include ':app'
+include ':core'
+include ':features:logon'
 include ':features:enterprise'
 include ':features:project'
 include ':features:mine'
-include ':app'
-rootProject.name = "monitor"
 include ':features:home'
-include ':core'
