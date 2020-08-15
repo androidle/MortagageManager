@@ -1,7 +1,11 @@
 package com.leevinapp.monitor.core.core.user
 
-class UserManager {
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class UserManager @Inject constructor() {
 
     var isLogged = false
-    val username = "hello"
+    val username = ""
 }
