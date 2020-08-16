@@ -11,10 +11,8 @@ class Car1 {
     }
 
     fun methodB() {
-
     }
 
     fun methodC() {
-
     }
 }

@@ -4,7 +4,10 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply from: rootProject.file('./scripts/android_common.gradle')
 apply from: rootProject.file('./scripts/shared_dependencies.gradle')
-apply from: '../jacoco.gradle'
+
+ext {
+    jacocoCoverageThreshold = 0.0
+}
 
 android {
     buildTypes {

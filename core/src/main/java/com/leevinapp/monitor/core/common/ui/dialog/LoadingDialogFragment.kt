@@ -13,7 +13,7 @@ class LoadingDialogFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // TODO: 2020/8/10  
+        // TODO: 2020/8/10
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 }

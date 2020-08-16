@@ -37,5 +37,4 @@ class CoreModule(private val application: Application) {
     fun provideStorage(sharedPreferences: SharedPreferences): Storage {
         return EncryptedSharedPreferenceStorage(sharedPreferences)
     }
-
 }

@@ -220,5 +220,6 @@ def addRepos(RepositoryHandler handler) {
     handler.google()
     handler.jcenter()
     handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    handler.maven { url 'https://plugins.gradle.org/m2/' }
 }
 ext.addRepos = this.&addRepos

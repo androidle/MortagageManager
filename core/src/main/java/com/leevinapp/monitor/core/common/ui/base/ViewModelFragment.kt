@@ -8,9 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 
-abstract class ViewModelFragment<VB : ViewDataBinding,M : ViewModel> : BaseFragment() {
-
-
+abstract class ViewModelFragment<VB : ViewDataBinding, M : ViewModel> : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +29,4 @@ abstract class ViewModelFragment<VB : ViewDataBinding,M : ViewModel> : BaseFragm
     override fun onInitDependencyInjection() {
         super.onInitDependencyInjection()
     }
-
-
-
 }

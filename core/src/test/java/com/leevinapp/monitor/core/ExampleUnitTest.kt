@@ -1,9 +1,6 @@
 package com.leevinapp.monitor.core
 
-import io.mockk.Runs
 import io.mockk.every
-import io.mockk.just
-import io.mockk.mockk
 import io.mockk.spyk
 import io.mockk.verify
 import io.mockk.verifySequence
@@ -58,15 +55,15 @@ class ExampleUnitTest {
         //
         // mock.methodA()
         //
-        val mockk = mockk<Car1>(relaxUnitFun = true)
-        every { mockk.methodB() } just Runs
-
-        mockk.methodA()
-        verify {
-            mockk.methodA()
-            mockk.methodB()
-            // mockk.methodC()
-        }
+        // val mockk = mockk<Car1>(relaxUnitFun = true)
+        // every { mockk.methodB() } just Runs
+        //
+        // mockk.methodA()
+        // verify {
+        //     mockk.methodA()
+        //     mockk.methodB()
+        //     // mockk.methodC()
+        // }
     }
 
     @Test
@@ -80,6 +77,5 @@ class ExampleUnitTest {
             mock.methodB()
             mock.methodC()
         }
-
     }
 }

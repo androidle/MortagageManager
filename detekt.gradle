@@ -1,0 +1,17 @@
+apply plugin: "io.gitlab.arturbosch.detekt"
+
+detekt {
+    version = "1.0.0"
+    failFast = true
+
+    reports {
+        xml {
+            enabled = false
+            destination = project.file("build/reports/detekt/report.xml")
+        }
+        html {
+            enabled = true
+            destination = project.file("build/reports/detekt/report.html")
+        }
+    }
+}

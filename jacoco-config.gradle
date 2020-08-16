@@ -1,0 +1,25 @@
+project.ext {
+    jacocoCoverageThresholdDefault = 0.5
+
+    jacocoIgnoreList = [
+        'features'
+    ]
+
+    jacocoFileFilter = [
+            //Classes I intentionally don't want to test
+            '**/*App.*',
+            '**/*Application.',
+            '**/*Activity.',
+            '**/*Activity.*',
+            '**/*Fragment.*',
+            '**/*View.*',
+            '**/*Adapter.*',
+            '**/*ViewHolder*.*',
+            '**/extension/*.*',
+            '**/factory/*.*',
+            '**/utils/*.*',
+            '**/di/**',
+            '**/*Dagger**',
+            '**/*JsonAdapter.**',
+    ]
+}

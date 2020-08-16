@@ -5,6 +5,10 @@ apply plugin: 'kotlin-kapt'
 apply from: rootProject.file('./scripts/android_common.gradle')
 apply from: rootProject.file('./scripts/shared_dependencies.gradle')
 
+ext {
+    jacocoCoverageThreshold = 0.0
+}
+
 android {
     defaultConfig {
         applicationId "com.leevinapp.monitor"
@@ -28,8 +32,8 @@ dependencies {
     implementation project(path: ':features:enterprise')
 
     // player todo only in player module
-    def ksyplayer_version = "2.2.4"
-    implementation "com.ksyun.media:libksyplayer-java:$ksyplayer_version"
-    implementation "com.ksyun.media:libksyplayer-armv7a:$ksyplayer_version"
-    implementation "com.ksyun.media:libksyplayer-arm64:$ksyplayer_version"
+    //    def ksyplayer_version = "2.2.4"
+    //    implementation "com.ksyun.media:libksyplayer-java:$ksyplayer_version"
+    //    implementation "com.ksyun.media:libksyplayer-armv7a:$ksyplayer_version"
+    //    implementation "com.ksyun.media:libksyplayer-arm64:$ksyplayer_version"
 }

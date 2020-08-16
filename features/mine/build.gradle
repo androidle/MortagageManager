@@ -4,6 +4,11 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply from: rootProject.file('./scripts/android_common.gradle')
 apply from: rootProject.file('./scripts/shared_dependencies.gradle')
+
+ext {
+    jacocoCoverageThreshold = 0.0
+}
+
 android {
     resourcePrefix "${project.name}_"
     buildTypes {
