@@ -5,6 +5,7 @@ import android.content.Context
 interface CoreComponentProvider {
     fun provideCoreComponent(): CoreComponent
 }
+
 @Suppress("UNREACHABLE_CODE")
 class CoreInjectHelper {
     companion object {
@@ -12,7 +13,10 @@ class CoreInjectHelper {
             return if (context.applicationContext is CoreComponentProvider) {
                 return (context.applicationContext as CoreComponentProvider).provideCoreComponent()
             } else {
-                throw IllegalArgumentException("The application context you gave does not implement CoreComponentProvider")
+                throw IllegalArgumentException(
+                    "The application context you gave does not " +
+                        "implement CoreComponentProvider"
+                )
             }
         }
     }

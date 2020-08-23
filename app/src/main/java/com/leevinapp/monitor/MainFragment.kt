@@ -34,7 +34,10 @@ class MainFragment : BaseFragment() {
     private fun setupBottomNavigationBar() {
         val bottomNavigationView = bottom_nav
 
-        val navGraphIds = listOf(R.navigation.home, R.navigation.project, R.navigation.enterprise, R.navigation.mine)
+        val navGraphIds = listOf(
+            R.navigation.home, R.navigation.project,
+            R.navigation.enterprise, R.navigation.mine
+        )
 
         // Setup the bottom navigation view with a list of navigation graphs
         val controller = bottomNavigationView.setupWithNavController(
@@ -45,9 +48,10 @@ class MainFragment : BaseFragment() {
         )
 
         // Whenever the selected controller changes, setup the action bar.
-        controller.observe(viewLifecycleOwner, Observer { navController ->
-            // TODO: 2020/7/26
-            // setupActionBarWithNavController(navController)
-        })
+        controller.observe(
+            viewLifecycleOwner,
+            Observer { navController ->
+            }
+        )
     }
 }

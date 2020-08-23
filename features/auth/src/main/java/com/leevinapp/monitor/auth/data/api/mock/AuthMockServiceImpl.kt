@@ -11,8 +11,10 @@ class AuthMockServiceImpl(private val mockApiUtil: MockApiUtil) :
     AuthService {
 
     override fun test(): Single<TestResponse> {
-        val mockResponse = mockApiUtil.getMockResponse<TestResponse>("test.json",
-            object : TypeToken<TestResponse>() {}.type)
+        val mockResponse = mockApiUtil.getMockResponse<TestResponse>(
+            "test.json",
+            object : TypeToken<TestResponse>() {}.type
+        )
 
         Timber.d(TAG_MOCK_API + mockResponse)
         return Single.just(mockResponse)

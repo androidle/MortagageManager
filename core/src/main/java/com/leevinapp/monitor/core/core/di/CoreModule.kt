@@ -21,7 +21,6 @@ class CoreModule(private val application: Application) {
     @Singleton
     @Provides
     fun provideSharePreferences(context: Context): SharedPreferences {
-        // TODO: 2020/8/6
         val masterKey = MasterKey.Builder(context).build()
         return EncryptedSharedPreferences.create(
             context,
