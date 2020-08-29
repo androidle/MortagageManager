@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     tools:layout_editor_absoluteY="81dp">
 
-    <TextView
+    <Button
         android:gravity="center_horizontal"
         android:layout_width="368dp"
         android:layout_height="81dp"
@@ -21,6 +21,8 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textSize="48sp"
         android:textStyle="bold"
+        app:backgroundTint="@empty"
+        android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

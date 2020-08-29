@@ -42,9 +42,13 @@ dependencies {
     testImplementation "io.mockk:mockk:$versions.mockk"
     androidTestImplementation "io.mockk:mockk-android:$versions.mockk"
     testImplementation deps.retrofit.mock
-
+    testImplementation deps.mock_web_server
 
     androidTestImplementation deps.navigation.testing
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    androidTestImplementation deps.espresso.core
+    androidTestImplementation deps.espresso.contrib
+    androidTestImplementation deps.espresso.intents
 }

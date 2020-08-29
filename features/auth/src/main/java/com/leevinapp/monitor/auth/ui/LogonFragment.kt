@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.leevinapp.monitor.auth.R
 import com.leevinapp.monitor.auth.di.AuthModule
 import com.leevinapp.monitor.auth.di.DaggerAuthComponent
@@ -17,6 +19,13 @@ class LogonFragment : BaseFragment() {
 
     @Inject
     lateinit var userManager: UserManager
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    val viewModel: LogonViewModel by viewModels {
+        viewModelFactory
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

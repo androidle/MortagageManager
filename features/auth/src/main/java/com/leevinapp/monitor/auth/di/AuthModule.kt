@@ -11,7 +11,7 @@ import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 
-@Module
+@Module(includes = [ViewModelModule::class])
 class AuthModule(val fragment: Fragment) {
 
     @RealApi
