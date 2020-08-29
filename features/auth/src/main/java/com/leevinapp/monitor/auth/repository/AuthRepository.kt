@@ -1,5 +1,7 @@
 package com.leevinapp.monitor.auth.repository
 
+import io.reactivex.Single
+
 interface AuthRepository {
-    fun test(): String
+    fun test(): Single<String>
 }
