@@ -4,4 +4,6 @@ import io.reactivex.Single
 
 interface AuthRepository {
     fun test(): Single<String>
+
+    fun auth(): Single<String>
 }

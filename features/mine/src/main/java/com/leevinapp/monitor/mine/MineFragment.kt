@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.core.common.ui.extensions.navigationToLogonFragment
 import kotlinx.android.synthetic.main.mine_fragment.*
 
@@ -28,7 +28,7 @@ class MineFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         button_unlogon.setOnClickListener {
             // todo go to logon page
-            requireActivity().findNavController(R.id.button_unlogon).navigationToLogonFragment()
+           findNavController().navigationToLogonFragment()
         }
     }
 }

@@ -21,7 +21,8 @@ class NetworkModule {
     @Provides
     fun providerBaseUrl(): String {
         // TODO: 2020/8/6 to test
-        return "https://api.github.com/"
+        // return "https://api.github.com/"
+        return "http://122.9.47.171:10002/"
     }
 
     @Singleton

@@ -23,4 +23,9 @@ class AuthMockServiceImpl(private val mockApiUtil: MockApiUtil) :
     companion object {
         const val TAG_MOCK_API = "Mock response=>:"
     }
+
+    override fun auth(): Single<String> {
+        TODO("Not yet implemented")
+        // return null
+    }
 }

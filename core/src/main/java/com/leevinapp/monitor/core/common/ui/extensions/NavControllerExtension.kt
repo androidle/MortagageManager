@@ -5,5 +5,5 @@ import androidx.navigation.NavController
 
 fun NavController.navigationToLogonFragment() {
     // todo is need to be a single activity for logon flow
-    navigate(Uri.parse("Monitor://LogonFragment"))
+    navigate(Uri.parse("Monitor://AuthActivity"))
 }

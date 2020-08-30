@@ -14,6 +14,6 @@
             tools:layout="@layout/mine_fragment">
     </fragment>
 
-    <include app:graph="@navigation/logon" />
+    <include app:graph="@navigation/auth_graph" />
 
 </navigation>

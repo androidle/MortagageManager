@@ -15,9 +15,9 @@ import com.leevinapp.monitor.core.common.ui.extensions.hideLoadingDialog
 import com.leevinapp.monitor.core.common.ui.extensions.showLoadingDialog
 import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.core.core.user.UserManager
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.auth_fragment_logon.*
 import timber.log.Timber
+import javax.inject.Inject
 
 class LogonFragment : BaseFragment() {
 
@@ -40,7 +40,7 @@ class LogonFragment : BaseFragment() {
         return view
     }
 
-    override fun onInitDependencyInjection() {
+    override fun initDependencyInjection() {
         DaggerAuthComponent.builder()
             .coreComponent(CoreInjectHelper.provideCoreComponent(requireContext()))
             .authModule(AuthModule(this))
@@ -55,6 +55,10 @@ class LogonFragment : BaseFragment() {
 
         request_button.setOnClickListener {
             viewModel.login()
+        }
+
+        text_content.setOnClickListener {
+            viewModel.auth()
         }
 
         viewModel.loading.observe(viewLifecycleOwner, Observer {

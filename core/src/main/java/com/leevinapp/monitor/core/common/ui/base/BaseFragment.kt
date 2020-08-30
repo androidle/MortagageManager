@@ -6,7 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import timber.log.Timber
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : Fragment(), Injector {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Timber.e("${this.javaClass.simpleName}====onCreate=====")
@@ -18,10 +18,10 @@ abstract class BaseFragment : Fragment() {
     }
 
     override fun onAttach(context: Context) {
-        onInitDependencyInjection()
+        initDependencyInjection()
         super.onAttach(context)
     }
 
-    open fun onInitDependencyInjection() {
+    override fun initDependencyInjection() {
     }
 }

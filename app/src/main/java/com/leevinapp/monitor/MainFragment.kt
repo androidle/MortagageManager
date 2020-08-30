@@ -36,7 +36,7 @@ class MainFragment : BaseFragment() {
 
         val navGraphIds = listOf(
             R.navigation.home, R.navigation.project,
-            R.navigation.enterprise, R.navigation.mine
+            R.navigation.enterprise, R.navigation.mine_graph
         )
 
         // Setup the bottom navigation view with a list of navigation graphs

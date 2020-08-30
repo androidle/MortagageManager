@@ -17,4 +17,10 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
+
+    override fun auth(): Single<String> {
+        return authService.auth()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
 }
