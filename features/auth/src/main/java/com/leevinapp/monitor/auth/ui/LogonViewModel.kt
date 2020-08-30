@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.leevinapp.monitor.auth.repository.AuthRepository
 import io.reactivex.functions.Consumer
-import timber.log.Timber
 import javax.inject.Inject
+import timber.log.Timber
 
 class LogonViewModel @Inject constructor(private val authRepository: AuthRepository) : ViewModel() {
 
@@ -40,7 +40,6 @@ class LogonViewModel @Inject constructor(private val authRepository: AuthReposit
             }, Consumer {
                 Timber.e("====>$it")
             })
-
     }
 
     val username = MutableLiveData("hello")

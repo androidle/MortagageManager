@@ -28,7 +28,7 @@ class MineFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         button_unlogon.setOnClickListener {
             // todo go to logon page
-           findNavController().navigationToLogonFragment()
+            findNavController().navigationToLogonFragment()
         }
     }
 }
