@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+@SuppressWarnings("unchecked")
 public abstract class FlexibleDividerDecoration extends RecyclerView.ItemDecoration {
 
     private static final int DEFAULT_SIZE = 2;

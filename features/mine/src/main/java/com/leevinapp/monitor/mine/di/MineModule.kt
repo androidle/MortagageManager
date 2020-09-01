@@ -7,7 +7,7 @@ import com.leevinapp.monitor.core.core.network.mock.MockApiUtil
 import com.leevinapp.monitor.core.core.network.mock.RealApi
 import com.leevinapp.monitor.mine.data.MineRepositoryImpl
 import com.leevinapp.monitor.mine.data.api.MineService
-import com.leevinapp.monitor.mine.repository.MineRepository
+import com.leevinapp.monitor.mine.domain.MineRepository
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

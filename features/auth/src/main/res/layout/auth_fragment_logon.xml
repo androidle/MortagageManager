@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/title_constraint"
     android:layout_width="match_parent"
-    android:paddingHorizontal="@dimen/dimens_common_margin"
+    android:paddingHorizontal="@dimen/dimen_common_margin"
     android:layout_height="match_parent">
 
     <TextView
@@ -71,7 +71,7 @@
         android:id="@+id/logon_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dimens_common_margin"
+        android:layout_marginBottom="@dimen/dimen_common_margin"
         android:background="@color/colorAccent"
         android:text="@string/auth_logon"
         android:layout_marginTop="50dp"
