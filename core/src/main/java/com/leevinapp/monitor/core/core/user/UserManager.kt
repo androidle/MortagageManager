@@ -8,4 +8,8 @@ class UserManager @Inject constructor() {
 
     var isLogged = false
     val username = ""
+
+    fun reset() {
+        isLogged = false
+    }
 }

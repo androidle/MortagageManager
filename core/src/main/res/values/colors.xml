@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#000000</color>
-    <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#DB0011</color>
+    <color name="colorPrimary">@color/color_monitor_white</color>
+    <color name="colorPrimaryDark">@color/color_monitor_black</color>
+    <color name="colorAccent">@color/color_monitor_red</color>
     <color name="colorBackground">#878787</color>
+    
+    <color name="color_monitor_red">#DB0011</color>
+    <color name="color_monitor_black">#000000</color>
+    <color name="color_monitor_white">#FFFFFF</color>
+    <color name="color_monitor_pearl">#EDEDED</color>
+    <color name="color_monitor_light_pearl">#F3F3F3</color>
+    <color name="color_monitor_light_silver">#D7D8D6</color>
+    <color name="color_monitor_pewter">#767676</color>
+    <color name="color_monitor_charcoal">#333333</color>
+    <color name="color_monitor_secondary_light_slate">#4D6474</color>
+    <color name="color_monitor_secondary_slate">#3E505D</color>
+    <color name="color_monitor_secondary_dark_slate">#253038</color>
+    <color name="color_monitor_secondary_darkest_slate">#1D262C</color>
+    <color name="color_monitor_error_red">#A8000B</color>
+    <color name="color_monitor_warning_amber">#FFBB33</color>
+    <color name="color_monitor_success_green">#00847F</color>
+    <color name="color_monitor_neutral_blue">#305A85</color>
+
 </resources>

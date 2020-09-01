@@ -13,19 +13,19 @@ import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 
-@Module(includes = [ViewModelModule::class])
+@Module(includes = [AuthViewModelModule::class])
 class AuthModule(val fragment: Fragment) {
 
     @Provides
     @FeatureScope
-    fun authRepository(@RealApi authService: AuthService): AuthRepository {
+    fun providerRepository(@RealApi authService: AuthService): AuthRepository {
         return AuthRepositoryImpl(authService)
     }
 
     @RealApi
     @FeatureScope
     @Provides
-    fun authApiService(retrofit: Retrofit): AuthService {
+    fun providerApiService(retrofit: Retrofit): AuthService {
         return retrofit.create(AuthService::class.java)
     }
 
