@@ -8,7 +8,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
-import com.leevinapp.monitor.core.common.ui.extensions.navigationToLogonFragment
 import com.leevinapp.monitor.core.common.view.recycleview.HorizontalDividerItemDecoration
 import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.core.core.user.UserManager
@@ -53,26 +52,12 @@ class MineFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        // TODO: 2020/8/31 distinct pre-logon and post-logon
         val view = inflater.inflate(layout.mine_fragment, container, false)
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        button_unlogon.setOnClickListener {
-            // todo go to logon page
-            findNavController().navigationToLogonFragment()
-        }
-
-        if (userManager.isLogged) {
-            container_post_logon.visibility = View.VISIBLE
-            container_unlogon.visibility = View.GONE
-        } else {
-            container_post_logon.visibility = View.GONE
-            container_unlogon.visibility = View.VISIBLE
-        }
-
         recycler_view.adapter = MineMenuAdapter(menus) {
             when (it) {
                 PERSONAL_INFORMATION -> {
@@ -85,6 +70,7 @@ class MineFragment : BaseFragment() {
                 PASSWORD_MANAGE -> {
                 }
                 ABOUT -> {
+                    findNavController().navigate(R.id.mine_action_minefragment_to_mineaboutfragment)
                 }
             }
         }
@@ -101,9 +87,22 @@ class MineFragment : BaseFragment() {
             findNavController().navigate(R.id.mineFragment)
         }
 
-        button_unlogon.setOnClickListener {
+        tv_unlogon.setOnClickListener {
             userManager.isLogged = true
             findNavController().navigate(R.id.mineFragment)
+        }
+
+        iv_unlogon_avatar.setOnClickListener {
+            userManager.isLogged = true
+            findNavController().navigate(R.id.mineFragment)
+        }
+
+        if (userManager.isLogged) {
+            container_post_logon.visibility = View.VISIBLE
+            container_unlogon.visibility = View.GONE
+        } else {
+            container_post_logon.visibility = View.GONE
+            container_unlogon.visibility = View.VISIBLE
         }
     }
 

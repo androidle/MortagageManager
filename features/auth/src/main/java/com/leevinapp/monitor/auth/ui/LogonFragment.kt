@@ -57,7 +57,7 @@ class LogonFragment : BaseFragment() {
             viewModel.login()
         }
 
-        text_to_register.setOnClickListener {
+        tv_to_register.setOnClickListener {
             viewModel.auth()
         }
 

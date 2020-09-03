@@ -31,7 +31,7 @@ class MineMenuAdapter(
         fun bindData(menuModel: MenuModel, clickListener: ((MenuModel) -> Unit)?) {
             itemView.tv_name.text = menuModel.value
             itemView.tv_value.text = menuModel.content
-            if (menuModel.content.isNullOrEmpty().not()) {
+            if (menuModel.content.isNotEmpty()) {
                 itemView.tv_value.visibility = View.VISIBLE
             } else {
                 itemView.tv_value.visibility = View.GONE
