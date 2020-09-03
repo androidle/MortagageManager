@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 
 /**
  * Shows a profile screen for a user, taking the name from the arguments.
  */
-class ProjectFragment : Fragment() {
+class ProjectFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,

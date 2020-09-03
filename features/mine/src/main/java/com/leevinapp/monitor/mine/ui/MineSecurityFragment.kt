@@ -6,19 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import com.leevinapp.monitor.common.UiUtil
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
-import com.leevinapp.monitor.mine.R
-import com.leevinapp.monitor.mine.domain.model.MenuModel.PRIVACY
-import com.leevinapp.monitor.mine.domain.model.MenuModel.SERVICE
-import com.leevinapp.monitor.mine.domain.model.MenuModel.VERSION
+import com.leevinapp.monitor.mine.R.layout
+import com.leevinapp.monitor.mine.domain.model.MenuModel.CHANGE_PASSWORD
+import com.leevinapp.monitor.mine.domain.model.MenuModel.CHANGE_SECURITY_REF
+import com.leevinapp.monitor.mine.domain.model.MenuModel.FORGOT_PASSWORD
 import com.leevinapp.monitor.mine.ui.adapter.MineMenuAdapter
-import kotlinx.android.synthetic.main.mine_frament_about.*
+import kotlinx.android.synthetic.main.mine_fragment_security.*
 
-class MineAboutFragment : BaseFragment() {
+class MineSecurityFragment : BaseFragment() {
 
     private val menus = mutableListOf(
-        SERVICE,
-        PRIVACY,
-        VERSION
+        CHANGE_PASSWORD,
+        FORGOT_PASSWORD,
+        CHANGE_SECURITY_REF
     )
 
     override fun onCreateView(
@@ -26,12 +26,11 @@ class MineAboutFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.mine_frament_about, container, false)
+        return inflater.inflate(layout.mine_fragment_security, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         recycler_view.setHasFixedSize(true)
         recycler_view.adapter = MineMenuAdapter(menus) {
             // TODO: 2020/9/3
@@ -46,6 +45,6 @@ class MineAboutFragment : BaseFragment() {
     }
 
     override fun getToolbarTitle(): String {
-        return "关于押品管家"
+        return "账号安全"
     }
 }

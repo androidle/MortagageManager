@@ -4,12 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 
-/**
- * Shows a static leaderboard with multiple users.
- */
-class EnterpriseFragment : Fragment() {
+class EnterpriseFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,

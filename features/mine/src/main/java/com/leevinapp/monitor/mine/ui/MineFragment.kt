@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.leevinapp.monitor.common.UiUtil
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
-import com.leevinapp.monitor.core.common.view.recycleview.HorizontalDividerItemDecoration
 import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.R
@@ -33,6 +33,10 @@ class MineFragment : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    val viewModel: MineViewModel by viewModels {
+        viewModelFactory
+    }
+
     private val menus = mutableListOf(
         PERSONAL_INFORMATION,
         SECURITY_APP,
@@ -42,18 +46,12 @@ class MineFragment : BaseFragment() {
         ABOUT
     )
 
-    val viewModel: MineViewModel by viewModels {
-        viewModelFactory
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(layout.mine_fragment, container, false)
-        return view
+        return inflater.inflate(layout.mine_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,6 +62,7 @@ class MineFragment : BaseFragment() {
                     // TODO: 2020/9/1
                 }
                 SECURITY_APP -> {
+                    findNavController().navigate(R.id.mine_action_minefragment_to_minesecurityfragment)
                 }
                 AUTHENTICATION -> {
                 }
@@ -76,10 +75,7 @@ class MineFragment : BaseFragment() {
         }
         recycler_view.setHasFixedSize(true)
         recycler_view.addItemDecoration(
-            HorizontalDividerItemDecoration.Builder(requireContext())
-                .colorResId(R.color.color_monitor_pewter)
-                .sizeResId(R.dimen.dimen_divider)
-                .build()
+            UiUtil.getDividerDecoration(requireContext())
         )
 
         btn_logout.setOnClickListener {

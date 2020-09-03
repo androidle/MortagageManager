@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.leevinapp.monitor.core.R
 import timber.log.Timber
@@ -45,6 +46,9 @@ abstract class BaseFragment : Fragment(), Injector, WithToolbar {
 
             if (isShowBackIcon()) {
                 toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
+                toolbar.setNavigationOnClickListener {
+                    findNavController().navigateUp()
+                }
             } else {
                 toolbar.navigationIcon = null
             }

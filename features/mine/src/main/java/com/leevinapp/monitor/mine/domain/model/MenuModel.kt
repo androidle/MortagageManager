@@ -15,5 +15,10 @@ enum class MenuModel(
     // about
     SERVICE("服务协议"),
     PRIVACY("隐私政策"),
-    VERSION("版权信息")
+    VERSION("版权信息"),
+
+    // security
+    CHANGE_PASSWORD("修改密码"),
+    FORGOT_PASSWORD("找回密码"),
+    CHANGE_SECURITY_REF("修改安全问题和答案")
 }
