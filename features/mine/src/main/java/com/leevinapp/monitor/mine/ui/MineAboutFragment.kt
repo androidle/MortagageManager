@@ -36,6 +36,7 @@ class MineAboutFragment : BaseFragment() {
         recycler_view.adapter = MineMenuAdapter(menus) {
             // TODO: 2020/9/3
         }
+
         recycler_view.addItemDecoration(
             UiUtil.getDividerDecoration(requireContext())
         )

@@ -14,16 +14,28 @@ class MineMenuAdapter(
     private val clickListener: ((MenuModel) -> Unit)? = null
 ) : RecyclerView.Adapter<MenuViewHolder>() {
 
+    private val data = mutableListOf<MenuModel>()
+
+    init {
+        updateDate(menuList)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
         return MenuViewHolder.from(parent)
     }
 
     override fun getItemCount(): Int {
-        return menuList.size
+        return data.size
     }
 
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
-        holder.bindData(menuList[position], clickListener)
+        holder.bindData(data[position], clickListener)
+    }
+
+    fun updateDate(menus: MutableList<MenuModel>) {
+        data.clear()
+        data.addAll(menus)
+        notifyDataSetChanged()
     }
 
     class MenuViewHolder private constructor(view: View) : RecyclerView.ViewHolder(view) {

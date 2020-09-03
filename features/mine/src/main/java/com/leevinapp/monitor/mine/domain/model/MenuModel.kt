@@ -1,8 +1,8 @@
 package com.leevinapp.monitor.mine.domain.model
 
 enum class MenuModel(
-    val value: String,
-    val content: String = ""
+    var value: String,
+    var content: String = ""
 ) {
     // mine
     PERSONAL_INFORMATION("个人资料"),

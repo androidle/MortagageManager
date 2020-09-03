@@ -33,6 +33,8 @@ class MineFragment : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    private lateinit var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment
+
     val viewModel: MineViewModel by viewModels {
         viewModelFactory
     }
@@ -67,7 +69,35 @@ class MineFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecyclerView()
+        val mineMenuAdapter = MineMenuAdapter(menus) {
+            when (it) {
+                PERSONAL_INFORMATION -> {
+                    // TODO: 2020/9/1
+                }
+                SECURITY_APP -> {
+                    findNavController().navigate(R.id.mine_action_minefragment_to_minesecurityfragment)
+                }
+                AUTHENTICATION -> {
+                    identityAuthSelectionFragment.show(
+                        childFragmentManager,
+                        MineIdentityAuthSelectionFragment::class.simpleName
+                    )
+                    // TODO: 2020/9/3 to be refactor activity result
+                    // identityAuthSelectionFragment.setTargetFragment(this,TARGET_REQUEST_CODE)
+                }
+                PASSWORD_MANAGE -> {
+                }
+                ABOUT -> {
+                    findNavController().navigate(R.id.mine_action_minefragment_to_mineaboutfragment)
+                }
+            }
+        }
+        mineMenuAdapter.updateDate(menus)
+        recycler_view.adapter = mineMenuAdapter
+        recycler_view.setHasFixedSize(true)
+        recycler_view.addItemDecoration(
+            UiUtil.getDividerDecoration(requireContext())
+        )
         btn_logout.setOnClickListener {
             userManager.reset()
             viewModel.isLogged.postValue(userManager.isLogged)
@@ -78,29 +108,16 @@ class MineFragment : BaseFragment() {
         }
 
         viewModel.isLogged.postValue(userManager.isLogged)
+
+        identityAuthSelectionFragment = MineIdentityAuthSelectionFragment()
+        identityAuthSelectionFragment.setSelectedCallback {
+            AUTHENTICATION.content = it.name
+            mineMenuAdapter.updateDate(menus)
+            identityAuthSelectionFragment.dismiss()
+        }
     }
 
-    private fun initRecyclerView() {
-        recycler_view.adapter = MineMenuAdapter(menus) {
-            when (it) {
-                PERSONAL_INFORMATION -> {
-                    // TODO: 2020/9/1
-                }
-                SECURITY_APP -> {
-                    findNavController().navigate(R.id.mine_action_minefragment_to_minesecurityfragment)
-                }
-                AUTHENTICATION -> {
-                }
-                PASSWORD_MANAGE -> {
-                }
-                ABOUT -> {
-                    findNavController().navigate(R.id.mine_action_minefragment_to_mineaboutfragment)
-                }
-            }
-        }
-        recycler_view.setHasFixedSize(true)
-        recycler_view.addItemDecoration(
-            UiUtil.getDividerDecoration(requireContext())
-        )
+    companion object {
+        const val TARGET_REQUEST_CODE = 0x001
     }
 }
