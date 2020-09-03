@@ -6,8 +6,8 @@ import javax.inject.Singleton
 @Singleton
 class UserManager @Inject constructor() {
 
-    var isLogged = true
-    val username = ""
+    var isLogged = false
+    val username = "Username"
 
     fun reset() {
         isLogged = false

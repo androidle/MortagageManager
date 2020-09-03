@@ -8,7 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
-abstract class BaseMvvmFragment<VB : ViewDataBinding> : BaseFragment() {
+abstract class ViewModelFragment<VB : ViewDataBinding> : BaseFragment() {
 
     lateinit var viewBinding: VB
 

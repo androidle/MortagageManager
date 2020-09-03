@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.leevinapp.monitor.core.common.ui.base.BaseMvvmFragment
+import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.common.ui.extensions.setupWithNavController
 import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.databinding.FragmentMainBinding
@@ -14,7 +14,7 @@ import com.leevinapp.monitor.di.MainModule
 import javax.inject.Inject
 import timber.log.Timber
 
-class MainFragment : BaseMvvmFragment<FragmentMainBinding>() {
+class MainFragment : ViewModelFragment<FragmentMainBinding>() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

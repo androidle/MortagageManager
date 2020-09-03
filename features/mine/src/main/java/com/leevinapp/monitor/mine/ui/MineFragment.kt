@@ -12,7 +12,7 @@ import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.R
-import com.leevinapp.monitor.mine.R.layout
+import com.leevinapp.monitor.mine.databinding.MineFragmentBinding
 import com.leevinapp.monitor.mine.di.DaggerMineComponent
 import com.leevinapp.monitor.mine.di.MineModule
 import com.leevinapp.monitor.mine.domain.model.MenuModel.ABOUT
@@ -51,11 +51,36 @@ class MineFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(layout.mine_fragment, container, false)
+        return MineFragmentBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = this@MineFragment.viewModel
+        }.root
+    }
+
+    override fun initDependencyInjection() {
+        DaggerMineComponent.builder()
+            .coreComponent(CoreInjectHelper.provideCoreComponent(requireContext()))
+            .mineModule(MineModule())
+            .build()
+            .inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initRecyclerView()
+        btn_logout.setOnClickListener {
+            userManager.reset()
+            viewModel.isLogged.postValue(userManager.isLogged)
+        }
+        btn_goto_logon.setOnClickListener {
+            userManager.isLogged = true
+            viewModel.isLogged.postValue(userManager.isLogged)
+        }
+
+        viewModel.isLogged.postValue(userManager.isLogged)
+    }
+
+    private fun initRecyclerView() {
         recycler_view.adapter = MineMenuAdapter(menus) {
             when (it) {
                 PERSONAL_INFORMATION -> {
@@ -77,36 +102,5 @@ class MineFragment : BaseFragment() {
         recycler_view.addItemDecoration(
             UiUtil.getDividerDecoration(requireContext())
         )
-
-        btn_logout.setOnClickListener {
-            userManager.reset()
-            findNavController().navigate(R.id.mineFragment)
-        }
-
-        tv_unlogon.setOnClickListener {
-            userManager.isLogged = true
-            findNavController().navigate(R.id.mineFragment)
-        }
-
-        iv_unlogon_avatar.setOnClickListener {
-            userManager.isLogged = true
-            findNavController().navigate(R.id.mineFragment)
-        }
-
-        if (userManager.isLogged) {
-            container_post_logon.visibility = View.VISIBLE
-            container_unlogon.visibility = View.GONE
-        } else {
-            container_post_logon.visibility = View.GONE
-            container_unlogon.visibility = View.VISIBLE
-        }
-    }
-
-    override fun initDependencyInjection() {
-        DaggerMineComponent.builder()
-            .coreComponent(CoreInjectHelper.provideCoreComponent(requireContext()))
-            .mineModule(MineModule())
-            .build()
-            .inject(this)
     }
 }

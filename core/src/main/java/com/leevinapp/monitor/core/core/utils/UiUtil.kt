@@ -12,7 +12,7 @@ object UiUtil {
 
     fun getDividerDecoration(context: Context): ItemDecoration {
         return HorizontalDividerItemDecoration.Builder(context)
-            .colorResId(R.color.color_monitor_pewter)
+            .colorResId(R.color.color_monitor_pearl)
             .sizeResId(R.dimen.dimen_divider)
             .showLastDivider()
             .build()
