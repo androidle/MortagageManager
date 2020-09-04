@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_item_height"
+    android:paddingHorizontal="@dimen/dimen_common_margin">
+
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/MonitorText.Title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.5"
+        tools:text="姓名" />
+
+
+    <EditText
+        android:id="@+id/et_value"
+        style="@style/MonitorText.Title"
+        android:background="@null"
+        android:gravity="end"
+        android:hint="请输入名称"
+        android:textColorHint="@color/color_monitor_light_silver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_divider"
+        android:background="@color/color_monitor_pearl"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

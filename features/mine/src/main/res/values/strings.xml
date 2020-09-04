@@ -2,4 +2,9 @@
 <resources>
     <string name="mine">我的</string>
     <string name="mine_unlogon">未登录</string>
+    <string name="mine_personal_info">个人资料</string>
+    <string name="mine_security">账号安全</string>
+    <string name="mine_identity_auth">人个身份认证/企业认证</string>
+    <string name="mine_about">关于押品管家</string>
+    <string name="mine_input_please">请输入</string>
 </resources>

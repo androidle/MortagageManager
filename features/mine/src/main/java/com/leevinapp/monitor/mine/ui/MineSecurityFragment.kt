@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.leevinapp.monitor.common.UiUtil
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.R.layout
 import com.leevinapp.monitor.mine.domain.model.MenuModel.CHANGE_PASSWORD
 import com.leevinapp.monitor.mine.domain.model.MenuModel.CHANGE_SECURITY_REF
@@ -45,6 +46,6 @@ class MineSecurityFragment : BaseFragment() {
     }
 
     override fun getToolbarTitle(): String {
-        return "账号安全"
+        return getString(R.string.mine_security)
     }
 }

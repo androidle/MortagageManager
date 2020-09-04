@@ -3,6 +3,7 @@
     <dimen name="dimen_common_margin">20dp</dimen>
     <dimen name="dimen_divider">1dp</dimen>
     <dimen name="dimen_button_height">52dp</dimen>
+    <dimen name="dimen_item_height">52dp</dimen>
 
     <dimen name="text_size_large">23sp</dimen>
     <dimen name="text_size_medium">16sp</dimen>

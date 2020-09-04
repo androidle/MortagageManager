@@ -18,6 +18,12 @@
         <action
             android:id="@+id/mine_action_minefragment_to_minesecurityfragment"
             app:destination="@id/mine_minesecurityfragment" />
+        <action
+            android:id="@+id/mine_action_minefragment_to_minepersonalinfofragment"
+            app:destination="@id/mine_minepersonalinfofragment" />
+        <action
+            android:id="@+id/mine_action_minefragment_to_mineauthfragment"
+            app:destination="@id/mine_mineauthfragment" />
     </fragment>
 
     <include app:graph="@navigation/auth_graph" />
@@ -32,5 +38,20 @@
         android:name="com.leevinapp.monitor.mine.ui.MineSecurityFragment"
         android:label="MineSecurityFragment"
         tools:layout="@layout/mine_fragment_security"/>
+    <fragment
+        android:id="@+id/mine_minepersonalinfofragment"
+        android:name="com.leevinapp.monitor.mine.ui.MinePersonalInfoFragment"
+        android:label="MinePersonalInfoFragment"
+        tools:layout="@layout/mine_fragment_personal_info"/>
+    <fragment
+        android:id="@+id/mine_mineauthfragment"
+        android:name="com.leevinapp.monitor.mine.ui.MineAuthFragment"
+        android:label="MineAuthFragment"
+        tools:layout="@layout/mine_fragment_auth">
+        <argument
+            android:name="authModel"
+            app:argType="com.leevinapp.monitor.mine.domain.model.OptionModel"
+            app:nullable="false"/>
+    </fragment>
 
 </navigation>

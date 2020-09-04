@@ -47,6 +47,6 @@ class MineAboutFragment : BaseFragment() {
     }
 
     override fun getToolbarTitle(): String {
-        return "关于押品管家"
+        return getString(R.string.mine_about)
     }
 }
