@@ -35,9 +35,19 @@
         tools:layout="@layout/mine_frament_about"/>
     <fragment
         android:id="@+id/mine_minesecurityfragment"
-        android:name="com.leevinapp.monitor.mine.ui.MineSecurityFragment"
+        android:name="com.leevinapp.monitor.mine.ui.security.MineSecurityFragment"
         android:label="MineSecurityFragment"
-        tools:layout="@layout/mine_fragment_security"/>
+        tools:layout="@layout/mine_fragment_security">
+        <action
+            android:id="@+id/mine_action_mine_minesecurityfragment_to_mineforgotpasswordfragment"
+            app:destination="@id/mine_mineforgotpasswordfragment" />
+        <action
+            android:id="@+id/mine_action_mine_minesecurityfragment_to_minechangesecurityinfofragment"
+            app:destination="@id/mine_minechangesecurityinfofragment" />
+        <action
+            android:id="@+id/mine_action_mine_minesecurityfragment_to_mine_minechangepasswordfragment"
+            app:destination="@id/mine_minechangepasswordfragment" />
+    </fragment>
     <fragment
         android:id="@+id/mine_minepersonalinfofragment"
         android:name="com.leevinapp.monitor.mine.ui.MinePersonalInfoFragment"
@@ -45,7 +55,7 @@
         tools:layout="@layout/mine_fragment_personal_info"/>
     <fragment
         android:id="@+id/mine_mineauthfragment"
-        android:name="com.leevinapp.monitor.mine.ui.MineAuthFragment"
+        android:name="com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthFragment"
         android:label="MineAuthFragment"
         tools:layout="@layout/mine_fragment_auth">
         <argument
@@ -53,5 +63,29 @@
             app:argType="com.leevinapp.monitor.mine.domain.model.OptionModel"
             app:nullable="false"/>
     </fragment>
+    <fragment
+        android:id="@+id/mine_minechangepasswordfragment"
+        android:name="com.leevinapp.monitor.mine.ui.security.MineChangePasswordFragment"
+        android:label="MineChangePasswordFragment"
+        tools:layout="@layout/mine_fragment_change_password"/>
+    <fragment
+        android:id="@+id/mine_minechangesecurityinfofragment"
+        android:name="com.leevinapp.monitor.mine.ui.security.MineChangeSecurityInfoFragment"
+        android:label="MineChangeSecurityInfoFragment"
+        tools:layout="@layout/mine_fragment_change_security_info"/>
+    <fragment
+        android:id="@+id/mine_mineforgotpasswordfragment"
+        android:name="com.leevinapp.monitor.mine.ui.security.MineForgotPasswordFragment"
+        android:label="MineForgotPasswordFragment"
+        tools:layout="@layout/mine_fragment_forgot_password">
+        <action
+            android:id="@+id/mine_action_mine_mineforgotpasswordfragment_to_mineresetpasswordfragment"
+            app:destination="@id/mine_mineresetpasswordfragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mine_mineresetpasswordfragment"
+        android:name="com.leevinapp.monitor.mine.ui.security.MineResetPasswordFragment"
+        android:label="MineResetPasswordFragment"
+        tools:layout="@layout/mine_fragment_reset_password"/>
 
 </navigation>

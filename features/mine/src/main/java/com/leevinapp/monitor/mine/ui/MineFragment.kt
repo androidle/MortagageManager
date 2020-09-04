@@ -23,8 +23,9 @@ import com.leevinapp.monitor.mine.domain.model.MenuModel.PHONE_BIND
 import com.leevinapp.monitor.mine.domain.model.MenuModel.SECURITY_APP
 import com.leevinapp.monitor.mine.domain.model.OptionModel
 import com.leevinapp.monitor.mine.ui.adapter.MineMenuAdapter
-import kotlinx.android.synthetic.main.mine_fragment.*
+import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthSelectionFragment
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.mine_fragment.*
 
 class MineFragment : BaseFragment() {
 
@@ -34,7 +35,7 @@ class MineFragment : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private var selectedAuthModel:OptionModel? = null
+    private var selectedAuthModel: OptionModel? = null
 
     private lateinit var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment
 
@@ -82,7 +83,11 @@ class MineFragment : BaseFragment() {
                 }
                 AUTHENTICATION -> {
                     if (selectedAuthModel != null) {
-                       findNavController().navigate(MineFragmentDirections.mineActionMinefragmentToMineauthfragment(selectedAuthModel!!))
+                        findNavController().navigate(
+                            MineFragmentDirections.mineActionMinefragmentToMineauthfragment(
+                                selectedAuthModel!!
+                            )
+                        )
                     } else {
                         // TODO: 2020/9/3 to be refactor activity result
                         // identityAuthSelectionFragment.setTargetFragment(this,TARGET_REQUEST_CODE)
@@ -116,7 +121,8 @@ class MineFragment : BaseFragment() {
 
         viewModel.isLogged.postValue(userManager.isLogged)
 
-        identityAuthSelectionFragment = MineIdentityAuthSelectionFragment()
+        identityAuthSelectionFragment =
+            MineIdentityAuthSelectionFragment()
         identityAuthSelectionFragment.setSelectedCallback {
             selectedAuthModel = it
             AUTHENTICATION.content = it.name

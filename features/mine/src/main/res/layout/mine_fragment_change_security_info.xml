@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar_container"
+        layout="@layout/toolbar" />
+
+    <TextView
+        android:id="@+id/tv_question1_title"
+        style="@style/MonitorText.Title"
+        android:layout_marginHorizontal="@dimen/dimen_common_margin"
+        android:layout_marginTop="@dimen/dimen_common_margin"
+        android:text="问题1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_container" />
+
+    <com.leevinapp.monitor.core.common.view.ItemEditView
+        android:id="@+id/iev_security_question1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:editHint=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_question1_title"
+        app:name="安全问题1" />
+
+    <com.leevinapp.monitor.core.common.view.ItemEditView
+        android:id="@+id/iev_security_answer1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:editHint="请填写新密码"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iev_security_question1"
+        app:name="安全答案1" />
+
+    <TextView
+        android:id="@+id/tv_question2_title"
+        style="@style/MonitorText.Title"
+        android:layout_marginHorizontal="@dimen/dimen_common_margin"
+        android:layout_marginTop="@dimen/dimen_common_margin"
+        android:text="问题2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iev_security_answer1" />
+
+    <com.leevinapp.monitor.core.common.view.ItemEditView
+        android:id="@+id/iev_security_question2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:editHint=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_question2_title"
+        app:name="安全问题2" />
+
+    <com.leevinapp.monitor.core.common.view.ItemEditView
+        android:id="@+id/iev_security_answer2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:editHint=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iev_security_question2"
+        app:name="安全答案2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/mine_completed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iev_security_answer2"
+        app:layout_constraintWidth_percent="0.5" />
+</androidx.constraintlayout.widget.ConstraintLayout>

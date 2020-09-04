@@ -1,9 +1,10 @@
-package com.leevinapp.monitor.mine.ui
+package com.leevinapp.monitor.mine.ui.security
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.common.UiUtil
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.mine.R
@@ -34,7 +35,17 @@ class MineSecurityFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         recycler_view.setHasFixedSize(true)
         recycler_view.adapter = MineMenuAdapter(menus) {
-            // TODO: 2020/9/3
+            when (it) {
+                CHANGE_PASSWORD -> {
+                    findNavController().navigate(MineSecurityFragmentDirections.mineActionMineMinesecurityfragmentToMineMinechangepasswordfragment())
+                }
+                FORGOT_PASSWORD -> {
+                    findNavController().navigate(MineSecurityFragmentDirections.mineActionMineMinesecurityfragmentToMineforgotpasswordfragment())
+                }
+                CHANGE_SECURITY_REF -> {
+                    findNavController().navigate(MineSecurityFragmentDirections.mineActionMineMinesecurityfragmentToMinechangesecurityinfofragment())
+                }
+            }
         }
         recycler_view.addItemDecoration(
             UiUtil.getDividerDecoration(requireContext())

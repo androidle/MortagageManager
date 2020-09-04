@@ -8,11 +8,11 @@ import androidx.core.content.res.use
 import com.leevinapp.monitor.core.R
 import kotlinx.android.synthetic.main.item_view.view.*
 
-class ItemView constructor(
+class ItemView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : ConstraintLayout(context,attrs,defStyleAttr){
+) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     var name: String?
         get() {
@@ -35,19 +35,19 @@ class ItemView constructor(
     }
 
     init {
-        View.inflate(context, R.layout.item_view,this)
+        View.inflate(context, R.layout.item_view, this)
         attrs?.let {
                 context.obtainStyledAttributes(attrs, R.styleable.ItemView).use { typedArray ->
                     for (i in 0 until typedArray.indexCount) {
                         when (val attr = typedArray.getIndex(i)) {
-                            R.styleable.ItemView_name -> {
+                            R.styleable.ItemView_label -> {
                                 name = typedArray.getString(attr)
                             }
-                            R.styleable.ItemView_value ->{
+                            R.styleable.ItemView_value -> {
                                 value = typedArray.getString(attr)
                             }
-                            R.styleable.ItemView_hasArrow ->{
-                                setArrowVisibility(typedArray.getBoolean(attr,true))
+                            R.styleable.ItemView_hasArrow -> {
+                                setArrowVisibility(typedArray.getBoolean(attr, true))
                             }
                         }
                     }

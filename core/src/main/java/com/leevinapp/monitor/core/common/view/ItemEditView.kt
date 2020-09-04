@@ -8,7 +8,7 @@ import androidx.core.content.res.use
 import com.leevinapp.monitor.core.R
 import kotlinx.android.synthetic.main.item_edit_view.view.*
 
-class ItemEditView constructor(
+class ItemEditView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -63,7 +63,6 @@ class ItemEditView constructor(
                     }
                 }
             }
-
         }
     }
 }

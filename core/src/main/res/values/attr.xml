@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ItemEditView">
-        <attr name="name" format="reference|string"/>
-        <attr name="editHint" format="reference|string"/>
-        <attr name="editValue" format="reference|string"/>
-        <attr name="isEditable" format="boolean"/>
+        <attr name="name" format="reference|string" />
+        <attr name="editHint" format="reference|string" />
+        <attr name="editValue" format="reference|string" />
+        <attr name="isEditable" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="ItemView">
-        <attr name="name" format="reference|string"/>
-        <attr name="value" format="reference|string"/>
-        <attr name="hasArrow" format="boolean"/>
+        <attr name="label" format="reference|string" />
+        <attr name="value" format="reference|string" />
+        <attr name="hasArrow" format="boolean" />
     </declare-styleable>
 </resources>

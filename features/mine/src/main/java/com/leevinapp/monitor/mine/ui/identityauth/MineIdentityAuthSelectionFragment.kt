@@ -1,4 +1,4 @@
-package com.leevinapp.monitor.mine.ui
+package com.leevinapp.monitor.mine.ui.identityauth
 
 import android.os.Bundle
 import android.view.LayoutInflater
