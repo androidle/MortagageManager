@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.leevinapp.monitor.auth.ui.LogonViewModel" />
+            type="com.leevinapp.monitor.auth.ui.RegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,6 +47,28 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            app:hintEnabled="false"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_phone_number">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.password}"
+                android:hint="请输入密码"
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layout_sms"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -56,13 +78,14 @@
             android:layout_marginTop="30dp"
             app:layout_constraintEnd_toStartOf="@+id/sms_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_phone_number">
+            app:layout_constraintTop_toBottomOf="@+id/layout_password">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_sms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="请输入密码"
+                android:text="@={viewModel.smsCode}"
+                android:hint="请输入验证码"
                 android:textSize="18sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -80,11 +103,11 @@
             app:layout_constraintTop_toTopOf="@+id/layout_sms" />
 
         <TextView
-            android:id="@+id/tv_to_register"
+            android:id="@+id/tv_to_logon"
             style="@style/MonitorText.Content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="没有账号,请先注册"
+            android:text="已有账号,去登录"
             android:textAlignment="center"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
@@ -92,18 +115,18 @@
             app:layout_constraintTop_toBottomOf="@+id/layout_sms" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/logon_button"
+            android:id="@+id/button_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="@dimen/dimen_common_margin"
             android:background="@color/colorAccent"
-            android:text="@string/auth_logon"
+            android:text="@string/auth_register"
             android:textColor="@android:color/white"
             android:textSize="23sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_to_register" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_to_logon" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_line_top"

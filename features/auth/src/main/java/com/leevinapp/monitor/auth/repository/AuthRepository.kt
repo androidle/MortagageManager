@@ -6,4 +6,6 @@ interface AuthRepository {
     fun test(): Single<String>
 
     fun auth(): Single<String>
+
+    fun sendSmsCode(phoneNumber:String):Single<Boolean>
 }

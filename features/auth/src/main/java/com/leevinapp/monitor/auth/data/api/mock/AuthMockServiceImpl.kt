@@ -2,6 +2,8 @@ package com.leevinapp.monitor.auth.data.api.mock
 
 import com.google.gson.reflect.TypeToken
 import com.leevinapp.monitor.auth.data.api.AuthService
+import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeParams
+import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeResponse
 import com.leevinapp.monitor.auth.data.api.response.TestResponse
 import com.leevinapp.monitor.core.core.network.mock.MockApiUtil
 import io.reactivex.Single
@@ -27,5 +29,9 @@ class AuthMockServiceImpl(private val mockApiUtil: MockApiUtil) :
     override fun auth(): Single<String> {
         TODO("Not yet implemented")
         // return null
+    }
+
+    override fun sendSmsCode(params: SendSmsCodeParams): Single<SendSmsCodeResponse> {
+        TODO("Not yet implemented")
     }
 }

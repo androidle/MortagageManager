@@ -55,7 +55,7 @@
                 android:src="@drawable/mine_ic_settings_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:visible="@{viewModel.isLogged}"
+                visible="@{viewModel.isLogged}"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -68,7 +68,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/container_top"
-            app:visible="@{viewModel.isLogged}"
+            visible="@{viewModel.isLogged}"
             tools:visibility="visible">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -106,7 +106,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/container_top"
-            app:visible="@{!viewModel.isLogged}"
+            visible="@{!viewModel.isLogged}"
             tools:visibility="gone">
 
             <com.google.android.material.button.MaterialButton

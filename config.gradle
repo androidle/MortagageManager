@@ -5,7 +5,7 @@ ext.configs = configs
 
 def versions = [:]
 versions.activity = '1.1.0'
-versions.android_gradle_plugin = '4.0.0'
+versions.android_gradle_plugin = '4.0.1'
 versions.annotations = "1.0.0"
 versions.apache_commons = "2.5"
 versions.appcompat = "1.1.0"

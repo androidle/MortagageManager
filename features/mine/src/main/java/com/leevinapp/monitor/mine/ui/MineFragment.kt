@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.common.UiUtil
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.common.ui.extensions.navigationToLogonFragment
 import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.R
@@ -115,8 +116,9 @@ class MineFragment : BaseFragment() {
             viewModel.isLogged.postValue(userManager.isLogged)
         }
         btn_goto_logon.setOnClickListener {
-            userManager.isLogged = true
-            viewModel.isLogged.postValue(userManager.isLogged)
+            // userManager.isLogged = true
+            // viewModel.isLogged.postValue(userManager.isLogged)
+            findNavController().navigationToLogonFragment()
         }
 
         viewModel.isLogged.postValue(userManager.isLogged)

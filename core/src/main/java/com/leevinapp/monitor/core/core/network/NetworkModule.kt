@@ -3,16 +3,17 @@ package com.leevinapp.monitor.core.core.network
 import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.leevinapp.monitor.core.BuildConfig
+import com.leevinapp.monitor.core.core.network.interceptor.HeaderInterceptor
 import com.leevinapp.monitor.core.core.network.mock.MockApiUtil
 import dagger.Module
 import dagger.Provides
-import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 @Module
 class NetworkModule {
@@ -22,7 +23,7 @@ class NetworkModule {
     fun providerBaseUrl(): String {
         // TODO: 2020/8/6 to test
         // return "https://api.github.com/"
-        return "http://122.9.47.171:10002/"
+        return "http://122.9.47.171:10002/gw/collateral/"
     }
 
     @Singleton
@@ -51,6 +52,7 @@ class NetworkModule {
         }
 
         return builder
+            .addInterceptor(HeaderInterceptor())
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .build()

@@ -2,6 +2,7 @@ package com.leevinapp.monitor.auth.data
 
 import com.google.gson.Gson
 import com.leevinapp.monitor.auth.data.api.AuthService
+import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeParams
 import com.leevinapp.monitor.auth.repository.AuthRepository
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -20,6 +21,13 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
 
     override fun auth(): Single<String> {
         return authService.auth()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun sendSmsCode(phoneNum: String): Single<Boolean> {
+        return authService.sendSmsCode(SendSmsCodeParams(telephone = phoneNum))
+            .map { it.success }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

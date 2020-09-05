@@ -15,5 +15,13 @@
         >
 
         <deepLink app:uri="Monitor://LogonFragment"/>
+        <action
+            android:id="@+id/auth_action_logonfragment_to_registerfragment"
+            app:destination="@id/auth_registerfragment" />
     </fragment>
+    <fragment
+        android:id="@+id/auth_registerfragment"
+        android:name="com.leevinapp.monitor.auth.ui.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/auth_fragment_register"/>
 </navigation>
