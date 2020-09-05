@@ -18,7 +18,6 @@ import com.leevinapp.monitor.core.common.ui.extensions.showLoadingDialog
 import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.core.core.user.UserManager
 import kotlinx.android.synthetic.main.auth_fragment_logon.*
-import timber.log.Timber
 import javax.inject.Inject
 
 class LogonFragment : BaseFragment() {
@@ -54,11 +53,9 @@ class LogonFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Timber.d("==userManager===${userManager.username}")
-        Timber.d("==viewModel===${viewModel.username.value}")
 
         logon_button.setOnClickListener {
-            viewModel.auth()
+            viewModel.login()
         }
 
         tv_to_register.setOnClickListener {
@@ -77,6 +74,13 @@ class LogonFragment : BaseFragment() {
                 requireActivity().hideLoadingDialog()
             }
         })
+
+        viewModel.logonSuccess.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                userManager.isLogged = true
+                requireActivity().finish()
+            }
+        })
     }
 
     val countDownTimer = object : CountDownTimer(60 * 1000, 1000) {
@@ -89,5 +93,10 @@ class LogonFragment : BaseFragment() {
             sms_button.text = "${millisUntilFinished / 1000}s 后重新发送"
             sms_button.isEnabled = false
         }
+    }
+
+    override fun onDestroy() {
+        countDownTimer.cancel()
+        super.onDestroy()
     }
 }

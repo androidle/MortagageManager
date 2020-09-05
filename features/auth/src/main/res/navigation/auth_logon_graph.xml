@@ -17,7 +17,8 @@
         <deepLink app:uri="Monitor://LogonFragment"/>
         <action
             android:id="@+id/auth_action_logonfragment_to_registerfragment"
-            app:destination="@id/auth_registerfragment" />
+            app:destination="@id/auth_registerfragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/auth_registerfragment"

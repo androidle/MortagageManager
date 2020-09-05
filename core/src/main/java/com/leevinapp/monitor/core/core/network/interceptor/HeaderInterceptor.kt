@@ -12,7 +12,7 @@ class HeaderInterceptor : Interceptor {
         newRequest = request.newBuilder()
             // TODO: 2020/8/6
             // .addHeader("Accept-Language", "en-us")
-           // .addHeader("Content-Type", "application/json")
+            // .addHeader("Content-Type", "application/json")
             // .addHeader("X-AUTH-TOKEN", "")
             // .addHeader("X-AUTH-TIMESTAMP", "")
             // .addHeader("X-DEVICE", "")
