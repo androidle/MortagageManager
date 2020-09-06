@@ -4,16 +4,18 @@ import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.leevinapp.monitor.core.BuildConfig
 import com.leevinapp.monitor.core.core.network.interceptor.HeaderInterceptor
+import com.leevinapp.monitor.core.core.network.interceptor.PostLogonHeaderInterceptor
 import com.leevinapp.monitor.core.core.network.mock.MockApiUtil
+import com.leevinapp.monitor.core.core.user.UserManager
 import dagger.Module
 import dagger.Provides
-import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 @Module
 class NetworkModule {
@@ -39,7 +41,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun providerOkHttpClient(): OkHttpClient {
+    fun providerOkHttpClient(userManager: UserManager): OkHttpClient {
         // TODO: 2020/8/6 log network ,header interceptor
         val builder = OkHttpClient.Builder()
         if (BuildConfig.DEBUG) {
@@ -49,6 +51,15 @@ class NetworkModule {
                     level = HttpLoggingInterceptor.Level.BODY
                 }
             )
+        }
+
+        // todo how to add header for all post-logon API
+        if (userManager.isLogged) {
+            builder.addInterceptor(object : PostLogonHeaderInterceptor() {
+                override fun getToken(): String {
+                    return userManager.token
+                }
+            })
         }
 
         return builder

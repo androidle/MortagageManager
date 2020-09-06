@@ -10,23 +10,20 @@ import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.common.UiUtil
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.common.ui.extensions.navigationToLogonFragment
-import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentBinding
-import com.leevinapp.monitor.mine.di.DaggerMineComponent
-import com.leevinapp.monitor.mine.di.MineModule
+import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.model.MenuModel.ABOUT
 import com.leevinapp.monitor.mine.domain.model.MenuModel.AUTHENTICATION
 import com.leevinapp.monitor.mine.domain.model.MenuModel.PASSWORD_MANAGE
 import com.leevinapp.monitor.mine.domain.model.MenuModel.PERSONAL_INFORMATION
-import com.leevinapp.monitor.mine.domain.model.MenuModel.PHONE_BIND
 import com.leevinapp.monitor.mine.domain.model.MenuModel.SECURITY_APP
 import com.leevinapp.monitor.mine.domain.model.OptionModel
 import com.leevinapp.monitor.mine.ui.adapter.MineMenuAdapter
 import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthSelectionFragment
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.mine_fragment.*
+import javax.inject.Inject
 
 class MineFragment : BaseFragment() {
 
@@ -47,7 +44,6 @@ class MineFragment : BaseFragment() {
     private val menus = mutableListOf(
         PERSONAL_INFORMATION,
         SECURITY_APP,
-        PHONE_BIND,
         AUTHENTICATION,
         PASSWORD_MANAGE,
         ABOUT
@@ -65,11 +61,7 @@ class MineFragment : BaseFragment() {
     }
 
     override fun initDependencyInjection() {
-        DaggerMineComponent.builder()
-            .coreComponent(CoreInjectHelper.provideCoreComponent(requireContext()))
-            .mineModule(MineModule())
-            .build()
-            .inject(this)
+        buildComponent(this).inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

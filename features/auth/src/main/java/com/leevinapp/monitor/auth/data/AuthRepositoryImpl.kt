@@ -32,10 +32,10 @@ class AuthRepositoryImpl(private val authService: AuthService) :
         return authService.login(LoginParams(telephone = phoneNumber, password = password, smsVerifyCode = smsCode))
             .map {
                 AuthModel(
-                    token = it.data.token,
-                    role = it.data.role,
-                    userFullName = it.data.userFullName,
-                    telephone = it.data.telephone
+                    token = it.data.token?:"",
+                    role = it.data.role?:"",
+                    userFullName = it.data.userFullName?:"",
+                    telephone = it.data.telephone?:""
                 )
             }
             .subscribeOn(Schedulers.io())
