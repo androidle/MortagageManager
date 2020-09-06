@@ -22,6 +22,10 @@ abstract class BaseViewModel : ViewModel() {
         MutableLiveData(false)
     }
 
+    val errorMessage:MutableLiveData<String> by lazy {
+        MutableLiveData("")
+    }
+
     protected fun <T> Single<T>.applyIoSchedules(): Single<T> {
         return subscribeOn(Schedulers.io())
             .doOnSubscribe { loading.postValue(true) }
@@ -45,6 +49,7 @@ abstract class BaseViewModel : ViewModel() {
     }
 
     override fun onCleared() {
+        compositeDisposable.clear()
         super.onCleared()
     }
 }

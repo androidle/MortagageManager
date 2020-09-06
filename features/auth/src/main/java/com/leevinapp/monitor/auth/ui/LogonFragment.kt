@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.auth.databinding.AuthFragmentLogonBinding
 import com.leevinapp.monitor.auth.di.AuthModule
 import com.leevinapp.monitor.auth.di.DaggerAuthComponent
+import com.leevinapp.monitor.auth.domain.model.AuthModel
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.common.ui.extensions.hideLoadingDialog
 import com.leevinapp.monitor.core.common.ui.extensions.showLoadingDialog
@@ -75,12 +76,20 @@ class LogonFragment : BaseFragment() {
             }
         })
 
-        viewModel.logonSuccess.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                userManager.isLogged = true
+        viewModel.authModel.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                updateLogonStatus(it)
                 requireActivity().finish()
             }
         })
+    }
+
+    private fun updateLogonStatus(it: AuthModel) {
+        userManager.isLogged = true
+        userManager.token = it.token
+        userManager.user.phoneNumber = it.telephone
+        userManager.user.role = it.role
+        userManager.user.userFullName = it.role
     }
 
     val countDownTimer = object : CountDownTimer(60 * 1000, 1000) {

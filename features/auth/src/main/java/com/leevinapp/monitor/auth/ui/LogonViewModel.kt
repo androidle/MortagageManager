@@ -2,8 +2,9 @@ package com.leevinapp.monitor.auth.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeParams
-import com.leevinapp.monitor.auth.repository.AuthRepository
+import com.leevinapp.monitor.auth.domain.AuthRepository
+import com.leevinapp.monitor.auth.domain.model.AuthModel
+import com.leevinapp.monitor.auth.domain.model.SMSType
 import io.reactivex.functions.Consumer
 import timber.log.Timber
 import javax.inject.Inject
@@ -18,7 +19,7 @@ class LogonViewModel @Inject constructor(private val authRepository: AuthReposit
     val smsCode = MutableLiveData("")
     val password = MutableLiveData("")
 
-    val logonSuccess = MutableLiveData<Boolean>(false)
+    val authModel = MutableLiveData<AuthModel>(null)
 
     fun login() {
         authRepository.login(phoneNumber.value ?: "", password.value ?: "", smsCode.value ?: "")
@@ -29,30 +30,19 @@ class LogonViewModel @Inject constructor(private val authRepository: AuthReposit
                 loading.postValue(false)
             }
             .subscribe(Consumer {
-                logonSuccess.postValue(true)
-                Timber.d("====>$it")
+                authModel.postValue(it)
+                Timber.d("====>${it.token}")
             }, Consumer {
                 Timber.e("====>$it")
-                logonSuccess.postValue(false)
             })
     }
 
     fun sendSmsCode() {
-        val params =
-            SendSmsCodeParams(telephone = phoneNumber.value ?: "", smsType = "REGISTER")
-        authRepository.sendSmsCode(params)
-            .doOnSubscribe {
-                loading.postValue(true)
-            }
-            .doFinally {
-                loading.postValue(false)
-            }
+        authRepository.sendSmsCode(phoneNumber.value ?: "", SMSType.LOGIN.name)
             .subscribe(Consumer {
                 Timber.d("====>$it")
             }, Consumer {
                 Timber.e("====>$it")
             })
     }
-
-    val username = MutableLiveData("hello")
 }

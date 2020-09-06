@@ -1,5 +1,6 @@
 package com.leevinapp.monitor.auth.data.api
 
+import com.leevinapp.monitor.auth.data.api.response.ChangePasswordParams
 import com.leevinapp.monitor.auth.data.api.response.LoginParams
 import com.leevinapp.monitor.auth.data.api.response.LoginResponse
 import com.leevinapp.monitor.auth.data.api.response.RegisterUserParams
@@ -10,9 +11,12 @@ import com.leevinapp.monitor.auth.data.api.response.TestResponse
 import com.leevinapp.monitor.core.core.network.BaseResponse
 import io.reactivex.Single
 import retrofit2.http.Body
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 
 interface AuthService {
     @GET("users/list")
@@ -33,4 +37,14 @@ interface AuthService {
     fun registerUser(
         @Body params: RegisterUserParams
     ): Single<BaseResponse<RegisterUserResponse>>
+
+    @FormUrlEncoded
+    @POST("common/auth/logout/user/{userId}")
+    fun logout(
+        @Path("userId") userId: String,
+        @Header("token") token: String
+    ): Single<BaseResponse<Any>>
+
+    @POST("app/user/changePassword")
+    fun changePassword(@Body params: ChangePasswordParams): Single<BaseResponse<Any>>
 }

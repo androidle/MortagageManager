@@ -64,8 +64,9 @@ class RegisterFragment : BaseFragment() {
             }
         })
 
-        viewModel.registerSuccess.observe(viewLifecycleOwner, Observer {
-            if (it) {
+        viewModel.registerSuccessToken.observe(viewLifecycleOwner, Observer {
+            if (it.isNotEmpty()) {
+                userManager.token = it
                 findNavController().popBackStack(R.id.logonFragment,true)
             }
         })
