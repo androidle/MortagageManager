@@ -25,7 +25,7 @@ interface AuthService {
     @POST("common/auth/login/user")
     fun login(@Body params: LoginParams): Single<BaseResponse<LoginResponse>>
 
-    @POST("common/auth/logout/user/{userId}")// TODO: 2020/9/5  params
+    @POST("common/auth/logout/user/{userId}") // TODO: 2020/9/5  params
     fun logout(@Body params: LoginParams): Single<LoginResponse>
 
     @POST("common/auth/sendSmsCode")

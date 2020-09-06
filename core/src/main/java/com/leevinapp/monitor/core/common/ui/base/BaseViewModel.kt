@@ -22,7 +22,7 @@ abstract class BaseViewModel : ViewModel() {
         MutableLiveData(false)
     }
 
-    val errorMessage:MutableLiveData<String> by lazy {
+    val errorMessage: MutableLiveData<String> by lazy {
         MutableLiveData("")
     }
 

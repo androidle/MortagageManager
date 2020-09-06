@@ -6,20 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.mine.R
-import kotlinx.android.synthetic.main.mine_fragment_personal_info.*
+import com.leevinapp.monitor.mine.databinding.MineFragmentPersonalInfoBinding
 
 class MinePersonalInfoFragment : BaseFragment() {
+
+    private lateinit var viewBinding: MineFragmentPersonalInfoBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.mine_fragment_personal_info, container, false)
+        return MineFragmentPersonalInfoBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewBinding = this
+        }.root
     }
 
     override fun getToolbar(): View? {
-        return toolbar_container
+        return viewBinding.toolbarContainer.toolbar
     }
 
     override fun getToolbarTitle(): String {

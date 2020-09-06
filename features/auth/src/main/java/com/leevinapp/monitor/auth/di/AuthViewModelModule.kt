@@ -19,7 +19,6 @@ internal abstract class AuthViewModelModule {
     @ViewModelKey(LogonViewModel::class)
     internal abstract fun bindLogonViewModel(logonViewModel: LogonViewModel): ViewModel
 
-
     @Binds
     @IntoMap
     @FeatureScope

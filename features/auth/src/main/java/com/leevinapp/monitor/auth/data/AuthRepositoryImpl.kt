@@ -29,7 +29,7 @@ class AuthRepositoryImpl(private val authService: AuthService) :
         password: String,
         smsCode: String
     ): Single<AuthModel> {
-        return authService.login(LoginParams(telephone = phoneNumber,password = password,smsVerifyCode = smsCode))
+        return authService.login(LoginParams(telephone = phoneNumber, password = password, smsVerifyCode = smsCode))
             .map {
                 AuthModel(
                     token = it.data.token,
@@ -42,8 +42,8 @@ class AuthRepositoryImpl(private val authService: AuthService) :
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun sendSmsCode(phoneNumber: String,smsType: String): Single<Boolean> {
-        return authService.sendSmsCode(SendSmsCodeParams(telephone = phoneNumber,smsType = smsType))
+    override fun sendSmsCode(phoneNumber: String, smsType: String): Single<Boolean> {
+        return authService.sendSmsCode(SendSmsCodeParams(telephone = phoneNumber, smsType = smsType))
             .map { it.success }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -57,7 +57,7 @@ class AuthRepositoryImpl(private val authService: AuthService) :
     }
 
     override fun logout(userId: String, token: String): Single<Boolean> {
-        return authService.logout(userId,token)
+        return authService.logout(userId, token)
             .map { it.success }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

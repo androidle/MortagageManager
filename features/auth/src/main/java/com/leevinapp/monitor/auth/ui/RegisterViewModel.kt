@@ -6,8 +6,8 @@ import com.leevinapp.monitor.auth.data.api.response.RegisterUserParams
 import com.leevinapp.monitor.auth.domain.AuthRepository
 import com.leevinapp.monitor.auth.domain.model.SMSType
 import io.reactivex.functions.Consumer
-import timber.log.Timber
 import javax.inject.Inject
+import timber.log.Timber
 
 class RegisterViewModel @Inject constructor(private val authRepository: AuthRepository) :
     ViewModel() {

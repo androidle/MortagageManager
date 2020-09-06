@@ -1,6 +1,6 @@
-package com.leevinapp.monitor.auth.data.api.response
+package com.leevinapp.monitor.mine.data.response
 
-data class LogoutResponse(
+data class VerifyUserResponse(
     val role: String,
     val telephone: String,
     val token: String,

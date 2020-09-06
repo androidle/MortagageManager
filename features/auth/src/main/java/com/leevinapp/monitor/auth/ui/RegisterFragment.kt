@@ -18,8 +18,8 @@ import com.leevinapp.monitor.core.common.ui.extensions.hideLoadingDialog
 import com.leevinapp.monitor.core.common.ui.extensions.showLoadingDialog
 import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.core.core.user.UserManager
-import kotlinx.android.synthetic.main.auth_fragment_register.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.auth_fragment_register.*
 
 class RegisterFragment : BaseFragment() {
 
@@ -67,7 +67,7 @@ class RegisterFragment : BaseFragment() {
         viewModel.registerSuccessToken.observe(viewLifecycleOwner, Observer {
             if (it.isNotEmpty()) {
                 userManager.token = it
-                findNavController().popBackStack(R.id.logonFragment,true)
+                findNavController().popBackStack(R.id.logonFragment, true)
             }
         })
     }
