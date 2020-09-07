@@ -9,7 +9,6 @@ abstract class NetworkConnectionInterceptor : Interceptor {
 
     abstract fun isNetworkAvailable(): Boolean
 
-    @Throws(ResponseException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         if (!isNetworkAvailable()) {
             throw ResponseException.noNetworkException()

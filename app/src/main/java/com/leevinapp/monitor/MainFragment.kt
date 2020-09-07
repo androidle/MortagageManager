@@ -1,27 +1,43 @@
 package com.leevinapp.monitor
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
+import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.common.ui.extensions.setupWithNavController
 import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.databinding.FragmentMainBinding
 import com.leevinapp.monitor.di.DaggerMainComponent
 import com.leevinapp.monitor.di.MainModule
 import javax.inject.Inject
-import timber.log.Timber
 
-class MainFragment : ViewModelFragment<FragmentMainBinding>() {
+class MainFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    lateinit var viewBinding:FragmentMainBinding
+
     val viewModel: MainViewModel by viewModels {
         viewModelFactory
     }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return FragmentMainBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = this@MainFragment.viewModel
+            viewBinding = this
+        }.root
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -67,14 +83,5 @@ class MainFragment : ViewModelFragment<FragmentMainBinding>() {
             .mainModule(MainModule())
             .build()
             .inject(this)
-    }
-
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_main
-    }
-
-    override fun onInitDataBinding() {
-        Timber.e("===onInitDataBinding======" + viewModel.state)
-        viewBinding.viewModel = this.viewModel
     }
 }

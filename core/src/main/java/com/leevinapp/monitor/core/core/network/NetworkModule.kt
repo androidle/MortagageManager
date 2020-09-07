@@ -51,6 +51,7 @@ class NetworkModule {
                     level = HttpLoggingInterceptor.Level.BODY
                 }
             )
+            builder.addInterceptor(HeaderInterceptor())
         }
 
         // todo how to add header for all post-logon API

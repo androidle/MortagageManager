@@ -10,7 +10,7 @@ import com.leevinapp.monitor.auth.data.api.response.RegisterUserResponse
 import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeParams
 import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeResponse
 import com.leevinapp.monitor.auth.data.api.response.TestResponse
-import com.leevinapp.monitor.core.core.network.BaseResponse
+import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.core.core.network.mock.MockApiUtil
 import io.reactivex.Single
 import timber.log.Timber
@@ -32,7 +32,7 @@ class AuthMockServiceImpl(private val mockApiUtil: MockApiUtil) :
         const val TAG_MOCK_API = "Mock response=>:"
     }
 
-    override fun login(params: LoginParams): Single<BaseResponse<LoginResponse>> {
+    override fun login(params: LoginParams): Single<ApiResponse<LoginResponse>> {
         TODO("Not yet implemented")
     }
 
@@ -44,15 +44,15 @@ class AuthMockServiceImpl(private val mockApiUtil: MockApiUtil) :
         TODO("Not yet implemented")
     }
 
-    override fun registerUser(params: RegisterUserParams): Single<BaseResponse<RegisterUserResponse>> {
+    override fun registerUser(params: RegisterUserParams): Single<ApiResponse<RegisterUserResponse>> {
         TODO("Not yet implemented")
     }
 
-    override fun logout(userId: String, token: String): Single<BaseResponse<Any>> {
+    override fun logout(userId: String, token: String): Single<ApiResponse<Any>> {
         TODO("Not yet implemented")
     }
 
-    override fun changePassword(params: ChangePasswordParams): Single<BaseResponse<Any>> {
+    override fun changePassword(params: ChangePasswordParams): Single<ApiResponse<Any>> {
         TODO("Not yet implemented")
     }
 }

@@ -1,35 +1,45 @@
 package com.leevinapp.monitor.core.common.ui.base
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.annotation.LayoutRes
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.Observer
+import com.leevinapp.monitor.core.common.ui.dialog.ErrorDialogFragment
+import com.leevinapp.monitor.core.common.ui.dialog.LoadingDialogFragment
 
-abstract class ViewModelFragment<VB : ViewDataBinding> : BaseFragment() {
+abstract class ViewModelFragment : BaseFragment() {
 
-    lateinit var viewBinding: VB
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        viewBinding = DataBindingUtil.inflate<VB>(inflater, getLayoutId(), container, false).apply {
-            lifecycleOwner = viewLifecycleOwner
-        }
-        return viewBinding.root
-    }
-
-    @LayoutRes
-    abstract fun getLayoutId(): Int
+    private var loadingDialogFragment = LoadingDialogFragment()
+    private var errorDialogFragment = ErrorDialogFragment.newInstance("")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onInitDataBinding()
+        registerCommonEvents()
     }
 
-    abstract fun onInitDataBinding()
+    private fun registerCommonEvents() {
+        getViewModel().loading.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                loadingDialogFragment.show(
+                    childFragmentManager,
+                    LoadingDialogFragment::class.simpleName
+                )
+            } else if (loadingDialogFragment.isAdded) {
+                loadingDialogFragment.dismissAllowingStateLoss()
+            }
+        })
+
+        getViewModel().errorMessage.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                showErrorDialogFragment(it)
+            }
+        })
+    }
+
+    private fun showErrorDialogFragment(it: String?) {
+        if (errorDialogFragment.isAdded.not()) {
+            errorDialogFragment.show(childFragmentManager,ErrorDialogFragment::class.simpleName)
+        }
+    }
+
+    abstract fun getViewModel(): BaseViewModel
 }

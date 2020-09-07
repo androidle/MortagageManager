@@ -6,16 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
+import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
+import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentPersonalInfoBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import javax.inject.Inject
 
-class MinePersonalInfoFragment : BaseFragment() {
+class MinePersonalInfoFragment : ViewModelFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var userManager: UserManager
 
     val viewModel: PersonalInfoViewModel by viewModels {
         viewModelFactory
@@ -35,6 +40,11 @@ class MinePersonalInfoFragment : BaseFragment() {
         }.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.getUserProfile(userManager.user.userId)
+    }
+
     override fun getToolbar(): View? {
         return viewBinding.toolbarContainer.toolbar
     }
@@ -45,5 +55,9 @@ class MinePersonalInfoFragment : BaseFragment() {
 
     override fun initDependencyInjection() {
         buildComponent(this).inject(this)
+    }
+
+    override fun getViewModel(): BaseViewModel {
+        return viewModel
     }
 }

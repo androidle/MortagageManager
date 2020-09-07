@@ -16,7 +16,6 @@ import com.leevinapp.monitor.mine.databinding.MineFragmentBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.model.MenuModel.ABOUT
 import com.leevinapp.monitor.mine.domain.model.MenuModel.AUTHENTICATION
-import com.leevinapp.monitor.mine.domain.model.MenuModel.PASSWORD_MANAGE
 import com.leevinapp.monitor.mine.domain.model.MenuModel.PERSONAL_INFORMATION
 import com.leevinapp.monitor.mine.domain.model.MenuModel.SECURITY_APP
 import com.leevinapp.monitor.mine.domain.model.OptionModel
@@ -45,7 +44,6 @@ class MineFragment : BaseFragment() {
         PERSONAL_INFORMATION,
         SECURITY_APP,
         AUTHENTICATION,
-        PASSWORD_MANAGE,
         ABOUT
     )
 
@@ -89,8 +87,6 @@ class MineFragment : BaseFragment() {
                             MineIdentityAuthSelectionFragment::class.simpleName
                         )
                     }
-                }
-                PASSWORD_MANAGE -> {
                 }
                 ABOUT -> {
                     findNavController().navigate(R.id.mine_action_minefragment_to_mineaboutfragment)

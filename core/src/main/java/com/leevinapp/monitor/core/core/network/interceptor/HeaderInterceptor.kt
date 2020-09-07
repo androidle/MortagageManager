@@ -1,5 +1,6 @@
 package com.leevinapp.monitor.core.core.network.interceptor
 
+import android.os.Build
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
@@ -15,8 +16,8 @@ class HeaderInterceptor : Interceptor {
             // .addHeader("Content-Type", "application/json")
             // .addHeader("X-AUTH-TOKEN", "")
             // .addHeader("X-AUTH-TIMESTAMP", "")
-            // .addHeader("X-DEVICE", "")
-            // .addHeader("X-VERSION", "")
+            .addHeader("OSVersion",Build.VERSION.RELEASE)
+            .addHeader("Device", Build.MODEL)
             .build()
 
         return chain.proceed(newRequest)

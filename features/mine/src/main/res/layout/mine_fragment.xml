@@ -80,7 +80,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:itemCount="6"
+                tools:itemCount="5"
                 tools:listitem="@layout/mine_item_menu" />
 
             <com.google.android.material.button.MaterialButton

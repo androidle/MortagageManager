@@ -7,6 +7,7 @@ import com.leevinapp.monitor.core.core.di.ViewModelKey
 import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
 import com.leevinapp.monitor.mine.ui.MineViewModel
 import com.leevinapp.monitor.mine.ui.PersonalInfoViewModel
+import com.leevinapp.monitor.mine.ui.identityauth.IdentityAuthViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -25,6 +26,12 @@ abstract class MineViewModelModule {
     @FeatureScope
     @ViewModelKey(PersonalInfoViewModel::class)
     internal abstract fun bindPersonalInfoViewModel(viewModel: PersonalInfoViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @FeatureScope
+    @ViewModelKey(IdentityAuthViewModel::class)
+    internal abstract fun bindIdentityAuthViewModel(viewModel: IdentityAuthViewModel): ViewModel
 
     @Binds
     @FeatureScope

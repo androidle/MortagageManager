@@ -45,7 +45,7 @@ abstract class BaseViewModel : ViewModel() {
     }
 
     open fun handleCommonException(exception: ResponseException) {
-        // TODO: 2020/8/29
+        errorMessage.postValue(exception.message)
     }
 
     override fun onCleared() {
