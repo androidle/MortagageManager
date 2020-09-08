@@ -1,11 +1,16 @@
 package com.leevinapp.monitor.core.common.view
 
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.use
+import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingAdapter
+import androidx.databinding.InverseBindingListener
 import com.leevinapp.monitor.core.R
 import kotlinx.android.synthetic.main.item_edit_view.view.*
 
@@ -23,14 +28,6 @@ class ItemEditView @JvmOverloads constructor(
             tv_name.text = value
         }
 
-    var editValue: String?
-        get() {
-            return et_value.text.toString()
-        }
-        set(value) {
-            et_value.setText(value)
-        }
-
     var isEditable: Boolean
         get() {
             return et_value.isEnabled
@@ -43,7 +40,7 @@ class ItemEditView @JvmOverloads constructor(
         et_value.hint = hint
     }
 
-    fun setInputType(type:Int) {
+    fun setInputType(type: Int) {
         et_value.inputType = type
     }
 
@@ -57,7 +54,7 @@ class ItemEditView @JvmOverloads constructor(
                             name = typedArray.getString(attr)
                         }
                         R.styleable.ItemEditView_editValue -> {
-                            editValue = typedArray.getString(attr)
+                            et_value.setText(typedArray.getString(attr))
                         }
                         R.styleable.ItemEditView_editHint -> {
                             editHint(typedArray.getString(attr))
@@ -75,5 +72,44 @@ class ItemEditView @JvmOverloads constructor(
                 }
             }
         }
+    }
+
+    companion object {
+
+        @BindingAdapter("editValueAttrChanged")
+        @JvmStatic
+        fun setEditValueAttrChanged(view: ItemEditView, listener: InverseBindingListener) {
+            view.et_value.addTextChangedListener( object : TextWatcher {
+                override fun afterTextChanged(s: Editable?) {
+                }
+
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    listener.onChange()
+                }
+            })
+        }
+
+        @BindingAdapter("editValue")
+        @JvmStatic
+        fun setEditValue(itemEditView: ItemEditView, value: String?) {
+            if (value != itemEditView.et_value.text.toString()) {
+                itemEditView.et_value.setText(value)
+            }
+        }
+
+        @InverseBindingAdapter(attribute = "editValue")
+        @JvmStatic
+        fun getEditValue(itemEditView: ItemEditView): String? {
+            return itemEditView.et_value.text.toString()
+        }
+
     }
 }
