@@ -3,7 +3,7 @@
     <declare-styleable name="ItemEditView">
         <attr name="name" format="reference|string" />
         <attr name="editHint" format="reference|string" />
-        <attr name="editValue" format="reference|string" />
+        <attr name="editValue" format="string" />
         <attr name="isEditable" format="boolean" />
         <attr name="android:inputType"/>
     </declare-styleable>

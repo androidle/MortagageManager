@@ -2,6 +2,8 @@ package com.leevinapp.monitor.auth.ui
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.text.SpannableString
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.leevinapp.monitor.auth.R.string
 import com.leevinapp.monitor.auth.databinding.AuthFragmentLogonBinding
 import com.leevinapp.monitor.auth.di.AuthModule
 import com.leevinapp.monitor.auth.di.DaggerAuthComponent
@@ -16,6 +19,7 @@ import com.leevinapp.monitor.auth.domain.model.AuthModel
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.common.ui.extensions.hideLoadingDialog
 import com.leevinapp.monitor.core.common.ui.extensions.showLoadingDialog
+import com.leevinapp.monitor.core.common.view.CustomClickableSpan
 import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.core.core.user.UserManager
 import kotlinx.android.synthetic.main.auth_fragment_logon.*
@@ -59,12 +63,20 @@ class LogonFragment : BaseFragment() {
             viewModel.login()
         }
 
-        tv_to_register.setOnClickListener {
-            findNavController().navigate(LogonFragmentDirections.authActionLogonfragmentToRegisterfragment())
-        }
-        
+        val spannableString = SpannableString(getString(string.auth_unregistered_to_register))
+        spannableString.setSpan(
+            CustomClickableSpan(requireContext()) {
+                findNavController().navigate(LogonFragmentDirections.authActionLogonfragmentToRegisterfragment())
+            },
+            spannableString.length - 2,
+            spannableString.length,
+            SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        tv_to_register.text = spannableString
+        tv_to_register.movementMethod = LinkMovementMethod.getInstance()
         tv_forgot_password.setOnClickListener {
-            // TODO: 2020/9/8  
+
         }
 
         button_sms_code.setOnClickListener {
