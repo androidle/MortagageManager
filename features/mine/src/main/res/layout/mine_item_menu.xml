@@ -16,7 +16,7 @@
         android:layout_weight="1"
         android:ellipsize="end"
         android:maxLines="1"
-        android:fontFamily="@font/roboto_medium"
+        android:fontFamily="@font/roboto_regular"
         android:paddingVertical="@dimen/dimen_common_margin"
         tools:text="个人资料" />
 

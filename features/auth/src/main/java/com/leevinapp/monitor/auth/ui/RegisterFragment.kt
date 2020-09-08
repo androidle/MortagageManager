@@ -18,8 +18,8 @@ import com.leevinapp.monitor.core.common.ui.extensions.hideLoadingDialog
 import com.leevinapp.monitor.core.common.ui.extensions.showLoadingDialog
 import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.core.core.user.UserManager
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.auth_fragment_register.*
+import javax.inject.Inject
 
 class RegisterFragment : BaseFragment() {
 
@@ -51,7 +51,7 @@ class RegisterFragment : BaseFragment() {
             viewModel.registerUser()
         }
 
-        sms_button.setOnClickListener {
+        button_sms_code.setOnClickListener {
             countDownTimer.start()
             viewModel.sendSmsCode()
         }
@@ -82,13 +82,13 @@ class RegisterFragment : BaseFragment() {
 
     val countDownTimer = object : CountDownTimer(60 * 1000, 1000) {
         override fun onFinish() {
-            sms_button.text = "重新获取验证码"
-            sms_button.isEnabled = true
+            button_sms_code.text = "重新获取"
+            button_sms_code.isEnabled = true
         }
 
         override fun onTick(millisUntilFinished: Long) {
-            sms_button.text = "${millisUntilFinished / 1000}s 后重新发送"
-            sms_button.isEnabled = false
+            button_sms_code.text = "${millisUntilFinished / 1000}s 后重新发送"
+            button_sms_code.isEnabled = false
         }
     }
 

@@ -42,4 +42,23 @@
     <style name="MonitorText.Content" parent="MonitorText">
         <item name="android:textColor">@color/color_monitor_pewter</item>
     </style>
+
+    <style name="MonitorButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/dimen_button_height</item>
+        <item name="android:textStyle">normal</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="MonitorButton.Blue" parent="MonitorButton">
+        <item name="android:background">@drawable/button_blue</item>
+        <item name="android:textColor">@color/color_monitor_white</item>
+    </style>
+
+    <style name="MonitorButton.White" parent="MonitorButton">
+        <item name="android:background">@drawable/button_white</item>
+        <item name="android:textColor">@color/color_monitor_text_blue</item>
+    </style>
 </resources>

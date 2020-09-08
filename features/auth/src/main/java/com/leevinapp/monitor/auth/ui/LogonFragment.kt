@@ -71,6 +71,16 @@ class LogonFragment : BaseFragment() {
             countDownTimer.start()
             viewModel.sendSmsCode()
         }
+        
+        cb_auto_login.setOnCheckedChangeListener { buttonView, isChecked ->
+            userManager.isLogged = isChecked
+            // TODO: 2020/9/8  
+            if (isChecked) {
+                
+            } else {
+                
+            }
+        }
 
         viewModel.loading.observe(viewLifecycleOwner, Observer {
             if (it) {
@@ -98,7 +108,7 @@ class LogonFragment : BaseFragment() {
 
     val countDownTimer = object : CountDownTimer(60 * 1000, 1000) {
         override fun onFinish() {
-            button_sms_code.text = "重新获取验证码"
+            button_sms_code.text = "重新获取"
             button_sms_code.isEnabled = true
         }
 

@@ -7,6 +7,7 @@ import javax.inject.Singleton
 class UserManager @Inject constructor() {
 
     var isLogged = false
+    var isAutoLogin = false
     var user = UserModel()
     var token = ""
     fun reset() {
