@@ -33,5 +33,6 @@
     <color name="color_monitor_text_gray_disable">#999999</color>
     <color name="color_monitor_text_name">#666666</color>
     <color name="color_monitor_divider">#E7EAED</color>
+    <color name="color_monitor_background_gray">#F5F5F5</color>
 
 </resources>

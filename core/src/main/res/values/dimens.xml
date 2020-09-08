@@ -4,8 +4,12 @@
     <dimen name="dimen_divider">1dp</dimen>
     <dimen name="dimen_button_height">52dp</dimen>
     <dimen name="dimen_item_height">52dp</dimen>
+    <dimen name="dimen_corner">24dp</dimen>
+    <dimen name="dimen_sms_button_height">32dp</dimen>
 
     <dimen name="text_size_large">23sp</dimen>
     <dimen name="text_size_medium">16sp</dimen>
     <dimen name="text_size_small">14sp</dimen>
+
+
 </resources>

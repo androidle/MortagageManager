@@ -55,15 +55,19 @@ class LogonFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        logon_button.setOnClickListener {
+        button_logon.setOnClickListener {
             viewModel.login()
         }
 
         tv_to_register.setOnClickListener {
             findNavController().navigate(LogonFragmentDirections.authActionLogonfragmentToRegisterfragment())
         }
+        
+        tv_forgot_password.setOnClickListener {
+            // TODO: 2020/9/8  
+        }
 
-        sms_button.setOnClickListener {
+        button_sms_code.setOnClickListener {
             countDownTimer.start()
             viewModel.sendSmsCode()
         }
@@ -94,13 +98,13 @@ class LogonFragment : BaseFragment() {
 
     val countDownTimer = object : CountDownTimer(60 * 1000, 1000) {
         override fun onFinish() {
-            sms_button.text = "重新获取验证码"
-            sms_button.isEnabled = true
+            button_sms_code.text = "重新获取验证码"
+            button_sms_code.isEnabled = true
         }
 
         override fun onTick(millisUntilFinished: Long) {
-            sms_button.text = "${millisUntilFinished / 1000}s 后重新发送"
-            sms_button.isEnabled = false
+            button_sms_code.text = "${millisUntilFinished / 1000}s 后重新发送"
+            button_sms_code.isEnabled = false
         }
     }
 

@@ -3,6 +3,7 @@ package com.leevinapp.monitor.core.common.view
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.use
 import com.leevinapp.monitor.core.R
@@ -42,6 +43,10 @@ class ItemEditView @JvmOverloads constructor(
         et_value.hint = hint
     }
 
+    fun setInputType(type:Int) {
+        et_value.inputType = type
+    }
+
     init {
         View.inflate(context, R.layout.item_edit_view, this)
         attrs?.let {
@@ -59,6 +64,12 @@ class ItemEditView @JvmOverloads constructor(
                         }
                         R.styleable.ItemEditView_isEditable -> {
                             isEditable = typedArray.getBoolean(attr, true)
+                        }
+                        R.styleable.ItemEditView_android_inputType -> {
+                            val inputType: Int = typedArray.getInt(attr, EditorInfo.TYPE_NULL)
+                            if (inputType != EditorInfo.TYPE_NULL) {
+                                setInputType(inputType)
+                            }
                         }
                     }
                 }
