@@ -42,7 +42,7 @@ class MinePersonalInfoFragment : ViewModelFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getUserProfile(userManager.user.userId)
+        //viewModel.getUserProfile(userManager.user.userId)
     }
 
     override fun getTitleBarView(): View? {

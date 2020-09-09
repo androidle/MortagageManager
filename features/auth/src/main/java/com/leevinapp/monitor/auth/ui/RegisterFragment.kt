@@ -94,7 +94,7 @@ class RegisterFragment : BaseFragment() {
     }
 
     override fun onDestroy() {
-        iev_sms_code.cancelTimer()
+        iev_sms_code?.cancelTimer()
         super.onDestroy()
     }
 }

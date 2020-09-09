@@ -11,7 +11,6 @@ import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.R.layout
 import com.leevinapp.monitor.mine.domain.model.MenuModel.CHANGE_PASSWORD
 import com.leevinapp.monitor.mine.domain.model.MenuModel.CHANGE_SECURITY_REF
-import com.leevinapp.monitor.mine.domain.model.MenuModel.FORGOT_PASSWORD
 import com.leevinapp.monitor.mine.ui.adapter.MineMenuAdapter
 import kotlinx.android.synthetic.main.mine_fragment_security.*
 
@@ -19,7 +18,6 @@ class MineSecurityFragment : BaseFragment() {
 
     private val menus = mutableListOf(
         CHANGE_PASSWORD,
-        FORGOT_PASSWORD,
         CHANGE_SECURITY_REF
     )
 
@@ -37,13 +35,10 @@ class MineSecurityFragment : BaseFragment() {
         recycler_view.adapter = MineMenuAdapter(menus) {
             when (it) {
                 CHANGE_PASSWORD -> {
-                    findNavController().navigate(MineSecurityFragmentDirections.mineActionMineMinesecurityfragmentToMineMinechangepasswordfragment())
-                }
-                FORGOT_PASSWORD -> {
-                    findNavController().navigate(MineSecurityFragmentDirections.mineActionMineMinesecurityfragmentToMineforgotpasswordfragment())
+                    findNavController().navigate(R.id.mine_action_mine_minesecurityfragment_to_changepasswordfragment)
                 }
                 CHANGE_SECURITY_REF -> {
-                    findNavController().navigate(MineSecurityFragmentDirections.mineActionMineMinesecurityfragmentToMinechangesecurityinfofragment())
+                    findNavController().navigate(R.id.mine_action_mine_minesecurityfragment_to_changesecurityquestionfragment)
                 }
             }
         }

@@ -104,6 +104,7 @@
                     app:name="@string/auth_sms_verify"
                     app:isIncludeSmsCode="true"
                     app:editHint="@string/auth_sms_code_hint"
+                    app:editValue="@={viewModel.smsCode}"
                     android:layout_height="wrap_content"/>
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView

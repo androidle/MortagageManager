@@ -95,6 +95,7 @@
                     android:layout_width="match_parent"
                     app:name="@string/auth_sms_verify"
                     app:isIncludeSmsCode="true"
+                    app:editValue="@={viewModel.smsCode}"
                     app:editHint="@string/auth_sms_code_hint"
                     android:layout_height="wrap_content"/>
 

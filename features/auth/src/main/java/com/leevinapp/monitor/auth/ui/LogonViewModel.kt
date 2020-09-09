@@ -2,12 +2,12 @@ package com.leevinapp.monitor.auth.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.leevinapp.monitor.auth.data.api.response.LoginResponse
 import com.leevinapp.monitor.auth.domain.AuthRepository
-import com.leevinapp.monitor.auth.domain.model.AuthModel
 import com.leevinapp.monitor.auth.domain.model.SMSType
 import io.reactivex.functions.Consumer
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
 
 class LogonViewModel @Inject constructor(private val authRepository: AuthRepository) : ViewModel() {
 
@@ -19,7 +19,7 @@ class LogonViewModel @Inject constructor(private val authRepository: AuthReposit
     val smsCode = MutableLiveData("")
     val password = MutableLiveData("")
 
-    val authModel = MutableLiveData<AuthModel>(null)
+    val loginResponse = MutableLiveData<LoginResponse>(null)
 
     fun login() {
         authRepository.login(phoneNumber.value ?: "", password.value ?: "", smsCode.value ?: "")
@@ -30,7 +30,7 @@ class LogonViewModel @Inject constructor(private val authRepository: AuthReposit
                 loading.postValue(false)
             }
             .subscribe(Consumer {
-                authModel.postValue(it)
+                loginResponse.postValue(it)
                 Timber.d("====>${it.token}")
             }, Consumer {
                 Timber.e("====>$it")

@@ -6,8 +6,13 @@
     <string name="auth_registered_to_login">已有账号,去登录</string>
     <string name="auth_change_password">修改密码</string>
     <string name="auth_forgot_password">找回密码</string>
+    <string name="auth_change_security_question">修改安全问题</string>
+    <string name="auth_old_password">旧密码</string>
+    <string name="auth_old_password_hint">请输入旧密码</string>
     <string name="auth_new_password">新密码</string>
+    <string name="auth_new_password_hint">请输入新密码</string>
     <string name="auth_confirm_password">确认密码</string>
+    <string name="auth_confirm_password_hint">请再次输入新密码</string>
     <string name="auth_phone_number">手机号</string>
     <string name="auth_sms_code">短信验证码</string>
     <string name="auth_sms_verify">短信验证</string>
@@ -20,4 +25,7 @@
     <string name="auth_security_answer">答案</string>
     <string name="auth_security_answer_hint">请输入答案</string>
     <string name="auth_completed">完成</string>
+    <string name="auth_verify_email">验证安全邮箱</string>
+    <string name="auth_email_address">邮箱地址</string>
+    <string name="auth_email_address_hint">请输入邮箱地址</string>
 </resources>

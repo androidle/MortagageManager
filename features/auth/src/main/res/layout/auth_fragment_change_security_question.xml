@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_monitor_background_heavy">
+
+        <include
+            android:id="@+id/toolbarContainer"
+            layout="@layout/toolbar_binding" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dimen_common_margin"
+            android:background="@drawable/content_background"
+            android:paddingHorizontal="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarContainer"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/tv_title_question"
+                style="@style/MonitorText.Title"
+                android:layout_margin="30dp"
+                android:text="问题"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_question"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="@dimen/dimen_common_margin"
+                app:editHint="@string/auth_security_question_hint"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_question"
+                app:name="@string/auth_security_question" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_answer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                app:editHint="@string/auth_security_answer_hint"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iev_question"
+                app:name="@string/auth_security_answer" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_completed"
+                style="@style/MonitorButton.Blue"
+                android:layout_marginBottom="50dp"
+                android:text="@string/auth_completed"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.8" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

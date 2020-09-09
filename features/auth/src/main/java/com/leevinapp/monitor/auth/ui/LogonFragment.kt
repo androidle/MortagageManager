@@ -12,10 +12,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.auth.R
 import com.leevinapp.monitor.auth.R.string
+import com.leevinapp.monitor.auth.data.api.response.LoginResponse
 import com.leevinapp.monitor.auth.databinding.AuthFragmentLogonBinding
 import com.leevinapp.monitor.auth.di.AuthModule
 import com.leevinapp.monitor.auth.di.DaggerAuthComponent
-import com.leevinapp.monitor.auth.domain.model.AuthModel
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.common.ui.extensions.hideLoadingDialog
 import com.leevinapp.monitor.core.common.ui.extensions.showLoadingDialog
@@ -83,14 +83,14 @@ class LogonFragment : BaseFragment() {
             iev_sms_code.startTimer()
             viewModel.sendSmsCode()
         }
-        
+
         cb_auto_login.setOnCheckedChangeListener { buttonView, isChecked ->
             userManager.isLogged = isChecked
             // TODO: 2020/9/8  
             if (isChecked) {
-                
+
             } else {
-                
+
             }
         }
 
@@ -102,7 +102,7 @@ class LogonFragment : BaseFragment() {
             }
         })
 
-        viewModel.authModel.observe(viewLifecycleOwner, Observer {
+        viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 updateLogonStatus(it)
                 findNavController().navigateUp()
@@ -110,16 +110,29 @@ class LogonFragment : BaseFragment() {
         })
     }
 
-    private fun updateLogonStatus(it: AuthModel) {
+    private fun updateLogonStatus(it: LoginResponse) {
         userManager.isLogged = true
         userManager.token = it.token
-        userManager.user.phoneNumber = it.telephone
-        userManager.user.role = it.role
-        userManager.user.userFullName = it.role
+        with(userManager.user) {
+            userId = it.id
+            phoneNumber = it.telephone
+            role = it.role ?: ""
+            fullname = it.fullName ?: ""
+            email = it.email ?: ""
+            nickname = it.nickname ?: ""
+            organName = it.organizationName ?: ""
+            organId = it.organizationId ?: 0
+            jobPosition = it.jobPosition ?: ""
+            securityQuestion = it.securityQuestion ?: ""
+            securityAnswer = it.securityAnswer ?: ""
+            isAuthenticated = it.isAuthenticated
+            homeAddress = it.homeAddress ?: ""
+            residenceId = it.residenceId ?: 0
+        }
     }
 
     override fun onDestroy() {
-        iev_sms_code.cancelTimer()
+        iev_sms_code?.cancelTimer()
         super.onDestroy()
     }
 }
