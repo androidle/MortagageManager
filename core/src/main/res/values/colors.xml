@@ -24,8 +24,8 @@
     <color name="color_monitor_success_green">#00847F</color>
     <color name="color_monitor_neutral_blue">#305A85</color>
 
-    <color name="color_monitor_logo_background_light">#D8D8D8</color>
-    <color name="color_monitor_logo_background_heavy">#3F69B2</color>
+    <color name="color_monitor_background_light">#D8D8D8</color>
+    <color name="color_monitor_background_heavy">#3F69B2</color>
     <color name="color_monitor_blue">#2699FB</color>
     <color name="color_monitor_text_value">@color/color_monitor_charcoal</color>
     <color name="color_monitor_text_blue">#5698E2</color>

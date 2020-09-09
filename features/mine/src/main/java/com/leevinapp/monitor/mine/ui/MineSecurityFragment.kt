@@ -1,4 +1,4 @@
-package com.leevinapp.monitor.mine.ui.security
+package com.leevinapp.monitor.mine.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -52,11 +52,11 @@ class MineSecurityFragment : BaseFragment() {
         )
     }
 
-    override fun getToolbar(): View? {
+    override fun getTitleBarView(): View? {
         return toolbar_container
     }
 
-    override fun getToolbarTitle(): String {
+    override fun getTitleBarTitle(): String {
         return getString(R.string.mine_security)
     }
 }

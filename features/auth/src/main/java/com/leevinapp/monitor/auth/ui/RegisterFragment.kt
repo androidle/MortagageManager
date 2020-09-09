@@ -1,7 +1,6 @@
 package com.leevinapp.monitor.auth.ui
 
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
@@ -54,8 +53,8 @@ class RegisterFragment : BaseFragment() {
             viewModel.registerUser()
         }
 
-        button_sms_code.setOnClickListener {
-            countDownTimer.start()
+        iev_sms_code.setOnClickListener {
+            iev_sms_code.startTimer()
             viewModel.sendSmsCode()
         }
 
@@ -94,20 +93,8 @@ class RegisterFragment : BaseFragment() {
             .inject(this)
     }
 
-    val countDownTimer = object : CountDownTimer(60 * 1000, 1000) {
-        override fun onFinish() {
-            button_sms_code.text = "重新获取"
-            button_sms_code.isEnabled = true
-        }
-
-        override fun onTick(millisUntilFinished: Long) {
-            button_sms_code.text = "${millisUntilFinished / 1000}s 后重新发送"
-            button_sms_code.isEnabled = false
-        }
-    }
-
     override fun onDestroy() {
-        countDownTimer.cancel()
+        iev_sms_code.cancelTimer()
         super.onDestroy()
     }
 }

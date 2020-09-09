@@ -1,7 +1,6 @@
 package com.leevinapp.monitor.auth.ui
 
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.text.SpannableString
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
@@ -11,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.leevinapp.monitor.auth.R
 import com.leevinapp.monitor.auth.R.string
 import com.leevinapp.monitor.auth.databinding.AuthFragmentLogonBinding
 import com.leevinapp.monitor.auth.di.AuthModule
@@ -76,11 +76,11 @@ class LogonFragment : BaseFragment() {
         tv_to_register.text = spannableString
         tv_to_register.movementMethod = LinkMovementMethod.getInstance()
         tv_forgot_password.setOnClickListener {
-
+            findNavController().navigate(R.id.auth_action_logonfragment_to_forgotpasswordfragment)
         }
 
-        button_sms_code.setOnClickListener {
-            countDownTimer.start()
+        iev_sms_code.setSmsCodeClickListener {
+            iev_sms_code.startTimer()
             viewModel.sendSmsCode()
         }
         
@@ -118,20 +118,8 @@ class LogonFragment : BaseFragment() {
         userManager.user.userFullName = it.role
     }
 
-    val countDownTimer = object : CountDownTimer(60 * 1000, 1000) {
-        override fun onFinish() {
-            button_sms_code.text = "重新获取"
-            button_sms_code.isEnabled = true
-        }
-
-        override fun onTick(millisUntilFinished: Long) {
-            button_sms_code.text = "${millisUntilFinished / 1000}s 后重新发送"
-            button_sms_code.isEnabled = false
-        }
-    }
-
     override fun onDestroy() {
-        countDownTimer.cancel()
+        iev_sms_code.cancelTimer()
         super.onDestroy()
     }
 }

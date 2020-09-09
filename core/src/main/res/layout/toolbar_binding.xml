@@ -3,35 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.appbar.MaterialToolbar
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/color_monitor_white"
-        android:focusable="true"
-        android:gravity="center"
-        app:contentInsetStartWithNavigation="0dp"
-        app:navigationIcon="@drawable/ic_arrow_back">
+        android:paddingHorizontal="@dimen/dimen_common_margin"
+        tools:background="@color/color_monitor_background_heavy">
 
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_toolbar_title"
-            style="@style/MonitorText.Title"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:id="@+id/tv_title"
+            style="@style/MonitorText.WhiteContent"
             android:layout_gravity="center"
             android:gravity="center"
             android:maxWidth="150dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5"
             tools:text="titletitletitletitletitletitletitletitle" />
 
-        <ImageView
-            android:id="@+id/iv_toolbar_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginEnd="@dimen/dimen_common_margin"
-            tools:visibility="visible"
-            android:visibility="gone"
-            android:src="@drawable/ic_assignment" />
-    </com.google.android.material.appbar.MaterialToolbar>
+
+        <TextView
+            android:id="@+id/tv_right"
+            style="@style/MonitorText.WhiteContent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:maxWidth="150dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="下一步" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -37,11 +37,11 @@ class MineIdentityAuthFragment : BaseFragment() {
         }.root
     }
 
-    override fun getToolbar(): View? {
+    override fun getTitleBarView(): View? {
         return viewBinding.toolbarContainer.toolbar
     }
 
-    override fun getToolbarTitle(): String {
+    override fun getTitleBarTitle(): String {
         return args.authModel.name
     }
 

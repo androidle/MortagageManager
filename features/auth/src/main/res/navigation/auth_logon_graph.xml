@@ -19,10 +19,28 @@
             android:id="@+id/auth_action_logonfragment_to_registerfragment"
             app:destination="@id/auth_registerfragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/auth_action_logonfragment_to_forgotpasswordfragment"
+            app:destination="@id/auth_forgotpasswordfragment" />
     </fragment>
     <fragment
         android:id="@+id/auth_registerfragment"
         android:name="com.leevinapp.monitor.auth.ui.RegisterFragment"
         android:label="RegisterFragment"
         tools:layout="@layout/auth_fragment_register"/>
+    <fragment
+        android:id="@+id/auth_forgotpasswordfragment"
+        android:name="com.leevinapp.monitor.auth.ui.ForgotPasswordFragment"
+        android:label="ForgotPasswordFragment"
+        tools:layout="@layout/auth_fragment_forgot_password">
+        <action
+            android:id="@+id/auth_action_auth_forgotpasswordfragment_to_resetpasswordfragment"
+            app:destination="@id/auth_resetpasswordfragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/auth_resetpasswordfragment"
+        android:name="com.leevinapp.monitor.auth.ui.ResetPasswordFragment"
+        android:label="ResetPasswordFragment"
+        tools:layout="@layout/auth_fragment_reset_password"/>
+
 </navigation>

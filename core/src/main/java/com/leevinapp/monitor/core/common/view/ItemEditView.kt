@@ -1,6 +1,7 @@
 package com.leevinapp.monitor.core.common.view
 
 import android.content.Context
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
@@ -36,6 +37,42 @@ class ItemEditView @JvmOverloads constructor(
             et_value.isEnabled = value
         }
 
+    var isIncludeSmsCode: Boolean
+        get() {
+            return button_sms_code.visibility == View.VISIBLE
+        }
+        set(value) {
+            button_sms_code.visibility = if (value) View.VISIBLE else View.GONE
+        }
+
+    val countDownTimer: CountDownTimer by lazy {
+        object : CountDownTimer(60 * 1000, 1000) {
+            override fun onFinish() {
+                button_sms_code.text = "重新获取"
+                button_sms_code.isEnabled = true
+            }
+
+            override fun onTick(millisUntilFinished: Long) {
+                button_sms_code.text = "${millisUntilFinished / 1000}s"
+                button_sms_code.isEnabled = false
+            }
+        }
+    }
+
+    var smsClickCallback:(() -> Unit)? = null
+
+    fun setSmsCodeClickListener(smsClickCallback: (() -> Unit)? = null) {
+        this.smsClickCallback = smsClickCallback
+    }
+
+    fun startTimer() {
+        countDownTimer.start()
+    }
+
+    fun cancelTimer() {
+        countDownTimer.cancel()
+    }
+
     fun editHint(hint: String?) {
         et_value.hint = hint
     }
@@ -68,9 +105,16 @@ class ItemEditView @JvmOverloads constructor(
                                 setInputType(inputType)
                             }
                         }
+                        R.styleable.ItemEditView_isIncludeSmsCode ->{
+                           isIncludeSmsCode = typedArray.getBoolean(attr, false)
+                        }
                     }
                 }
             }
+        }
+
+        button_sms_code.setOnClickListener {
+            smsClickCallback?.invoke()
         }
     }
 
@@ -112,4 +156,5 @@ class ItemEditView @JvmOverloads constructor(
         }
 
     }
+
 }

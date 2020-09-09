@@ -4,4 +4,20 @@
     <string name="auth_register">注册</string>
     <string name="auth_unregistered_to_register">没有账号,请先注册</string>
     <string name="auth_registered_to_login">已有账号,去登录</string>
+    <string name="auth_change_password">修改密码</string>
+    <string name="auth_forgot_password">找回密码</string>
+    <string name="auth_new_password">新密码</string>
+    <string name="auth_confirm_password">确认密码</string>
+    <string name="auth_phone_number">手机号</string>
+    <string name="auth_sms_code">短信验证码</string>
+    <string name="auth_sms_verify">短信验证</string>
+    <string name="auth_phone_number_hint">请输入手机号</string>
+    <string name="auth_sms_code_hint">请输入验证码</string>
+    <string name="auth_via_sms_code">通过短信验证码验证</string>
+    <string name="auth_via_security_question">通过安全问题验证</string>
+    <string name="auth_security_question">安全问题</string>
+    <string name="auth_security_question_hint">请输入安全问题</string>
+    <string name="auth_security_answer">答案</string>
+    <string name="auth_security_answer_hint">请输入答案</string>
+    <string name="auth_completed">完成</string>
 </resources>

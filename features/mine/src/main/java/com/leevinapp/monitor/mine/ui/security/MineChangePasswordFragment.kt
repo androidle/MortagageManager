@@ -18,11 +18,11 @@ class MineChangePasswordFragment : BaseFragment() {
         return inflater.inflate(R.layout.mine_fragment_forgot_password, container, false)
     }
 
-    override fun getToolbar(): View? {
+    override fun getTitleBarView(): View? {
         return toolbar_container
     }
 
-    override fun getToolbarTitle(): String {
+    override fun getTitleBarTitle(): String {
         return getString(R.string.mine_change_password)
     }
 }

@@ -35,7 +35,7 @@
         tools:layout="@layout/mine_frament_about"/>
     <fragment
         android:id="@+id/mine_minesecurityfragment"
-        android:name="com.leevinapp.monitor.mine.ui.security.MineSecurityFragment"
+        android:name="com.leevinapp.monitor.mine.ui.MineSecurityFragment"
         android:label="MineSecurityFragment"
         tools:layout="@layout/mine_fragment_security">
         <action

@@ -9,7 +9,7 @@
             <!--和 colorAccent相反，正常状态下按钮的颜色,如果我们的colorPrimary是深色，一般设置这里为白色-->
             <item name="colorControlNormal">@color/color_monitor_black</item>
 <!--            &lt;!&ndash;Button按钮正常状态颜色,根据项目来定义&ndash;&gt;-->
-<!--            <item name="colorButtonNormal">@color/accent_material_light</item>-->
+<!--            <item name="colorButtonNormal">@color/color_monitor_white</item>-->
 <!--            &lt;!&ndash;EditText 输入框中字体的颜色，colorPrimary如果设置深色，一般字体设置为白色&ndash;&gt;-->
 <!--            <item name="editTextColor">@color/color_monitor_black</item>-->
 

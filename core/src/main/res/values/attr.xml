@@ -6,6 +6,7 @@
         <attr name="editValue" format="string" />
         <attr name="isEditable" format="boolean" />
         <attr name="android:inputType"/>
+        <attr name="isIncludeSmsCode" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="ItemView">

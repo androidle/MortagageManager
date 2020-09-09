@@ -45,11 +45,11 @@ class MinePersonalInfoFragment : ViewModelFragment() {
         viewModel.getUserProfile(userManager.user.userId)
     }
 
-    override fun getToolbar(): View? {
+    override fun getTitleBarView(): View? {
         return viewBinding.toolbarContainer.toolbar
     }
 
-    override fun getToolbarTitle(): String {
+    override fun getTitleBarTitle(): String {
         return getString(R.string.mine_personal_info)
     }
 

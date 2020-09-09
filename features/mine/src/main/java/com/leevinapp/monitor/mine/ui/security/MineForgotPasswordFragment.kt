@@ -25,11 +25,12 @@ class MineForgotPasswordFragment : BaseFragment() {
             findNavController().navigate(MineForgotPasswordFragmentDirections.mineActionMineMineforgotpasswordfragmentToMineresetpasswordfragment())
         }
     }
-    override fun getToolbar(): View? {
+
+    override fun getTitleBarView(): View? {
         return toolbar_container
     }
 
-    override fun getToolbarTitle(): String {
+    override fun getTitleBarTitle(): String {
         return getString(R.string.mine_forgot_password)
     }
 }

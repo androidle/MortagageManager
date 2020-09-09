@@ -3,13 +3,13 @@ package com.leevinapp.monitor.core.common.ui.base
 import android.view.View
 
 interface WithToolbar {
-    fun getToolbar(): View? = null
+    fun getTitleBarView(): View? = null
 
-    fun getToolbarTitle(): String = ""
+    fun getTitleBarTitle(): String = ""
 
     fun isShowBackIcon(): Boolean = true
 
-    fun isShowRightIcon(): Boolean = false
+    fun isShowRightActionText(): Boolean = false
 
     fun getToolBarRightIconRes(): Int = 0
 }
