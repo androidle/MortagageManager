@@ -27,7 +27,7 @@
                 android:layout_height="0dp"
                 android:background="@drawable/header_logon"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintDimensionRatio="h,2:1"
+                app:layout_constraintDimensionRatio="h,5:2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -62,7 +62,7 @@
                 android:id="@+id/iv_logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/leak_canary_icon"
+                android:src="@mipmap/ic_launcher_round"
                 app:layout_constraintBottom_toBottomOf="@+id/container_top"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -178,7 +178,7 @@
                 style="@style/MonitorText.Content"
                 android:layout_marginTop="@dimen/dimen_common_margin"
                 android:gravity="start"
-                android:text="没有账号,请先注册"
+                android:text="@string/auth_unregistered_to_register"
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="@id/button_logon"
                 app:layout_constraintStart_toStartOf="@id/button_logon"

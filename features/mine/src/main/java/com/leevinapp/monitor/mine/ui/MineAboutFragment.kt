@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.leevinapp.monitor.common.UiUtil
+import com.leevinapp.monitor.core.BuildConfig
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.domain.model.MenuModel.PRIVACY
@@ -40,6 +41,8 @@ class MineAboutFragment : BaseFragment() {
         recycler_view.addItemDecoration(
             UiUtil.getDividerDecoration(requireContext())
         )
+
+        tv_version.text = getString(R.string.mine_version,BuildConfig.VERSION_NAME)
     }
 
     override fun getToolbar(): View? {

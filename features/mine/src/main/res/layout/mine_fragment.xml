@@ -10,118 +10,163 @@
             type="com.leevinapp.monitor.mine.ui.MineViewModel" />
     </data>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container_top"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="#8470FF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="40dp"
+            android:background="@color/color_monitor_logo_background_heavy">
 
-            <ImageView
-                android:id="@+id/iv_avatar"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="@dimen/dimen_common_margin"
-                android:src="@mipmap/leak_canary_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <TextView
-                android:id="@+id/tv_logon_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/dimen_common_margin"
-                android:text="@{viewModel.username}"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
-                app:layout_constraintStart_toEndOf="@+id/iv_avatar"
-                app:layout_constraintTop_toTopOf="@+id/iv_avatar" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen_common_margin"
-                android:src="@drawable/mine_ic_settings_24"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_top"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHeight_percent="0.25"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="79dp"
+                    android:layout_height="79dp"
+                    android:layout_marginStart="@dimen/dimen_common_margin"
+                    android:src="@mipmap/ic_launcher_round"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_common_margin"
+                    android:text="@{viewModel.userRole}"
+                    android:textColor="@color/color_monitor_white"
+                    android:textSize="@dimen/text_size_medium"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_user_role"
+                    app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+                    app:layout_constraintTop_toTopOf="@+id/iv_avatar"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    tools:text="王小华" />
+
+                <TextView
+                    android:id="@+id/tv_user_role"
+                    style="@style/MonitorText.WhiteContent"
+                    android:layout_marginHorizontal="@dimen/dimen_common_margin"
+                    android:text="@{viewModel.userRole}"
+                    android:textColor="@color/color_monitor_text_gray_2"
+                    android:textSize="@dimen/text_size_small"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
+                    app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+                    app:layout_constraintTop_toBottomOf="@id/tv_user_name"
+                    tools:text="机构管理员" />
+
+                <ImageView
+                    visible="@{viewModel.isLogged}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen_common_margin"
+                    android:src="@drawable/mine_ic_settings_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_post_logon"
                 visible="@{viewModel.isLogged}"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container_post_logon"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/container_top"
-            visible="@{viewModel.isLogged}"
-            tools:visibility="visible">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toTopOf="@+id/btn_logout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:itemCount="5"
-                tools:listitem="@layout/mine_item_menu" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_logout"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/dimen_button_height"
-                android:layout_marginHorizontal="@dimen/dimen_common_margin"
-                android:layout_marginTop="@dimen/dimen_common_margin"
-                android:background="@color/colorAccent"
-                android:text="退出登录"
-                android:textColor="@android:color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container_unlogged"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/container_top"
-            visible="@{!viewModel.isLogged}"
-            tools:visibility="gone">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_goto_logon"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/dimen_button_height"
-                android:text="去登录"
+                android:layout_height="0dp"
+                android:background="@drawable/content_background"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.6" />
+                app:layout_constraintTop_toBottomOf="@+id/container_top"
+                tools:visibility="visible">
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/container_menu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_common_margin"
+                    android:layout_marginTop="@dimen/dimen_corner"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:spanCount="4"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/mine_item_menu_text" />
+
+                <View
+                    android:id="@+id/view_divider"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dimen_divider"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/color_monitor_pearl"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/container_menu" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_logout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_divider"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/mine_item_menu" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_logout"
+                    style="@style/MonitorButton.White"
+                    android:layout_marginHorizontal="@dimen/dimen_common_margin"
+                    android:layout_marginTop="@dimen/dimen_common_margin"
+                    android:text="退出登录"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recycler_view"
+                    app:layout_constraintWidth_percent="0.8" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_unlogged"
+                visible="@{!viewModel.isLogged}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/content_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/container_top"
+                tools:visibility="gone">
+
+                <TextView
+                    android:id="@+id/btn_goto_logon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="请登录"
+                    android:textColor="@color/color_monitor_text_blue"
+                    android:textSize="@dimen/text_size_medium"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>
 
 

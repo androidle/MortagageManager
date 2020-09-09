@@ -43,6 +43,10 @@
         <item name="android:textColor">@color/color_monitor_pewter</item>
     </style>
 
+    <style name="MonitorText.WhiteContent" parent="MonitorText">
+        <item name="android:textColor">@color/color_monitor_white</item>
+    </style>
+
     <style name="MonitorButton">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">@dimen/dimen_button_height</item>

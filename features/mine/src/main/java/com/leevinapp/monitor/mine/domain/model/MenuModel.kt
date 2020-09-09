@@ -7,9 +7,7 @@ enum class MenuModel(
     // mine
     PERSONAL_INFORMATION("个人资料"),
     SECURITY_APP("账号安全"),
-    PHONE_BIND("手机绑定"),
     AUTHENTICATION("身份认证/企业认证"),
-    PASSWORD_MANAGE("修改密码"),
     ABOUT("关于押品管家"),
 
     // about
@@ -20,5 +18,11 @@ enum class MenuModel(
     // security
     CHANGE_PASSWORD("修改密码"),
     FORGOT_PASSWORD("找回密码"),
-    CHANGE_SECURITY_REF("修改安全问题和答案")
+    CHANGE_SECURITY_REF("修改安全问题和答案"),
+
+    //
+    PARENT_ORGANIZATION_APPLY("父机构申请"),
+    ACCESS_TRANSFER("权限转移"),
+    APPLY_REFER_ORGANIZATION("申请挂靠机构"),
+    AUTH_ACCOUNT("认证账户")
 }

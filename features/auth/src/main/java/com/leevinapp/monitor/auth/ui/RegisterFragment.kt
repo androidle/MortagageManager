@@ -62,7 +62,7 @@ class RegisterFragment : BaseFragment() {
         val spannableString = SpannableString(getString(R.string.auth_registered_to_login))
         spannableString.setSpan(
             CustomClickableSpan(requireContext()) {
-                findNavController().popBackStack(R.id.logonFragment, true)
+                findNavController().navigateUp()
             },
             spannableString.length - 2,
             spannableString.length,
