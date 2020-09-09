@@ -28,7 +28,7 @@ abstract class BaseFragment : Fragment(), Injector, WithToolbar {
             val toolbarTitle = getTitleBarTitle()
             val ivBack = toolbar.findViewById(R.id.iv_back) as ImageView
             val toolbarTitleTextView = toolbar.findViewById(R.id.tv_title) as TextView
-            val toolbarRightIcon = toolbar.findViewById(R.id.tv_right) as TextView
+            val rightTextView = toolbar.findViewById(R.id.tv_right) as TextView
             if (toolbarTitle.isNotEmpty()) {
                 toolbarTitleTextView.visibility = View.VISIBLE
                 toolbarTitleTextView.text = toolbarTitle
@@ -37,12 +37,15 @@ abstract class BaseFragment : Fragment(), Injector, WithToolbar {
             }
 
             if (isShowRightActionText()) {
-                toolbarRightIcon.visibility = View.VISIBLE
-                toolbarRightIcon.setOnClickListener {
+                rightTextView.visibility = View.VISIBLE
+                rightTextView.setOnClickListener {
                     onRightTextClick()
                 }
+                if (getRightText().isNullOrEmpty().not()) {
+                    rightTextView.text = getRightText()
+                }
             } else {
-                toolbarRightIcon.visibility = View.GONE
+                rightTextView.visibility = View.GONE
             }
 
             if (isShowBackIcon()) {

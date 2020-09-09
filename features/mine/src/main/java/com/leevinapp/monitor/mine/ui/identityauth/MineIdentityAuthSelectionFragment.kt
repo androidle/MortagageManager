@@ -30,6 +30,10 @@ class MineIdentityAuthSelectionFragment : BottomSheetDialogFragment() {
         root.tv_option3.setOnClickListener {
             callback?.invoke(OptionModel(name = tv_option3.text.toString()))
         }
+
+        root.tv_cancel.setOnClickListener {
+            dismiss()
+        }
         return root
     }
 

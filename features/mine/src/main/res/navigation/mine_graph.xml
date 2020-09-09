@@ -49,7 +49,11 @@
         android:id="@+id/mine_minepersonalinfofragment"
         android:name="com.leevinapp.monitor.mine.ui.MinePersonalInfoFragment"
         android:label="MinePersonalInfoFragment"
-        tools:layout="@layout/mine_fragment_personal_info"/>
+        tools:layout="@layout/mine_fragment_personal_info">
+        <action
+            android:id="@+id/mine_action_mine_minepersonalinfofragment_to_verifyemailfragment"
+            app:destination="@id/mine_verifyemailfragment" />
+    </fragment>
     <fragment
         android:id="@+id/mine_mineauthfragment"
         android:name="com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthFragment"

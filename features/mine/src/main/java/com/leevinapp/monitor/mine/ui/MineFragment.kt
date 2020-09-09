@@ -22,7 +22,6 @@ import com.leevinapp.monitor.mine.domain.model.MenuModel.AUTH_ACCOUNT
 import com.leevinapp.monitor.mine.domain.model.MenuModel.PARENT_ORGANIZATION_APPLY
 import com.leevinapp.monitor.mine.domain.model.MenuModel.PERSONAL_INFORMATION
 import com.leevinapp.monitor.mine.domain.model.MenuModel.SECURITY_APP
-import com.leevinapp.monitor.mine.domain.model.OptionModel
 import com.leevinapp.monitor.mine.ui.adapter.MineMenuAdapter
 import com.leevinapp.monitor.mine.ui.adapter.TextMenuAdapter
 import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthSelectionFragment
@@ -36,8 +35,6 @@ class MineFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private var selectedAuthModel: OptionModel? = null
 
     private lateinit var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment
 
@@ -85,20 +82,12 @@ class MineFragment : BaseFragment() {
                     findNavController().navigate(R.id.mine_action_minefragment_to_minesecurityfragment)
                 }
                 AUTHENTICATION -> {
-                    if (selectedAuthModel != null) {
-                        findNavController().navigate(
-                            MineFragmentDirections.mineActionMinefragmentToMineauthfragment(
-                                selectedAuthModel!!
-                            )
-                        )
-                    } else {
-                        // TODO: 2020/9/3 to be refactor activity result
-                        // identityAuthSelectionFragment.setTargetFragment(this,TARGET_REQUEST_CODE)
-                        identityAuthSelectionFragment.show(
-                            childFragmentManager,
-                            MineIdentityAuthSelectionFragment::class.simpleName
-                        )
-                    }
+                    // TODO: 2020/9/3 to be refactor activity result
+                    // identityAuthSelectionFragment.setTargetFragment(this,TARGET_REQUEST_CODE)
+                    identityAuthSelectionFragment.show(
+                        childFragmentManager,
+                        MineIdentityAuthSelectionFragment::class.simpleName
+                    )
                 }
                 ABOUT -> {
                     findNavController().navigate(R.id.mine_action_minefragment_to_mineaboutfragment)
@@ -133,9 +122,10 @@ class MineFragment : BaseFragment() {
         identityAuthSelectionFragment =
             MineIdentityAuthSelectionFragment()
         identityAuthSelectionFragment.setSelectedCallback {
-            selectedAuthModel = it
             AUTHENTICATION.content = it.name
-            mineMenuAdapter.updateDate(menusVertical)
+            findNavController().navigate(
+                MineFragmentDirections.mineActionMinefragmentToMineauthfragment(it)
+            )
             identityAuthSelectionFragment.dismiss()
         }
     }

@@ -11,5 +11,7 @@ interface WithToolbar {
 
     fun isShowRightActionText(): Boolean = false
 
+    fun getRightText():String = ""
+
     fun getToolBarRightIconRes(): Int = 0
 }

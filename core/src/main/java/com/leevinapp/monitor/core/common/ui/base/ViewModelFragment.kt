@@ -29,7 +29,7 @@ abstract class ViewModelFragment : BaseFragment() {
         })
 
         getViewModel().errorMessage.observe(viewLifecycleOwner, Observer {
-            if (it != null) {
+            if (it.isNullOrEmpty().not()) {
                 showErrorDialogFragment(it)
             }
         })
