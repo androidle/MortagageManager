@@ -6,8 +6,8 @@ import com.leevinapp.monitor.auth.data.api.response.LoginResponse
 import com.leevinapp.monitor.auth.domain.AuthRepository
 import com.leevinapp.monitor.auth.domain.model.SMSType
 import io.reactivex.functions.Consumer
-import timber.log.Timber
 import javax.inject.Inject
+import timber.log.Timber
 
 class LogonViewModel @Inject constructor(private val authRepository: AuthRepository) : ViewModel() {
 

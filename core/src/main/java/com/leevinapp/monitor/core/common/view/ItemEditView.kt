@@ -59,7 +59,7 @@ class ItemEditView @JvmOverloads constructor(
         }
     }
 
-    var smsClickCallback:(() -> Unit)? = null
+    var smsClickCallback: (() -> Unit)? = null
 
     fun setSmsCodeClickListener(smsClickCallback: (() -> Unit)? = null) {
         this.smsClickCallback = smsClickCallback
@@ -105,8 +105,8 @@ class ItemEditView @JvmOverloads constructor(
                                 setInputType(inputType)
                             }
                         }
-                        R.styleable.ItemEditView_isIncludeSmsCode ->{
-                           isIncludeSmsCode = typedArray.getBoolean(attr, false)
+                        R.styleable.ItemEditView_isIncludeSmsCode -> {
+                            isIncludeSmsCode = typedArray.getBoolean(attr, false)
                         }
                     }
                 }
@@ -123,7 +123,7 @@ class ItemEditView @JvmOverloads constructor(
         @BindingAdapter("editValueAttrChanged")
         @JvmStatic
         fun setEditValueAttrChanged(view: ItemEditView, listener: InverseBindingListener) {
-            view.et_value.addTextChangedListener( object : TextWatcher {
+            view.et_value.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
                 }
 
@@ -154,7 +154,5 @@ class ItemEditView @JvmOverloads constructor(
         fun getEditValue(itemEditView: ItemEditView): String? {
             return itemEditView.et_value.text.toString()
         }
-
     }
-
 }

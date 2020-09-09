@@ -8,7 +8,6 @@ fun NavController.navigationToLogonFragment() {
     navigate(Uri.parse("Monitor://LogonFragment"))
 }
 
-
 fun NavController.navigationToAuthActivity() {
     navigate(Uri.parse("Monitor://AuthActivity"))
 }

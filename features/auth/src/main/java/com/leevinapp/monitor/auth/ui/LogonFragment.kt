@@ -22,8 +22,8 @@ import com.leevinapp.monitor.core.common.ui.extensions.showLoadingDialog
 import com.leevinapp.monitor.core.common.view.CustomClickableSpan
 import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.core.core.user.UserManager
-import kotlinx.android.synthetic.main.auth_fragment_logon.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.auth_fragment_logon.*
 
 class LogonFragment : BaseFragment() {
 
@@ -86,11 +86,9 @@ class LogonFragment : BaseFragment() {
 
         cb_auto_login.setOnCheckedChangeListener { buttonView, isChecked ->
             userManager.isLogged = isChecked
-            // TODO: 2020/9/8  
+            // TODO: 2020/9/8
             if (isChecked) {
-
             } else {
-
             }
         }
 

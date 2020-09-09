@@ -64,10 +64,8 @@ abstract class BaseFragment : Fragment(), Injector, WithToolbar {
         super.onAttach(context)
     }
 
-    open fun onRightTextClick(){
-
+    open fun onRightTextClick() {
     }
-
 
     override fun initDependencyInjection() {
     }

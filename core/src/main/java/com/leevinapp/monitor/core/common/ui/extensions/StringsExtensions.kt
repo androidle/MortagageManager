@@ -9,6 +9,6 @@ fun String.refactorColorSpan(start: Int, end: Int, @ColorInt colorInt: Int): Spa
 
     val spannableStringBuilder = SpannableStringBuilder(this)
     val foregroundColorSpan = ForegroundColorSpan(colorInt)
-    spannableStringBuilder.setSpan(foregroundColorSpan,start,end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+    spannableStringBuilder.setSpan(foregroundColorSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
     return spannableStringBuilder
 }

@@ -25,8 +25,8 @@ import com.leevinapp.monitor.mine.domain.model.MenuModel.SECURITY_APP
 import com.leevinapp.monitor.mine.ui.adapter.MineMenuAdapter
 import com.leevinapp.monitor.mine.ui.adapter.TextMenuAdapter
 import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthSelectionFragment
-import kotlinx.android.synthetic.main.mine_fragment.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.mine_fragment.*
 
 class MineFragment : BaseFragment() {
 
@@ -109,7 +109,6 @@ class MineFragment : BaseFragment() {
             userManager.reset()
             viewModel.isLogged.postValue(userManager.isLogged)
         }
-
 
         btn_goto_logon.setOnClickListener {
             // userManager.isLogged = true

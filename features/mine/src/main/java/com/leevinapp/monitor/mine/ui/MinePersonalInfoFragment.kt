@@ -13,8 +13,8 @@ import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentPersonalInfoBinding
 import com.leevinapp.monitor.mine.di.buildComponent
-import kotlinx.android.synthetic.main.mine_fragment_personal_info.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.mine_fragment_personal_info.*
 
 class MinePersonalInfoFragment : ViewModelFragment() {
 
@@ -44,7 +44,7 @@ class MinePersonalInfoFragment : ViewModelFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //viewModel.getUserProfile(userManager.user.userId)
+        // viewModel.getUserProfile(userManager.user.userId)
 
         iv_mail.setOnClickListener {
             // verify email

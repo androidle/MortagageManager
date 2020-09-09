@@ -48,5 +48,4 @@ class MineIdentityAuthFragment : BaseFragment() {
     override fun initDependencyInjection() {
         buildComponent(this).inject(this)
     }
-
 }

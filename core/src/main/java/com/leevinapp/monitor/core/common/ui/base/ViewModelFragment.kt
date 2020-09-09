@@ -37,8 +37,8 @@ abstract class ViewModelFragment : BaseFragment() {
 
     private fun showErrorDialogFragment(it: String?) {
         if (errorDialogFragment.isAdded.not()) {
-            errorDialogFragment.setMessage(it?:"unknown")
-            errorDialogFragment.show(childFragmentManager,ErrorDialogFragment::class.simpleName)
+            errorDialogFragment.setMessage(it ?: "unknown")
+            errorDialogFragment.show(childFragmentManager, ErrorDialogFragment::class.simpleName)
         }
     }
 

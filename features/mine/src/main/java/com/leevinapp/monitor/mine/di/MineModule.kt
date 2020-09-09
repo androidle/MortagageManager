@@ -1,6 +1,5 @@
 package com.leevinapp.monitor.mine.di
 
-
 import com.leevinapp.monitor.auth.data.api.AuthService
 import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
 import com.leevinapp.monitor.core.core.network.mock.MockApi
@@ -19,8 +18,8 @@ class MineModule {
 
     @Provides
     @FeatureScope
-    fun providerRepository(@RealApi mineService: MineService,userManager: UserManager): MineRepository {
-        return MineRepositoryImpl(mineService,userManager)
+    fun providerRepository(@RealApi mineService: MineService, userManager: UserManager): MineRepository {
+        return MineRepositoryImpl(mineService, userManager)
     }
 
     @RealApi

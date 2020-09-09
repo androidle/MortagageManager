@@ -1,7 +1,7 @@
 package com.leevinapp.monitor.auth.data.api.response
 
 data class RegisterUserParams(
-    val realName:String="",
+    val realName: String = "",
     val confirmPassword: String = "",
     val email: String = "",
     val jobPosition: String = "",

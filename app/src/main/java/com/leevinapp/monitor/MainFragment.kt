@@ -20,7 +20,7 @@ class MainFragment : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    lateinit var viewBinding:FragmentMainBinding
+    lateinit var viewBinding: FragmentMainBinding
 
     val viewModel: MainViewModel by viewModels {
         viewModelFactory
@@ -37,7 +37,6 @@ class MainFragment : BaseFragment() {
             viewBinding = this
         }.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

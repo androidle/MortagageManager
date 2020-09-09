@@ -42,7 +42,7 @@ class MineAboutFragment : BaseFragment() {
             UiUtil.getDividerDecoration(requireContext())
         )
 
-        tv_version.text = getString(R.string.mine_version,BuildConfig.VERSION_NAME)
+        tv_version.text = getString(R.string.mine_version, BuildConfig.VERSION_NAME)
     }
 
     override fun getTitleBarView(): View? {

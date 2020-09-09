@@ -16,7 +16,7 @@ class HeaderInterceptor : Interceptor {
             // .addHeader("Content-Type", "application/json")
             // .addHeader("X-AUTH-TOKEN", "")
             // .addHeader("X-AUTH-TIMESTAMP", "")
-            .addHeader("OSVersion",Build.VERSION.RELEASE)
+            .addHeader("OSVersion", Build.VERSION.RELEASE)
             .addHeader("Device", Build.MODEL)
             .build()
 

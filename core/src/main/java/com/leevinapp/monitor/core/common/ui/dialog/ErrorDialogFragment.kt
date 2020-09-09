@@ -8,17 +8,16 @@ import androidx.fragment.app.DialogFragment
 import com.leevinapp.monitor.core.R
 import kotlinx.android.synthetic.main.fragment_error_dialog.*
 
-class ErrorDialogFragment: DialogFragment() {
+class ErrorDialogFragment : DialogFragment() {
 
-    private lateinit var message:String
-
+    private lateinit var message: String
 
     companion object {
         private const val KEY_MESSAGE = "key_message"
         fun newInstance(errorMessage: String): ErrorDialogFragment {
-           return ErrorDialogFragment().apply {
+            return ErrorDialogFragment().apply {
                 arguments = Bundle().apply {
-                    putString(KEY_MESSAGE,errorMessage)
+                    putString(KEY_MESSAGE, errorMessage)
                 }
             }
         }
@@ -27,7 +26,7 @@ class ErrorDialogFragment: DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            message = it.getString(KEY_MESSAGE,"unKnown error")
+            message = it.getString(KEY_MESSAGE, "unKnown error")
         }
     }
 
@@ -37,7 +36,7 @@ class ErrorDialogFragment: DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         isCancelable = true
-        return inflater.inflate(R.layout.fragment_error_dialog,container,false)
+        return inflater.inflate(R.layout.fragment_error_dialog, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,5 +50,4 @@ class ErrorDialogFragment: DialogFragment() {
     fun setMessage(message: String) {
         this.message = message
     }
-
 }

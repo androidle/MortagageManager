@@ -6,8 +6,8 @@ import com.leevinapp.monitor.auth.data.api.response.RegisterUserParams
 import com.leevinapp.monitor.auth.domain.AuthRepository
 import com.leevinapp.monitor.auth.domain.model.SMSType
 import io.reactivex.functions.Consumer
-import timber.log.Timber
 import javax.inject.Inject
+import timber.log.Timber
 
 class RegisterViewModel @Inject constructor(private val authRepository: AuthRepository) :
     ViewModel() {
@@ -31,16 +31,16 @@ class RegisterViewModel @Inject constructor(private val authRepository: AuthRepo
 
     fun registerUser() {
         val params = RegisterUserParams(
-            realName = realName.value?:"",
+            realName = realName.value ?: "",
             telephone = phoneNumber.value ?: "",
             smsVerifyCode = smsCode.value ?: "",
             password = password.value ?: "",
             confirmPassword = confirmPassword.value ?: "",
-            securityQuestion = securityQuestion.value?:"",
-            securityAnswer = securityAnswer.value?:"",
-            organizationName = companyName.value?:"",
-            jobPosition = jobPosition.value?:"",
-            email = mail.value?:""
+            securityQuestion = securityQuestion.value ?: "",
+            securityAnswer = securityAnswer.value ?: "",
+            organizationName = companyName.value ?: "",
+            jobPosition = jobPosition.value ?: "",
+            email = mail.value ?: ""
         )
         authRepository.registerUser(params)
             .doOnSubscribe {

@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.domain.MineRepository
-import timber.log.Timber
 import javax.inject.Inject
+import timber.log.Timber
 
-class MineViewModel @Inject constructor(private val mineRepository: MineRepository,private val userManager: UserManager) : ViewModel() {
+class MineViewModel @Inject constructor(private val mineRepository: MineRepository, private val userManager: UserManager) : ViewModel() {
 
     init {
         Timber.d("MineViewModel init")
