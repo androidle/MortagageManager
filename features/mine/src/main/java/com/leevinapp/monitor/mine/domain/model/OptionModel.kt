@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 class OptionModel(
-    var id: String = "",
+    var id: Int = 0,
     var name: String = ""
 ) : Parcelable

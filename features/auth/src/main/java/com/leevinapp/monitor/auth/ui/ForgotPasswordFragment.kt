@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.auth.R
 import com.leevinapp.monitor.auth.databinding.AuthFragmentForgotPasswordBinding
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import kotlinx.android.synthetic.main.auth_fragment_forgot_password.*
 
 class ForgotPasswordFragment : BaseFragment() {
 
@@ -25,6 +26,15 @@ class ForgotPasswordFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        tv_change_security_question.setOnClickListener {
+            container_security_question.visibility = View.VISIBLE
+            container_sms_code.visibility = View.GONE
+        }
+
+        tv_change_sms_code.setOnClickListener {
+            container_security_question.visibility = View.GONE
+            container_sms_code.visibility = View.VISIBLE
+        }
     }
 
     override fun getTitleBarView(): View? {

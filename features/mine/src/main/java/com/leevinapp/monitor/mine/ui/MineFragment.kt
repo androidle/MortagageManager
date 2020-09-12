@@ -14,6 +14,7 @@ import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentBinding
 import com.leevinapp.monitor.mine.di.buildComponent
+import com.leevinapp.monitor.mine.domain.MineConstants
 import com.leevinapp.monitor.mine.domain.model.MenuModel.ABOUT
 import com.leevinapp.monitor.mine.domain.model.MenuModel.ACCESS_TRANSFER
 import com.leevinapp.monitor.mine.domain.model.MenuModel.APPLY_REFER_ORGANIZATION
@@ -111,21 +112,25 @@ class MineFragment : BaseFragment() {
         }
 
         btn_goto_logon.setOnClickListener {
-            // userManager.isLogged = true
-            // viewModel.isLogged.postValue(userManager.isLogged)
             findNavController().navigationToLogonFragment()
         }
 
         viewModel.isLogged.postValue(userManager.isLogged)
 
         identityAuthSelectionFragment =
-            MineIdentityAuthSelectionFragment()
-        identityAuthSelectionFragment.setSelectedCallback {
-            AUTHENTICATION.content = it.name
-            findNavController().navigate(
-                MineFragmentDirections.mineActionMinefragmentToMineauthfragment(it)
-            )
-            identityAuthSelectionFragment.dismiss()
+            MineIdentityAuthSelectionFragment.newInstance(MineConstants.auth_ways)
+        identityAuthSelectionFragment.setSelectedCallback { option ->
+            when (option.id) {
+                0 -> {
+                    findNavController().navigate(R.id.mine_action_minefragment_to_ordinaryuserauthfragment)
+                }
+                1 -> {
+                    findNavController().navigate(R.id.mine_action_minefragment_to_mortgageuserauthfragment)
+                }
+                2 -> {
+                    findNavController().navigate(R.id.mine_action_minefragment_to_organizationauthfragment)
+                }
+            }
         }
     }
 

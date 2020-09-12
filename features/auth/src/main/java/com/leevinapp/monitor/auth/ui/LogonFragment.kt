@@ -60,7 +60,9 @@ class LogonFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         button_logon.setOnClickListener {
-            viewModel.login()
+            // viewModel.login()
+            userManager.isLogged = true
+            findNavController().navigateUp()
         }
 
         val spannableString = SpannableString(getString(string.auth_unregistered_to_register))
@@ -102,13 +104,12 @@ class LogonFragment : BaseFragment() {
 
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                updateLogonStatus(it)
-                findNavController().navigateUp()
+                logonSuccess(it)
             }
         })
     }
 
-    private fun updateLogonStatus(it: LoginResponse) {
+    private fun logonSuccess(it: LoginResponse) {
         userManager.isLogged = true
         userManager.token = it.token
         with(userManager.user) {
@@ -127,6 +128,8 @@ class LogonFragment : BaseFragment() {
             homeAddress = it.homeAddress ?: ""
             residenceId = it.residenceId ?: 0
         }
+
+        findNavController().navigateUp()
     }
 
     override fun onDestroy() {

@@ -13,4 +13,26 @@
     <string name="mine_completed">完成</string>
     <string name="mine_version">版本号: %1$s</string>
     <string name="mine_next">下一步</string>
+    <string name="mine_real_name">真实姓名</string>
+    <string name="mine_identity_num">身份证号码</string>
+    <string name="mine_address">家庭住址</string>
+    <string name="mine_company_full_name">单位全称</string>
+    <string name="mine_identity_type">身份类别</string>
+    <string name="mine_social_code">社会统一信用代码</string>
+    <string name="mine_job_position">工作职务</string>
+    <string name="mine_submit">提交</string>
+    <string name="mine_organ_name">机构名称</string>
+    <string name="mine_organ_address">机构地址</string>
+    <string name="mine_company_presenter">法人代表</string>
+    <string name="mine_registered_capital">注册资本</string>
+    <string name="mine_date_of_found">成立日期</string>
+    <string name="mine_operating_period">营业期限</string>
+    <string name="mine_business_scope">经营范围</string>
+    <string name="mine_organ_administrator">机构管理员</string>
+
+    <string-array name="mine_auth_way">
+        <item name="ordinary">普通用户认证</item>
+        <item name="individual">质权人独立用户认证</item>
+        <item name="organ">注册机构认证</item>
+    </string-array>
 </resources>

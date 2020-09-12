@@ -24,6 +24,15 @@
         <action
             android:id="@+id/mine_action_minefragment_to_mineauthfragment"
             app:destination="@id/mine_mineauthfragment" />
+        <action
+            android:id="@+id/mine_action_minefragment_to_ordinaryuserauthfragment"
+            app:destination="@id/mine_ordinaryuserauthfragment" />
+        <action
+            android:id="@+id/mine_action_minefragment_to_organizationauthfragment"
+            app:destination="@id/mine_organizationauthfragment" />
+        <action
+            android:id="@+id/mine_action_minefragment_to_mortgageuserauthfragment"
+            app:destination="@id/mine_mortgageuserauthfragment" />
     </fragment>
 
     <include app:graph="@navigation/auth_logon_graph" />
@@ -79,5 +88,20 @@
         android:name="com.leevinapp.monitor.auth.ui.VerifyEmailFragment"
         android:label="VerifyEmailFragment"
         tools:layout="@layout/auth_fragment_verify_email"/>
+    <fragment
+        android:id="@+id/mine_ordinaryuserauthfragment"
+        android:name="com.leevinapp.monitor.mine.ui.identityauth.OrdinaryUserAuthFragment"
+        android:label="OrdinaryUserAuthFragment"
+        tools:layout="@layout/mine_fragment_auth_ordinary_user"/>
+    <fragment
+        android:id="@+id/mine_organizationauthfragment"
+        android:name="com.leevinapp.monitor.mine.ui.identityauth.OrganizationAuthFragment"
+        android:label="OrganizationAuthFragment"
+        tools:layout="@layout/mine_fragment_auth_organization"/>
+    <fragment
+        android:id="@+id/mine_mortgageuserauthfragment"
+        android:name="com.leevinapp.monitor.mine.ui.identityauth.MortgageUserAuthFragment"
+        android:label="MortgageUserAuthFragment"
+        tools:layout="@layout/mine_fragment_auth_mortgage_user"/>
 
 </navigation>

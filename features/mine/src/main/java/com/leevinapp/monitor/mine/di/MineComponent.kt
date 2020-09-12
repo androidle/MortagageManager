@@ -5,6 +5,9 @@ import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
 import com.leevinapp.monitor.mine.ui.MineFragment
 import com.leevinapp.monitor.mine.ui.MinePersonalInfoFragment
 import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthFragment
+import com.leevinapp.monitor.mine.ui.identityauth.MortgageUserAuthFragment
+import com.leevinapp.monitor.mine.ui.identityauth.OrdinaryUserAuthFragment
+import com.leevinapp.monitor.mine.ui.identityauth.OrganizationAuthFragment
 import dagger.Component
 
 @FeatureScope
@@ -13,4 +16,7 @@ interface MineComponent {
     fun inject(fragment: MineFragment)
     fun inject(fragment: MinePersonalInfoFragment)
     fun inject(fragment: MineIdentityAuthFragment)
+    fun inject(fragment: MortgageUserAuthFragment)
+    fun inject(fragment: OrdinaryUserAuthFragment)
+    fun inject(fragment: OrganizationAuthFragment)
 }
