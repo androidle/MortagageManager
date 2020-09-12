@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
-import com.leevinapp.monitor.mine.databinding.MineFragmentAuthOrganizationBinding
+import com.leevinapp.monitor.mine.databinding.MineFragmentAuthOrdinaryUserBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.MineConstants
 import javax.inject.Inject
 
 class OrdinaryUserAuthFragment : BaseFragment() {
 
-    private lateinit var viewBinding: MineFragmentAuthOrganizationBinding
+    private lateinit var viewBinding: MineFragmentAuthOrdinaryUserBinding
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -28,7 +28,7 @@ class OrdinaryUserAuthFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return MineFragmentAuthOrganizationBinding.inflate(inflater, container, false).apply {
+        return MineFragmentAuthOrdinaryUserBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = this@OrdinaryUserAuthFragment.viewModel
             viewBinding = this
