@@ -4,15 +4,33 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.auth.R
 import com.leevinapp.monitor.auth.databinding.AuthFragmentForgotPasswordBinding
+import com.leevinapp.monitor.auth.di.buildComponent
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.core.user.UserManager
+import javax.inject.Inject
 import kotlinx.android.synthetic.main.auth_fragment_forgot_password.*
 
 class ForgotPasswordFragment : BaseFragment() {
 
     private lateinit var viewBinding: AuthFragmentForgotPasswordBinding
+
+    @Inject
+    lateinit var userManager: UserManager
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    val viewModel: ResetPasswordViewModel by activityViewModels {
+        viewModelFactory
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -20,8 +38,13 @@ class ForgotPasswordFragment : BaseFragment() {
     ): View? {
         return AuthFragmentForgotPasswordBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
+            viewModel = this@ForgotPasswordFragment.viewModel
             viewBinding = this
         }.root
+    }
+
+    override fun initDependencyInjection() {
+        buildComponent(this).inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,6 +58,15 @@ class ForgotPasswordFragment : BaseFragment() {
             container_security_question.visibility = View.GONE
             container_sms_code.visibility = View.VISIBLE
         }
+
+        iev_sms_code.setSmsCodeClickListener {
+            iev_sms_code.startTimer()
+            viewModel.sendSmsCode()
+        }
+
+        viewModel.smsCodeResult.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(requireContext(), if (it) "发送成功" else "发送失败", Toast.LENGTH_SHORT)
+        })
     }
 
     override fun getTitleBarView(): View? {

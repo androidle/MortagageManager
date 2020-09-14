@@ -6,6 +6,7 @@ import com.leevinapp.monitor.auth.data.api.response.ChangePasswordParams
 import com.leevinapp.monitor.auth.data.api.response.LoginParams
 import com.leevinapp.monitor.auth.data.api.response.LoginResponse
 import com.leevinapp.monitor.auth.data.api.response.RegisterUserParams
+import com.leevinapp.monitor.auth.data.api.response.ResetPasswordParams
 import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeParams
 import com.leevinapp.monitor.auth.domain.AuthRepository
 import io.reactivex.Single
@@ -60,6 +61,13 @@ class AuthRepositoryImpl(private val authService: AuthService) :
 
     override fun changePassword(changePasswordParams: ChangePasswordParams): Single<Boolean> {
         return authService.changePassword(params = changePasswordParams)
+            .map { it.success }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun resetPassword(resetPasswordParams: ResetPasswordParams): Single<Boolean> {
+        return authService.resetPassword(params = resetPasswordParams)
             .map { it.success }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

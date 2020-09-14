@@ -5,19 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.leevinapp.monitor.auth.R
-import com.leevinapp.monitor.auth.databinding.AuthFragmentChangePasswordBinding
+import com.leevinapp.monitor.auth.databinding.AuthFragmentVerifyEmailBinding
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 
 class VerifyEmailFragment : BaseFragment() {
 
-    private lateinit var viewBinding: AuthFragmentChangePasswordBinding
+    private lateinit var viewBinding: AuthFragmentVerifyEmailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return AuthFragmentChangePasswordBinding.inflate(inflater, container, false).apply {
+        return AuthFragmentVerifyEmailBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewBinding = this
         }.root

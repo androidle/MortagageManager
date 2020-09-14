@@ -14,13 +14,11 @@ import com.leevinapp.monitor.auth.R
 import com.leevinapp.monitor.auth.R.string
 import com.leevinapp.monitor.auth.data.api.response.LoginResponse
 import com.leevinapp.monitor.auth.databinding.AuthFragmentLogonBinding
-import com.leevinapp.monitor.auth.di.AuthModule
-import com.leevinapp.monitor.auth.di.DaggerAuthComponent
+import com.leevinapp.monitor.auth.di.buildComponent
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.common.ui.extensions.hideLoadingDialog
 import com.leevinapp.monitor.core.common.ui.extensions.showLoadingDialog
 import com.leevinapp.monitor.core.common.view.CustomClickableSpan
-import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.core.core.user.UserManager
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.auth_fragment_logon.*
@@ -49,11 +47,7 @@ class LogonFragment : BaseFragment() {
     }
 
     override fun initDependencyInjection() {
-        DaggerAuthComponent.builder()
-            .coreComponent(CoreInjectHelper.provideCoreComponent(requireContext()))
-            .authModule(AuthModule(this))
-            .build()
-            .inject(this)
+        buildComponent(this).inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

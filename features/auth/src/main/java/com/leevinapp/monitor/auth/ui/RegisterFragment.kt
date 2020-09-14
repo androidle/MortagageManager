@@ -53,7 +53,7 @@ class RegisterFragment : BaseFragment() {
             viewModel.registerUser()
         }
 
-        iev_sms_code.setOnClickListener {
+        iev_sms_code.setSmsCodeClickListener {
             iev_sms_code.startTimer()
             viewModel.sendSmsCode()
         }

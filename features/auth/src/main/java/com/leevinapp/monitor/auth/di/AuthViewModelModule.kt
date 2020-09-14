@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.leevinapp.monitor.auth.ui.LogonViewModel
 import com.leevinapp.monitor.auth.ui.RegisterViewModel
+import com.leevinapp.monitor.auth.ui.ResetPasswordViewModel
 import com.leevinapp.monitor.core.core.di.ViewModelKey
 import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
 import dagger.Binds
@@ -24,6 +25,12 @@ internal abstract class AuthViewModelModule {
     @FeatureScope
     @ViewModelKey(RegisterViewModel::class)
     internal abstract fun bindRegisterViewModel(registerViewModel: RegisterViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @FeatureScope
+    @ViewModelKey(ResetPasswordViewModel::class)
+    internal abstract fun bindResetPasswordViewModel(resetPasswordViewModel: ResetPasswordViewModel): ViewModel
 
     @Binds
     @FeatureScope

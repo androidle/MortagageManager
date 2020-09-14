@@ -5,6 +5,7 @@ import com.leevinapp.monitor.auth.data.api.response.LoginParams
 import com.leevinapp.monitor.auth.data.api.response.LoginResponse
 import com.leevinapp.monitor.auth.data.api.response.RegisterUserParams
 import com.leevinapp.monitor.auth.data.api.response.RegisterUserResponse
+import com.leevinapp.monitor.auth.data.api.response.ResetPasswordParams
 import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeParams
 import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeResponse
 import com.leevinapp.monitor.auth.data.api.response.TestResponse
@@ -47,4 +48,7 @@ interface AuthService {
 
     @POST("app/user/changePassword")
     fun changePassword(@Body params: ChangePasswordParams): Single<ApiResponse<Any>>
+
+    @POST("app/user/resetPassword")
+    fun resetPassword(@Body params: ResetPasswordParams): Single<ApiResponse<Any>>
 }
