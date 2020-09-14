@@ -6,8 +6,8 @@ import com.leevinapp.monitor.auth.domain.AuthRepository
 import com.leevinapp.monitor.auth.domain.model.SMSType
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import io.reactivex.functions.Consumer
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
 
 class ResetPasswordViewModel @Inject constructor(private val authRepository: AuthRepository) : BaseViewModel() {
 
@@ -31,6 +31,7 @@ class ResetPasswordViewModel @Inject constructor(private val authRepository: Aut
                 smsCodeResult.postValue(it)
             }, Consumer {
                 Timber.e("====>$it")
+                smsCodeResult.postValue(false)
             })
     }
 

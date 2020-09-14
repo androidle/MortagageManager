@@ -25,7 +25,7 @@ class NetworkModule {
     fun providerBaseUrl(): String {
         // TODO: 2020/8/6 to test
         // return "https://api.github.com/"
-        return "http://122.9.47.171:10003/gw/collateral/"
+        return "http://122.9.47.171:10002/gw/collateral/"
     }
 
     @Singleton

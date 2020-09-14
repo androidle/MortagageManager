@@ -1,5 +1,6 @@
 package com.leevinapp.monitor.auth.di
 
+import com.leevinapp.monitor.auth.ui.ChangePasswordFragment
 import com.leevinapp.monitor.auth.ui.ForgotPasswordFragment
 import com.leevinapp.monitor.auth.ui.LogonFragment
 import com.leevinapp.monitor.auth.ui.RegisterFragment
@@ -15,4 +16,5 @@ interface AuthComponent {
     fun inject(fragment: RegisterFragment)
     fun inject(fragment: ForgotPasswordFragment)
     fun inject(fragment: ResetPasswordFragment)
+    fun inject(fragment: ChangePasswordFragment)
 }
