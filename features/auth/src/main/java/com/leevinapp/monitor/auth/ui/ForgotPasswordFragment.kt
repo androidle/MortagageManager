@@ -12,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.auth.R
 import com.leevinapp.monitor.auth.databinding.AuthFragmentForgotPasswordBinding
 import com.leevinapp.monitor.auth.di.buildComponent
+import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.E_MAIL
+import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.SMS
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.core.user.UserManager
 import javax.inject.Inject
@@ -49,22 +51,32 @@ class ForgotPasswordFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tv_change_security_question.setOnClickListener {
-            container_security_question.visibility = View.VISIBLE
+        tv_change_email.setOnClickListener {
+            container_email.visibility = View.VISIBLE
             container_sms_code.visibility = View.GONE
+            viewModel.resetType = E_MAIL
         }
 
         tv_change_sms_code.setOnClickListener {
-            container_security_question.visibility = View.GONE
+            container_email.visibility = View.GONE
             container_sms_code.visibility = View.VISIBLE
+            viewModel.resetType = SMS
         }
 
         iev_sms_code.setSmsCodeClickListener {
             iev_sms_code.startTimer()
             viewModel.sendSmsCode()
         }
+        iev_email.setSmsCodeClickListener {
+            iev_email.startTimer()
+            viewModel.sendEmailCode()
+        }
 
         viewModel.smsCodeResult.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(requireContext(), if (it) "发送成功" else "发送失败", Toast.LENGTH_SHORT)
+        })
+
+        viewModel.emailCodeResult.observe(viewLifecycleOwner, Observer {
             Toast.makeText(requireContext(), if (it) "发送成功" else "发送失败", Toast.LENGTH_SHORT)
         })
     }
@@ -83,5 +95,11 @@ class ForgotPasswordFragment : BaseFragment() {
 
     override fun onRightTextClick() {
         findNavController().navigate(R.id.auth_action_auth_forgotpasswordfragment_to_resetpasswordfragment)
+    }
+
+    override fun onDestroy() {
+        iev_sms_code?.cancelTimer()
+        iev_email?.cancelTimer()
+        super.onDestroy()
     }
 }

@@ -45,6 +45,13 @@ class AuthRepositoryImpl(private val authService: AuthService) :
             .observeOn(AndroidSchedulers.mainThread())
     }
 
+    override fun sendEmailCode(email: String): Single<Boolean> {
+        return authService.sendEmailVerifyCode(email)
+            .map { it.success }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
     override fun registerUser(registerUserParams: RegisterUserParams): Single<String> {
         return authService.registerUser(registerUserParams)
             .map { it.data.token }

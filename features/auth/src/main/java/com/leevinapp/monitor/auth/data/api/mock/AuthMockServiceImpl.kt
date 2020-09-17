@@ -45,6 +45,10 @@ class AuthMockServiceImpl(private val mockApiUtil: MockApiUtil) :
         TODO("Not yet implemented")
     }
 
+    override fun sendEmailVerifyCode(email: String): Single<ApiResponse<Any>> {
+        TODO("Not yet implemented")
+    }
+
     override fun registerUser(params: RegisterUserParams): Single<ApiResponse<RegisterUserResponse>> {
         TODO("Not yet implemented")
     }

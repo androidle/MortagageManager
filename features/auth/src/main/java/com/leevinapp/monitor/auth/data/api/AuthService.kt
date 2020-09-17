@@ -18,6 +18,7 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface AuthService {
     @GET("users/list")
@@ -33,6 +34,11 @@ interface AuthService {
     fun sendSmsCode(
         @Body params: SendSmsCodeParams
     ): Single<SendSmsCodeResponse>
+
+    @GET("common/auth/sendEmailVerifyCode")
+    fun sendEmailVerifyCode(
+        @Query("email") email: String
+    ): Single<ApiResponse<Any>>
 
     @PUT("app/auth/register/user")
     fun registerUser(

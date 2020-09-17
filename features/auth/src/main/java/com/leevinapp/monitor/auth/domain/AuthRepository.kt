@@ -15,6 +15,8 @@ interface AuthRepository {
 
     fun sendSmsCode(phoneNumber: String, smsType: String): Single<Boolean>
 
+    fun sendEmailCode(email: String): Single<Boolean>
+
     fun registerUser(registerUserParams: RegisterUserParams): Single<String>
 
     fun changePassword(changePasswordParams: ChangePasswordParams): Single<Boolean>

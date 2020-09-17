@@ -16,10 +16,13 @@
     <string name="auth_phone_number">手机号</string>
     <string name="auth_sms_code">短信验证码</string>
     <string name="auth_sms_verify">短信验证</string>
+    <string name="auth_verify_code">验证码</string>
+    <string name="auth_verify_code_hint">请输入验证码</string>
     <string name="auth_phone_number_hint">请输入手机号</string>
     <string name="auth_sms_code_hint">请输入验证码</string>
     <string name="auth_via_sms_code">通过短信验证码验证</string>
     <string name="auth_via_security_question">通过安全问题验证</string>
+    <string name="auth_via_email">通过邮箱验证</string>
     <string name="auth_security_question">安全问题</string>
     <string name="auth_security_question_hint">请输入安全问题</string>
     <string name="auth_security_answer">答案</string>
