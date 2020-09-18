@@ -13,29 +13,11 @@
             android:label="@string/mine"
             tools:layout="@layout/mine_fragment">
         <action
-            android:id="@+id/mine_action_minefragment_to_mineaboutfragment"
-            app:destination="@id/mine_mineaboutfragment" />
-        <action
-            android:id="@+id/mine_action_minefragment_to_minesecurityfragment"
-            app:destination="@id/mine_minesecurityfragment" />
-        <action
-            android:id="@+id/mine_action_minefragment_to_minepersonalinfofragment"
-            app:destination="@id/mine_minepersonalinfofragment" />
-        <action
-            android:id="@+id/mine_action_minefragment_to_mineauthfragment"
-            app:destination="@id/mine_mineauthfragment" />
-        <action
-            android:id="@+id/mine_action_minefragment_to_ordinaryuserauthfragment"
-            app:destination="@id/mine_ordinaryuserauthfragment" />
-        <action
-            android:id="@+id/mine_action_minefragment_to_organizationauthfragment"
-            app:destination="@id/mine_organizationauthfragment" />
-        <action
-            android:id="@+id/mine_action_minefragment_to_mortgageuserauthfragment"
-            app:destination="@id/mine_mortgageuserauthfragment" />
-        <action
             android:id="@+id/mine_action_minefragment_to_applyparentorganfragment"
             app:destination="@id/mine_applyparentorganfragment" />
+        <action
+            android:id="@+id/mine_action_minefragment_to_minegeneralinfofragment"
+            app:destination="@id/mine_minegeneralinfofragment" />
     </fragment>
 
     <include app:graph="@navigation/auth_logon_graph" />
@@ -111,5 +93,29 @@
         android:name="com.leevinapp.monitor.mine.ui.ApplyParentOrganFragment"
         android:label="ApplyParentOrganFragment"
         tools:layout="@layout/mine_fragment_apply_parent_organ"/>
+    <fragment
+        android:id="@+id/mine_minegeneralinfofragment"
+        android:name="com.leevinapp.monitor.mine.ui.MineGeneralInfoFragment"
+        android:label="MineGeneralInfoFragment"
+        tools:layout="@layout/mine_fragment_general_info">
+        <action
+            android:id="@+id/mine_action_mine_minegeneralinfofragment_to_minepersonalinfofragment"
+            app:destination="@id/mine_minepersonalinfofragment" />
+        <action
+            android:id="@+id/mine_action_mine_minegeneralinfofragment_to_mineaboutfragment"
+            app:destination="@id/mine_mineaboutfragment" />
+        <action
+            android:id="@+id/mine_action_mine_minegeneralinfofragment_to_minesecurityfragment"
+            app:destination="@id/mine_minesecurityfragment" />
+        <action
+            android:id="@+id/mine_action_mine_minegeneralinfofragment_to_mortgageuserauthfragment"
+            app:destination="@id/mine_mortgageuserauthfragment" />
+        <action
+            android:id="@+id/mine_action_mine_minegeneralinfofragment_to_organizationauthfragment"
+            app:destination="@id/mine_organizationauthfragment" />
+        <action
+            android:id="@+id/mine_action_mine_minegeneralinfofragment_to_ordinaryuserauthfragment"
+            app:destination="@id/mine_ordinaryuserauthfragment" />
+    </fragment>
 
 </navigation>

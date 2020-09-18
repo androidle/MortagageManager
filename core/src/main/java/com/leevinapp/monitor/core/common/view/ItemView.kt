@@ -1,6 +1,7 @@
 package com.leevinapp.monitor.core.common.view
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
@@ -39,6 +40,16 @@ class ItemView @JvmOverloads constructor(
         iv_right.visibility = if (isShow) View.VISIBLE else View.GONE
     }
 
+    private fun setStartIcon(drawable: Drawable?) {
+        if (drawable != null) {
+            iv_icon.visibility = View.VISIBLE
+            iv_icon.setImageDrawable(drawable)
+        } else {
+            iv_icon.visibility = View.GONE
+        }
+
+    }
+
     init {
         View.inflate(context, R.layout.item_view, this)
         attrs?.let {
@@ -53,6 +64,9 @@ class ItemView @JvmOverloads constructor(
                             }
                             R.styleable.ItemView_hasArrow -> {
                                 setArrowVisibility(typedArray.getBoolean(attr, true))
+                            }
+                            R.styleable.ItemView_startIcon -> {
+                                setStartIcon(typedArray.getDrawable(attr))
                             }
                         }
                     }

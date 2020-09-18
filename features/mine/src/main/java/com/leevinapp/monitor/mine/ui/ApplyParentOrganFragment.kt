@@ -25,7 +25,7 @@ class ApplyParentOrganFragment : ViewModelFragment()  {
     private lateinit var viewBinding: MineFragmentApplyParentOrganBinding
 
     override fun getViewModel(): BaseViewModel {
-        TODO("Not yet implemented")
+        return viewModel
     }
 
     override fun onCreateView(

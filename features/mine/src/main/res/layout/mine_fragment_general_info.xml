@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.leevinapp.monitor.mine.ui.GeneralInfoViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="40dp"
+        android:background="@color/color_monitor_background_heavy"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include
+                android:id="@+id/toolbar_container"
+                layout="@layout/toolbar_binding" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container_post_logon"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/dimen_common_margin"
+                android:background="@drawable/content_background"
+                android:clipChildren="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_container"
+                tools:visibility="visible">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="50dp"
+                android:src="@mipmap/ic_launcher_round"
+                app:layout_constraintBottom_toTopOf="@+id/container_post_logon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/container_post_logon" />
+
+            <TextView
+                android:id="@+id/tv_username"
+                style="@style/MonitorText.Content"
+                android:layout_width="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_common_margin"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Leevin"
+                android:textSize="@dimen/text_size_small"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_logo" />
+
+            <TextView
+                android:id="@+id/tv_role_name"
+                style="@style/MonitorText.Content"
+                android:layout_width="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_common_margin"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="机构管理员"
+                android:textSize="@dimen/text_size_small"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_username" />
+
+            <com.leevinapp.monitor.core.common.view.ItemView
+                android:id="@+id/iv_personal_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                app:label="@string/mine_personal_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_role_name"
+                app:startIcon="@drawable/ic_assignment" />
+
+            <com.leevinapp.monitor.core.common.view.ItemView
+                android:id="@+id/iv_security"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:label="@string/mine_security"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_personal_info"
+                app:startIcon="@drawable/ic_assignment" />
+
+            <com.leevinapp.monitor.core.common.view.ItemView
+                android:id="@+id/iv_identity_or_organ_auth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:label="@string/mine_identity_or_organ_auth"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_security"
+                app:startIcon="@drawable/ic_assignment" />
+
+            <com.leevinapp.monitor.core.common.view.ItemView
+                android:id="@+id/iv_about"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:label="@string/mine_about"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_identity_or_organ_auth"
+                app:startIcon="@drawable/ic_assignment" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_logout"
+                style="@style/MonitorButton.White"
+                android:layout_marginHorizontal="@dimen/dimen_common_margin"
+                android:layout_marginTop="50dp"
+                android:text="退出登录"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_about"
+                app:layout_constraintWidth_percent="0.8" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
+
+

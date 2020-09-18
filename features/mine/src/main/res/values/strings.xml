@@ -33,6 +33,12 @@
     <string name="mine_business_scope">经营范围</string>
     <string name="mine_organ_administrator">机构管理员</string>
     <string name="mine_apply_parent_organ">申请分解机构</string>
+    <string name="mine_menu_apply_sheets">申请单</string>
+    <string name="mine_menu_notification">通知</string>
+    <string name="mine_menu_sub_organ">下级机构</string>
+    <string name="mine_menu_organ_user">机构用户</string>
+
+
 
     <string-array name="mine_auth_way">
         <item name="ordinary">普通用户认证</item>

@@ -13,13 +13,11 @@ import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentBinding
 import com.leevinapp.monitor.mine.di.buildComponent
-import com.leevinapp.monitor.mine.domain.MineConstants
 import com.leevinapp.monitor.mine.domain.model.MenuModel.ACCESS_TRANSFER
 import com.leevinapp.monitor.mine.domain.model.MenuModel.APPLY_REFER_ORGANIZATION
 import com.leevinapp.monitor.mine.domain.model.MenuModel.AUTH_ACCOUNT
 import com.leevinapp.monitor.mine.domain.model.MenuModel.PARENT_ORGANIZATION_APPLY
 import com.leevinapp.monitor.mine.ui.adapter.TextMenuAdapter
-import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthSelectionFragment
 import kotlinx.android.synthetic.main.mine_fragment.*
 import javax.inject.Inject
 
@@ -30,8 +28,6 @@ class MineFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment? = null
 
     val viewModel: MineViewModel by viewModels {
         viewModelFactory
@@ -61,25 +57,6 @@ class MineFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        iv_personal_info.setOnClickListener {
-            findNavController().navigate(MineFragmentDirections.mineActionMinefragmentToMinepersonalinfofragment())
-        }
-
-        iv_identity_or_organ_auth.setOnClickListener {
-            identityAuthSelectionFragment?.show(
-                childFragmentManager,
-                MineIdentityAuthSelectionFragment::class.simpleName
-            )
-        }
-
-        iv_security.setOnClickListener {
-            findNavController().navigate(R.id.mine_action_minefragment_to_minesecurityfragment)
-        }
-
-        iv_about.setOnClickListener {
-            findNavController().navigate(R.id.mine_action_minefragment_to_mineaboutfragment)
-        }
-
         // horizental menu
         container_menu.adapter = TextMenuAdapter(menusHorizontal) {
             // TODO: 2020/9/9
@@ -87,7 +64,6 @@ class MineFragment : BaseFragment() {
                 PARENT_ORGANIZATION_APPLY -> {
                     findNavController().navigate(R.id.mine_action_minefragment_to_applyparentorganfragment)
                 }
-
                 ACCESS_TRANSFER -> {
 
                 }
@@ -102,9 +78,20 @@ class MineFragment : BaseFragment() {
             }
         }
 
-        btn_logout.setOnClickListener {
-            userManager.reset()
-            viewModel.isLogged.postValue(userManager.isLogged)
+        iv_apply_sheets.setOnClickListener {
+
+        }
+
+        iv_notification.setOnClickListener {
+
+        }
+
+        iv_sub_organ.setOnClickListener {
+
+        }
+
+        iv_organ_user.setOnClickListener {
+
         }
 
         btn_goto_logon.setOnClickListener {
@@ -112,28 +99,15 @@ class MineFragment : BaseFragment() {
         }
 
         iv_avatar.setOnClickListener {
-            findNavController().navigationToLogonFragment()
+            if (userManager.isLogged) {
+                findNavController().navigate(R.id.mine_action_minefragment_to_minegeneralinfofragment)
+            } else {
+                findNavController().navigationToLogonFragment()
+            }
+
         }
 
         viewModel.isLogged.postValue(userManager.isLogged)
-
-        if (identityAuthSelectionFragment == null) {
-            identityAuthSelectionFragment =
-                MineIdentityAuthSelectionFragment.newInstance(MineConstants.auth_ways)
-        }
-        identityAuthSelectionFragment?.setSelectedCallback { option ->
-            when (option.id) {
-                0 -> {
-                    findNavController().navigate(R.id.mine_action_minefragment_to_ordinaryuserauthfragment)
-                }
-                1 -> {
-                    findNavController().navigate(R.id.mine_action_minefragment_to_mortgageuserauthfragment)
-                }
-                2 -> {
-                    findNavController().navigate(R.id.mine_action_minefragment_to_organizationauthfragment)
-                }
-            }
-        }
     }
 
     companion object {

@@ -13,5 +13,6 @@
         <attr name="label" format="reference|string" />
         <attr name="value" format="reference|string" />
         <attr name="hasArrow" format="boolean" />
+        <attr name="startIcon" format="reference" />
     </declare-styleable>
 </resources>

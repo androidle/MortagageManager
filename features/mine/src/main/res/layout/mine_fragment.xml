@@ -116,51 +116,44 @@
                     app:layout_constraintTop_toBottomOf="@+id/container_menu" />
 
                 <com.leevinapp.monitor.core.common.view.ItemView
-                    android:id="@+id/iv_personal_info"
+                    android:id="@+id/iv_apply_sheets"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:label="@string/mine_personal_info"
+                    app:label="@string/mine_menu_apply_sheets"
+                    app:startIcon="@drawable/ic_assignment"
                     app:layout_constraintTop_toBottomOf="@+id/view_divider"/>
 
                 <com.leevinapp.monitor.core.common.view.ItemView
-                    android:id="@+id/iv_security"
+                    android:id="@+id/iv_notification"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:startIcon="@drawable/ic_assignment"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:label="@string/mine_security"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_personal_info"/>
+                    app:label="@string/mine_menu_notification"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_apply_sheets"/>
 
                 <com.leevinapp.monitor.core.common.view.ItemView
-                    android:id="@+id/iv_identity_or_organ_auth"
+                    android:id="@+id/iv_sub_organ"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:label="@string/mine_identity_or_organ_auth"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_security"/>
+                    app:startIcon="@drawable/ic_assignment"
+                    app:label="@string/mine_menu_sub_organ"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_notification"/>
 
                 <com.leevinapp.monitor.core.common.view.ItemView
-                    android:id="@+id/iv_about"
+                    android:id="@+id/iv_organ_user"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:label="@string/mine_about"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_identity_or_organ_auth"/>
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_logout"
-                    style="@style/MonitorButton.White"
-                    android:layout_marginHorizontal="@dimen/dimen_common_margin"
-                    android:layout_marginTop="@dimen/dimen_common_margin"
-                    android:text="退出登录"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_about"
-                    app:layout_constraintWidth_percent="0.8" />
+                    app:startIcon="@drawable/ic_assignment"
+                    app:label="@string/mine_menu_organ_user"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_sub_organ"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

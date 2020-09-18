@@ -6,6 +6,7 @@ import com.leevinapp.monitor.auth.di.AuthViewModelFactory
 import com.leevinapp.monitor.core.core.di.ViewModelKey
 import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
 import com.leevinapp.monitor.mine.ui.ApplyParentOrganViewModel
+import com.leevinapp.monitor.mine.ui.GeneralInfoViewModel
 import com.leevinapp.monitor.mine.ui.MineViewModel
 import com.leevinapp.monitor.mine.ui.PersonalInfoViewModel
 import com.leevinapp.monitor.mine.ui.identityauth.IdentityAuthViewModel
@@ -34,6 +35,12 @@ abstract class MineViewModelModule {
     @ViewModelKey(IdentityAuthViewModel::class)
     internal abstract fun bindIdentityAuthViewModel(viewModel: IdentityAuthViewModel): ViewModel
 
+
+    @Binds
+    @IntoMap
+    @FeatureScope
+    @ViewModelKey(GeneralInfoViewModel::class)
+    internal abstract fun bindGeneralInfoViewModel(viewModel: GeneralInfoViewModel): ViewModel
 
     @Binds
     @IntoMap
