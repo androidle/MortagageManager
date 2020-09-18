@@ -2,6 +2,7 @@ package com.leevinapp.monitor.mine.di
 
 import com.leevinapp.monitor.core.core.di.CoreComponent
 import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
+import com.leevinapp.monitor.mine.ui.ApplyParentOrganFragment
 import com.leevinapp.monitor.mine.ui.MineFragment
 import com.leevinapp.monitor.mine.ui.MinePersonalInfoFragment
 import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthFragment
@@ -19,4 +20,5 @@ interface MineComponent {
     fun inject(fragment: MortgageUserAuthFragment)
     fun inject(fragment: OrdinaryUserAuthFragment)
     fun inject(fragment: OrganizationAuthFragment)
+    fun inject(fragment: ApplyParentOrganFragment)
 }

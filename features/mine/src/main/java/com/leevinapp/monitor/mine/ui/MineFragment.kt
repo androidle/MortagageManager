@@ -83,6 +83,23 @@ class MineFragment : BaseFragment() {
         // horizental menu
         container_menu.adapter = TextMenuAdapter(menusHorizontal) {
             // TODO: 2020/9/9
+            when (it) {
+                PARENT_ORGANIZATION_APPLY -> {
+                    findNavController().navigate(R.id.mine_action_minefragment_to_applyparentorganfragment)
+                }
+
+                ACCESS_TRANSFER -> {
+
+                }
+                APPLY_REFER_ORGANIZATION -> {
+
+                }
+
+                AUTH_ACCOUNT -> {
+
+                }
+
+            }
         }
 
         btn_logout.setOnClickListener {

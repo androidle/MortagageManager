@@ -9,20 +9,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
-import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentPersonalInfoBinding
 import com.leevinapp.monitor.mine.di.buildComponent
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.mine_fragment_personal_info.*
+import javax.inject.Inject
 
 class MinePersonalInfoFragment : ViewModelFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    @Inject
-    lateinit var userManager: UserManager
 
     val viewModel: PersonalInfoViewModel by viewModels {
         viewModelFactory

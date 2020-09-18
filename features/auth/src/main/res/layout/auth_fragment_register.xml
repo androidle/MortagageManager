@@ -151,24 +151,6 @@
                     app:editHint="请输入邮箱"
                     app:editValue="@={viewModel.mail}"
                     app:name="邮箱" />
-
-                <com.leevinapp.monitor.core.common.view.ItemEditView
-                    android:id="@+id/iev_security_question"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    app:editHint="请输入安全问题"
-                    app:editValue="@={viewModel.securityQuestion}"
-                    app:name="安全问题" />
-
-                <com.leevinapp.monitor.core.common.view.ItemEditView
-                    android:id="@+id/iev_security_answer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    app:editHint="请输入答案"
-                    app:editValue="@={viewModel.securityAnswer}"
-                    app:name="答案" />
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton

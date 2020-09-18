@@ -33,6 +33,9 @@
         <action
             android:id="@+id/mine_action_minefragment_to_mortgageuserauthfragment"
             app:destination="@id/mine_mortgageuserauthfragment" />
+        <action
+            android:id="@+id/mine_action_minefragment_to_applyparentorganfragment"
+            app:destination="@id/mine_applyparentorganfragment" />
     </fragment>
 
     <include app:graph="@navigation/auth_logon_graph" />
@@ -103,5 +106,10 @@
         android:name="com.leevinapp.monitor.mine.ui.identityauth.MortgageUserAuthFragment"
         android:label="MortgageUserAuthFragment"
         tools:layout="@layout/mine_fragment_auth_mortgage_user"/>
+    <fragment
+        android:id="@+id/mine_applyparentorganfragment"
+        android:name="com.leevinapp.monitor.mine.ui.ApplyParentOrganFragment"
+        android:label="ApplyParentOrganFragment"
+        tools:layout="@layout/mine_fragment_apply_parent_organ"/>
 
 </navigation>

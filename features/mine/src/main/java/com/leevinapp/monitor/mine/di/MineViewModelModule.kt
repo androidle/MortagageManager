@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.leevinapp.monitor.auth.di.AuthViewModelFactory
 import com.leevinapp.monitor.core.core.di.ViewModelKey
 import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
+import com.leevinapp.monitor.mine.ui.ApplyParentOrganViewModel
 import com.leevinapp.monitor.mine.ui.MineViewModel
 import com.leevinapp.monitor.mine.ui.PersonalInfoViewModel
 import com.leevinapp.monitor.mine.ui.identityauth.IdentityAuthViewModel
@@ -32,6 +33,13 @@ abstract class MineViewModelModule {
     @FeatureScope
     @ViewModelKey(IdentityAuthViewModel::class)
     internal abstract fun bindIdentityAuthViewModel(viewModel: IdentityAuthViewModel): ViewModel
+
+
+    @Binds
+    @IntoMap
+    @FeatureScope
+    @ViewModelKey(ApplyParentOrganViewModel::class)
+    internal abstract fun bindApplyParentOrganViewModel(viewModel: ApplyParentOrganViewModel): ViewModel
 
     @Binds
     @FeatureScope
