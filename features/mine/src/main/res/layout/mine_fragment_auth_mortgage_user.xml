@@ -38,6 +38,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:name="@string/mine_real_name"
+                app:editValue="@={viewModel.realName}"
                 app:isEditable="false"
                 app:editHint=""
                 app:layout_constraintTop_toTopOf="parent"
@@ -47,18 +48,18 @@
                 android:id="@+id/iv_identity_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:value=""
                 app:layout_constraintTop_toBottomOf="@+id/iev_real_name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:value="@={viewModel.identityType}"
                 app:label="@string/mine_identity_type"/>
 
             <com.leevinapp.monitor.core.common.view.ItemEditView
                 android:id="@+id/iev_identity_num"
                 android:layout_width="match_parent"
                 app:name="@string/mine_identity_num"
-                app:isEditable="false"
                 app:editHint=""
+                app:editValue="@={viewModel.identityNum}"
                 app:layout_constraintTop_toBottomOf="@+id/iv_identity_type"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -68,8 +69,9 @@
                 android:id="@+id/iev_address"
                 android:layout_width="match_parent"
                 app:name="@string/mine_address"
-                app:isEditable="false"
+                app:isEditable="true"
                 app:editHint=""
+                app:editValue="@={viewModel.homeAddress}"
                 app:layout_constraintTop_toBottomOf="@+id/iev_identity_num"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -81,8 +83,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:name="@string/mine_company_full_name"
-                app:isEditable="false"
+                app:isEditable="true"
                 app:editHint=""
+                app:editValue="@={viewModel.companyName}"
                 app:layout_constraintTop_toBottomOf="@+id/iev_address"
                 android:layout_height="wrap_content"/>
 
@@ -94,6 +97,7 @@
                 app:name="@string/mine_social_code"
                 app:isEditable="false"
                 app:editHint=""
+                app:editValue="@={viewModel.socialCode}"
                 app:layout_constraintTop_toBottomOf="@+id/iev_company_full_name"
                 android:layout_height="wrap_content"/>
 
@@ -105,8 +109,34 @@
                 app:name="@string/mine_job_position"
                 app:isEditable="false"
                 app:editHint=""
+                app:editValue="@={viewModel.jobPosition}"
                 app:layout_constraintTop_toBottomOf="@+id/iev_uniform_social_code"
                 android:layout_height="wrap_content"/>
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_monitor_organ"
+                android:layout_width="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:name="@string/mine_monitor_organ"
+                app:isEditable="true"
+                app:editHint=""
+                app:editValue="@={viewModel.monitorOrgan}"
+                app:layout_constraintTop_toBottomOf="@+id/iev_job_position"
+                android:layout_height="wrap_content"/>
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_monitor_organ_social_code"
+                android:layout_width="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:name="@string/mine_monitor_organ_social_code"
+                app:isEditable="true"
+                app:editHint=""
+                app:editValue="@={viewModel.socialCode}"
+                app:layout_constraintTop_toBottomOf="@+id/iev_monitor_organ"
+                android:layout_height="wrap_content"/>
+
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_submit"

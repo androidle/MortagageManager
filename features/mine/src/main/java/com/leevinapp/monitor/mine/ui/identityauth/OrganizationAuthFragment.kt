@@ -10,6 +10,7 @@ import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.mine.databinding.MineFragmentAuthOrganizationBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.MineConstants
+import kotlinx.android.synthetic.main.mine_fragment_auth_organization.*
 import javax.inject.Inject
 
 class OrganizationAuthFragment : BaseFragment() {
@@ -23,6 +24,8 @@ class OrganizationAuthFragment : BaseFragment() {
         viewModelFactory
     }
 
+    private var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,6 +36,24 @@ class OrganizationAuthFragment : BaseFragment() {
             viewModel = this@OrganizationAuthFragment.viewModel
             viewBinding = this
         }.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        iv_identity_type.setOnClickListener {
+            identityAuthSelectionFragment?.show(
+                childFragmentManager,
+                MineIdentityAuthSelectionFragment::class.simpleName
+            )
+        }
+
+        if (identityAuthSelectionFragment == null) {
+            identityAuthSelectionFragment =
+                MineIdentityAuthSelectionFragment.newInstance(MineConstants.organ_identity_types)
+        }
+        identityAuthSelectionFragment?.setSelectedCallback { option ->
+            iv_identity_type.value = option.name
+        }
     }
 
     override fun getTitleBarView(): View? {

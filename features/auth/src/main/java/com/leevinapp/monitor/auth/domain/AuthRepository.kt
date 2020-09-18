@@ -4,6 +4,7 @@ import com.leevinapp.monitor.auth.data.api.response.ChangePasswordParams
 import com.leevinapp.monitor.auth.data.api.response.LoginResponse
 import com.leevinapp.monitor.auth.data.api.response.RegisterUserParams
 import com.leevinapp.monitor.auth.data.api.response.ResetPasswordParams
+import com.leevinapp.monitor.auth.data.api.response.VerifyNewEmailParams
 import io.reactivex.Single
 
 interface AuthRepository {
@@ -22,4 +23,6 @@ interface AuthRepository {
     fun changePassword(changePasswordParams: ChangePasswordParams): Single<Boolean>
 
     fun resetPassword(resetPasswordParams: ResetPasswordParams): Single<Boolean>
+
+    fun verifyNewEmail(params: VerifyNewEmailParams): Single<Boolean>
 }

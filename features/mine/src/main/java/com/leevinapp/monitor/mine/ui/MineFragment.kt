@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.leevinapp.monitor.common.UiUtil
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.common.ui.extensions.navigationToLogonFragment
 import com.leevinapp.monitor.core.core.user.UserManager
@@ -15,19 +14,14 @@ import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.MineConstants
-import com.leevinapp.monitor.mine.domain.model.MenuModel.ABOUT
 import com.leevinapp.monitor.mine.domain.model.MenuModel.ACCESS_TRANSFER
 import com.leevinapp.monitor.mine.domain.model.MenuModel.APPLY_REFER_ORGANIZATION
-import com.leevinapp.monitor.mine.domain.model.MenuModel.AUTHENTICATION
 import com.leevinapp.monitor.mine.domain.model.MenuModel.AUTH_ACCOUNT
 import com.leevinapp.monitor.mine.domain.model.MenuModel.PARENT_ORGANIZATION_APPLY
-import com.leevinapp.monitor.mine.domain.model.MenuModel.PERSONAL_INFORMATION
-import com.leevinapp.monitor.mine.domain.model.MenuModel.SECURITY_APP
-import com.leevinapp.monitor.mine.ui.adapter.MineMenuAdapter
 import com.leevinapp.monitor.mine.ui.adapter.TextMenuAdapter
 import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthSelectionFragment
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.mine_fragment.*
+import javax.inject.Inject
 
 class MineFragment : BaseFragment() {
 
@@ -37,18 +31,11 @@ class MineFragment : BaseFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment
+    private var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment? = null
 
     val viewModel: MineViewModel by viewModels {
         viewModelFactory
     }
-
-    private val menusVertical = mutableListOf(
-        PERSONAL_INFORMATION,
-        SECURITY_APP,
-        AUTHENTICATION,
-        ABOUT
-    )
 
     private val menusHorizontal = mutableListOf(
         PARENT_ORGANIZATION_APPLY,
@@ -74,32 +61,24 @@ class MineFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mineMenuAdapter = MineMenuAdapter(menusVertical) {
-            when (it) {
-                PERSONAL_INFORMATION -> {
-                    findNavController().navigate(MineFragmentDirections.mineActionMinefragmentToMinepersonalinfofragment())
-                }
-                SECURITY_APP -> {
-                    findNavController().navigate(R.id.mine_action_minefragment_to_minesecurityfragment)
-                }
-                AUTHENTICATION -> {
-                    // TODO: 2020/9/3 to be refactor activity result
-                    // identityAuthSelectionFragment.setTargetFragment(this,TARGET_REQUEST_CODE)
-                    identityAuthSelectionFragment.show(
-                        childFragmentManager,
-                        MineIdentityAuthSelectionFragment::class.simpleName
-                    )
-                }
-                ABOUT -> {
-                    findNavController().navigate(R.id.mine_action_minefragment_to_mineaboutfragment)
-                }
-            }
+        iv_personal_info.setOnClickListener {
+            findNavController().navigate(MineFragmentDirections.mineActionMinefragmentToMinepersonalinfofragment())
         }
-        recycler_view.adapter = mineMenuAdapter
-        recycler_view.setHasFixedSize(true)
-        recycler_view.addItemDecoration(
-            UiUtil.getDividerDecoration(requireContext())
-        )
+
+        iv_identity_or_organ_auth.setOnClickListener {
+            identityAuthSelectionFragment?.show(
+                childFragmentManager,
+                MineIdentityAuthSelectionFragment::class.simpleName
+            )
+        }
+
+        iv_security.setOnClickListener {
+            findNavController().navigate(R.id.mine_action_minefragment_to_minesecurityfragment)
+        }
+
+        iv_about.setOnClickListener {
+            findNavController().navigate(R.id.mine_action_minefragment_to_mineaboutfragment)
+        }
 
         // horizental menu
         container_menu.adapter = TextMenuAdapter(menusHorizontal) {
@@ -115,11 +94,17 @@ class MineFragment : BaseFragment() {
             findNavController().navigationToLogonFragment()
         }
 
+        iv_avatar.setOnClickListener {
+            findNavController().navigationToLogonFragment()
+        }
+
         viewModel.isLogged.postValue(userManager.isLogged)
 
-        identityAuthSelectionFragment =
-            MineIdentityAuthSelectionFragment.newInstance(MineConstants.auth_ways)
-        identityAuthSelectionFragment.setSelectedCallback { option ->
+        if (identityAuthSelectionFragment == null) {
+            identityAuthSelectionFragment =
+                MineIdentityAuthSelectionFragment.newInstance(MineConstants.auth_ways)
+        }
+        identityAuthSelectionFragment?.setSelectedCallback { option ->
             when (option.id) {
                 0 -> {
                     findNavController().navigate(R.id.mine_action_minefragment_to_ordinaryuserauthfragment)

@@ -12,16 +12,12 @@ import com.leevinapp.monitor.auth.R
 import com.leevinapp.monitor.auth.databinding.AuthFragmentChangePasswordBinding
 import com.leevinapp.monitor.auth.di.buildComponent
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
-import com.leevinapp.monitor.core.core.user.UserManager
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.auth_fragment_change_password.*
+import javax.inject.Inject
 
 class ChangePasswordFragment : BaseFragment() {
 
     private lateinit var viewBinding: AuthFragmentChangePasswordBinding
-
-    @Inject
-    lateinit var userManager: UserManager
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

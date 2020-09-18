@@ -12,12 +12,12 @@ import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.auth.R
 import com.leevinapp.monitor.auth.databinding.AuthFragmentForgotPasswordBinding
 import com.leevinapp.monitor.auth.di.buildComponent
-import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.E_MAIL
+import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.EMAIL
 import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.SMS
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.core.user.UserManager
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.auth_fragment_forgot_password.*
+import javax.inject.Inject
 
 class ForgotPasswordFragment : BaseFragment() {
 
@@ -54,7 +54,7 @@ class ForgotPasswordFragment : BaseFragment() {
         tv_change_email.setOnClickListener {
             container_email.visibility = View.VISIBLE
             container_sms_code.visibility = View.GONE
-            viewModel.resetType = E_MAIL
+            viewModel.resetType = EMAIL
         }
 
         tv_change_sms_code.setOnClickListener {

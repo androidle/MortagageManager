@@ -105,6 +105,7 @@
                app:editHint="@string/mine_input_please"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintStart_toStartOf="parent"
+               app:hasArrow="true"
                app:layout_constraintTop_toBottomOf="@+id/iev_address"
                app:label="安全邮箱" />
        </androidx.constraintlayout.widget.ConstraintLayout>

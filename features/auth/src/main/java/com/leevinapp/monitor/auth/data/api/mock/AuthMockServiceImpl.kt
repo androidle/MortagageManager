@@ -11,6 +11,7 @@ import com.leevinapp.monitor.auth.data.api.response.ResetPasswordParams
 import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeParams
 import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeResponse
 import com.leevinapp.monitor.auth.data.api.response.TestResponse
+import com.leevinapp.monitor.auth.data.api.response.VerifyNewEmailParams
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.core.core.network.mock.MockApiUtil
 import io.reactivex.Single
@@ -62,6 +63,10 @@ class AuthMockServiceImpl(private val mockApiUtil: MockApiUtil) :
     }
 
     override fun resetPassword(params: ResetPasswordParams): Single<ApiResponse<Any>> {
+        TODO("Not yet implemented")
+    }
+
+    override fun verifyNewEmail(params: VerifyNewEmailParams): Single<ApiResponse<Any>> {
         TODO("Not yet implemented")
     }
 }

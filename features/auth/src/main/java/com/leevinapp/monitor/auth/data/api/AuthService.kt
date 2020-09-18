@@ -9,6 +9,7 @@ import com.leevinapp.monitor.auth.data.api.response.ResetPasswordParams
 import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeParams
 import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeResponse
 import com.leevinapp.monitor.auth.data.api.response.TestResponse
+import com.leevinapp.monitor.auth.data.api.response.VerifyNewEmailParams
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import io.reactivex.Single
 import retrofit2.http.Body
@@ -57,4 +58,7 @@ interface AuthService {
 
     @POST("app/user/resetPassword")
     fun resetPassword(@Body params: ResetPasswordParams): Single<ApiResponse<Any>>
+
+    @POST("app/user/verifyNewEmail")
+    fun verifyNewEmail(@Body params: VerifyNewEmailParams): Single<ApiResponse<Any>>
 }

@@ -8,6 +8,7 @@ import com.leevinapp.monitor.auth.data.api.response.LoginResponse
 import com.leevinapp.monitor.auth.data.api.response.RegisterUserParams
 import com.leevinapp.monitor.auth.data.api.response.ResetPasswordParams
 import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeParams
+import com.leevinapp.monitor.auth.data.api.response.VerifyNewEmailParams
 import com.leevinapp.monitor.auth.domain.AuthRepository
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -75,6 +76,13 @@ class AuthRepositoryImpl(private val authService: AuthService) :
 
     override fun resetPassword(resetPasswordParams: ResetPasswordParams): Single<Boolean> {
         return authService.resetPassword(params = resetPasswordParams)
+            .map { it.success }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun verifyNewEmail(params: VerifyNewEmailParams): Single<Boolean> {
+        return authService.verifyNewEmail(params)
             .map { it.success }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

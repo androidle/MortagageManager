@@ -45,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/dimen_common_margin"
-                    android:text="@{viewModel.userRole}"
+                    android:text="@{viewModel.username}"
                     android:textColor="@color/color_monitor_white"
                     android:textSize="@dimen/text_size_medium"
                     app:layout_constraintBottom_toTopOf="@+id/tv_user_role"
@@ -115,17 +115,41 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/container_menu" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view"
+                <com.leevinapp.monitor.core.common.view.ItemView
+                    android:id="@+id/iv_personal_info"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toTopOf="@+id/btn_logout"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_divider"
-                    tools:itemCount="4"
-                    tools:listitem="@layout/mine_item_menu" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:label="@string/mine_personal_info"
+                    app:layout_constraintTop_toBottomOf="@+id/view_divider"/>
+
+                <com.leevinapp.monitor.core.common.view.ItemView
+                    android:id="@+id/iv_security"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:label="@string/mine_security"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_personal_info"/>
+
+                <com.leevinapp.monitor.core.common.view.ItemView
+                    android:id="@+id/iv_identity_or_organ_auth"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:label="@string/mine_identity_or_organ_auth"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_security"/>
+
+                <com.leevinapp.monitor.core.common.view.ItemView
+                    android:id="@+id/iv_about"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:label="@string/mine_about"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_identity_or_organ_auth"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_logout"
@@ -135,7 +159,7 @@
                     android:text="退出登录"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recycler_view"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_about"
                     app:layout_constraintWidth_percent="0.8" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

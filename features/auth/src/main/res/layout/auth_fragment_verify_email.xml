@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <variable
+            name="viewModel"
+            type="com.leevinapp.monitor.auth.ui.VerifyEmailViewModel" />
+    </data>
+    
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,17 +38,19 @@
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="@dimen/dimen_common_margin"
                 app:editHint="@string/auth_email_address_hint"
+                app:editValue="@={viewModel.email}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:name="@string/auth_email_address" />
 
             <com.leevinapp.monitor.core.common.view.ItemEditView
-                android:id="@+id/iev_new_password"
+                android:id="@+id/iev_email_verify_code"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 app:editHint="@string/auth_sms_code_hint"
+                app:editValue="@={viewModel.emailVerifyCode}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iev_email"

@@ -4,12 +4,6 @@ enum class MenuModel(
     var value: String,
     var content: String = ""
 ) {
-    // mine
-    PERSONAL_INFORMATION("个人资料"),
-    SECURITY_APP("账号安全"),
-    AUTHENTICATION("身份认证/企业认证"),
-    ABOUT("关于押品管家"),
-
     // about
     SERVICE("服务协议"),
     PRIVACY("隐私政策"),
