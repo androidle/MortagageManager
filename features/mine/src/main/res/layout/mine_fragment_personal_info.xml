@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.leevinapp.monitor.mine.ui.PersonalInfoViewModel" />
+            type="com.leevinapp.monitor.mine.ui.generalInfo.PersonalInfoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

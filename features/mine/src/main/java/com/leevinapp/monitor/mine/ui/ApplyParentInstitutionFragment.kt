@@ -13,12 +13,12 @@ import com.leevinapp.monitor.mine.databinding.MineFragmentApplyParentOrganBindin
 import com.leevinapp.monitor.mine.di.buildComponent
 import javax.inject.Inject
 
-class ApplyParentOrganFragment : ViewModelFragment()  {
+class ApplyParentInstitutionFragment : ViewModelFragment()  {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    val viewModel: ApplyParentOrganViewModel by viewModels {
+    val viewModel: ApplyParentInstitutionViewModel by viewModels {
         viewModelFactory
     }
 
@@ -35,7 +35,7 @@ class ApplyParentOrganFragment : ViewModelFragment()  {
     ): View? {
         return MineFragmentApplyParentOrganBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
-            viewModel = this@ApplyParentOrganFragment.viewModel
+            viewModel = this@ApplyParentInstitutionFragment.viewModel
             viewBinding = this
         }.root
     }
@@ -45,7 +45,7 @@ class ApplyParentOrganFragment : ViewModelFragment()  {
     }
 
     override fun getTitleBarTitle(): String {
-        return getString(R.string.mine_apply_parent_organ)
+        return getString(R.string.mine_apply_parent_institution)
     }
 
     override fun initDependencyInjection() {

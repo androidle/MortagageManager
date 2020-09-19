@@ -17,7 +17,7 @@ import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthSelectionFragm
 import kotlinx.android.synthetic.main.mine_fragment_general_info.*
 import javax.inject.Inject
 
-class MineGeneralInfoFragment : BaseFragment() {
+class GeneralInfoFragment : BaseFragment() {
 
     @Inject
     lateinit var userManager: UserManager
@@ -41,7 +41,7 @@ class MineGeneralInfoFragment : BaseFragment() {
     ): View? {
         return MineFragmentGeneralInfoBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
-            viewModel = this@MineGeneralInfoFragment.viewModel
+            viewModel = this@GeneralInfoFragment.viewModel
             viewBinding = this
         }.root
     }

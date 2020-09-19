@@ -32,11 +32,14 @@
     <string name="mine_operating_period">营业期限</string>
     <string name="mine_business_scope">经营范围</string>
     <string name="mine_organ_administrator">机构管理员</string>
-    <string name="mine_apply_parent_organ">申请分解机构</string>
+    <string name="mine_apply_parent_institution">申请父机构</string>
     <string name="mine_menu_apply_sheets">申请单</string>
     <string name="mine_menu_notification">通知</string>
-    <string name="mine_menu_sub_organ">下级机构</string>
-    <string name="mine_menu_organ_user">机构用户</string>
+    <string name="mine_menu_sub_institutions">下级机构</string>
+    <string name="mine_menu_institution_user">机构用户</string>
+    <string name="mine_menu_access_transfer">权限转移</string>
+    <string name="mine_menu_apply_attached_institution">申请挂靠机构</string>
+    <string name="mine_menu_auth_account">认证账户</string>
 
 
 

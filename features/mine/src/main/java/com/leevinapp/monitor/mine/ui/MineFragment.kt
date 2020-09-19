@@ -57,41 +57,39 @@ class MineFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // horizental menu
+        // horizontal menu
         container_menu.adapter = TextMenuAdapter(menusHorizontal) {
-            // TODO: 2020/9/9
             when (it) {
                 PARENT_ORGANIZATION_APPLY -> {
                     findNavController().navigate(R.id.mine_action_minefragment_to_applyparentorganfragment)
                 }
                 ACCESS_TRANSFER -> {
-
+                    findNavController().navigate(R.id.mine_action_minefragment_to_accesstransferfragment)
                 }
                 APPLY_REFER_ORGANIZATION -> {
-
+                    findNavController().navigate(R.id.mine_action_minefragment_to_applyattachedinstitutionfragment)
                 }
-
                 AUTH_ACCOUNT -> {
-
+                    findNavController().navigate(R.id.mine_action_minefragment_to_authaccountfragment)
                 }
 
             }
         }
 
         iv_apply_sheets.setOnClickListener {
-
+            findNavController().navigate(R.id.mine_action_minefragment_to_applysheetsfragment)
         }
 
         iv_notification.setOnClickListener {
-
+            findNavController().navigate(R.id.mine_action_minefragment_to_notificationsfragment)
         }
 
-        iv_sub_organ.setOnClickListener {
-
+        iv_sub_institution.setOnClickListener {
+            findNavController().navigate(R.id.mine_action_minefragment_to_subinstitutionsfragment)
         }
 
-        iv_organ_user.setOnClickListener {
-
+        iv_institution_user.setOnClickListener {
+            findNavController().navigate(R.id.mine_action_minefragment_to_institutionuserfragment)
         }
 
         btn_goto_logon.setOnClickListener {

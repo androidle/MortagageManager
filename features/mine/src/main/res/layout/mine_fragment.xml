@@ -136,24 +136,24 @@
                     app:layout_constraintTop_toBottomOf="@+id/iv_apply_sheets"/>
 
                 <com.leevinapp.monitor.core.common.view.ItemView
-                    android:id="@+id/iv_sub_organ"
+                    android:id="@+id/iv_sub_institution"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:startIcon="@drawable/ic_assignment"
-                    app:label="@string/mine_menu_sub_organ"
+                    app:label="@string/mine_menu_sub_institutions"
                     app:layout_constraintTop_toBottomOf="@+id/iv_notification"/>
 
                 <com.leevinapp.monitor.core.common.view.ItemView
-                    android:id="@+id/iv_organ_user"
+                    android:id="@+id/iv_institution_user"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:startIcon="@drawable/ic_assignment"
-                    app:label="@string/mine_menu_organ_user"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_sub_organ"/>
+                    app:label="@string/mine_menu_institution_user"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_sub_institution"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

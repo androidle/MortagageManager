@@ -1,4 +1,4 @@
-package com.leevinapp.monitor.mine.ui
+package com.leevinapp.monitor.mine.ui.generalInfo
 
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.mine.data.response.GetUserProfileResponse

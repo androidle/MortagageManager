@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.leevinapp.monitor.mine.ui.ApplyParentOrganViewModel" />
+            type="com.leevinapp.monitor.mine.ui.ApplyParentInstitutionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
