@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/content_background_all_round"
+    android:paddingHorizontal="@dimen/dimen_common_margin_1"
+    android:paddingVertical="@dimen/dimen_common_margin"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_title_name"
+        style="@style/MonitorText.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:paddingVertical="10dp"
+        tools:text="内蒙古银行股份有限公司"
+        android:layout_marginHorizontal="@dimen/dimen_common_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:drawableEnd="@drawable/ic_arrow_right"
+        android:textColor="#424242"/>
+
+    <LinearLayout
+        android:id="@+id/container_content"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_name"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/dimen_common_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content">
+
+        <com.leevinapp.monitor.core.common.view.ItemEditView
+            android:id="@+id/iev_uniform_social_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isEditable="false"
+            app:name="@string/mine_social_code" />
+
+        <com.leevinapp.monitor.core.common.view.ItemEditView
+            android:id="@+id/iev_company_presenter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isEditable="false"
+            app:name="@string/mine_company_presenter" />
+
+        <com.leevinapp.monitor.core.common.view.ItemEditView
+            android:id="@+id/iev_registered_capital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isEditable="false"
+            app:name="@string/mine_registered_capital" />
+
+        <com.leevinapp.monitor.core.common.view.ItemEditView
+            android:id="@+id/iev_date_of_found"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isEditable="false"
+            app:name="@string/mine_date_of_found" />
+
+        <com.leevinapp.monitor.core.common.view.ItemEditView
+            android:id="@+id/iev_operating_period"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isEditable="false"
+            app:name="@string/mine_operating_period" />
+
+
+        <com.leevinapp.monitor.core.common.view.ItemEditView
+            android:id="@+id/iev_organ_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isEditable="false"
+            app:name="@string/mine_organ_address" />
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_business_scope"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/dimen_common_margin"
+            app:counterEnabled="false"
+            app:hintEnabled="false"
+            android:enabled="false">
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/MonitorText.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/dimen_common_margin"
+                android:text="@string/mine_business_scope" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_business_scope"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=""
+                android:enabled="false"
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.leevinapp.monitor.core.common.view.ItemEditView
+            android:id="@+id/iev_organ_administrator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isEditable="false"
+            app:name="@string/mine_organ_administrator" />
+
+        <com.leevinapp.monitor.core.common.view.ItemEditView
+            android:id="@+id/iev_administrator_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isEditable="false"
+            app:name="@string/mine_organ_administrator_phone" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

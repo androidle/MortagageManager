@@ -20,6 +20,7 @@
     <string name="mine_company_full_name">单位全称</string>
     <string name="mine_identity_type">身份类别</string>
     <string name="mine_social_code">社会统一信用代码</string>
+    <string name="mine_role">角色</string>
     <string name="mine_job_position">工作职务</string>
     <string name="mine_monitor_organ_social_code">监管机构统一社会信用代码</string>
     <string name="mine_monitor_organ">监管机构</string>
@@ -45,7 +46,8 @@
     <string name="mine_notification_read">已读</string>
     <string name="mine_notification_unread">未读</string>
     <string name="mine_notification_applicant">申请人: %1$s</string>
-
+    <string name="mine_organ_administrator_phone">管理员手机号</string>
+    <string name="mine_phone_number">手机号码</string>
 
 
     <string-array name="mine_auth_way">

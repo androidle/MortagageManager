@@ -34,6 +34,7 @@ class ItemEditView @JvmOverloads constructor(
             return et_value.isEnabled
         }
         set(value) {
+            et_value.hint = ""
             et_value.isEnabled = value
         }
 
