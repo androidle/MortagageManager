@@ -14,5 +14,7 @@ class UserModel(
     var securityAnswer: String = "",
     var isAuthenticated: Boolean = false,
     var residenceId: Int = 0,
-    var homeAddress: String = ""
+    var homeAddress: String = "",
+    var identityType:String = "",
+    var identityNumber:String = ""
 )

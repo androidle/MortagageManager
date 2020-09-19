@@ -3,8 +3,9 @@ package com.leevinapp.monitor.mine.di
 import com.leevinapp.monitor.core.core.di.CoreComponent
 import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
 import com.leevinapp.monitor.mine.ui.ApplyParentInstitutionFragment
-import com.leevinapp.monitor.mine.ui.MineFragment
 import com.leevinapp.monitor.mine.ui.GeneralInfoFragment
+import com.leevinapp.monitor.mine.ui.MineFragment
+import com.leevinapp.monitor.mine.ui.NotificationDetailsFragment
 import com.leevinapp.monitor.mine.ui.generalInfo.MinePersonalInfoFragment
 import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthFragment
 import com.leevinapp.monitor.mine.ui.identityauth.MortgageUserAuthFragment
@@ -23,4 +24,5 @@ interface MineComponent {
     fun inject(fragment: OrganizationAuthFragment)
     fun inject(fragment: ApplyParentInstitutionFragment)
     fun inject(fragment: GeneralInfoFragment)
+    fun inject(fragment: NotificationDetailsFragment)
 }

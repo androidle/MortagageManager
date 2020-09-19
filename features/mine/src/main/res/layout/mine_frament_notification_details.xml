@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="userManager"
+            type="com.leevinapp.monitor.core.core.user.UserManager" />
+        <variable
+            name="dataModel"
+            type="com.leevinapp.monitor.mine.domain.model.NotificationModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_monitor_background_heavy">
+
+        <include
+            android:id="@+id/toolbar_container"
+            layout="@layout/toolbar_binding" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_common_margin"
+            android:layout_marginHorizontal="@dimen/dimen_common_margin"
+            android:background="@drawable/content_background_all_round"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingVertical="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_container">
+
+
+            <TextView
+                android:id="@+id/tv_status"
+                style="@style/MonitorText.Title"
+                android:layout_marginHorizontal="@dimen/dimen_common_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="申请成功"
+                />
+
+            <TextView
+                android:id="@+id/tv_data"
+                style="@style/MonitorText.Content"
+                android:gravity="start"
+                android:textColor="#424242"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@{dataModel.date}"
+                app:layout_constraintStart_toStartOf="@+id/tv_status"
+                app:layout_constraintTop_toBottomOf="@+id/tv_status"
+                tools:text="2020-03-05"
+                />
+
+            <com.leevinapp.monitor.core.common.view.ItemView
+                android:id="@+id/iev_real_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="@dimen/dimen_common_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_data"
+                app:label="@string/mine_real_name"
+                app:value="@{userManager.user.fullname}"
+                app:hasArrow="false"
+                />
+
+            <com.leevinapp.monitor.core.common.view.ItemView
+                android:id="@+id/iv_identity_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iev_real_name"
+                app:label="@string/mine_identity_type"
+                app:value="@{userManager.user.identityType}"
+                app:hasArrow="false"
+                />
+
+            <com.leevinapp.monitor.core.common.view.ItemView
+                android:id="@+id/iv_identity_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_identity_type"
+                app:label="@string/mine_identity_num"
+                app:value="@{userManager.user.identityNumber}"
+                app:hasArrow="false"
+                />
+
+            <com.leevinapp.monitor.core.common.view.ItemView
+                android:id="@+id/iv_home_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_identity_num"
+                app:label="@string/mine_address"
+                app:value="@{userManager.user.homeAddress}"
+                app:hasArrow="false"
+                />
+
+            <com.leevinapp.monitor.core.common.view.ItemView
+                android:id="@+id/iev_company_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:value="@{userManager.user.organName}"
+                app:layout_constraintTop_toBottomOf="@+id/iv_home_address"
+                app:label="@string/mine_company_full_name"
+                app:hasArrow="false"
+                />
+
+            <com.leevinapp.monitor.core.common.view.ItemView
+                android:id="@+id/iev_job_position"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:value="@{userManager.user.jobPosition}"
+                app:layout_constraintTop_toBottomOf="@+id/iev_company_name"
+                app:label="@string/mine_job_position"
+                app:hasArrow="false"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

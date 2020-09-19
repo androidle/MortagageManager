@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/item_notification_background"
+    android:paddingHorizontal="@dimen/dimen_common_margin"
+    android:paddingVertical="23dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/MonitorText.Title"
+        android:gravity="start"
+        android:textColor="#424242"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="XXX申请成本机构用户"
+        />
+
+    <TextView
+        android:id="@+id/tv_isRead"
+        style="@style/MonitorText.Title"
+        android:gravity="start"
+        android:background="@drawable/notification_read_status_selector"
+        android:textColor="@color/notification_read_status_text_color"
+        android:layout_width="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="未读"
+        />
+
+    <TextView
+        android:id="@+id/tv_data"
+        style="@style/MonitorText.Content"
+        android:gravity="start"
+        android:textColor="#424242"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        tools:text="2020-03-05"
+        />
+
+    <TextView
+        android:id="@+id/tv_applicant"
+        style="@style/MonitorText.Content"
+        android:gravity="start"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_data"
+        tools:text="申请人：王小华"
+        />
+
+    <TextView
+        android:id="@+id/tv_phone_number"
+        style="@style/MonitorText.Content"
+        android:gravity="start"
+        android:textColor="@color/color_monitor_text_blue"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="15dp"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/mine_ic_phone"
+        android:layout_marginStart="@dimen/dimen_common_margin"
+        app:layout_constraintStart_toEndOf="@+id/tv_applicant"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_applicant"
+        tools:text="18712345678"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
