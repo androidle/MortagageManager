@@ -6,7 +6,6 @@ import com.leevinapp.monitor.core.BuildConfig
 import com.leevinapp.monitor.core.core.network.interceptor.HeaderInterceptor
 import com.leevinapp.monitor.core.core.network.interceptor.NetworkConnectionInterceptor
 import com.leevinapp.monitor.core.core.network.mock.MockApiUtil
-import com.leevinapp.monitor.core.core.user.UserManager
 import dagger.Module
 import dagger.Provides
 import java.util.concurrent.TimeUnit
@@ -41,7 +40,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun providerOkHttpClient(userManager: UserManager): OkHttpClient {
+    fun providerOkHttpClient(): OkHttpClient {
         val builder = OkHttpClient.Builder()
         builder
             .addInterceptor(object : NetworkConnectionInterceptor() {

@@ -9,7 +9,7 @@ import com.leevinapp.monitor.core.common.ui.dialog.LoadingDialogFragment
 abstract class ViewModelFragment : BaseFragment() {
 
     private var loadingDialogFragment = LoadingDialogFragment()
-    private var errorDialogFragment = ErrorDialogFragment.newInstance("")
+    private var errorDialogFragment = ErrorDialogFragment.newInstance(null)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

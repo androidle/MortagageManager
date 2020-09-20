@@ -1,13 +1,14 @@
 package com.leevinapp.monitor.mine.di
 
-import com.leevinapp.monitor.auth.data.AuthRepositoryImpl
+import com.leevinapp.monitor.auth.data.PostAuthRepositoryImpl
 import com.leevinapp.monitor.auth.data.api.AuthService
-import com.leevinapp.monitor.auth.domain.AuthRepository
+import com.leevinapp.monitor.auth.data.api.PostAuthService
+import com.leevinapp.monitor.auth.domain.PostAuthRepository
 import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
-import com.leevinapp.monitor.core.core.network.interceptor.PostLogonHeaderInterceptor
-import com.leevinapp.monitor.core.core.network.mock.MockApi
+import com.leevinapp.monitor.core.core.network.NetworkUtil
 import com.leevinapp.monitor.core.core.network.mock.MockApiUtil
-import com.leevinapp.monitor.core.core.network.mock.RealApi
+import com.leevinapp.monitor.core.core.network.qualifier.MockApi
+import com.leevinapp.monitor.core.core.network.qualifier.RealApi
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.data.MineRepositoryImpl
 import com.leevinapp.monitor.mine.data.api.MineService
@@ -29,39 +30,29 @@ class MineModule {
     @RealApi
     @FeatureScope
     @Provides
-    fun providerApiService(retrofit: Retrofit): MineService {
-        return retrofit.create(MineService::class.java)
+    fun providerApiService(
+        retrofit: Retrofit,
+        okHttpClient: OkHttpClient,
+        userManager: UserManager
+    ): MineService {
+        val newRetrofit = NetworkUtil.postLogonRetrofit(retrofit, okHttpClient, userManager)
+        return newRetrofit.create(MineService::class.java)
     }
 
 
     @Provides
     @FeatureScope
-    fun providerAuthRepository(@RealApi authService: AuthService,userManager: UserManager): AuthRepository {
-        return AuthRepositoryImpl(authService,userManager)
+    fun providerAuthRepository(@RealApi authService: PostAuthService, userManager: UserManager): PostAuthRepository {
+        return PostAuthRepositoryImpl(authService,userManager)
     }
 
     @RealApi
     @FeatureScope
     @Provides
-    fun providerAuthService(retrofit: Retrofit,okHttpClient: OkHttpClient,userManager: UserManager): AuthService {
-        val postLogonHeaderInterceptor = object : PostLogonHeaderInterceptor() {
-            override fun getToken(): String {
-                return userManager.token
-            }
-        }
-        val newClientBuilder = okHttpClient.newBuilder()
-        newClientBuilder
-            .interceptors()
-            .add(0, postLogonHeaderInterceptor)
-
-        val newRetrofit = retrofit
-            .newBuilder()
-            .client(newClientBuilder.build())
-            .build()
-        return newRetrofit.create(AuthService::class.java)
+    fun providerAuthService(retrofit: Retrofit,okHttpClient: OkHttpClient,userManager: UserManager): PostAuthService {
+        val newRetrofit = NetworkUtil.postLogonRetrofit(retrofit, okHttpClient, userManager)
+        return newRetrofit.create(PostAuthService::class.java)
     }
-
-
 
     @MockApi
     @FeatureScope

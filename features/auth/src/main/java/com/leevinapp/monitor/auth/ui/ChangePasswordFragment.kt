@@ -47,7 +47,7 @@ class ChangePasswordFragment : ViewModelFragment() {
         }
 
         viewModel.changePasswordResult.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(requireContext(), if (it) "修改成功" else "修改失败", Toast.LENGTH_SHORT)
+            Toast.makeText(requireContext(), if (it) "修改成功" else "修改失败", Toast.LENGTH_LONG)
             if (it) {
                 findNavController().navigateUp()
             }

@@ -1,15 +1,12 @@
 package com.leevinapp.monitor.auth.data
 
 import com.leevinapp.monitor.auth.data.api.AuthService
-import com.leevinapp.monitor.auth.data.api.response.ChangePasswordParams
 import com.leevinapp.monitor.auth.data.api.response.LoginParams
 import com.leevinapp.monitor.auth.data.api.response.LoginResponse
 import com.leevinapp.monitor.auth.data.api.response.RegisterUserParams
 import com.leevinapp.monitor.auth.data.api.response.ResetPasswordParams
 import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeParams
-import com.leevinapp.monitor.auth.data.api.response.VerifyNewEmailParams
 import com.leevinapp.monitor.auth.domain.AuthRepository
-import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.core.core.user.UserManager
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -66,31 +63,8 @@ class AuthRepositoryImpl(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun logout(): Single<ApiResponse<Any>> {
-        return authService.logout(userManager.user.userId)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
-
-    override fun changePassword(changePasswordParams: ChangePasswordParams): Single<ApiResponse<Any>> {
-        return authService.changePassword(
-            params = changePasswordParams,
-            userId = userManager.user.userId,
-            token = userManager.token
-        )
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
-
     override fun resetPassword(resetPasswordParams: ResetPasswordParams): Single<Boolean> {
         return authService.resetPassword(params = resetPasswordParams)
-            .map { it.success }
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
-
-    override fun verifyNewEmail(params: VerifyNewEmailParams): Single<Boolean> {
-        return authService.verifyNewEmail(params)
             .map { it.success }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

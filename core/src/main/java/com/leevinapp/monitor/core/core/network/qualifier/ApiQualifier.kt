@@ -1,4 +1,4 @@
-package com.leevinapp.monitor.core.core.network.mock
+package com.leevinapp.monitor.core.core.network.qualifier
 
 import javax.inject.Qualifier
 

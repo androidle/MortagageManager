@@ -17,9 +17,4 @@ class LoadingDialogFragment : DialogFragment() {
         isCancelable = false
         return inflater.inflate(R.layout.fragment_loading_dialog, container, false)
     }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // setStyle(STYLE_NO_FRAME, R.style.LoadingDialog)
-    }
 }

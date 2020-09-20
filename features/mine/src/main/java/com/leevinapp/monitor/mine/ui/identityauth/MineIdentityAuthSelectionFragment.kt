@@ -35,7 +35,7 @@ class MineIdentityAuthSelectionFragment : BottomSheetDialogFragment() {
         root.picker.setFormatter {
             stringArray[it]
         }
-        root.picker.setOnValueChangedListener { picker, oldVal, newVal ->
+        root.picker.setOnValueChangedListener { _, _, newVal ->
             selectedPosition = newVal
         }
 

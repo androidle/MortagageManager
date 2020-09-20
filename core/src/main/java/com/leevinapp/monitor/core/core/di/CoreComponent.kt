@@ -13,7 +13,7 @@ import retrofit2.Retrofit
 @Component(modules = [CoreModule::class, NetworkModule::class])
 interface CoreComponent {
     fun context(): Context
-    fun okhttpClient(): OkHttpClient
+    fun okHttpClient(): OkHttpClient
     fun retrofit(): Retrofit
     fun userManager(): UserManager
     fun storage(): Storage

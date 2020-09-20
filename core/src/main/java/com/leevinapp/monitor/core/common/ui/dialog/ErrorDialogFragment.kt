@@ -14,7 +14,7 @@ class ErrorDialogFragment : DialogFragment() {
 
     companion object {
         private const val KEY_MESSAGE = "key_message"
-        fun newInstance(errorMessage: String): ErrorDialogFragment {
+        fun newInstance(errorMessage: String?): ErrorDialogFragment {
             return ErrorDialogFragment().apply {
                 arguments = Bundle().apply {
                     putString(KEY_MESSAGE, errorMessage)
@@ -26,7 +26,7 @@ class ErrorDialogFragment : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            message = it.getString(KEY_MESSAGE, "unKnown error")
+            message = it.getString(KEY_MESSAGE, message)
         }
     }
 
