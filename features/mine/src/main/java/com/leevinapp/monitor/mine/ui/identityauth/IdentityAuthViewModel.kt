@@ -22,7 +22,4 @@ class IdentityAuthViewModel @Inject constructor(private val repository: MineRepo
     val operatingPeriod = MutableLiveData("")
     val businessScope = MutableLiveData("")
     val organAdmin = MutableLiveData("")
-
-
 }
-

@@ -14,8 +14,8 @@ import com.leevinapp.monitor.mine.databinding.MineFragmentGeneralInfoBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.MineConstants
 import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthSelectionFragment
-import kotlinx.android.synthetic.main.mine_fragment_general_info.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.mine_fragment_general_info.*
 
 class GeneralInfoFragment : BaseFragment() {
 
@@ -30,7 +30,6 @@ class GeneralInfoFragment : BaseFragment() {
     }
 
     private lateinit var viewBinding: MineFragmentGeneralInfoBinding
-
 
     private var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment? = null
 
@@ -95,7 +94,6 @@ class GeneralInfoFragment : BaseFragment() {
                 }
             }
         }
-
     }
 
     override fun getTitleBarView(): View? {

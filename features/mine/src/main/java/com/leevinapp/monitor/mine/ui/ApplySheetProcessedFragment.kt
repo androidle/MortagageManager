@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.mine.databinding.MineFramentProcessedSheetsBinding
 
-class ApplySheetProcessedFragment:BaseFragment() {
+class ApplySheetProcessedFragment : BaseFragment() {
 
     private lateinit var viewBinding: MineFramentProcessedSheetsBinding
 
@@ -23,7 +23,7 @@ class ApplySheetProcessedFragment:BaseFragment() {
     }
 
     companion object {
-        fun newInstance() : ApplySheetProcessedFragment {
+        fun newInstance(): ApplySheetProcessedFragment {
             return ApplySheetProcessedFragment()
         }
     }

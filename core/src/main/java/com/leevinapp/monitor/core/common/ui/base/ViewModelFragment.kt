@@ -3,13 +3,12 @@ package com.leevinapp.monitor.core.common.ui.base
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import com.leevinapp.monitor.core.common.ui.dialog.ErrorDialogFragment
 import com.leevinapp.monitor.core.common.ui.dialog.LoadingDialogFragment
+import com.leevinapp.monitor.core.common.ui.extensions.showErrorDialog
 
 abstract class ViewModelFragment : BaseFragment() {
 
     private var loadingDialogFragment = LoadingDialogFragment()
-    private var errorDialogFragment = ErrorDialogFragment.newInstance(null)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,16 +29,9 @@ abstract class ViewModelFragment : BaseFragment() {
 
         getViewModel().errorMessage.observe(viewLifecycleOwner, Observer {
             if (it.isNullOrEmpty().not()) {
-                showErrorDialogFragment(it)
+                requireActivity().showErrorDialog(it)
             }
         })
-    }
-
-    private fun showErrorDialogFragment(it: String?) {
-        if (errorDialogFragment.isAdded.not()) {
-            errorDialogFragment.setMessage(it ?: "unknown")
-            errorDialogFragment.show(childFragmentManager, ErrorDialogFragment::class.simpleName)
-        }
     }
 
     abstract fun getViewModel(): BaseViewModel

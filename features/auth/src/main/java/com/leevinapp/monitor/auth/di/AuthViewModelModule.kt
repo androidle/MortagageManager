@@ -34,7 +34,6 @@ internal abstract class AuthViewModelModule {
     @ViewModelKey(ResetPasswordViewModel::class)
     internal abstract fun bindResetPasswordViewModel(resetPasswordViewModel: ResetPasswordViewModel): ViewModel
 
-
     @Binds
     @IntoMap
     @FeatureScope

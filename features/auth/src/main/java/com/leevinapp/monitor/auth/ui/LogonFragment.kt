@@ -6,6 +6,7 @@ import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,17 +17,16 @@ import com.leevinapp.monitor.auth.R.string
 import com.leevinapp.monitor.auth.data.api.response.LoginResponse
 import com.leevinapp.monitor.auth.databinding.AuthFragmentLogonBinding
 import com.leevinapp.monitor.auth.di.buildComponent
-import com.leevinapp.monitor.core.common.ui.base.BaseFragment
-import com.leevinapp.monitor.core.common.ui.extensions.hideLoadingDialog
-import com.leevinapp.monitor.core.common.ui.extensions.showLoadingDialog
+import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
+import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.common.view.CustomClickableSpan
 import com.leevinapp.monitor.core.core.config.Constants
 import com.leevinapp.monitor.core.core.storage.Storage
 import com.leevinapp.monitor.core.core.user.UserManager
-import kotlinx.android.synthetic.main.auth_fragment_logon.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.auth_fragment_logon.*
 
-class LogonFragment : BaseFragment() {
+class LogonFragment : ViewModelFragment() {
 
     @Inject
     lateinit var userManager: UserManager
@@ -92,24 +92,19 @@ class LogonFragment : BaseFragment() {
 
         cb_auto_login.setOnCheckedChangeListener { buttonView, isChecked ->
             userManager.isLogged = isChecked
-            // TODO: 2020/9/8
             if (isChecked) {
             } else {
             }
         }
 
-        viewModel.loading.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                requireActivity().showLoadingDialog()
-            } else {
-                requireActivity().hideLoadingDialog()
-            }
-        })
-
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 logonSuccess(it)
             }
+        })
+
+        viewModel.smsCodeResult.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(requireContext(), if (it) "发送成功" else "发送失败", Toast.LENGTH_SHORT)
         })
     }
 
@@ -134,6 +129,10 @@ class LogonFragment : BaseFragment() {
         }
 
         findNavController().navigateUp()
+    }
+
+    override fun getViewModel(): BaseViewModel {
+        return viewModel
     }
 
     override fun onDestroy() {

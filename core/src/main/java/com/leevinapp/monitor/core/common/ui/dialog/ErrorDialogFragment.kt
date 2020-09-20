@@ -5,12 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.leevinapp.monitor.common.UiUtil
 import com.leevinapp.monitor.core.R
 import kotlinx.android.synthetic.main.fragment_error_dialog.*
 
 class ErrorDialogFragment : DialogFragment() {
 
-    private lateinit var message: String
+    private var message: String? = null
+
+    private var root: View? = null
 
     companion object {
         private const val KEY_MESSAGE = "key_message"
@@ -36,7 +39,11 @@ class ErrorDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         isCancelable = true
-        return inflater.inflate(R.layout.fragment_error_dialog, container, false)
+        if (root == null) {
+            // dialog?.window?.decorView?.setPadding(0,0,0,0)
+            root = inflater.inflate(R.layout.fragment_error_dialog, container, false)
+        }
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,5 +56,20 @@ class ErrorDialogFragment : DialogFragment() {
 
     fun setMessage(message: String) {
         this.message = message
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // resizeDialogFragment()
+    }
+
+    private fun resizeDialogFragment() {
+        dialog?.let {
+            val window = it.window!!
+            val lp = window.attributes
+            lp.width = UiUtil.getScreenSize(requireContext())[0] * 8 / 10
+            lp.height = UiUtil.getScreenSize(requireContext())[1] * 1 / 3
+            window?.setLayout(lp.width, lp.height)
+        }
     }
 }

@@ -40,13 +40,12 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun providerOkHttpClient(): OkHttpClient {
+    fun providerOkHttpClient(context: Context): OkHttpClient {
         val builder = OkHttpClient.Builder()
         builder
             .addInterceptor(object : NetworkConnectionInterceptor() {
                 override fun isNetworkAvailable(): Boolean {
-                    // TODO: 2020/9/19
-                    return true
+                    return NetworkUtil.isNetworkAvailable(context)
                 }
             })
 

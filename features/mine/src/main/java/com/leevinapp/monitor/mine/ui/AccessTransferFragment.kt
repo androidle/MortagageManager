@@ -10,7 +10,7 @@ import com.leevinapp.monitor.mine.databinding.MineFramentAccessTransferBinding
 
 class AccessTransferFragment : BaseFragment() {
 
-    private lateinit var viewBinding:MineFramentAccessTransferBinding
+    private lateinit var viewBinding: MineFramentAccessTransferBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,

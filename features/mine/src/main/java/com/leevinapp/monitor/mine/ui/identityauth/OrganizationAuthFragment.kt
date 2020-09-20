@@ -10,8 +10,8 @@ import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.mine.databinding.MineFragmentAuthOrganizationBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.MineConstants
-import kotlinx.android.synthetic.main.mine_fragment_auth_organization.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.mine_fragment_auth_organization.*
 
 class OrganizationAuthFragment : BaseFragment() {
 

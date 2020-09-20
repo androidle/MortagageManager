@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.mine.databinding.MineFramentPendingSheetsBinding
 
-class ApplySheetPendingFragment:BaseFragment() {
+class ApplySheetPendingFragment : BaseFragment() {
 
     private lateinit var viewBinding: MineFramentPendingSheetsBinding
 
@@ -23,7 +23,7 @@ class ApplySheetPendingFragment:BaseFragment() {
     }
 
     companion object {
-        fun newInstance() : ApplySheetPendingFragment {
+        fun newInstance(): ApplySheetPendingFragment {
             return ApplySheetPendingFragment()
         }
     }

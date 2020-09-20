@@ -39,17 +39,16 @@ class MineModule {
         return newRetrofit.create(MineService::class.java)
     }
 
-
     @Provides
     @FeatureScope
     fun providerAuthRepository(@RealApi authService: PostAuthService, userManager: UserManager): PostAuthRepository {
-        return PostAuthRepositoryImpl(authService,userManager)
+        return PostAuthRepositoryImpl(authService, userManager)
     }
 
     @RealApi
     @FeatureScope
     @Provides
-    fun providerAuthService(retrofit: Retrofit,okHttpClient: OkHttpClient,userManager: UserManager): PostAuthService {
+    fun providerAuthService(retrofit: Retrofit, okHttpClient: OkHttpClient, userManager: UserManager): PostAuthService {
         val newRetrofit = NetworkUtil.postLogonRetrofit(retrofit, okHttpClient, userManager)
         return newRetrofit.create(PostAuthService::class.java)
     }

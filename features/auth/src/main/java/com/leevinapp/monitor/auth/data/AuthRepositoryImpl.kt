@@ -1,12 +1,14 @@
 package com.leevinapp.monitor.auth.data
 
 import com.leevinapp.monitor.auth.data.api.AuthService
-import com.leevinapp.monitor.auth.data.api.response.LoginParams
+import com.leevinapp.monitor.auth.data.api.params.LoginParams
+import com.leevinapp.monitor.auth.data.api.params.RegisterUserParams
+import com.leevinapp.monitor.auth.data.api.params.ResetPasswordParams
+import com.leevinapp.monitor.auth.data.api.params.SendSmsCodeParams
 import com.leevinapp.monitor.auth.data.api.response.LoginResponse
-import com.leevinapp.monitor.auth.data.api.response.RegisterUserParams
-import com.leevinapp.monitor.auth.data.api.response.ResetPasswordParams
-import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeParams
+import com.leevinapp.monitor.auth.data.api.response.RegisterUserResponse
 import com.leevinapp.monitor.auth.domain.AuthRepository
+import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.core.core.user.UserManager
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -22,7 +24,7 @@ class AuthRepositoryImpl(
         phoneNumber: String,
         password: String,
         smsCode: String
-    ): Single<LoginResponse> {
+    ): Single<ApiResponse<LoginResponse>> {
         return authService.login(
             LoginParams(
                 telephone = phoneNumber,
@@ -30,42 +32,35 @@ class AuthRepositoryImpl(
                 smsVerifyCode = smsCode
             )
         )
-            .map {
-                it.data
-            }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun sendSmsCode(phoneNumber: String, smsType: String): Single<Boolean> {
+    override fun sendSmsCode(phoneNumber: String, smsType: String): Single<ApiResponse<Any>> {
         return authService.sendSmsCode(
             SendSmsCodeParams(
                 telephone = phoneNumber,
                 smsType = smsType
             )
         )
-            .map { it.success }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun sendEmailCode(email: String): Single<Boolean> {
+    override fun sendEmailCode(email: String): Single<ApiResponse<Any>> {
         return authService.sendEmailVerifyCode(email)
-            .map { it.success }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun registerUser(registerUserParams: RegisterUserParams): Single<String> {
+    override fun registerUser(registerUserParams: RegisterUserParams): Single<ApiResponse<RegisterUserResponse>> {
         return authService.registerUser(registerUserParams)
-            .map { it.data.token }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun resetPassword(resetPasswordParams: ResetPasswordParams): Single<Boolean> {
+    override fun resetPassword(resetPasswordParams: ResetPasswordParams): Single<ApiResponse<Any>> {
         return authService.resetPassword(params = resetPasswordParams)
-            .map { it.success }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

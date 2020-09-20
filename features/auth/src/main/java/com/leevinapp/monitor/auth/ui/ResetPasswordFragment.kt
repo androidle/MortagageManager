@@ -12,11 +12,12 @@ import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.auth.R
 import com.leevinapp.monitor.auth.databinding.AuthFragmentResetPasswordBinding
 import com.leevinapp.monitor.auth.di.buildComponent
-import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
+import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.auth_fragment_reset_password.*
 
-class ResetPasswordFragment : BaseFragment() {
+class ResetPasswordFragment : ViewModelFragment() {
 
     private lateinit var viewBinding: AuthFragmentResetPasswordBinding
 
@@ -48,7 +49,8 @@ class ResetPasswordFragment : BaseFragment() {
         viewModel.resetPasswordResultResult.observe(viewLifecycleOwner, Observer {
             if (it) {
                 Toast.makeText(requireContext(), "密码已重置", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.logonFragment)
+                findNavController().popBackStack(R.id.logonFragment, false)
+                viewModel.resetPasswordResultResult.postValue(false)
             }
         })
     }
@@ -63,5 +65,9 @@ class ResetPasswordFragment : BaseFragment() {
 
     override fun initDependencyInjection() {
         buildComponent(this).inject(this)
+    }
+
+    override fun getViewModel(): BaseViewModel {
+        return viewModel
     }
 }

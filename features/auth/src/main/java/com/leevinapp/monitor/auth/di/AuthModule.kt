@@ -55,7 +55,7 @@ class AuthModule(val fragment: Fragment) {
         okHttpClient: OkHttpClient,
         userManager: UserManager
     ): PostAuthService {
-        val postLogonRetrofit = NetworkUtil.postLogonRetrofit(retrofit,okHttpClient,userManager)
+        val postLogonRetrofit = NetworkUtil.postLogonRetrofit(retrofit, okHttpClient, userManager)
         return postLogonRetrofit.create(PostAuthService::class.java)
     }
 

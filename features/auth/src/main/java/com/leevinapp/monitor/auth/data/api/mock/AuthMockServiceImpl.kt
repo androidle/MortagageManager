@@ -1,13 +1,12 @@
 package com.leevinapp.monitor.auth.data.api.mock
 
 import com.leevinapp.monitor.auth.data.api.AuthService
-import com.leevinapp.monitor.auth.data.api.response.LoginParams
+import com.leevinapp.monitor.auth.data.api.params.LoginParams
+import com.leevinapp.monitor.auth.data.api.params.RegisterUserParams
+import com.leevinapp.monitor.auth.data.api.params.ResetPasswordParams
+import com.leevinapp.monitor.auth.data.api.params.SendSmsCodeParams
 import com.leevinapp.monitor.auth.data.api.response.LoginResponse
-import com.leevinapp.monitor.auth.data.api.response.RegisterUserParams
 import com.leevinapp.monitor.auth.data.api.response.RegisterUserResponse
-import com.leevinapp.monitor.auth.data.api.response.ResetPasswordParams
-import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeParams
-import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeResponse
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.core.core.network.mock.MockApiUtil
 import io.reactivex.Single
@@ -23,7 +22,7 @@ class AuthMockServiceImpl(private val mockApiUtil: MockApiUtil) :
         TODO("Not yet implemented")
     }
 
-    override fun sendSmsCode(params: SendSmsCodeParams): Single<SendSmsCodeResponse> {
+    override fun sendSmsCode(params: SendSmsCodeParams): Single<ApiResponse<Any>> {
         TODO("Not yet implemented")
     }
 
@@ -38,5 +37,4 @@ class AuthMockServiceImpl(private val mockApiUtil: MockApiUtil) :
     override fun resetPassword(params: ResetPasswordParams): Single<ApiResponse<Any>> {
         TODO("Not yet implemented")
     }
-
 }

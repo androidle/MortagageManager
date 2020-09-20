@@ -10,7 +10,7 @@ import com.leevinapp.monitor.mine.databinding.MineFramentApplyAttachedInstitutio
 
 class ApplyAttachedInstitutionFragment : BaseFragment() {
 
-    private lateinit var viewBinding:MineFramentApplyAttachedInstitutionBinding
+    private lateinit var viewBinding: MineFramentApplyAttachedInstitutionBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,

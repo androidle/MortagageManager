@@ -10,7 +10,7 @@ import com.leevinapp.monitor.mine.databinding.MineFramentAuthAccountBinding
 
 class AuthAccountFragment : BaseFragment() {
 
-    private lateinit var viewBinding:MineFramentAuthAccountBinding
+    private lateinit var viewBinding: MineFramentAuthAccountBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,

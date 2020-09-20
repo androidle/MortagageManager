@@ -6,6 +6,7 @@ import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,16 +15,15 @@ import com.leevinapp.monitor.auth.R
 import com.leevinapp.monitor.auth.databinding.AuthFragmentRegisterBinding
 import com.leevinapp.monitor.auth.di.AuthModule
 import com.leevinapp.monitor.auth.di.DaggerAuthComponent
-import com.leevinapp.monitor.core.common.ui.base.BaseFragment
-import com.leevinapp.monitor.core.common.ui.extensions.hideLoadingDialog
-import com.leevinapp.monitor.core.common.ui.extensions.showLoadingDialog
+import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
+import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.common.view.CustomClickableSpan
 import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.core.core.user.UserManager
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.auth_fragment_register.*
 
-class RegisterFragment : BaseFragment() {
+class RegisterFragment : ViewModelFragment() {
 
     @Inject
     lateinit var userManager: UserManager
@@ -69,19 +69,16 @@ class RegisterFragment : BaseFragment() {
         )
         tv_to_login.text = spannableString
         tv_to_login.movementMethod = LinkMovementMethod.getInstance()
-        viewModel.loading.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                requireActivity().showLoadingDialog()
-            } else {
-                requireActivity().hideLoadingDialog()
-            }
-        })
 
         viewModel.registerSuccessToken.observe(viewLifecycleOwner, Observer {
             if (it.isNotEmpty()) {
                 userManager.token = it
                 findNavController().popBackStack(R.id.logonFragment, true)
             }
+        })
+
+        viewModel.smsCodeResult.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(requireContext(), if (it) "发送成功" else "发送失败", Toast.LENGTH_SHORT)
         })
     }
 
@@ -96,5 +93,9 @@ class RegisterFragment : BaseFragment() {
     override fun onDestroy() {
         iev_sms_code?.cancelTimer()
         super.onDestroy()
+    }
+
+    override fun getViewModel(): BaseViewModel {
+        return viewModel
     }
 }

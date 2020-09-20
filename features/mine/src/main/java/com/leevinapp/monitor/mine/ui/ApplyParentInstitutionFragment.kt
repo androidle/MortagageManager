@@ -13,7 +13,7 @@ import com.leevinapp.monitor.mine.databinding.MineFragmentApplyParentOrganBindin
 import com.leevinapp.monitor.mine.di.buildComponent
 import javax.inject.Inject
 
-class ApplyParentInstitutionFragment : ViewModelFragment()  {
+class ApplyParentInstitutionFragment : ViewModelFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

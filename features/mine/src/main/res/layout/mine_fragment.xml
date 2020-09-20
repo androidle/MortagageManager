@@ -67,6 +67,7 @@
                     tools:text="机构管理员" />
 
                 <ImageView
+                    android:id="@+id/iv_settings"
                     visible="@{viewModel.isLogged}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -1,12 +1,11 @@
 package com.leevinapp.monitor.auth.data.api
 
-import com.leevinapp.monitor.auth.data.api.response.LoginParams
+import com.leevinapp.monitor.auth.data.api.params.LoginParams
+import com.leevinapp.monitor.auth.data.api.params.RegisterUserParams
+import com.leevinapp.monitor.auth.data.api.params.ResetPasswordParams
+import com.leevinapp.monitor.auth.data.api.params.SendSmsCodeParams
 import com.leevinapp.monitor.auth.data.api.response.LoginResponse
-import com.leevinapp.monitor.auth.data.api.response.RegisterUserParams
 import com.leevinapp.monitor.auth.data.api.response.RegisterUserResponse
-import com.leevinapp.monitor.auth.data.api.response.ResetPasswordParams
-import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeParams
-import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeResponse
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import io.reactivex.Single
 import retrofit2.http.Body
@@ -28,7 +27,7 @@ interface AuthService {
     @POST("common/auth/sendSmsCode")
     fun sendSmsCode(
         @Body params: SendSmsCodeParams
-    ): Single<SendSmsCodeResponse>
+    ): Single<ApiResponse<Any>>
 
     @GET("common/auth/sendEmailVerifyCode")
     fun sendEmailVerifyCode(

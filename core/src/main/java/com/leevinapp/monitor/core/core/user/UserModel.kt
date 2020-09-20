@@ -16,5 +16,6 @@ class UserModel(
     var residenceId: Long = 0,
     var homeAddress: String = "",
     var identityType: String = "",
-    var identityNumber: String = ""
+    var identityNumber: String = "",
+    var socialCode: String = ""
 )

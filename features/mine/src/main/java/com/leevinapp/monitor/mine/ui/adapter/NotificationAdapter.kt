@@ -9,7 +9,8 @@ import com.leevinapp.monitor.mine.domain.model.NotificationModel
 import com.leevinapp.monitor.mine.ui.adapter.NotificationAdapter.NotificationViewHolder
 import kotlinx.android.synthetic.main.mine_item_notification.view.*
 
-class NotificationAdapter(private val itemClick:((NotificationModel) -> Unit) ?= null) : RecyclerView.Adapter<NotificationViewHolder>() {
+class NotificationAdapter(private val itemClick: ((NotificationModel) -> Unit)? = null) :
+    RecyclerView.Adapter<NotificationViewHolder>() {
 
     private var notifications = mutableListOf<NotificationModel>()
 
@@ -18,7 +19,7 @@ class NotificationAdapter(private val itemClick:((NotificationModel) -> Unit) ?=
     }
 
     override fun getItemCount(): Int {
-       return notifications.size
+        return notifications.size
     }
 
     fun updateData(notifications: MutableList<NotificationModel>) {
@@ -28,7 +29,7 @@ class NotificationAdapter(private val itemClick:((NotificationModel) -> Unit) ?=
     }
 
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
-        holder.bindData(notifications[position],itemClick)
+        holder.bindData(notifications[position], itemClick)
     }
 
     class NotificationViewHolder private constructor(view: View) : RecyclerView.ViewHolder(view) {
@@ -48,7 +49,8 @@ class NotificationAdapter(private val itemClick:((NotificationModel) -> Unit) ?=
                 }
 
                 tv_data.text = model.date
-                tv_applicant.text = context.getString(R.string.mine_notification_applicant,model.applicant)
+                tv_applicant.text =
+                    context.getString(R.string.mine_notification_applicant, model.applicant)
                 tv_phone_number.text = model.phoneNumber
 
                 setOnClickListener {
@@ -59,7 +61,8 @@ class NotificationAdapter(private val itemClick:((NotificationModel) -> Unit) ?=
 
         companion object {
             fun from(parent: ViewGroup): NotificationViewHolder {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.mine_item_notification,parent,false)
+                val view = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.mine_item_notification, parent, false)
                 return NotificationViewHolder(view)
             }
         }

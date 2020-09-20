@@ -1,14 +1,17 @@
 package com.leevinapp.monitor.auth.ui
 
 import androidx.lifecycle.MutableLiveData
-import com.leevinapp.monitor.auth.data.api.response.ResetPasswordParams
+import com.leevinapp.monitor.auth.data.api.params.ResetPasswordParams
 import com.leevinapp.monitor.auth.domain.AuthRepository
 import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.EMAIL
 import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.SMS
 import com.leevinapp.monitor.auth.domain.model.SMSType
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
-import timber.log.Timber
+import com.leevinapp.monitor.core.core.network.ApiResponse
+import io.reactivex.SingleObserver
+import io.reactivex.disposables.Disposable
 import javax.inject.Inject
+import timber.log.Timber
 
 class ResetPasswordViewModel @Inject constructor(private val authRepository: AuthRepository) : BaseViewModel() {
 
@@ -36,23 +39,40 @@ class ResetPasswordViewModel @Inject constructor(private val authRepository: Aut
 
     fun sendSmsCode() {
         authRepository.sendSmsCode(phoneNumber.value ?: "", SMSType.RESET_PWD.name)
-            .subscribe({
-                Timber.d("====>$it")
-                smsCodeResult.postValue(it)
-            }, {
-                Timber.e("====>$it")
-                smsCodeResult.postValue(false)
+            .subscribe(object : SingleObserver<ApiResponse<Any>> {
+                override fun onSuccess(response: ApiResponse<Any>) {
+                    Timber.d("====>$response")
+                    smsCodeResult.postValue(response.success)
+                    if (!response.success) {
+                        errorMessage.postValue(response.error)
+                    }
+                }
+
+                override fun onSubscribe(d: Disposable) {
+                }
+
+                override fun onError(e: Throwable) {
+                    Timber.e("====>${e.message}")
+                }
             })
     }
 
     fun sendEmailCode() {
         authRepository.sendEmailCode(email.value ?: "")
-            .subscribe({
-                Timber.d("=sendEmailCode===>$it")
-                emailCodeResult.postValue(it)
-            }, {
-                Timber.e("=sendEmailCode===>$it")
-                emailCodeResult.postValue(false)
+            .subscribe(object : SingleObserver<ApiResponse<Any>> {
+                override fun onSuccess(response: ApiResponse<Any>) {
+                    Timber.d("====>$response")
+                    emailCodeResult.postValue(response.success)
+                    if (!response.success) {
+                        errorMessage.postValue(response.error)
+                    }
+                }
+
+                override fun onSubscribe(d: Disposable) {
+                }
+
+                override fun onError(e: Throwable) {
+                }
             })
     }
 
@@ -61,12 +81,19 @@ class ResetPasswordViewModel @Inject constructor(private val authRepository: Aut
 
         authRepository.resetPassword(resetPasswordParams)
             .applyIoSchedules()
-            .subscribe({
-                resetPasswordResultResult.postValue(true)
-                Timber.d("==resetPassword==>$it")
-            }, {
-                resetPasswordResultResult.postValue(false)
-                Timber.d("==resetPassword==>$it")
+            .subscribe(object : SingleObserver<ApiResponse<Any>> {
+                override fun onSuccess(response: ApiResponse<Any>) {
+                    resetPasswordResultResult.postValue(response.success)
+                    if (!response.success) {
+                        errorMessage.postValue(response.error)
+                    }
+                }
+
+                override fun onSubscribe(d: Disposable) {
+                }
+
+                override fun onError(e: Throwable) {
+                }
             })
     }
 
@@ -87,7 +114,7 @@ class ResetPasswordViewModel @Inject constructor(private val authRepository: Aut
                     newPassword = password.value ?: "",
                     confirmNewPassword = confirmPassword.value ?: "",
                     email = email.value ?: "",
-                    verifyCode = smsCode.value ?: ""
+                    verifyCode = emailVerifyCode.value ?: ""
                 )
             }
         }

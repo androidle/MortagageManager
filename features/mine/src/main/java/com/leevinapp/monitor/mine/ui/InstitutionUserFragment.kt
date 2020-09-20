@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.mine_frament_institution_user.*
 
 class InstitutionUserFragment : BaseFragment() {
 
-    private lateinit var viewBinding:MineFramentInstitutionUserBinding
+    private lateinit var viewBinding: MineFramentInstitutionUserBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,

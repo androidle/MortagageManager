@@ -23,7 +23,7 @@
     <style name="LoadingDialog" parent="AppTheme">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
     </style>
 
     <style name="MonitorText">
@@ -58,6 +58,12 @@
 
     <style name="MonitorButton.Blue" parent="MonitorButton">
         <item name="android:background">@drawable/button_blue</item>
+        <item name="android:textColor">@color/color_monitor_white</item>
+    </style>
+
+    <style name="MonitorButton.BlueHalf" parent="MonitorButton">
+        <item name="android:background">@color/color_monitor_blue</item>
+        <item name="layout_constraintWidth_percent">0.5</item>
         <item name="android:textColor">@color/color_monitor_white</item>
     </style>
 

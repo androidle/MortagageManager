@@ -1,7 +1,7 @@
 package com.leevinapp.monitor.auth.data.api
 
-import com.leevinapp.monitor.auth.data.api.response.ChangePasswordParams
-import com.leevinapp.monitor.auth.data.api.response.VerifyNewEmailParams
+import com.leevinapp.monitor.auth.data.api.params.ChangePasswordParams
+import com.leevinapp.monitor.auth.data.api.params.VerifyNewEmailParams
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import io.reactivex.Single
 import retrofit2.http.Body

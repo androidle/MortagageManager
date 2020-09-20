@@ -9,6 +9,7 @@ import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 
 abstract class BaseViewModel : ViewModel() {
 
@@ -45,6 +46,7 @@ abstract class BaseViewModel : ViewModel() {
     }
 
     open fun handleCommonException(exception: ResponseException) {
+        Timber.e("====>${exception.message}")
         errorMessage.postValue(exception.message)
     }
 

@@ -16,8 +16,8 @@ import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.EMAIL
 import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.SMS
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.core.user.UserManager
-import kotlinx.android.synthetic.main.auth_fragment_forgot_password.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.auth_fragment_forgot_password.*
 
 class ForgotPasswordFragment : BaseFragment() {
 
@@ -67,8 +67,8 @@ class ForgotPasswordFragment : BaseFragment() {
             iev_sms_code.startTimer()
             viewModel.sendSmsCode()
         }
-        iev_email.setSmsCodeClickListener {
-            iev_email.startTimer()
+        iev_email_verify_code.setSmsCodeClickListener {
+            iev_email_verify_code.startTimer()
             viewModel.sendEmailCode()
         }
 

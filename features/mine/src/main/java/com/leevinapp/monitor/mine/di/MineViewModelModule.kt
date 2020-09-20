@@ -35,7 +35,6 @@ abstract class MineViewModelModule {
     @ViewModelKey(IdentityAuthViewModel::class)
     internal abstract fun bindIdentityAuthViewModel(viewModel: IdentityAuthViewModel): ViewModel
 
-
     @Binds
     @IntoMap
     @FeatureScope

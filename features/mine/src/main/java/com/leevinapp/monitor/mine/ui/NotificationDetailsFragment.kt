@@ -14,9 +14,9 @@ import javax.inject.Inject
 
 class NotificationDetailsFragment : BaseFragment() {
 
-    private lateinit var viewBinding:MineFramentNotificationDetailsBinding
+    private lateinit var viewBinding: MineFramentNotificationDetailsBinding
 
-    val  args: NotificationDetailsFragmentArgs by navArgs()
+    val args: NotificationDetailsFragmentArgs by navArgs()
 
     @Inject
     lateinit var userManager: UserManager
