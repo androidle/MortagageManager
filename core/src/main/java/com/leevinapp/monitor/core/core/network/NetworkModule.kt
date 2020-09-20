@@ -4,7 +4,7 @@ import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.leevinapp.monitor.core.BuildConfig
 import com.leevinapp.monitor.core.core.network.interceptor.HeaderInterceptor
-import com.leevinapp.monitor.core.core.network.interceptor.PostLogonHeaderInterceptor
+import com.leevinapp.monitor.core.core.network.interceptor.NetworkConnectionInterceptor
 import com.leevinapp.monitor.core.core.network.mock.MockApiUtil
 import com.leevinapp.monitor.core.core.user.UserManager
 import dagger.Module
@@ -42,29 +42,25 @@ class NetworkModule {
     @Singleton
     @Provides
     fun providerOkHttpClient(userManager: UserManager): OkHttpClient {
-        // TODO: 2020/8/6 log network ,header interceptor
         val builder = OkHttpClient.Builder()
+        builder
+            .addInterceptor(object : NetworkConnectionInterceptor() {
+                override fun isNetworkAvailable(): Boolean {
+                    // TODO: 2020/9/19
+                    return true
+                }
+            })
+
         if (BuildConfig.DEBUG) {
+            builder.addInterceptor(HeaderInterceptor())
             builder.addNetworkInterceptor(StethoInterceptor())
             builder.addInterceptor(
                 HttpLoggingInterceptor().apply {
                     level = HttpLoggingInterceptor.Level.BODY
                 }
             )
-            builder.addInterceptor(HeaderInterceptor())
         }
-
-        // todo how to add header for all post-logon API
-        if (userManager.isLogged) {
-            builder.addInterceptor(object : PostLogonHeaderInterceptor() {
-                override fun getToken(): String {
-                    return userManager.token
-                }
-            })
-        }
-
         return builder
-            .addInterceptor(HeaderInterceptor())
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .build()

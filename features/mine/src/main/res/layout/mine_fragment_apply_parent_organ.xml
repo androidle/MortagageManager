@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -11,24 +12,170 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@color/color_monitor_background_heavy"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/color_monitor_background_heavy">
 
         <include
             android:id="@+id/toolbar_container"
             layout="@layout/toolbar_binding" />
 
-       <androidx.constraintlayout.widget.ConstraintLayout
-           android:layout_width="0dp"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           android:layout_marginTop="@dimen/dimen_common_margin"
-           app:layout_constraintTop_toBottomOf="@+id/toolbar_container"
-           app:layout_constraintBottom_toBottomOf="parent"
-           android:background="@drawable/content_background"
-           android:layout_height="0dp">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/search_input_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_button_height"
+            android:layout_marginHorizontal="@dimen/dimen_common_margin"
+            android:layout_marginTop="@dimen/dimen_common_margin"
+            android:background="@drawable/mine_search_background"
+            app:boxBackgroundColor="@color/color_monitor_white"
+            app:endIconMode="clear_text"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_container">
 
-       </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="5dp"
+                android:hint="请输入父机构/信用代码"
+                android:paddingStart="5dp" />
 
-       </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_input_layout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_common_margin"
+                android:background="@drawable/content_background_all_round"
+                android:minHeight="@dimen/dimen_sms_button_height"
+                android:orientation="vertical">
+
+                <com.leevinapp.monitor.core.common.view.ItemView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/dimen_common_margin_1"
+                    android:paddingVertical="@dimen/dimen_common_margin"
+                    app:hasArrow="false"
+                    app:label="本机构名称" />
+
+                <com.leevinapp.monitor.core.common.view.ItemView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/dimen_common_margin_1"
+                    android:paddingVertical="@dimen/dimen_common_margin"
+                    app:hasArrow="false"
+                    app:label="父机构名称"
+                    app:value="-" />
+
+                <com.leevinapp.monitor.core.common.view.ItemView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/dimen_common_margin_1"
+                    android:paddingVertical="@dimen/dimen_common_margin"
+                    app:hasArrow="false"
+                    app:label="@string/mine_social_code"
+                    app:value="-" />
+
+                <com.leevinapp.monitor.core.common.view.ItemView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/dimen_common_margin_1"
+                    android:paddingVertical="@dimen/dimen_common_margin"
+                    app:hasArrow="false"
+                    app:label="@string/mine_organ_administrator"
+                    app:value="-" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_apply_des"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/dimen_common_margin"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="300"
+                    app:hintEnabled="false">
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        style="@style/MonitorText.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="@dimen/dimen_common_margin"
+                        android:text="申请描述"
+                        android:textColor="#424242" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editText_business_scope"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="请输入"
+                        android:textColorHint="#999999"
+                        android:textSize="18sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    style="@style/MonitorButton.White"
+                    android:layout_width="120dp"
+                    android:layout_gravity="end"
+                    android:layout_margin="@dimen/dimen_common_margin"
+                    android:paddingHorizontal="@dimen/dimen_common_margin_1"
+                    android:text="@string/mine_submit" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/search_result_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_common_margin"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/content_background_all_round"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/dimen_common_margin"
+            android:paddingVertical="@dimen/dimen_common_margin"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_input_layout"
+            tools:visibility="gone">
+
+            <TextView
+                android:id="@+id/search_result_title"
+                style="@style/MonitorText.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="搜索到4个结果"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/search_input_layout" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/search_result_title"
+                tools:itemCount="4"
+                tools:listitem="@layout/mine_search_result" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

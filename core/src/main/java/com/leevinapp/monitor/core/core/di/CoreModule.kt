@@ -4,7 +4,9 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKey
+import androidx.security.crypto.EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV
+import androidx.security.crypto.EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+import androidx.security.crypto.MasterKeys
 import com.leevinapp.monitor.core.core.storage.EncryptedSharedPreferenceStorage
 import com.leevinapp.monitor.core.core.storage.Storage
 import dagger.Module
@@ -21,13 +23,28 @@ class CoreModule(private val application: Application) {
     @Singleton
     @Provides
     fun provideSharePreferences(context: Context): SharedPreferences {
-        val masterKey = MasterKey.Builder(context).build()
+        // TODO: 2020/9/19 to be look into new method
+        // val builder = MasterKey.Builder(context)
+        //
+        // builder.setKeyGenParameterSpec(MasterKeys.AES256_GCM_SPEC)
+        // builder.setKeyScheme(valueOf())
+        //
+        // return EncryptedSharedPreferences.create(
+        //     context,
+        //     "monitor_preferences",
+        //     masterKey,
+        //     EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+        //     EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        // )
+
+        val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+
         return EncryptedSharedPreferences.create(
-            context,
             "monitor_preferences",
-            masterKey,
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            masterKeyAlias,
+            context,
+            AES256_SIV,
+            AES256_GCM
         )
     }
 

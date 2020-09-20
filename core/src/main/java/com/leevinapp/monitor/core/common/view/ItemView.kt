@@ -47,7 +47,6 @@ class ItemView @JvmOverloads constructor(
         } else {
             iv_icon.visibility = View.GONE
         }
-
     }
 
     init {

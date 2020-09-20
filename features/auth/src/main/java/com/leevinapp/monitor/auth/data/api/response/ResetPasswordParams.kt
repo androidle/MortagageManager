@@ -5,6 +5,6 @@ data class ResetPasswordParams(
     var email: String = "",
     var newPassword: String = "",
     var resetPasswordType: String = "",
-    var smsVerifyCode: String = "",
+    var verifyCode: String = "",
     var telephone: String = ""
 )

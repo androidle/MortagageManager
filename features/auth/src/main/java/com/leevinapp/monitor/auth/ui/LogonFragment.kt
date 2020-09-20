@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.leevinapp.monitor.auth.BuildConfig
 import com.leevinapp.monitor.auth.R
 import com.leevinapp.monitor.auth.R.string
 import com.leevinapp.monitor.auth.data.api.response.LoginResponse
@@ -19,14 +20,19 @@ import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.common.ui.extensions.hideLoadingDialog
 import com.leevinapp.monitor.core.common.ui.extensions.showLoadingDialog
 import com.leevinapp.monitor.core.common.view.CustomClickableSpan
+import com.leevinapp.monitor.core.core.config.Constants
+import com.leevinapp.monitor.core.core.storage.Storage
 import com.leevinapp.monitor.core.core.user.UserManager
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.auth_fragment_logon.*
+import javax.inject.Inject
 
 class LogonFragment : BaseFragment() {
 
     @Inject
     lateinit var userManager: UserManager
+
+    @Inject
+    lateinit var storage: Storage
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -54,9 +60,13 @@ class LogonFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         button_logon.setOnClickListener {
-            // viewModel.login()
-            userManager.isLogged = true
-            findNavController().navigateUp()
+            val isNoNeedLogon = storage.getBoolean(Constants.KEY_NO_NEED_LOGON)
+            if (isNoNeedLogon && BuildConfig.DEBUG) {
+                userManager.isLogged = true
+                findNavController().navigateUp()
+            } else {
+                viewModel.login()
+            }
         }
 
         val spannableString = SpannableString(getString(string.auth_unregistered_to_register))

@@ -9,6 +9,7 @@ import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
 import com.leevinapp.monitor.core.core.network.mock.MockApi
 import com.leevinapp.monitor.core.core.network.mock.MockApiUtil
 import com.leevinapp.monitor.core.core.network.mock.RealApi
+import com.leevinapp.monitor.core.core.user.UserManager
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -18,8 +19,8 @@ class AuthModule(val fragment: Fragment) {
 
     @Provides
     @FeatureScope
-    fun providerRepository(@RealApi authService: AuthService): AuthRepository {
-        return AuthRepositoryImpl(authService)
+    fun providerRepository(@RealApi authService: AuthService,userManager: UserManager): AuthRepository {
+        return AuthRepositoryImpl(authService,userManager)
     }
 
     @RealApi

@@ -50,7 +50,6 @@ class GeneralInfoFragment : BaseFragment() {
         buildComponent(this).inject(this)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         iv_personal_info.setOnClickListener {
@@ -73,6 +72,7 @@ class GeneralInfoFragment : BaseFragment() {
         }
 
         btn_logout.setOnClickListener {
+            viewModel.logout()
             userManager.reset()
             findNavController().navigateUp()
         }

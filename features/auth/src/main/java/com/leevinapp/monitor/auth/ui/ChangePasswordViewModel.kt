@@ -4,14 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import com.leevinapp.monitor.auth.data.api.response.ChangePasswordParams
 import com.leevinapp.monitor.auth.domain.AuthRepository
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
-import com.leevinapp.monitor.core.core.user.UserManager
 import io.reactivex.functions.Consumer
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
 
 class ChangePasswordViewModel @Inject constructor(
-    private val authRepository: AuthRepository,
-    private val userManager: UserManager
+    private val authRepository: AuthRepository
 ) : BaseViewModel() {
 
     val oldPassword = MutableLiveData("")
@@ -25,15 +23,16 @@ class ChangePasswordViewModel @Inject constructor(
             password = oldPassword.value ?: "",
             newPassword = newPassword.value ?: "",
             confirmPassword = newConfirmPassword.value ?: "",
-            userId = userManager.user.userId
         )
         authRepository.changePassword(changePasswordParams)
             .applyIoSchedules()
             .subscribe(Consumer {
-                changePasswordResult.postValue(true)
+                changePasswordResult.postValue(it.success)
+                if (it.success.not()) {
+                    errorMessage.postValue(it.error)
+                }
                 Timber.d("==changePassword==>$it")
             }, Consumer {
-                changePasswordResult.postValue(false)
                 Timber.d("==changePassword==>$it")
             })
     }

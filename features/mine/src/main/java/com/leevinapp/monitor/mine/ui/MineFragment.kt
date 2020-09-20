@@ -3,13 +3,18 @@ package com.leevinapp.monitor.mine.ui
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnLongClickListener
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.common.ui.extensions.navigationToLogonFragment
+import com.leevinapp.monitor.core.core.config.Constants
+import com.leevinapp.monitor.core.core.storage.Storage
 import com.leevinapp.monitor.core.core.user.UserManager
+import com.leevinapp.monitor.mine.BuildConfig
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentBinding
 import com.leevinapp.monitor.mine.di.buildComponent
@@ -25,6 +30,9 @@ class MineFragment : BaseFragment() {
 
     @Inject
     lateinit var userManager: UserManager
+
+    @Inject
+    lateinit var storage: Storage
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -105,10 +113,17 @@ class MineFragment : BaseFragment() {
 
         }
 
-        viewModel.isLogged.postValue(userManager.isLogged)
-    }
+        if (BuildConfig.DEBUG) {
+            iv_avatar.setOnLongClickListener(object : OnLongClickListener{
+                override fun onLongClick(v: View?): Boolean {
+                    val isNoNeedLogon = storage.getBoolean(Constants.KEY_NO_NEED_LOGON)
+                    storage.setBoolean(Constants.KEY_NO_NEED_LOGON,!isNoNeedLogon)
+                    Toast.makeText(requireContext(),if (!isNoNeedLogon) "开启免登录" else "养老免登录",Toast.LENGTH_SHORT).show()
+                    return true
+                }
+            })
+        }
 
-    companion object {
-        const val TARGET_REQUEST_CODE = 0x001
+        viewModel.isLogged.postValue(userManager.isLogged)
     }
 }

@@ -35,7 +35,7 @@ class ResetPasswordViewModel @Inject constructor(private val authRepository: Aut
     }
 
     fun sendSmsCode() {
-        authRepository.sendSmsCode(phoneNumber.value ?: "", SMSType.CHANGE_PWD.name)
+        authRepository.sendSmsCode(phoneNumber.value ?: "", SMSType.RESET_PWD.name)
             .subscribe({
                 Timber.d("====>$it")
                 smsCodeResult.postValue(it)
@@ -78,7 +78,7 @@ class ResetPasswordViewModel @Inject constructor(private val authRepository: Aut
                     newPassword = password.value ?: "",
                     confirmNewPassword = confirmPassword.value ?: "",
                     telephone = phoneNumber.value ?: "",
-                    smsVerifyCode = smsCode.value ?: ""
+                    verifyCode = smsCode.value ?: ""
                 )
             }
             EMAIL -> {
@@ -87,7 +87,7 @@ class ResetPasswordViewModel @Inject constructor(private val authRepository: Aut
                     newPassword = password.value ?: "",
                     confirmNewPassword = confirmPassword.value ?: "",
                     email = email.value ?: "",
-                    smsVerifyCode = smsCode.value ?: ""
+                    verifyCode = smsCode.value ?: ""
                 )
             }
         }

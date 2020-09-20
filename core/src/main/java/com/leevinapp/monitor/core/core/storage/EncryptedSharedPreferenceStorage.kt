@@ -18,4 +18,12 @@ class EncryptedSharedPreferenceStorage(private val sharedPreferences: SharedPref
     override fun removeAll() {
         sharedPreferences.edit().clear().apply()
     }
+
+    override fun setBoolean(key: String, value: Boolean) {
+        sharedPreferences.edit().putBoolean(key, value).apply()
+    }
+
+    override fun getBoolean(key: String, defaultValue: Boolean): Boolean {
+        return sharedPreferences.getBoolean(key, defaultValue)
+    }
 }

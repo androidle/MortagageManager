@@ -1,6 +1,5 @@
 package com.leevinapp.monitor.auth.data.api.mock
 
-import com.google.gson.reflect.TypeToken
 import com.leevinapp.monitor.auth.data.api.AuthService
 import com.leevinapp.monitor.auth.data.api.response.ChangePasswordParams
 import com.leevinapp.monitor.auth.data.api.response.LoginParams
@@ -10,25 +9,13 @@ import com.leevinapp.monitor.auth.data.api.response.RegisterUserResponse
 import com.leevinapp.monitor.auth.data.api.response.ResetPasswordParams
 import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeParams
 import com.leevinapp.monitor.auth.data.api.response.SendSmsCodeResponse
-import com.leevinapp.monitor.auth.data.api.response.TestResponse
 import com.leevinapp.monitor.auth.data.api.response.VerifyNewEmailParams
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.core.core.network.mock.MockApiUtil
 import io.reactivex.Single
-import timber.log.Timber
 
 class AuthMockServiceImpl(private val mockApiUtil: MockApiUtil) :
     AuthService {
-
-    override fun test(): Single<TestResponse> {
-        val mockResponse = mockApiUtil.getMockResponse<TestResponse>(
-            "test.json",
-            object : TypeToken<TestResponse>() {}.type
-        )
-
-        Timber.d(TAG_MOCK_API + mockResponse)
-        return Single.just(mockResponse)
-    }
 
     companion object {
         const val TAG_MOCK_API = "Mock response=>:"
@@ -38,7 +25,7 @@ class AuthMockServiceImpl(private val mockApiUtil: MockApiUtil) :
         TODO("Not yet implemented")
     }
 
-    override fun logout(params: LoginParams): Single<LoginResponse> {
+    override fun logout(userId: Long): Single<ApiResponse<Any>> {
         TODO("Not yet implemented")
     }
 
@@ -54,11 +41,16 @@ class AuthMockServiceImpl(private val mockApiUtil: MockApiUtil) :
         TODO("Not yet implemented")
     }
 
-    override fun logout(userId: String, token: String): Single<ApiResponse<Any>> {
+    override fun logout(userId: String): Single<ApiResponse<Any>> {
         TODO("Not yet implemented")
     }
 
-    override fun changePassword(params: ChangePasswordParams): Single<ApiResponse<Any>> {
+    override fun changePassword(
+        params: ChangePasswordParams,
+        userId: Long,
+        token: String,
+        timeStamp: String
+    ): Single<ApiResponse<Any>> {
         TODO("Not yet implemented")
     }
 

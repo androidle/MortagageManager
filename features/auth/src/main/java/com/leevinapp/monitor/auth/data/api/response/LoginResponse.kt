@@ -5,18 +5,18 @@ data class LoginResponse(
     var email: String?,
     var fullName: String?,
     var homeAddress: String?,
-    var id: Int,
+    var id: Long,
     var isAuthenticated: Boolean,
     var jobPosition: String?,
     var nickname: String?,
-    var organizationId: Int?,
+    var organizationId: Long?,
     var organizationName: String?,
     var password: String?,
-    var residenceId: Int?,
+    var residenceId: Long?,
     var role: String?,
     var securityAnswer: String?,
     var securityQuestion: String?,
     var telephone: String,
     var token: String,
-    var watchOrganizationId: Int?
+    var watchOrganizationId: Long?
 )
