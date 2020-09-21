@@ -1,15 +1,15 @@
 package com.leevinapp.monitor.auth.data.api.params
 
 data class RegisterUserParams(
-    val realName: String = "",
-    val confirmPassword: String = "",
-    val email: String = "",
-    val jobPosition: String = "",
-    val organizationId: Int = 0,
-    val organizationName: String = "",
-    val password: String = "",
-    val securityAnswer: String = "",
-    val securityQuestion: String = "",
-    val smsVerifyCode: String = "",
-    val telephone: String = ""
+    var confirmPassword: String,
+    var email: String,
+    var fullName: String,
+    var jobPosition: String,
+    var organizationId: Long = 0,
+    var organizationName: String,
+    var password: String,
+    var securityAnswer: String,
+    var securityQuestion: String,
+    var smsVerifyCode: String,
+    var telephone: String
 )

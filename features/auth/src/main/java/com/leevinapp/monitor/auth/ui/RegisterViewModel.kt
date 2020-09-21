@@ -34,7 +34,7 @@ class RegisterViewModel @Inject constructor(private val authRepository: AuthRepo
     fun registerUser() {
         val params =
             RegisterUserParams(
-                realName = realName.value ?: "",
+                fullName = realName.value ?: "",
                 telephone = phoneNumber.value ?: "",
                 smsVerifyCode = smsCode.value ?: "",
                 password = password.value ?: "",
