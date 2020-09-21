@@ -25,16 +25,21 @@
     <color name="color_monitor_neutral_blue">#305A85</color>
 
     <color name="color_monitor_background_light">#D8D8D8</color>
-    <color name="color_monitor_background_heavy">#3F69B2</color>
+    <color name="color_monitor_heavy_blue">#3F69B2</color>
     <color name="color_monitor_blue">#2699FB</color>
-    <color name="color_monitor_text_value">@color/color_monitor_charcoal</color>
-    <color name="color_monitor_text_blue">#5698E2</color>
-    <color name="color_monitor_text_gray">#2C3D55</color>
-    <color name="color_monitor_text_gray_disable">#999999</color>
-    <color name="color_monitor_text_name">#666666</color>
+    <color name="color_monitor_text_secondary">#424242</color>
+    <color name="color_monitor_text_primary">#333333</color>
+    <color name="color_monitor_text_gray">#666666</color>
+    <color name="color_monitor_text_gray_light">#999999</color>
+    <color name="color_monitor_text_gray_hint">#CCCCCC</color>
     <color name="color_monitor_divider">#E7EAED</color>
     <color name="color_monitor_background_gray">#F5F5F5</color>
+    <color name="color_monitor_background_gray_disable">#EBEBEB</color>
     <color name="color_monitor_text_gray_2">#D8D8D8</color>
-    <color name="color_monitor_text_yellow">#FFB114</color>
+    <color name="color_monitor_text_yellow">@color/color_monitor_warning_amber</color>
+
+
+    <color name="color_monitor_text_blue_light">#5698E2</color>
+    <color name="color_monitor_text_blue">@color/color_monitor_blue</color>
 
 </resources>

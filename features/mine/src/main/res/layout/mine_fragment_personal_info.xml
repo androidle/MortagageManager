@@ -11,7 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@color/color_monitor_background_heavy"
+        android:background="@color/color_monitor_heavy_blue"
         android:layout_height="match_parent">
 
         <include

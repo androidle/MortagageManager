@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:paddingHorizontal="@dimen/dimen_common_margin"
-    tools:background="@color/color_monitor_background_heavy"
+    tools:background="@color/color_monitor_heavy_blue"
     android:layout_height="?attr/actionBarSize">
 
     <ImageView

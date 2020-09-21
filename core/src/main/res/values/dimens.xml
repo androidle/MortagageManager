@@ -8,6 +8,10 @@
     <dimen name="dimen_corner">24dp</dimen>
     <dimen name="dimen_sms_button_height">32dp</dimen>
 
+    <dimen name="dimen_radius_4">4dp</dimen>
+    <dimen name="dimen_radius_8">8dp</dimen>
+    <dimen name="dimen_radius_8">8dp</dimen>
+
     <dimen name="text_size_large">23sp</dimen>
     <dimen name="text_size_medium">16sp</dimen>
     <dimen name="text_size_small">14sp</dimen>

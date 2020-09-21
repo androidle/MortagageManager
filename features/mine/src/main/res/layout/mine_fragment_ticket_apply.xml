@@ -5,7 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_monitor_background_heavy">
+        android:background="@color/color_monitor_heavy_blue">
 
         <include
             android:id="@+id/toolbar_container"
@@ -14,7 +14,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/dimen_common_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

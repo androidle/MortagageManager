@@ -21,7 +21,7 @@ class TicketOfProcessedFragment : TicketStatusFragment() {
                 companyName = "内蒙古银行股份有限公司"
                 socialCode = "91150700561228427B"
                 jobPosition = "财务"
-                if (i % 3 == 0) {
+                status = if (i % 3 == 0) {
                     APPROVED
                 } else {
                     REJECTED

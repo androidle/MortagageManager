@@ -1,6 +1,8 @@
 package com.leevinapp.monitor.mine.domain.model
 
+import com.leevinapp.monitor.mine.domain.model.TicketStatus.APPROVED
 import com.leevinapp.monitor.mine.domain.model.TicketStatus.AUDITING
+import com.leevinapp.monitor.mine.domain.model.TicketStatus.REJECTED
 
 class TicketModel(
     var applicant: String = "",
@@ -17,4 +19,10 @@ class TicketModel(
     var companyName: String = "",
     var socialCode: String = "",
     var jobPosition: String = ""
-)
+) {
+    fun isApproved(): Boolean = status == APPROVED
+
+    fun isRejected(): Boolean = status == REJECTED
+
+    fun isAUDITING(): Boolean = status == AUDITING
+}
