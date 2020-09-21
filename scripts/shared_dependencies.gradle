@@ -9,6 +9,10 @@ dependencies {
     implementation deps.viewpager2
     implementation deps.arch_core.runtime
 
+    implementation deps.lifecycle.livedata_ktx
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.java8
+
     // Navigation
     implementation deps.navigation.fragment_ktx
     implementation deps.navigation.ui_ktx

@@ -41,7 +41,7 @@ interface MineService {
     fun getSubInstitution(): Single<ApiResponse<GetSubInstitutionResponse>>
 
     @GET("app/org/list/search")
-    fun getOrg(@Query("keyword")keyword: String): Single<ApiResponse<GetSubInstitutionResponse>>
+    fun searchOrg(@Query("keyword")keyword: String): Single<ApiResponse<GetSubInstitutionResponse>>
 
     @POST("app/ticket/request")
     fun raiseTicket(@Header("user_role") userRole: String, @Body paramsRaise: RaiseTicketParams):

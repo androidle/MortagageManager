@@ -35,11 +35,12 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar_container">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/search_edit_text"
+                android:id="@+id/search_input"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="5dp"
+                android:imeOptions="actionSearch"
                 android:hint="请输入父机构/信用代码"
                 android:paddingStart="5dp" />
 
@@ -65,7 +66,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="@dimen/dimen_common_margin_1"
-                    android:paddingVertical="@dimen/dimen_common_margin"
                     app:hasArrow="false"
                     app:label="本机构名称" />
 
@@ -73,7 +73,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="@dimen/dimen_common_margin_1"
-                    android:paddingVertical="@dimen/dimen_common_margin"
                     app:hasArrow="false"
                     app:label="父机构名称"
                     app:value="-" />
@@ -82,7 +81,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="@dimen/dimen_common_margin_1"
-                    android:paddingVertical="@dimen/dimen_common_margin"
                     app:hasArrow="false"
                     app:label="@string/mine_social_code"
                     app:value="-" />
@@ -91,7 +89,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="@dimen/dimen_common_margin_1"
-                    android:paddingVertical="@dimen/dimen_common_margin"
                     app:hasArrow="false"
                     app:label="@string/mine_organ_administrator"
                     app:value="-" />
@@ -167,14 +164,15 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_search_result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layoutManager="LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/search_result_title"
                 tools:itemCount="4"
-                tools:listitem="@layout/mine_search_result" />
+                tools:listitem="@layout/mine_item_search_result" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

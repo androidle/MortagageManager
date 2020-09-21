@@ -9,8 +9,8 @@ import com.leevinapp.monitor.mine.data.response.GetUserProfileResponse
 import com.leevinapp.monitor.mine.domain.MineRepository
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
 
 class PersonalInfoViewModel @Inject constructor(
     private val mineRepository: MineRepository,
@@ -18,7 +18,7 @@ class PersonalInfoViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     val updateProfileResult: MutableLiveData<Boolean> by lazy {
-        MutableLiveData(false)
+        MutableLiveData<Boolean>(null)
     }
 
     val nickname = MutableLiveData(userManager.user.nickname)

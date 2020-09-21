@@ -30,6 +30,7 @@ abstract class ViewModelFragment : BaseFragment() {
         getViewModel().errorMessage.observe(viewLifecycleOwner, Observer {
             if (it.isNullOrEmpty().not()) {
                 requireActivity().showErrorDialog(it)
+                getViewModel().errorMessage.postValue(null)
             }
         })
     }
