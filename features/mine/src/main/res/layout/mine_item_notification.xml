@@ -23,7 +23,7 @@
         android:id="@+id/tv_isRead"
         style="@style/MonitorText.Title"
         android:gravity="start"
-        android:background="@drawable/notification_read_status_selector"
+        android:background="@drawable/status_selector"
         android:textColor="@color/notification_read_status_text_color"
         android:layout_width="wrap_content"
         android:paddingHorizontal="10dp"

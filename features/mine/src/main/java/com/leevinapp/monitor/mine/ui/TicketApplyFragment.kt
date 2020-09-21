@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
-import com.leevinapp.monitor.mine.databinding.MineFramentApplySheetsBinding
-import kotlinx.android.synthetic.main.mine_frament_apply_sheets.*
+import com.leevinapp.monitor.mine.databinding.MineFragmentTicketApplyBinding
 
-class ApplySheetsFragment : BaseFragment() {
+class TicketApplyFragment : BaseFragment() {
 
-    private lateinit var viewBinding: MineFramentApplySheetsBinding
+    private var viewBinding by autoCleared<MineFragmentTicketApplyBinding>()
 
     private var titles = mutableListOf("待处理", "已处理")
 
@@ -23,7 +23,8 @@ class ApplySheetsFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return MineFramentApplySheetsBinding.inflate(inflater, container, false).apply {
+
+        return MineFragmentTicketApplyBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewBinding = this
         }.root
@@ -32,10 +33,10 @@ class ApplySheetsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val fragmentList = mutableListOf<Fragment>(
-            ApplySheetPendingFragment.newInstance(),
-            ApplySheetProcessedFragment.newInstance()
+            TicketOfPendingFragment.newInstance(),
+            TicketOfProcessedFragment.newInstance()
         )
-        viewPager.adapter = object : FragmentStateAdapter(requireActivity()) {
+        viewBinding.viewPager.adapter = object : FragmentStateAdapter(requireActivity()) {
             override fun getItemCount(): Int {
                 return fragmentList.size
             }
@@ -45,8 +46,10 @@ class ApplySheetsFragment : BaseFragment() {
             }
         }
 
-        TabLayoutMediator(tabLayout, viewPager,
-            TabLayoutMediator.TabConfigurationStrategy { tab, position -> tab.setText(titles[position]) })
+        TabLayoutMediator(viewBinding.tabLayout, viewBinding.viewPager,
+            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
+                tab.text = titles[position]
+            })
             .attach()
     }
 

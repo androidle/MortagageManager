@@ -48,7 +48,7 @@ class InstitutionUserFragment : BaseFragment() {
                 InstitutionModel().apply {
                     username = "王小华$i"
                     userrole = "财务专员"
-                    id = i.toString()
+                    id = i.toLong()
                 }
             )
         }

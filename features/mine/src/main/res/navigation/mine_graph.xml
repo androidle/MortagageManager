@@ -32,7 +32,7 @@
             app:destination="@id/mine_notificationsfragment" />
         <action
             android:id="@+id/mine_action_minefragment_to_applysheetsfragment"
-            app:destination="@id/mine_applysheetsfragment" />
+            app:destination="@id/mine_ticketapplyfragment" />
         <action
             android:id="@+id/mine_action_minefragment_to_subinstitutionsfragment"
             app:destination="@id/mine_subinstitutionsfragment" />
@@ -154,10 +154,10 @@
         android:label="AuthAccountFragment"
         tools:layout="@layout/mine_frament_auth_account"/>
     <fragment
-        android:id="@+id/mine_applysheetsfragment"
-        android:name="com.leevinapp.monitor.mine.ui.ApplySheetsFragment"
+        android:id="@+id/mine_ticketapplyfragment"
+        android:name="com.leevinapp.monitor.mine.ui.TicketApplyFragment"
         android:label="ApplySheetsFragment"
-        tools:layout="@layout/mine_frament_apply_sheets"/>
+        tools:layout="@layout/mine_fragment_ticket_apply"/>
     <fragment
         android:id="@+id/mine_notificationsfragment"
         android:name="com.leevinapp.monitor.mine.ui.NotificationsFragment"

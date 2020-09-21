@@ -23,7 +23,7 @@ class ApplyParentInstitutionViewModel @Inject constructor(private val repository
     val result: LiveData<List<InstitutionModel>> = _result
 
     fun getParentInstitution() {
-        repository.searchInstitution(query.value?:"")
+        repository.searchInstitution(query.value ?: "")
             .applyIoSchedules()
             .subscribe(object : SingleObserver<ApiResponse<GetSubInstitutionResponse>> {
                 override fun onSuccess(t: ApiResponse<GetSubInstitutionResponse>) {
@@ -63,5 +63,3 @@ class ApplyParentInstitutionViewModel @Inject constructor(private val repository
         _query.value = input
     }
 }
-
-

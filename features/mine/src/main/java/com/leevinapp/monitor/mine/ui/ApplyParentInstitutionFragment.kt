@@ -60,7 +60,7 @@ class ApplyParentInstitutionFragment : ViewModelFragment() {
 
     private fun initSearchInputListener() {
         viewBinding.searchInput.setOnEditorActionListener { view: View, actionId: Int, _: KeyEvent? ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE) {
                 doSearch(view)
                 true
             } else {

@@ -47,7 +47,7 @@ class SubInstitutionsFragment : BaseFragment() {
             dummy.add(
                 InstitutionModel().apply {
                     institutionName = "内蒙古银行股份有限公司$i"
-                    id = i.toString()
+                    id = i.toLong()
                 }
             )
         }

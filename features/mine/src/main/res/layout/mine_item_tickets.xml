@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.leevinapp.monitor.mine.domain.model.TicketStatus" />
+
+        <variable
+            name="model"
+            type="com.leevinapp.monitor.mine.domain.model.TicketModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_notification_background"
+        android:paddingHorizontal="@dimen/dimen_common_margin"
+        android:paddingVertical="23dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/MonitorText.Title"
+            android:layout_width="wrap_content"
+            android:gravity="start"
+            android:text="@{model.titleName}"
+            android:textColor="#424242"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="XXX申请成本机构用户" />
+
+        <ImageView
+            android:id="@+id/iv_right_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@{model.expand? @drawable/ic_arrow_down : @drawable/ic_arrow_right}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_arrow_right" />
+
+
+        <TextView
+            android:id="@+id/tv_data"
+            style="@style/MonitorText.Content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="start"
+            android:text="@{model.date}"
+            android:textColor="#424242"
+            app:layout_constraintStart_toStartOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="2020-03-05" />
+
+        <TextView
+            android:id="@+id/tv_applicant"
+            style="@style/MonitorText.Content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="start"
+            android:text="@{@string/mine_applicant(model.applicant)}"
+            app:layout_constraintStart_toStartOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_data"
+            tools:text="申请人：王小华" />
+
+        <TextView
+            android:id="@+id/tv_phone_number"
+            style="@style/MonitorText.Content"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="@dimen/dimen_common_margin"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/mine_ic_phone"
+            android:drawablePadding="5dp"
+            android:gravity="start"
+            android:text="@{model.phonenumber}"
+            android:textColor="@color/color_monitor_text_blue"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_applicant"
+            app:layout_constraintStart_toEndOf="@+id/tv_applicant"
+            tools:text="18712345678" />
+
+        <LinearLayout
+            android:id="@+id/container_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_common_margin"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_applicant"
+            app:visible="@{model.expand}">
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_real_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:editValue="@{model.realname}"
+                app:isEditable="false"
+                app:name="@string/mine_real_name" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_identity_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:editValue="@{model.identityType}"
+                app:isEditable="false"
+                app:name="@string/mine_identity_type" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_identity_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:editValue="@{model.identityNumber}"
+                app:isEditable="false"
+                app:name="@string/mine_identity_num" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_home_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:editValue="@{model.homeAddress}"
+                app:isEditable="false"
+                app:name="@string/mine_address" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_company_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:editValue="@{model.companyName}"
+                app:isEditable="false"
+                app:name="@string/mine_company_full_name" />
+
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_social_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:editValue="@{model.socialCode}"
+                app:isEditable="false"
+                app:name="@string/mine_social_code" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_job_position"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:editValue="@{model.jobPosition}"
+                app:isEditable="false"
+                app:name="@string/mine_job_position" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_reject"
+            style="@style/MonitorButton.White"
+            android:layout_marginTop="@dimen/dimen_common_margin"
+            android:paddingHorizontal="30dp"
+            android:text="@string/mine_reject"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container_content"
+            app:visible="@{model.status == TicketStatus.AUDITING}" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_approve"
+            style="@style/MonitorButton.White"
+            android:layout_marginEnd="@dimen/dimen_common_margin"
+            android:paddingHorizontal="30dp"
+            android:text="@string/mine_approve"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_reject"
+            app:layout_constraintTop_toTopOf="@+id/button_reject"
+            app:visible="@{model.status == TicketStatus.AUDITING}" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_finished"
+            style="@style/MonitorButton.Blue"
+            android:layout_marginTop="@dimen/dimen_common_margin"
+            android:paddingHorizontal="30dp"
+            android:text="@string/mine_completed"
+            tools:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container_content"
+            app:visible="@{model.status == TicketStatus.APPROVED}" />
+
+        <TextView
+            android:id="@+id/tv_rejected"
+            style="@style/MonitorText.Title"
+            android:layout_marginTop="@dimen/dimen_common_margin"
+            android:background="@drawable/status_selector"
+            android:enabled="false"
+            android:gravity="start"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="2dp"
+            android:text="已驳回"
+            android:textColor="@color/notification_read_status_text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container_content"
+            app:visible="@{model.status == TicketStatus.REJECTED}"
+            tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

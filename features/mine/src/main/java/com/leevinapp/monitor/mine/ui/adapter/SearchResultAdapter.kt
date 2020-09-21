@@ -10,7 +10,7 @@ import com.leevinapp.monitor.mine.domain.model.SearchResult
 import com.leevinapp.monitor.mine.ui.adapter.SearchResultAdapter.SearchResultViewHolder
 import kotlinx.android.synthetic.main.mine_item_search_result.view.*
 
-class SearchResultAdapter: RecyclerView.Adapter<SearchResultViewHolder>() {
+class SearchResultAdapter : RecyclerView.Adapter<SearchResultViewHolder>() {
 
     private var resultList = mutableListOf<SearchResult>()
 

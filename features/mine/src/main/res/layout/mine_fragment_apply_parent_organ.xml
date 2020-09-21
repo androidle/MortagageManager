@@ -40,7 +40,7 @@
                 android:layout_height="match_parent"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="5dp"
-                android:imeOptions="actionSearch"
+                android:imeOptions="actionSearch|actionDone"
                 android:hint="请输入父机构/信用代码"
                 android:paddingStart="5dp" />
 

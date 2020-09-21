@@ -45,9 +45,11 @@
 
     <string name="mine_notification_read">已读</string>
     <string name="mine_notification_unread">未读</string>
-    <string name="mine_notification_applicant">申请人: %1$s</string>
+    <string name="mine_applicant">申请人: %1$s</string>
     <string name="mine_organ_administrator_phone">管理员手机号</string>
     <string name="mine_phone_number">手机号码</string>
+    <string name="mine_reject">驳回</string>
+    <string name="mine_approve">通过</string>
 
 
     <string-array name="mine_auth_way">

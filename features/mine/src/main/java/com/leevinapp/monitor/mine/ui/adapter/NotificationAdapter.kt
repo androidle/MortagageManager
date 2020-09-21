@@ -50,7 +50,7 @@ class NotificationAdapter(private val itemClick: ((NotificationModel) -> Unit)? 
 
                 tv_data.text = model.date
                 tv_applicant.text =
-                    context.getString(R.string.mine_notification_applicant, model.applicant)
+                    context.getString(R.string.mine_applicant, model.applicant)
                 tv_phone_number.text = model.phoneNumber
 
                 setOnClickListener {
