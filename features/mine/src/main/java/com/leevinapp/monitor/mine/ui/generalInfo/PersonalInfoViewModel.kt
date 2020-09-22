@@ -10,8 +10,8 @@ import com.leevinapp.monitor.mine.data.response.GetUserProfileResponse
 import com.leevinapp.monitor.mine.domain.MineRepository
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
-import timber.log.Timber
 import javax.inject.Inject
+import timber.log.Timber
 
 class PersonalInfoViewModel @Inject constructor(
     private val mineRepository: MineRepository,
@@ -62,7 +62,7 @@ class PersonalInfoViewModel @Inject constructor(
             jobPosition = data.jobPosition ?: "",
             email = data.email,
             isAuthenticated = data.isAuthenticated,
-            residenceId = data.residenceId?:"",
+            residenceId = data.residenceId ?: "",
             homeAddress = data.homeAddress ?: "",
             watchOrganizationId = data.watchOrganizationId ?: 0
         )

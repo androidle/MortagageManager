@@ -8,8 +8,8 @@ import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
-import timber.log.Timber
 import javax.inject.Inject
+import timber.log.Timber
 
 class LogonViewModel @Inject constructor(private val authRepository: AuthRepository) : BaseViewModel() {
 

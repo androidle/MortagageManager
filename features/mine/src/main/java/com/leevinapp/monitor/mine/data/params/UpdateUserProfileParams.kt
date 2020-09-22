@@ -6,5 +6,5 @@ data class UpdateUserProfileParams(
     val homeAddress: String? = null,
     val jobPosition: String? = null,
     val nickname: String? = null,
-    val organizationName: String? = null,
+    val organizationName: String? = null
 )
