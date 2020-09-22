@@ -12,7 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class MineRepositoryImpl(private val mineService: MineService, private val userManager: UserManager) : MineRepository {
-    override fun getUserProfile(): Single<GetUserProfileResponse> {
+    override fun getUserProfile(): Single<ApiResponse<GetUserProfileResponse>> {
         return mineService.getUserProfile()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

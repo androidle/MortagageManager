@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.databinding.MineFragmentAuthOrdinaryUserBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.MineConstants
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.mine_fragment_auth_ordinary_user.*
 
 class OrdinaryUserAuthFragment : BaseFragment() {
 
-    private lateinit var viewBinding: MineFragmentAuthOrdinaryUserBinding
+    private var viewBinding by autoCleared<MineFragmentAuthOrdinaryUserBinding>()
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

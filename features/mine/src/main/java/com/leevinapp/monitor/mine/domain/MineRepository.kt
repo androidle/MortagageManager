@@ -8,7 +8,7 @@ import io.reactivex.Single
 
 interface MineRepository {
 
-    fun getUserProfile(): Single<GetUserProfileResponse>
+    fun getUserProfile(): Single<ApiResponse<GetUserProfileResponse>>
 
     fun updateUserProfile(params: UpdateUserProfileParams): Single<ApiResponse<Any>>
 

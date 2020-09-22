@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFramentApplyAttachedInstitutionBinding
 
 class ApplyAttachedInstitutionFragment : BaseFragment() {
 
-    private lateinit var viewBinding: MineFramentApplyAttachedInstitutionBinding
+    private var viewBinding by autoCleared<MineFramentApplyAttachedInstitutionBinding>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.common.ui.extensions.hideKeyBoard
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentApplyParentOrganBinding
 import com.leevinapp.monitor.mine.di.buildComponent
@@ -27,7 +28,7 @@ class ApplyParentInstitutionFragment : ViewModelFragment() {
         viewModelFactory
     }
 
-    private lateinit var viewBinding: MineFragmentApplyParentOrganBinding
+    private var viewBinding by autoCleared<MineFragmentApplyParentOrganBinding>()
 
     override fun getViewModel(): BaseViewModel {
         return viewModel

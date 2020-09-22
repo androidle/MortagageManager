@@ -20,7 +20,7 @@ class MineViewModel @Inject constructor(private val mineRepository: MineReposito
     val userRole = MediatorLiveData<String>().apply {
         addSource(isLogged) {
             value = if (isLogged.value == true) {
-                userManager.user.role
+                userManager.user.role.name
             } else {
                 "点击头像登录"
             }

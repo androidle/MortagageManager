@@ -1,4 +1,4 @@
-package com.leevinapp.monitor.mine.ui
+package com.leevinapp.monitor.mine.ui.ticket
 
 import android.os.Bundle
 import android.view.LayoutInflater

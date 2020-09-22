@@ -1,4 +1,4 @@
-package com.leevinapp.monitor.mine.ui
+package com.leevinapp.monitor.mine.ui.ticket
 
 import com.leevinapp.monitor.mine.domain.model.TicketModel
 import com.leevinapp.monitor.mine.domain.model.TicketStatus.AUDITING

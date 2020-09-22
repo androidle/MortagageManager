@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.databinding.MineFragmentAuthBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import javax.inject.Inject
@@ -16,7 +17,7 @@ class MineIdentityAuthFragment : BaseFragment() {
 
     private val args: MineIdentityAuthFragmentArgs by navArgs()
 
-    private lateinit var viewBinding: MineFragmentAuthBinding
+    private var viewBinding by autoCleared<MineFragmentAuthBinding>()
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.common.view.recycleview.HorizontalDividerItemDecoration
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFramentSubInstitutionsBinding
 import com.leevinapp.monitor.mine.domain.model.InstitutionModel
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.mine_frament_sub_institutions.*
 
 class SubInstitutionsFragment : BaseFragment() {
 
-    private lateinit var viewBinding: MineFramentSubInstitutionsBinding
+    private var viewBinding by autoCleared<MineFramentSubInstitutionsBinding>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

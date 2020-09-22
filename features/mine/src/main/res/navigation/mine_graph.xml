@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mine"
@@ -8,10 +7,10 @@
     tools:ignore="UnusedNavigation">
 
     <fragment
-            android:id="@+id/mineFragment"
-            android:name="com.leevinapp.monitor.mine.ui.MineFragment"
-            android:label="@string/mine"
-            tools:layout="@layout/mine_fragment">
+        android:id="@+id/mineFragment"
+        android:name="com.leevinapp.monitor.mine.ui.MineFragment"
+        android:label="@string/mine"
+        tools:layout="@layout/mine_fragment">
         <action
             android:id="@+id/mine_action_minefragment_to_applyparentorganfragment"
             app:destination="@id/mine_applyparentorganfragment" />
@@ -25,9 +24,6 @@
             android:id="@+id/mine_action_minefragment_to_accesstransferfragment"
             app:destination="@id/mine_accesstransferfragment" />
         <action
-            android:id="@+id/mine_action_minefragment_to_authaccountfragment"
-            app:destination="@id/mine_authaccountfragment" />
-        <action
             android:id="@+id/mine_action_minefragment_to_notificationsfragment"
             app:destination="@id/mine_notificationsfragment" />
         <action
@@ -39,6 +35,15 @@
         <action
             android:id="@+id/mine_action_minefragment_to_institutionuserfragment"
             app:destination="@id/mine_institutionuserfragment" />
+        <action
+            android:id="@+id/mine_action_minefragment_to_ordinaryuserauthfragment"
+            app:destination="@id/mine_ordinaryuserauthfragment" />
+        <action
+            android:id="@+id/mine_action_minefragment_to_organizationauthfragment"
+            app:destination="@id/mine_organizationauthfragment" />
+        <action
+            android:id="@+id/mine_action_minefragment_to_mortgageuserauthfragment"
+            app:destination="@id/mine_mortgageuserauthfragment" />
     </fragment>
 
     <include app:graph="@navigation/auth_logon_graph" />
@@ -47,7 +52,7 @@
         android:id="@+id/mine_mineaboutfragment"
         android:name="com.leevinapp.monitor.mine.ui.generalInfo.MineAboutFragment"
         android:label="MineAboutFragment"
-        tools:layout="@layout/mine_frament_about"/>
+        tools:layout="@layout/mine_frament_about" />
     <fragment
         android:id="@+id/mine_minesecurityfragment"
         android:name="com.leevinapp.monitor.mine.ui.generalInfo.MineSecurityFragment"
@@ -77,43 +82,43 @@
         <argument
             android:name="authModel"
             app:argType="com.leevinapp.monitor.mine.domain.model.OptionModel"
-            app:nullable="false"/>
+            app:nullable="false" />
     </fragment>
     <fragment
         android:id="@+id/mine_changepasswordfragment"
         android:name="com.leevinapp.monitor.auth.ui.ChangePasswordFragment"
         android:label="ChangePasswordFragment"
-        tools:layout="@layout/auth_fragment_change_password"/>
+        tools:layout="@layout/auth_fragment_change_password" />
     <fragment
         android:id="@+id/mine_changesecurityquestionfragment"
         android:name="com.leevinapp.monitor.auth.ui.ChangeSecurityQuestionFragment"
         android:label="ChangeSecurityQuestionFragment"
-        tools:layout="@layout/auth_fragment_change_security_question"/>
+        tools:layout="@layout/auth_fragment_change_security_question" />
     <fragment
         android:id="@+id/mine_verifyemailfragment"
         android:name="com.leevinapp.monitor.auth.ui.VerifyEmailFragment"
         android:label="VerifyEmailFragment"
-        tools:layout="@layout/auth_fragment_verify_email"/>
+        tools:layout="@layout/auth_fragment_verify_email" />
     <fragment
         android:id="@+id/mine_ordinaryuserauthfragment"
         android:name="com.leevinapp.monitor.mine.ui.identityauth.OrdinaryUserAuthFragment"
         android:label="OrdinaryUserAuthFragment"
-        tools:layout="@layout/mine_fragment_auth_ordinary_user"/>
+        tools:layout="@layout/mine_fragment_auth_ordinary_user" />
     <fragment
         android:id="@+id/mine_organizationauthfragment"
         android:name="com.leevinapp.monitor.mine.ui.identityauth.OrganizationAuthFragment"
         android:label="OrganizationAuthFragment"
-        tools:layout="@layout/mine_fragment_auth_organization"/>
+        tools:layout="@layout/mine_fragment_auth_organization" />
     <fragment
         android:id="@+id/mine_mortgageuserauthfragment"
         android:name="com.leevinapp.monitor.mine.ui.identityauth.MortgageUserAuthFragment"
         android:label="MortgageUserAuthFragment"
-        tools:layout="@layout/mine_fragment_auth_mortgage_user"/>
+        tools:layout="@layout/mine_fragment_auth_mortgage_user" />
     <fragment
         android:id="@+id/mine_applyparentorganfragment"
         android:name="com.leevinapp.monitor.mine.ui.ApplyParentInstitutionFragment"
         android:label="ApplyParentOrganFragment"
-        tools:layout="@layout/mine_fragment_apply_parent_organ"/>
+        tools:layout="@layout/mine_fragment_apply_parent_organ" />
     <fragment
         android:id="@+id/mine_minegeneralinfofragment"
         android:name="com.leevinapp.monitor.mine.ui.GeneralInfoFragment"
@@ -142,22 +147,17 @@
         android:id="@+id/mine_accesstransferfragment"
         android:name="com.leevinapp.monitor.mine.ui.AccessTransferFragment"
         android:label="AccessTransferFragment"
-        tools:layout="@layout/mine_frament_access_transfer"/>
+        tools:layout="@layout/mine_frament_access_transfer" />
     <fragment
         android:id="@+id/mine_applyattachedinstitutionfragment"
         android:name="com.leevinapp.monitor.mine.ui.ApplyAttachedInstitutionFragment"
         android:label="ApplyAttachedInstitutionFragment"
-        tools:layout="@layout/mine_frament_apply_attached_institution"/>
-    <fragment
-        android:id="@+id/mine_authaccountfragment"
-        android:name="com.leevinapp.monitor.mine.ui.AuthAccountFragment"
-        android:label="AuthAccountFragment"
-        tools:layout="@layout/mine_frament_auth_account"/>
+        tools:layout="@layout/mine_frament_apply_attached_institution" />
     <fragment
         android:id="@+id/mine_ticketapplyfragment"
-        android:name="com.leevinapp.monitor.mine.ui.TicketApplyFragment"
+        android:name="com.leevinapp.monitor.mine.ui.ticket.TicketApplyFragment"
         android:label="ApplySheetsFragment"
-        tools:layout="@layout/mine_fragment_ticket_apply"/>
+        tools:layout="@layout/mine_fragment_ticket_apply" />
     <fragment
         android:id="@+id/mine_notificationsfragment"
         android:name="com.leevinapp.monitor.mine.ui.NotificationsFragment"
@@ -171,18 +171,17 @@
         android:id="@+id/mine_subinstitutionsfragment"
         android:name="com.leevinapp.monitor.mine.ui.SubInstitutionsFragment"
         android:label="SubInstitutionsFragment"
-        tools:layout="@layout/mine_frament_sub_institutions"/>
+        tools:layout="@layout/mine_frament_sub_institutions" />
     <fragment
         android:id="@+id/mine_institutionuserfragment"
         android:name="com.leevinapp.monitor.mine.ui.InstitutionUserFragment"
         android:label="InstitutionUserFragment"
-        tools:layout="@layout/mine_frament_institution_user"/>
+        tools:layout="@layout/mine_frament_institution_user" />
     <fragment
         android:id="@+id/mine_notificationdetailsfragment"
         android:name="com.leevinapp.monitor.mine.ui.NotificationDetailsFragment"
         android:label="NotificationDetailsFragment"
-        tools:layout="@layout/mine_frament_notification_details"
-        >
+        tools:layout="@layout/mine_frament_notification_details">
         <argument
             android:name="model"
             app:argType="com.leevinapp.monitor.mine.domain.model.NotificationModel" />

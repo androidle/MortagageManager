@@ -1,5 +1,7 @@
 package com.leevinapp.monitor.mine.data.response
 
+import java.util.Date
+
 data class GetSubInstitutionResponse(
     val address: String,
     val adminUserId: Long,
@@ -10,7 +12,7 @@ data class GetSubInstitutionResponse(
     val legalRepresentative: String,
     val name: String,
     val parentId: Long,
-    val registeredCapital: String,
+    val registeredCapital: Date,
     val registeredDate: String,
     val role: String,
     val status: String,

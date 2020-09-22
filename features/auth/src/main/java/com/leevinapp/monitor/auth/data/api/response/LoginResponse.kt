@@ -1,5 +1,7 @@
 package com.leevinapp.monitor.auth.data.api.response
 
+import com.leevinapp.monitor.core.core.user.UserRole
+
 data class LoginResponse(
     var confirmPassword: String,
     var email: String?,
@@ -13,7 +15,7 @@ data class LoginResponse(
     var organizationName: String?,
     var password: String?,
     var residenceId: Long?,
-    var role: String?,
+    var role: UserRole,
     var securityAnswer: String?,
     var securityQuestion: String?,
     var telephone: String,

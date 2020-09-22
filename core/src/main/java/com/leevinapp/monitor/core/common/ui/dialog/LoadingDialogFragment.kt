@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.leevinapp.monitor.core.R
+import com.leevinapp.monitor.core.core.utils.autoCleared
+import com.leevinapp.monitor.core.databinding.FragmentLoadingDialogBinding
 
 class LoadingDialogFragment : DialogFragment() {
+
+    private var viewBinding by autoCleared<FragmentLoadingDialogBinding>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -15,6 +18,9 @@ class LoadingDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         isCancelable = false
-        return inflater.inflate(R.layout.fragment_loading_dialog, container, false)
+        return FragmentLoadingDialogBinding.inflate(inflater, container, false).apply {
+            viewBinding = this
+        }
+            .root
     }
 }

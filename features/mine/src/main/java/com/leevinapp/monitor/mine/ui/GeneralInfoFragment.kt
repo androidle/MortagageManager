@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.core.user.UserManager
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentGeneralInfoBinding
 import com.leevinapp.monitor.mine.di.buildComponent
@@ -29,7 +30,7 @@ class GeneralInfoFragment : BaseFragment() {
         viewModelFactory
     }
 
-    private lateinit var viewBinding: MineFragmentGeneralInfoBinding
+    private var viewBinding by autoCleared<MineFragmentGeneralInfoBinding>()
 
     private var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment? = null
 
@@ -41,6 +42,7 @@ class GeneralInfoFragment : BaseFragment() {
         return MineFragmentGeneralInfoBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = this@GeneralInfoFragment.viewModel
+            userManager = this@GeneralInfoFragment.userManager
             viewBinding = this
         }.root
     }

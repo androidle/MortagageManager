@@ -20,11 +20,13 @@ import com.leevinapp.monitor.mine.BuildConfig
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentBinding
 import com.leevinapp.monitor.mine.di.buildComponent
+import com.leevinapp.monitor.mine.domain.MineConstants
 import com.leevinapp.monitor.mine.domain.model.MenuModel.ACCESS_TRANSFER
 import com.leevinapp.monitor.mine.domain.model.MenuModel.APPLY_REFER_ORGANIZATION
 import com.leevinapp.monitor.mine.domain.model.MenuModel.AUTH_ACCOUNT
 import com.leevinapp.monitor.mine.domain.model.MenuModel.PARENT_ORGANIZATION_APPLY
 import com.leevinapp.monitor.mine.ui.adapter.TextMenuAdapter
+import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthSelectionFragment
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.mine_fragment.*
 
@@ -42,6 +44,8 @@ class MineFragment : ViewModelFragment() {
     val viewModel: MineViewModel by viewModels {
         viewModelFactory
     }
+
+    private var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment? = null
 
     private val menusHorizontal = mutableListOf(
         PARENT_ORGANIZATION_APPLY,
@@ -80,7 +84,29 @@ class MineFragment : ViewModelFragment() {
                     findNavController().navigate(R.id.mine_action_minefragment_to_applyattachedinstitutionfragment)
                 }
                 AUTH_ACCOUNT -> {
-                    findNavController().navigate(R.id.mine_action_minefragment_to_authaccountfragment)
+                    identityAuthSelectionFragment?.show(
+                        childFragmentManager,
+                        MineIdentityAuthSelectionFragment::class.simpleName
+                    )
+                }
+            }
+        }
+
+        if (identityAuthSelectionFragment == null) {
+            identityAuthSelectionFragment =
+                MineIdentityAuthSelectionFragment.newInstance(MineConstants.auth_ways)
+        }
+
+        identityAuthSelectionFragment?.setSelectedCallback { option ->
+            when (option.id) {
+                0 -> {
+                    findNavController().navigate(R.id.mine_action_minefragment_to_ordinaryuserauthfragment)
+                }
+                1 -> {
+                    findNavController().navigate(R.id.mine_action_minefragment_to_organizationauthfragment)
+                }
+                2 -> {
+                    findNavController().navigate(R.id.mine_action_minefragment_to_mortgageuserauthfragment)
                 }
             }
         }

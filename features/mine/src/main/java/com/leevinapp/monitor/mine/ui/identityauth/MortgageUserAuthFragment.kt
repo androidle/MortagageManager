@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.databinding.MineFragmentAuthMortgageUserBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.MineConstants
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.mine_fragment_auth_mortgage_user.*
 
 class MortgageUserAuthFragment : BaseFragment() {
 
-    private lateinit var viewBinding: MineFragmentAuthMortgageUserBinding
+    private var viewBinding by autoCleared<MineFragmentAuthMortgageUserBinding>()
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

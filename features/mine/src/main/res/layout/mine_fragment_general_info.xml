@@ -8,6 +8,10 @@
         <variable
             name="viewModel"
             type="com.leevinapp.monitor.mine.ui.GeneralInfoViewModel" />
+
+        <variable
+            name="userManager"
+            type="com.leevinapp.monitor.core.core.user.UserManager" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -59,7 +63,8 @@
                 android:layout_marginHorizontal="@dimen/dimen_common_margin"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="Leevin"
+                tools:text="Leevin"
+                android:text="@{userManager.user.fullname}"
                 android:textSize="@dimen/text_size_small"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +79,8 @@
                 android:layout_marginHorizontal="@dimen/dimen_common_margin"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:text="机构管理员"
+                tools:text="机构管理员"
+                android:text="@{userManager.user.role.name()}"
                 android:textSize="@dimen/text_size_small"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
                 app:layout_constraintEnd_toEndOf="parent"

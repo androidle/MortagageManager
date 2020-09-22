@@ -1,5 +1,7 @@
 package com.leevinapp.monitor.core
 
+import com.google.gson.Gson
+import com.leevinapp.monitor.core.core.storage.UpdateUserProfileParams
 import io.mockk.every
 import io.mockk.spyk
 import io.mockk.verify
@@ -77,5 +79,14 @@ class ExampleUnitTest {
             mock.methodB()
             mock.methodC()
         }
+    }
+
+    @Test
+    fun test_enum() {
+        val toJson = Gson().toJson(UpdateUserProfileParams(id = 10))
+        println(toJson)
+
+        var result = Gson().fromJson(toJson, UpdateUserProfileParams::class.java)
+        println("==" + result)
     }
 }

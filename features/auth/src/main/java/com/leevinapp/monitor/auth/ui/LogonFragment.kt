@@ -114,15 +114,13 @@ class LogonFragment : ViewModelFragment() {
         with(userManager.user) {
             userId = it.id
             phoneNumber = it.telephone
-            role = it.role ?: ""
+            role = it.role
             fullname = it.fullName ?: ""
             email = it.email ?: ""
             nickname = it.nickname ?: ""
             organName = it.organizationName ?: ""
             organId = it.organizationId ?: 0
             jobPosition = it.jobPosition ?: ""
-            securityQuestion = it.securityQuestion ?: ""
-            securityAnswer = it.securityAnswer ?: ""
             isAuthenticated = it.isAuthenticated
             homeAddress = it.homeAddress ?: ""
             residenceId = it.residenceId ?: 0

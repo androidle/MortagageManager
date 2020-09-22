@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.common.view.recycleview.HorizontalDividerItemDecoration
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFramentNotificationsBinding
 import com.leevinapp.monitor.mine.domain.model.NotificationModel
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.mine_frament_notifications.*
 
 class NotificationsFragment : BaseFragment() {
 
-    private lateinit var viewBinding: MineFramentNotificationsBinding
+    private var viewBinding by autoCleared<MineFramentNotificationsBinding>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

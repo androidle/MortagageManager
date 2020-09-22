@@ -1,4 +1,4 @@
-package com.leevinapp.monitor.mine.data.params
+package com.leevinapp.monitor.core.core.storage
 
 import com.leevinapp.monitor.core.core.user.UserRole
 import com.leevinapp.monitor.core.core.user.UserRole.ADMIN_BANK

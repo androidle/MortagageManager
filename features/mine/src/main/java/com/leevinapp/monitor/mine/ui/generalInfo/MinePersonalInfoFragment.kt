@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.core.user.UserManager
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentPersonalInfoBinding
 import com.leevinapp.monitor.mine.di.buildComponent
@@ -30,7 +31,7 @@ class MinePersonalInfoFragment : ViewModelFragment() {
         viewModelFactory
     }
 
-    private lateinit var viewBinding: MineFragmentPersonalInfoBinding
+    private var viewBinding by autoCleared<MineFragmentPersonalInfoBinding>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,11 +54,14 @@ class MinePersonalInfoFragment : ViewModelFragment() {
         }
 
         viewModel.updateProfileResult.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(requireContext(), if (it) "更新成功" else "更新失败", Toast.LENGTH_LONG).show()
             if (it) {
+                Toast.makeText(requireContext(), if (it) "更新成功" else "更新失败", Toast.LENGTH_LONG)
+                    .show()
                 findNavController().navigateUp()
             }
         })
+
+        viewModel.getUserProfile()
     }
 
     override fun getTitleBarView(): View? {
