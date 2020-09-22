@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.domain.MineRepository
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
 
 class MineViewModel @Inject constructor(private val mineRepository: MineRepository, private val userManager: UserManager) :
     BaseViewModel() {
@@ -20,7 +20,7 @@ class MineViewModel @Inject constructor(private val mineRepository: MineReposito
     val userRole = MediatorLiveData<String>().apply {
         addSource(isLogged) {
             value = if (isLogged.value == true) {
-                userManager.user.role.name
+                userManager.user.role?.name
             } else {
                 "点击头像登录"
             }

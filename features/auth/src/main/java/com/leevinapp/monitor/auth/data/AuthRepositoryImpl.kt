@@ -8,6 +8,7 @@ import com.leevinapp.monitor.auth.data.api.params.SendSmsCodeParams
 import com.leevinapp.monitor.auth.data.api.response.LoginResponse
 import com.leevinapp.monitor.auth.data.api.response.RegisterUserResponse
 import com.leevinapp.monitor.auth.domain.AuthRepository
+import com.leevinapp.monitor.auth.domain.model.SMSType
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.core.core.user.UserManager
 import io.reactivex.Single
@@ -36,7 +37,7 @@ class AuthRepositoryImpl(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun sendSmsCode(phoneNumber: String, smsType: String): Single<ApiResponse<Any>> {
+    override fun sendSmsCode(phoneNumber: String, smsType: SMSType): Single<ApiResponse<Any>> {
         return authService.sendSmsCode(
             SendSmsCodeParams(
                 telephone = phoneNumber,

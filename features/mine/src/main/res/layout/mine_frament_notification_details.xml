@@ -78,7 +78,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iev_real_name"
                 app:label="@string/mine_identity_type"
-                app:value="@{userManager.user.identityType}"
+                app:value="@{userManager.user.role.name()}"
                 app:hasArrow="false"
                 />
 
@@ -91,7 +91,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iv_identity_type"
                 app:label="@string/mine_identity_num"
-                app:value="@{userManager.user.identityNumber}"
+                app:value="@{userManager.user.residenceId}"
                 app:hasArrow="false"
                 />
 

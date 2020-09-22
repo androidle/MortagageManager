@@ -14,7 +14,7 @@ data class GetUserProfileResponse(
     var organizationId: Long?,
     var organizationName: String,
     var password: String,
-    var residenceId: Long?,
+    var residenceId: String?,
     var role: UserRole,
     var telephone: String,
     var watchOrganizationId: Long?

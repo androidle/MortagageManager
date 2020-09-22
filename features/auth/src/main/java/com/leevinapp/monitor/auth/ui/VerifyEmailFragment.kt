@@ -12,13 +12,15 @@ import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.auth.R
 import com.leevinapp.monitor.auth.databinding.AuthFragmentVerifyEmailBinding
 import com.leevinapp.monitor.auth.di.buildComponent
-import com.leevinapp.monitor.core.common.ui.base.BaseFragment
-import javax.inject.Inject
+import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
+import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import kotlinx.android.synthetic.main.auth_fragment_verify_email.*
+import javax.inject.Inject
 
-class VerifyEmailFragment : BaseFragment() {
+class VerifyEmailFragment : ViewModelFragment() {
 
-    private lateinit var viewBinding: AuthFragmentVerifyEmailBinding
+    private var viewBinding by autoCleared<AuthFragmentVerifyEmailBinding>()
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -72,6 +74,10 @@ class VerifyEmailFragment : BaseFragment() {
 
     override fun initDependencyInjection() {
         buildComponent(this).inject(this)
+    }
+
+    override fun getViewModel(): BaseViewModel {
+        return viewModel
     }
 
     override fun onDestroy() {

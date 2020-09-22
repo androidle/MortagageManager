@@ -9,8 +9,8 @@ import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
 
 class RegisterViewModel @Inject constructor(private val authRepository: AuthRepository) :
     BaseViewModel() {
@@ -23,7 +23,7 @@ class RegisterViewModel @Inject constructor(private val authRepository: AuthRepo
     val mail = MutableLiveData("")
     val smsCode = MutableLiveData("")
 
-    val registerSuccessToken = MutableLiveData<String>("")
+    val registerSuccess = MutableLiveData<Boolean>(false)
 
     val smsCodeResult: MutableLiveData<Boolean> by lazy {
         MutableLiveData(false)
@@ -46,11 +46,9 @@ class RegisterViewModel @Inject constructor(private val authRepository: AuthRepo
             .subscribe(object : SingleObserver<ApiResponse<RegisterUserResponse>> {
                 override fun onSuccess(response: ApiResponse<RegisterUserResponse>) {
                     Timber.d("====>$response")
-                    if (response.success) {
-                        registerSuccessToken.postValue(response.data.token)
-                    } else {
+                    registerSuccess.postValue(response.success)
+                    if (!response.success) {
                         errorMessage.postValue(response.error)
-                        registerSuccessToken.postValue("")
                     }
                 }
 
@@ -58,13 +56,12 @@ class RegisterViewModel @Inject constructor(private val authRepository: AuthRepo
                 }
 
                 override fun onError(e: Throwable) {
-                    registerSuccessToken.postValue("")
                 }
             })
     }
 
     fun sendSmsCode() {
-        authRepository.sendSmsCode(phoneNumber.value ?: "", SMSType.REGISTER.name)
+        authRepository.sendSmsCode(phoneNumber.value ?: "", SMSType.REGISTER)
             .subscribe(object : SingleObserver<ApiResponse<Any>> {
                 override fun onSuccess(response: ApiResponse<Any>) {
                     Timber.d("====>$response")

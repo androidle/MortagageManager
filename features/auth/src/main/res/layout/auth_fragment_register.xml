@@ -84,7 +84,6 @@
                     android:id="@+id/iev_real_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
                     app:editHint="请输入姓名"
                     app:editValue="@={viewModel.realName}"
                     app:name="真实姓名" />
@@ -101,11 +100,12 @@
                 <com.leevinapp.monitor.core.common.view.ItemEditView
                     android:id="@+id/iev_sms_code"
                     android:layout_width="match_parent"
-                    app:name="@string/auth_sms_verify"
-                    app:isIncludeSmsCode="true"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
                     app:editHint="@string/auth_sms_code_hint"
                     app:editValue="@={viewModel.smsCode}"
-                    android:layout_height="wrap_content"/>
+                    app:isIncludeSmsCode="true"
+                    app:name="@string/auth_sms_verify" />
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView
                     android:id="@+id/iev_password"
@@ -122,23 +122,21 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     app:editHint="请输入确认密码"
-                    app:editValue="@{viewModel.confirmPassword}"
+                    app:editValue="@={viewModel.confirmPassword}"
                     app:name="确认密码" />
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView
                     android:id="@+id/iev_company_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
                     app:editHint="请输入工作单位"
-                    app:editValue="@{viewModel.companyName}"
+                    app:editValue="@={viewModel.companyName}"
                     app:name="工作单位" />
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView
                     android:id="@+id/iev_job_position"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
                     app:editHint="请输入工作职务"
                     app:editValue="@={viewModel.jobPosition}"
                     app:name="工作职务" />
@@ -147,7 +145,6 @@
                     android:id="@+id/iev_mail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
                     app:editHint="请输入邮箱"
                     app:editValue="@={viewModel.mail}"
                     app:name="邮箱" />

@@ -20,8 +20,8 @@ import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.common.view.CustomClickableSpan
 import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.core.core.user.UserManager
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import javax.inject.Inject
-import kotlinx.android.synthetic.main.auth_fragment_register.*
 
 class RegisterFragment : ViewModelFragment() {
 
@@ -30,6 +30,8 @@ class RegisterFragment : ViewModelFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private var binding by autoCleared<AuthFragmentRegisterBinding>()
 
     val viewModel: RegisterViewModel by viewModels {
         viewModelFactory
@@ -43,18 +45,19 @@ class RegisterFragment : ViewModelFragment() {
         return AuthFragmentRegisterBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = this@RegisterFragment.viewModel
+            binding = this
         }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        button_register.setOnClickListener {
+        binding.buttonRegister.setOnClickListener {
             viewModel.registerUser()
         }
 
-        iev_sms_code.setSmsCodeClickListener {
-            iev_sms_code.startTimer()
+        binding.ievSmsCode.setSmsCodeClickListener {
+            binding.ievSmsCode.startTimer()
             viewModel.sendSmsCode()
         }
 
@@ -67,12 +70,13 @@ class RegisterFragment : ViewModelFragment() {
             spannableString.length,
             SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-        tv_to_login.text = spannableString
-        tv_to_login.movementMethod = LinkMovementMethod.getInstance()
 
-        viewModel.registerSuccessToken.observe(viewLifecycleOwner, Observer {
-            if (it.isNotEmpty()) {
-                userManager.token = it
+        binding.tvToLogin.text = spannableString
+        binding.tvToLogin.movementMethod = LinkMovementMethod.getInstance()
+
+        viewModel.registerSuccess.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                Toast.makeText(requireContext(), "注册成功", Toast.LENGTH_SHORT)
                 findNavController().popBackStack(R.id.logonFragment, true)
             }
         })
@@ -91,7 +95,7 @@ class RegisterFragment : ViewModelFragment() {
     }
 
     override fun onDestroy() {
-        iev_sms_code?.cancelTimer()
+        binding.ievSmsCode.cancelTimer()
         super.onDestroy()
     }
 

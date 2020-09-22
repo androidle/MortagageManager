@@ -23,8 +23,8 @@ import com.leevinapp.monitor.core.common.view.CustomClickableSpan
 import com.leevinapp.monitor.core.core.config.Constants
 import com.leevinapp.monitor.core.core.storage.Storage
 import com.leevinapp.monitor.core.core.user.UserManager
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.auth_fragment_logon.*
+import javax.inject.Inject
 
 class LogonFragment : ViewModelFragment() {
 
@@ -123,7 +123,7 @@ class LogonFragment : ViewModelFragment() {
             jobPosition = it.jobPosition ?: ""
             isAuthenticated = it.isAuthenticated
             homeAddress = it.homeAddress ?: ""
-            residenceId = it.residenceId ?: 0
+            residenceId = it.residenceId?:""
         }
 
         findNavController().navigateUp()

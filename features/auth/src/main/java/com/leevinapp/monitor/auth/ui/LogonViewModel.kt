@@ -8,8 +8,8 @@ import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
 
 class LogonViewModel @Inject constructor(private val authRepository: AuthRepository) : BaseViewModel() {
 
@@ -46,7 +46,7 @@ class LogonViewModel @Inject constructor(private val authRepository: AuthReposit
     }
 
     fun sendSmsCode() {
-        authRepository.sendSmsCode(phoneNumber.value ?: "", SMSType.LOGIN.name)
+        authRepository.sendSmsCode(phoneNumber.value ?: "", SMSType.LOGIN)
             .subscribe(object : SingleObserver<ApiResponse<Any>> {
                 override fun onSuccess(response: ApiResponse<Any>) {
                     Timber.d("====>$response")

@@ -10,8 +10,8 @@ import com.leevinapp.monitor.mine.data.response.GetUserProfileResponse
 import com.leevinapp.monitor.mine.domain.MineRepository
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
 
 class PersonalInfoViewModel @Inject constructor(
     private val mineRepository: MineRepository,
@@ -21,15 +21,6 @@ class PersonalInfoViewModel @Inject constructor(
     val updateProfileResult: MutableLiveData<Boolean> by lazy {
         MutableLiveData<Boolean>(false)
     }
-
-    val nickname = MutableLiveData(userManager.user.nickname)
-    val realName = MutableLiveData(userManager.user.fullname)
-    val identityNumber = MutableLiveData(userManager.user.identityNumber)
-    val companyName = MutableLiveData(userManager.user.organName)
-    val socialCode = MutableLiveData(userManager.user.socialCode)
-    val jobPosition = MutableLiveData(userManager.user.jobPosition)
-    val homeAddress = MutableLiveData(userManager.user.homeAddress)
-    val email = MutableLiveData(userManager.user.email)
 
     val userProfile: MutableLiveData<UserModel> by lazy {
         MutableLiveData<UserModel>(userManager.user)
@@ -71,7 +62,7 @@ class PersonalInfoViewModel @Inject constructor(
             jobPosition = data.jobPosition ?: "",
             email = data.email,
             isAuthenticated = data.isAuthenticated,
-            residenceId = data.residenceId ?: 0,
+            residenceId = data.residenceId?:"",
             homeAddress = data.homeAddress ?: "",
             watchOrganizationId = data.watchOrganizationId ?: 0
         )
@@ -100,16 +91,9 @@ class PersonalInfoViewModel @Inject constructor(
 
     private fun buildUpdateProfileParams(): UpdateUserProfileParams {
         return UpdateUserProfileParams(
-            id = userManager.user.userId,
-            role = userManager.user.role,
-            nickname = nickname.value ?: "",
-            fullName = realName.value ?: "",
-            identityNumber = identityNumber.value ?: "",
-            organizationName = companyName.value ?: "",
-            socialCode = socialCode.value ?: "",
-            jobPosition = jobPosition.value ?: "",
-            homeAddress = homeAddress.value ?: "",
-            email = email.value ?: ""
+            jobPosition = userProfile.value?.jobPosition,
+            homeAddress = userProfile.value?.homeAddress,
+            nickname = userProfile.value?.nickname
         )
     }
 }

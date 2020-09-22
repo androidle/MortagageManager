@@ -10,10 +10,11 @@ import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
 
-class ResetPasswordViewModel @Inject constructor(private val authRepository: AuthRepository) : BaseViewModel() {
+class ResetPasswordViewModel @Inject constructor(private val authRepository: AuthRepository) :
+    BaseViewModel() {
 
     val phoneNumber = MutableLiveData("")
     val smsCode = MutableLiveData("")
@@ -38,7 +39,7 @@ class ResetPasswordViewModel @Inject constructor(private val authRepository: Aut
     }
 
     fun sendSmsCode() {
-        authRepository.sendSmsCode(phoneNumber.value ?: "", SMSType.RESET_PWD.name)
+        authRepository.sendSmsCode(phoneNumber.value ?: "", SMSType.RESET_PWD)
             .subscribe(object : SingleObserver<ApiResponse<Any>> {
                 override fun onSuccess(response: ApiResponse<Any>) {
                     Timber.d("====>$response")
@@ -101,19 +102,19 @@ class ResetPasswordViewModel @Inject constructor(private val authRepository: Aut
         return when (resetType) {
             SMS -> {
                 ResetPasswordParams(
-                    resetPasswordType = resetType.name,
+                    resetPasswordType = resetType,
                     newPassword = password.value ?: "",
                     confirmNewPassword = confirmPassword.value ?: "",
-                    telephone = phoneNumber.value ?: "",
+                    telephone = phoneNumber.value,
                     verifyCode = smsCode.value ?: ""
                 )
             }
             EMAIL -> {
                 ResetPasswordParams(
-                    resetPasswordType = resetType.name,
+                    resetPasswordType = resetType,
                     newPassword = password.value ?: "",
                     confirmNewPassword = confirmPassword.value ?: "",
-                    email = email.value ?: "",
+                    email = email.value,
                     verifyCode = emailVerifyCode.value ?: ""
                 )
             }

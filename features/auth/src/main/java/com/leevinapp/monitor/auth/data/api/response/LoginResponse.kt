@@ -1,10 +1,12 @@
 package com.leevinapp.monitor.auth.data.api.response
 
+import com.google.gson.annotations.SerializedName
 import com.leevinapp.monitor.core.core.user.UserRole
 
 data class LoginResponse(
-    var confirmPassword: String,
+    var confirmPassword: String?,
     var email: String?,
+    @SerializedName("userFullName")
     var fullName: String?,
     var homeAddress: String?,
     var id: Long,
@@ -14,11 +16,12 @@ data class LoginResponse(
     var organizationId: Long?,
     var organizationName: String?,
     var password: String?,
-    var residenceId: Long?,
-    var role: UserRole,
+    var residenceId: String? = null,
+    var role: UserRole? = null,
     var securityAnswer: String?,
     var securityQuestion: String?,
     var telephone: String,
     var token: String,
+    var uniformSocialCreditCode: String? = null,
     var watchOrganizationId: Long?
 )
