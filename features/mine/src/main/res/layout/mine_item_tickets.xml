@@ -179,13 +179,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/container_content"
-            app:visible="@{model.status == TicketStatus.APPROVED}" />
+            app:visible="@{model.status == TicketStatus.APPROVED}"/>
 
         <TextView
             android:id="@+id/tv_rejected"
             style="@style/MonitorText.Title"
             android:layout_marginTop="@dimen/dimen_common_margin"
-            android:background="@drawable/status_selector"
+            android:background="@drawable/status_warning_shape"
             android:enabled="false"
             android:gravity="start"
             android:paddingHorizontal="10dp"
@@ -196,6 +196,22 @@
             app:layout_constraintTop_toBottomOf="@+id/container_content"
             app:visible="@{model.status == TicketStatus.REJECTED}"
             tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_approved"
+            style="@style/MonitorText.Title"
+            android:layout_marginTop="@dimen/dimen_common_margin"
+            android:background="@drawable/status_blue_shape"
+            android:enabled="false"
+            android:gravity="start"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="2dp"
+            android:text="已通过"
+            android:textColor="@color/color_monitor_text_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container_content"
+            app:visible="@{model.status == TicketStatus.APPROVED}"
+            tools:visibility="gone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -21,7 +21,7 @@
 
         <TextView
             android:id="@+id/tv_title"
-            style="@style/MonitorText.WhiteContent"
+            style="@style/MonitorText.WhiteTitle"
             android:layout_gravity="center"
             android:gravity="center"
             android:maxWidth="150dp"
@@ -35,7 +35,7 @@
 
         <TextView
             android:id="@+id/tv_right"
-            style="@style/MonitorText.WhiteContent"
+            style="@style/MonitorText.WhiteTitle"
             android:layout_gravity="center"
             android:gravity="center"
             android:maxWidth="150dp"

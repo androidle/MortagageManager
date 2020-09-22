@@ -56,7 +56,7 @@
 
                 <TextView
                     android:id="@+id/tv_user_role"
-                    style="@style/MonitorText.WhiteContent"
+                    style="@style/MonitorText.WhiteTitle"
                     android:layout_marginHorizontal="@dimen/dimen_common_margin"
                     android:text="@{viewModel.userRole}"
                     android:textColor="@color/color_monitor_text_gray_2"
@@ -72,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dimen_common_margin"
-                    android:src="@drawable/mine_ic_settings_24"
+                    android:src="@drawable/mine_ic_settings"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

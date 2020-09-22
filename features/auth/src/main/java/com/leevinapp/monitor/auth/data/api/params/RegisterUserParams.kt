@@ -8,8 +8,8 @@ data class RegisterUserParams(
     var organizationId: Long = 0,
     var organizationName: String,
     var password: String,
-    var securityAnswer: String,
-    var securityQuestion: String,
+    var securityAnswer: String = "",
+    var securityQuestion: String = "",
     var smsVerifyCode: String,
     var telephone: String
 )

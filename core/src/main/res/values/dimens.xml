@@ -10,12 +10,13 @@
 
     <dimen name="dimen_radius_4">4dp</dimen>
     <dimen name="dimen_radius_8">8dp</dimen>
-    <dimen name="dimen_radius_8">8dp</dimen>
+    <dimen name="dimen_radius_24">8dp</dimen>
 
     <dimen name="text_size_large">23sp</dimen>
     <dimen name="text_size_medium">16sp</dimen>
     <dimen name="text_size_small">14sp</dimen>
     <dimen name="text_size_smaller">12sp</dimen>
+    <dimen name="text_size_smallest">10sp</dimen>
 
 
 </resources>

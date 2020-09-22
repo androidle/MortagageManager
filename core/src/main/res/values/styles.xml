@@ -36,14 +36,30 @@
     </style>
 
     <style name="MonitorText.Title" parent="MonitorText">
-        <item name="android:textColor">@color/color_monitor_charcoal</item>
+        <item name="android:textColor">@color/color_monitor_text_primary</item>
+    </style>
+
+    <style name="MonitorText.SubTitle" parent="MonitorText">
+        <item name="android:textColor">@color/color_monitor_text_primary</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
     </style>
 
     <style name="MonitorText.Content" parent="MonitorText">
-        <item name="android:textColor">@color/color_monitor_pewter</item>
+        <item name="android:textColor">@color/color_monitor_text_primary</item>
+        <item name="android:textSize">@dimen/text_size_smaller</item>
     </style>
 
-    <style name="MonitorText.WhiteContent" parent="MonitorText">
+    <style name="MonitorText.ContentGray" parent="MonitorText">
+        <item name="android:textColor">@color/color_monitor_text_gray</item>
+        <item name="android:textSize">@dimen/text_size_smaller</item>
+    </style>
+
+    <style name="MonitorText.SubContent" parent="MonitorText">
+        <item name="android:textColor">@color/color_monitor_text_gray_light</item>
+        <item name="android:textSize">@dimen/text_size_smallest</item>
+    </style>
+
+    <style name="MonitorText.WhiteTitle" parent="MonitorText">
         <item name="android:textColor">@color/color_monitor_white</item>
     </style>
 
