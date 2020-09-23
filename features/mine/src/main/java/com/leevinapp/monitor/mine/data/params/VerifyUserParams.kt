@@ -11,5 +11,5 @@ data class VerifyUserParams(
     var supervisorOrganizationName: String? = null,
     var supervisorUniformSocialCreditCode: String? = null,
     var uniformSocialCreditCode: String? = null,
-    var userRole: UserRole
+    var userRole: UserRole? = null
 )

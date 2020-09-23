@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="userManager"
+            type="com.leevinapp.monitor.core.core.user.UserManager" />
+
+        <variable
             name="viewModel"
             type="com.leevinapp.monitor.mine.ui.identityauth.IdentityAuthViewModel" />
     </data>
@@ -23,8 +27,8 @@
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/dimen_common_margin"
             android:background="@drawable/content_background"
-            android:paddingTop="@dimen/dimen_common_margin"
             android:paddingHorizontal="@dimen/dimen_common_margin"
+            android:paddingTop="@dimen/dimen_common_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +43,7 @@
 
                 <com.leevinapp.monitor.core.common.view.ItemView
                     android:id="@+id/iv_identity_type"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:label="@string/mine_identity_type"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -49,11 +53,9 @@
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView
                     android:id="@+id/iev_organ_name"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:editHint=""
                     app:editValue="@={viewModel.supervisorOrgan}"
-                    app:isEditable="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iv_identity_type"
@@ -61,10 +63,9 @@
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView
                     android:id="@+id/iev_uniform_social_code"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:editValue="@={viewModel.supervisorSocialCode}"
-                    app:isEditable="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iev_organ_name"
@@ -72,10 +73,9 @@
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView
                     android:id="@+id/iev_organ_address"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:editValue="@={viewModel.homeAddress}"
-                    app:isEditable="true"
+                    app:editValue="@={viewModel.organAddress}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iev_uniform_social_code"
@@ -83,10 +83,9 @@
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView
                     android:id="@+id/iev_company_presenter"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:editValue="@={viewModel.companyPresenter}"
-                    app:isEditable="false"
+                    app:editValue="@={viewModel.organRepresentative}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iev_organ_address"
@@ -94,7 +93,7 @@
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView
                     android:id="@+id/iev_registered_capital"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:editValue="@={viewModel.registeredCapital}"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -102,24 +101,21 @@
                     app:layout_constraintTop_toBottomOf="@+id/iev_company_presenter"
                     app:name="@string/mine_registered_capital" />
 
-                <com.leevinapp.monitor.core.common.view.ItemEditView
+                <com.leevinapp.monitor.core.common.view.ItemView
                     android:id="@+id/iev_date_of_found"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:editHint=""
-                    app:editValue="@={viewModel.dateOfFounded}"
-                    app:isEditable="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iev_registered_capital"
-                    app:name="@string/mine_date_of_found" />
+                    app:name="@string/mine_date_of_found"
+                    app:value="@={viewModel.dateOfFounded}" />
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView
                     android:id="@+id/iev_operating_period"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:editValue="@={viewModel.operatingPeriod}"
-                    app:isEditable="false"
+                    app:editValue="@={viewModel.businessPeriod}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iev_date_of_found"
@@ -131,7 +127,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingHorizontal="@dimen/dimen_common_margin"
                     app:counterEnabled="true"
                     app:counterMaxLength="300"
                     app:hintEnabled="false"
@@ -142,16 +137,16 @@
                     <TextView
                         android:id="@+id/tv_title"
                         style="@style/MonitorText.Title"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingVertical="@dimen/dimen_common_margin"
+                        android:paddingVertical="@dimen/dimen_common_margin_1"
                         android:text="@string/mine_business_scope" />
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editText_business_scope"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="请输入手机号"
+                        android:hint="请输入"
                         android:text="@={viewModel.businessScope}"
                         android:textSize="18sp" />
 
@@ -159,10 +154,10 @@
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView
                     android:id="@+id/iev_organ_administrator"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:editHint=""
-                    app:editValue="@={viewModel.organAdmin}"
+                    app:editValue="@{userManager.user.fullname}"
                     app:isEditable="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -171,10 +166,10 @@
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView
                     android:id="@+id/iev_job_position"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:editHint=""
-                    app:editValue="@={viewModel.jobPosition}"
+                    app:editValue="@{userManager.user.jobPosition}"
                     app:isEditable="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

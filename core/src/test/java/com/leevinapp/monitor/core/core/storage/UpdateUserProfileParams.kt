@@ -1,7 +1,6 @@
 package com.leevinapp.monitor.core.core.storage
 
 import com.leevinapp.monitor.core.core.user.UserRole
-import com.leevinapp.monitor.core.core.user.UserRole.ADMIN_BANK
 
 data class UpdateUserProfileParams(
     var confirmPassword: String = "",
@@ -17,7 +16,7 @@ data class UpdateUserProfileParams(
     var password: String = "",
     var residenceId: Long = 0,
     var identityNumber: String = "",
-    var role: UserRole = ADMIN_BANK,
+    var role: UserRole? = null,
     var securityAnswer: String = "",
     var securityQuestion: String = "",
     var telephone: String = "",

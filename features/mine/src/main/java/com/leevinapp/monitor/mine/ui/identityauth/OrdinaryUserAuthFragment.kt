@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
+import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.core.core.user.UserRole.BANK_USER
 import com.leevinapp.monitor.core.core.user.UserRole.BORROWER_USER
 import com.leevinapp.monitor.core.core.user.UserRole.SUPERVISOR_USER
@@ -28,6 +29,9 @@ class OrdinaryUserAuthFragment : ViewModelFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    @Inject
+    lateinit var userManager: UserManager
+
     private var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment? = null
 
     val viewModel: IdentityAuthViewModel by viewModels {
@@ -42,12 +46,14 @@ class OrdinaryUserAuthFragment : ViewModelFragment() {
         return MineFragmentAuthOrdinaryUserBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = this@OrdinaryUserAuthFragment.viewModel
+            userManager = this@OrdinaryUserAuthFragment.userManager
             viewBinding = this
         }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.setUserRole(BANK_USER)
         viewBinding.ivIdentityType.setOnClickListener {
             identityAuthSelectionFragment?.show(
                 childFragmentManager,
@@ -75,7 +81,7 @@ class OrdinaryUserAuthFragment : ViewModelFragment() {
         }
 
         viewBinding.buttonSubmit.setOnClickListener {
-            viewModel.verifyUser()
+            viewModel.verifyOrdinaryUser()
         }
 
         viewModel.verifyUserResult.observe(viewLifecycleOwner, Observer {

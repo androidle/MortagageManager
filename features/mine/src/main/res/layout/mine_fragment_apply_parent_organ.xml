@@ -40,8 +40,8 @@
                 android:layout_height="match_parent"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="5dp"
-                android:imeOptions="actionSearch|actionDone"
                 android:hint="请输入父机构/信用代码"
+                android:imeOptions="actionSearch|actionDone"
                 android:paddingStart="5dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -49,9 +49,9 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/search_input_layout">
 
             <LinearLayout
@@ -98,6 +98,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/button_white_background"
                     android:orientation="vertical"
                     android:paddingHorizontal="@dimen/dimen_common_margin"
                     app:counterEnabled="true"
@@ -109,7 +110,7 @@
                         style="@style/MonitorText.Title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingVertical="@dimen/dimen_common_margin"
+                        android:paddingVertical="@dimen/dimen_common_margin_1"
                         android:text="申请描述"
                         android:textColor="#424242" />
 

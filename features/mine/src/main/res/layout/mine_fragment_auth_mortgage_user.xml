@@ -5,6 +5,11 @@
     <data>
 
         <variable
+            name="userManager"
+            type="com.leevinapp.monitor.core.core.user.UserManager" />
+
+
+        <variable
             name="viewModel"
             type="com.leevinapp.monitor.mine.ui.identityauth.IdentityAuthViewModel" />
     </data>
@@ -22,10 +27,10 @@
             android:id="@+id/container_content"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:paddingHorizontal="@dimen/dimen_common_margin"
             android:layout_marginTop="@dimen/dimen_common_margin"
             android:background="@drawable/content_background"
             android:orientation="vertical"
+            android:paddingHorizontal="@dimen/dimen_common_margin"
             android:paddingTop="@dimen/dimen_common_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +42,7 @@
                 android:id="@+id/iev_real_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:editValue="@={viewModel.realName}"
+                app:editValue="@{userManager.user.fullname}"
                 app:isEditable="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +53,6 @@
                 android:id="@+id/iv_identity_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:hasArrow="false"
                 app:label="@string/mine_identity_type"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +74,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:editValue="@={viewModel.homeAddress}"
-                app:isEditable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iev_identity_num"
@@ -91,7 +94,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                app:isEditable="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iev_company_full_name"
@@ -101,7 +103,7 @@
                 android:id="@+id/iev_job_position"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:editValue="@={viewModel.jobPosition}"
+                app:editValue="@{userManager.user.jobPosition}"
                 app:isEditable="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -112,9 +114,7 @@
                 android:id="@+id/iev_supervisor_organ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:editHint=""
                 app:editValue="@={viewModel.supervisorOrgan}"
-                app:isEditable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iev_job_position"
@@ -124,9 +124,7 @@
                 android:id="@+id/iev_supervisor_organ_social_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:editHint=""
                 app:editValue="@={viewModel.supervisorSocialCode}"
-                app:isEditable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iev_supervisor_organ"

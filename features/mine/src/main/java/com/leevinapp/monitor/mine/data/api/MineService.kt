@@ -10,6 +10,7 @@ import com.leevinapp.monitor.mine.data.params.VerifyUserParams
 import com.leevinapp.monitor.mine.data.response.GetNotificationsResponse
 import com.leevinapp.monitor.mine.data.response.GetSubInstitutionResponse
 import com.leevinapp.monitor.mine.data.response.GetTicketDetailsResponse
+import com.leevinapp.monitor.mine.data.response.GetTicketInfoResponse
 import com.leevinapp.monitor.mine.data.response.GetUserProfileResponse
 import com.leevinapp.monitor.mine.data.response.RaiseTicketResponse
 import io.reactivex.Single
@@ -40,7 +41,7 @@ interface MineService {
     fun getSubInstitution(): Single<ApiResponse<GetSubInstitutionResponse>>
 
     @GET("app/org/list/search")
-    fun searchOrg(@Query("keyword")keyword: String): Single<ApiResponse<GetSubInstitutionResponse>>
+    fun searchInstitution(@Query("keyword")keyword: String): Single<ApiResponse<GetSubInstitutionResponse>>
 
     @POST("app/ticket/request")
     fun requestTicket(@Header("user_role") userRole: String, @Body paramsRequest: RequestTicketParams):
@@ -68,8 +69,11 @@ interface MineService {
     fun rejectTicketByOrgan(@Body params: RejectTicketParams): Single<ApiResponse<Any>>
 
     @POST("common/ticket/platformAdmin/approve")
-    fun rapproveTicketByPlatform(@Body params: RejectTicketParams): Single<ApiResponse<Any>>
+    fun approveTicketByPlatform(@Body params: RejectTicketParams): Single<ApiResponse<Any>>
 
     @POST("common/ticket/platformAdmin/reject")
     fun rejectTicketByPlatform(@Body params: RejectTicketParams): Single<ApiResponse<Any>>
+
+    @GET("app/ticket/info")
+    fun getTicketInfo(@Header("user_role") userRole: String): Single<ApiResponse<GetTicketInfoResponse>>
 }

@@ -8,6 +8,7 @@ import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
 import com.leevinapp.monitor.mine.ui.ApplyParentInstitutionViewModel
 import com.leevinapp.monitor.mine.ui.GeneralInfoViewModel
 import com.leevinapp.monitor.mine.ui.MineViewModel
+import com.leevinapp.monitor.mine.ui.SubInstitutionsViewModel
 import com.leevinapp.monitor.mine.ui.generalInfo.PersonalInfoViewModel
 import com.leevinapp.monitor.mine.ui.identityauth.IdentityAuthViewModel
 import dagger.Binds
@@ -46,6 +47,12 @@ abstract class MineViewModelModule {
     @FeatureScope
     @ViewModelKey(ApplyParentInstitutionViewModel::class)
     internal abstract fun bindApplyParentOrganViewModel(viewModel: ApplyParentInstitutionViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @FeatureScope
+    @ViewModelKey(SubInstitutionsViewModel::class)
+    internal abstract fun bindSubInstitutionsViewModel(viewModel: SubInstitutionsViewModel): ViewModel
 
     @Binds
     @FeatureScope

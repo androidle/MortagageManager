@@ -1,5 +1,6 @@
 package com.leevinapp.monitor.mine.ui.identityauth
 
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.core.network.ApiResponse
@@ -17,20 +18,27 @@ class IdentityAuthViewModel @Inject constructor(private val repository: MineRepo
 
     val realName = MutableLiveData("")
     private val _userRole = MutableLiveData(UserRole.BANK_USER)
-    val userRoleDes = MutableLiveData("质权方独立用户")
+
+    val userRoleDes = MediatorLiveData<String>().apply {
+        addSource(_userRole) {
+            value = _userRole.value?.desc
+        }
+    }
+
     val identityNum = MutableLiveData("")
     val homeAddress = MutableLiveData("")
     val companyName = MutableLiveData("")
     val jobPosition = MutableLiveData("")
 
-    val supervisorOrgan = MutableLiveData("")
     val supervisorSocialCode = MutableLiveData("")
-    val companyPresenter = MutableLiveData("")
+
+    val organAddress = MutableLiveData("")
+    val supervisorOrgan = MutableLiveData("")
+    val organRepresentative = MutableLiveData("")
     val registeredCapital = MutableLiveData("")
     val dateOfFounded = MutableLiveData("")
-    val operatingPeriod = MutableLiveData("")
+    val businessPeriod = MutableLiveData("")
     val businessScope = MutableLiveData("")
-    val organAdmin = MutableLiveData("")
 
     val verifyUserResult: MutableLiveData<Boolean> by lazy {
         MutableLiveData(false)
@@ -40,12 +48,38 @@ class IdentityAuthViewModel @Inject constructor(private val repository: MineRepo
         MutableLiveData(false)
     }
 
-    fun verifyUser() {
+    fun verifyOrdinaryUser() {
         val params = VerifyUserParams(userRole = _userRole.value ?: UserRole.BANK_USER).apply {
-            familyAddress = homeAddress.value
             residenceId = identityNum.value
+            familyAddress = homeAddress.value
             organizationName = companyName.value
-            jobPosition = this@IdentityAuthViewModel.jobPosition.value
+            supervisorUniformSocialCreditCode = supervisorSocialCode.value
+        }
+
+        repository.verifyUser(params)
+            .applyIoSchedules()
+            .subscribe(object : SingleObserver<ApiResponse<Any>> {
+                override fun onSuccess(response: ApiResponse<Any>) {
+                    Timber.d("==>$response")
+                    verifyUserResult.postValue(response.success)
+                    if (!response.success) {
+                        errorMessage.postValue(response.error)
+                    }
+                }
+
+                override fun onSubscribe(d: Disposable) {
+                }
+
+                override fun onError(e: Throwable) {
+                }
+            })
+    }
+
+    fun verifyMortgageUser() {
+        val params = VerifyUserParams(userRole = _userRole.value ?: UserRole.BANK_USER_NO_ORG).apply {
+            residenceId = identityNum.value
+            familyAddress = homeAddress.value
+            organizationName = companyName.value
             supervisorOrganizationName = supervisorOrgan.value
             supervisorUniformSocialCreditCode = supervisorSocialCode.value
         }
@@ -71,9 +105,14 @@ class IdentityAuthViewModel @Inject constructor(private val repository: MineRepo
 
     fun verifyOrganization() {
         val params = VerifyOrganizationParams(role = _userRole.value ?: UserRole.BANK_USER).apply {
-            address = homeAddress.value
-            adminUserJobPosition = this@IdentityAuthViewModel.jobPosition.value
+            name = supervisorOrgan.value
+            uniformSocialCreditCode = supervisorSocialCode.value
+            address = organAddress.value
+            legalRepresentative = organRepresentative.value
             registeredCapital = this@IdentityAuthViewModel.registeredCapital.value
+            registeredDate = dateOfFounded.value
+            businessPeriod = this@IdentityAuthViewModel.businessPeriod.value
+            businessScope = this@IdentityAuthViewModel.businessScope.value
         }
 
         repository.verifyOrganization(params)

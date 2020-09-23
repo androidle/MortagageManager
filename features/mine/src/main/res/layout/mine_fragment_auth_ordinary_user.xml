@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="userManager"
+            type="com.leevinapp.monitor.core.core.user.UserManager" />
+
+        <variable
             name="viewModel"
             type="com.leevinapp.monitor.mine.ui.identityauth.IdentityAuthViewModel" />
     </data>
@@ -23,12 +27,12 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/dimen_common_margin"
-            android:paddingTop="@dimen/dimen_common_margin"
-            android:paddingHorizontal="@dimen/dimen_common_margin"
             android:background="@drawable/content_background"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/dimen_common_margin"
+            android:paddingTop="@dimen/dimen_common_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_container">
 
@@ -36,81 +40,74 @@
             <com.leevinapp.monitor.core.common.view.ItemEditView
                 android:id="@+id/iev_real_name"
                 android:layout_width="match_parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:name="@string/mine_real_name"
-                app:editValue="@={viewModel.realName}"
+                android:layout_height="wrap_content"
+                app:editValue="@{userManager.user.fullname}"
                 app:isEditable="false"
-                app:editHint=""
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_height="wrap_content"/>
+                app:name="@string/mine_real_name" />
 
             <com.leevinapp.monitor.core.common.view.ItemView
                 android:id="@+id/iv_identity_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:value="@={viewModel.userRoleDes}"
-                app:layout_constraintTop_toBottomOf="@+id/iev_real_name"
-                app:layout_constraintStart_toStartOf="parent"
+                app:label="@string/mine_identity_type"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:label="@string/mine_identity_type"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iev_real_name"
+                app:value="@={viewModel.userRoleDes}" />
 
             <com.leevinapp.monitor.core.common.view.ItemEditView
                 android:id="@+id/iev_identity_num"
                 android:layout_width="match_parent"
-                app:name="@string/mine_identity_num"
-                app:isEditable="false"
-                app:editHint=""
+                android:layout_height="wrap_content"
                 app:editValue="@={viewModel.identityNum}"
-                app:layout_constraintTop_toBottomOf="@+id/iv_identity_type"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_height="wrap_content"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_identity_type"
+                app:name="@string/mine_identity_num" />
 
             <com.leevinapp.monitor.core.common.view.ItemEditView
                 android:id="@+id/iev_address"
                 android:layout_width="match_parent"
-                app:name="@string/mine_address"
-                app:editHint=""
+                android:layout_height="wrap_content"
                 app:editValue="@={viewModel.homeAddress}"
-                app:layout_constraintTop_toBottomOf="@+id/iev_identity_num"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_height="wrap_content"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iev_identity_num"
+                app:name="@string/mine_address" />
 
             <com.leevinapp.monitor.core.common.view.ItemEditView
                 android:id="@+id/iev_company_full_name"
                 android:layout_width="match_parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:name="@string/mine_company_full_name"
+                android:layout_height="wrap_content"
                 app:editValue="@={viewModel.companyName}"
-                app:editHint=""
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iev_address"
-                android:layout_height="wrap_content"/>
+                app:name="@string/mine_company_full_name" />
 
             <com.leevinapp.monitor.core.common.view.ItemEditView
                 android:id="@+id/iev_uniform_social_code"
                 android:layout_width="match_parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:name="@string/mine_social_code"
+                android:layout_height="wrap_content"
                 app:editValue="@={viewModel.supervisorSocialCode}"
-                app:isEditable="false"
-                app:editHint=""
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iev_company_full_name"
-                android:layout_height="wrap_content"/>
+                app:name="@string/mine_social_code" />
 
             <com.leevinapp.monitor.core.common.view.ItemEditView
                 android:id="@+id/iev_job_position"
                 android:layout_width="match_parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_height="wrap_content"
+                app:editValue="@{userManager.user.jobPosition}"
+                app:isEditable="false"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:name="@string/mine_job_position"
-                app:editValue="@={viewModel.jobPosition}"
-                app:editHint=""
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iev_uniform_social_code"
-                android:layout_height="wrap_content"/>
+                app:name="@string/mine_job_position" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_submit"

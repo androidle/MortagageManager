@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
+import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.core.core.user.UserRole.BANK_USER_NO_ORG
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.databinding.MineFragmentAuthMortgageUserBinding
@@ -21,6 +22,8 @@ class MortgageUserAuthFragment : ViewModelFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var userManager: UserManager
 
     val viewModel: IdentityAuthViewModel by viewModels {
         viewModelFactory
@@ -34,6 +37,7 @@ class MortgageUserAuthFragment : ViewModelFragment() {
         return MineFragmentAuthMortgageUserBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = this@MortgageUserAuthFragment.viewModel
+            userManager = this@MortgageUserAuthFragment.userManager
             viewBinding = this
         }.root
     }
@@ -43,7 +47,7 @@ class MortgageUserAuthFragment : ViewModelFragment() {
         viewModel.setUserRole(BANK_USER_NO_ORG)
 
         viewBinding.buttonSubmit.setOnClickListener {
-            viewModel.verifyUser()
+            viewModel.verifyMortgageUser()
         }
     }
 

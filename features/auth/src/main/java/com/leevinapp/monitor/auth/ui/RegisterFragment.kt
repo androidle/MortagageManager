@@ -95,7 +95,7 @@ class RegisterFragment : ViewModelFragment() {
     }
 
     override fun onDestroy() {
-        binding.ievSmsCode.cancelTimer()
+        binding?.ievSmsCode?.cancelTimer()
         super.onDestroy()
     }
 
