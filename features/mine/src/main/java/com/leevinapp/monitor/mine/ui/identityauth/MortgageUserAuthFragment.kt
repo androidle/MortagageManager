@@ -6,22 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
+import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
+import com.leevinapp.monitor.core.core.user.UserRole.BANK_USER_NO_ORG
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.databinding.MineFragmentAuthMortgageUserBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.MineConstants
 import javax.inject.Inject
-import kotlinx.android.synthetic.main.mine_fragment_auth_mortgage_user.*
 
-class MortgageUserAuthFragment : BaseFragment() {
+class MortgageUserAuthFragment : ViewModelFragment() {
 
     private var viewBinding by autoCleared<MineFragmentAuthMortgageUserBinding>()
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment? = null
 
     val viewModel: IdentityAuthViewModel by viewModels {
         viewModelFactory
@@ -41,20 +40,15 @@ class MortgageUserAuthFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        iv_identity_type.setOnClickListener {
-            identityAuthSelectionFragment?.show(
-                childFragmentManager,
-                MineIdentityAuthSelectionFragment::class.simpleName
-            )
-        }
+        viewModel.setUserRole(BANK_USER_NO_ORG)
 
-        if (identityAuthSelectionFragment == null) {
-            identityAuthSelectionFragment =
-                MineIdentityAuthSelectionFragment.newInstance(MineConstants.user_identity_types)
+        viewBinding.buttonSubmit.setOnClickListener {
+            viewModel.verifyUser()
         }
-        identityAuthSelectionFragment?.setSelectedCallback { option ->
-            iv_identity_type.value = option.name
-        }
+    }
+
+    override fun getViewModel(): BaseViewModel {
+        return viewModel
     }
 
     override fun getTitleBarView(): View? {

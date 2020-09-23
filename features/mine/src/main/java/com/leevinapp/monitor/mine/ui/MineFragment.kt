@@ -142,8 +142,8 @@ class MineFragment : ViewModelFragment() {
         if (BuildConfig.DEBUG) {
             iv_avatar.setOnLongClickListener(object : OnLongClickListener {
                 override fun onLongClick(v: View?): Boolean {
-                    val isNoNeedLogon = storage.getBoolean(Constants.KEY_NO_NEED_LOGON)
-                    storage.setBoolean(Constants.KEY_NO_NEED_LOGON, !isNoNeedLogon)
+                    val isNoNeedLogon = storage.getBoolean(Constants.KEY_IS_NO_NEED_LOGON)
+                    storage.setBoolean(Constants.KEY_IS_NO_NEED_LOGON, !isNoNeedLogon)
                     Toast.makeText(requireContext(), if (!isNoNeedLogon) "开启免登录" else "关闭免登录", Toast.LENGTH_SHORT).show()
                     return true
                 }

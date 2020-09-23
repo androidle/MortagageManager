@@ -12,7 +12,6 @@ import com.leevinapp.monitor.mine.data.response.GetSubInstitutionResponse
 import com.leevinapp.monitor.mine.data.response.GetTicketDetailsResponse
 import com.leevinapp.monitor.mine.data.response.GetUserProfileResponse
 import com.leevinapp.monitor.mine.data.response.RaiseTicketResponse
-import com.leevinapp.monitor.mine.data.response.VerifyUserResponse
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -29,7 +28,7 @@ interface MineService {
     fun updateUserProfile(@Body params: UpdateUserProfileParams): Single<ApiResponse<Any>>
 
     @POST("app/auth/verify/user")
-    fun verifyUser(@Body params: VerifyUserParams): Single<ApiResponse<VerifyUserResponse>>
+    fun verifyUser(@Body params: VerifyUserParams): Single<ApiResponse<Any>>
 
     @POST("app/auth/verify/organization")
     fun verifyOrganization(@Body params: VerifyOrganizationParams): Single<ApiResponse<Any>>

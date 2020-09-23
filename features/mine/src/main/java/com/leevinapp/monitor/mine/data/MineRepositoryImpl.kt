@@ -4,6 +4,8 @@ import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.data.api.MineService
 import com.leevinapp.monitor.mine.data.params.UpdateUserProfileParams
+import com.leevinapp.monitor.mine.data.params.VerifyOrganizationParams
+import com.leevinapp.monitor.mine.data.params.VerifyUserParams
 import com.leevinapp.monitor.mine.data.response.GetSubInstitutionResponse
 import com.leevinapp.monitor.mine.data.response.GetUserProfileResponse
 import com.leevinapp.monitor.mine.domain.MineRepository
@@ -26,6 +28,18 @@ class MineRepositoryImpl(private val mineService: MineService, private val userM
 
     override fun searchInstitution(search: String): Single<ApiResponse<GetSubInstitutionResponse>> {
         return mineService.searchOrg(search)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun verifyUser(params: VerifyUserParams): Single<ApiResponse<Any>> {
+        return mineService.verifyUser(params)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun verifyOrganization(params: VerifyOrganizationParams): Single<ApiResponse<Any>> {
+        return mineService.verifyOrganization(params)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

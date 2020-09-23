@@ -21,8 +21,12 @@ import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.common.view.CustomClickableSpan
 import com.leevinapp.monitor.core.core.config.Constants
+import com.leevinapp.monitor.core.core.config.Constants.KEY_IS_REMEMBER_LOGON_NAME
+import com.leevinapp.monitor.core.core.config.Constants.KEY_PASSWORD
+import com.leevinapp.monitor.core.core.config.Constants.KEY_PHONE_NUMBER
 import com.leevinapp.monitor.core.core.storage.Storage
 import com.leevinapp.monitor.core.core.user.UserManager
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.auth_fragment_logon.*
 
@@ -37,6 +41,8 @@ class LogonFragment : ViewModelFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    private var viewBinding by autoCleared<AuthFragmentLogonBinding>()
+
     val viewModel: LogonViewModel by viewModels {
         viewModelFactory
     }
@@ -48,6 +54,7 @@ class LogonFragment : ViewModelFragment() {
     ): View? {
         return AuthFragmentLogonBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
+            viewBinding = this
             viewModel = this@LogonFragment.viewModel
         }.root
     }
@@ -58,9 +65,10 @@ class LogonFragment : ViewModelFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        echoLogonName()
 
-        button_logon.setOnClickListener {
-            val isNoNeedLogon = storage.getBoolean(Constants.KEY_NO_NEED_LOGON)
+        viewBinding.buttonLogon.setOnClickListener {
+            val isNoNeedLogon = storage.getBoolean(Constants.KEY_IS_NO_NEED_LOGON)
             if (isNoNeedLogon && BuildConfig.DEBUG) {
                 userManager.isLogged = true
                 findNavController().navigateUp()
@@ -79,21 +87,21 @@ class LogonFragment : ViewModelFragment() {
             SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE
         )
 
-        tv_to_register.text = spannableString
+        viewBinding.tvToRegister.text = spannableString
         tv_to_register.movementMethod = LinkMovementMethod.getInstance()
         tv_forgot_password.setOnClickListener {
             findNavController().navigate(R.id.auth_action_logonfragment_to_forgotpasswordfragment)
         }
 
-        iev_sms_code.setSmsCodeClickListener {
+        viewBinding.ievSmsCode.setSmsCodeClickListener {
             iev_sms_code.startTimer()
             viewModel.sendSmsCode()
         }
 
-        cb_auto_login.setOnCheckedChangeListener { buttonView, isChecked ->
+        viewBinding.cbAutoLogin.setOnCheckedChangeListener { _, isChecked ->
             userManager.isLogged = isChecked
             if (isChecked) {
-            } else {
+                storage.setBoolean(KEY_IS_REMEMBER_LOGON_NAME, true)
             }
         }
 
@@ -106,6 +114,16 @@ class LogonFragment : ViewModelFragment() {
         viewModel.smsCodeResult.observe(viewLifecycleOwner, Observer {
             Toast.makeText(requireContext(), if (it) "发送成功" else "发送失败", Toast.LENGTH_SHORT)
         })
+    }
+
+    private fun echoLogonName() {
+        if (storage.getBoolean(KEY_IS_REMEMBER_LOGON_NAME)) {
+            val phoneNumber = storage.getString(KEY_PHONE_NUMBER)
+            val password = storage.getString(KEY_PASSWORD)
+            viewBinding.ievPhoneNumber.editValue = phoneNumber
+            viewBinding.ievPassword.editValue = password
+            viewBinding.cbAutoLogin.isChecked = true
+        }
     }
 
     private fun logonSuccess(it: LoginResponse) {
@@ -125,7 +143,10 @@ class LogonFragment : ViewModelFragment() {
             homeAddress = it.homeAddress ?: ""
             residenceId = it.residenceId ?: ""
         }
-
+        if (storage.getBoolean(KEY_IS_REMEMBER_LOGON_NAME)) {
+            storage.setString(KEY_PHONE_NUMBER, viewModel.phoneNumber.value ?: "")
+            storage.setString(KEY_PASSWORD, viewModel.password.value ?: "")
+        }
         findNavController().navigateUp()
     }
 

@@ -29,6 +29,14 @@ class ItemEditView @JvmOverloads constructor(
             tv_name.text = value
         }
 
+    var editValue: String?
+        get() {
+            return et_value.text.toString()
+        }
+        set(value) {
+            et_value.setText(value)
+        }
+
     var isEditable: Boolean
         get() {
             return et_value.isEnabled
@@ -92,7 +100,7 @@ class ItemEditView @JvmOverloads constructor(
                             name = typedArray.getString(attr)
                         }
                         R.styleable.ItemEditView_editValue -> {
-                            et_value.setText(typedArray.getString(attr))
+                            editValue = typedArray.getString(attr)
                         }
                         R.styleable.ItemEditView_editHint -> {
                             editHint(typedArray.getString(attr))
