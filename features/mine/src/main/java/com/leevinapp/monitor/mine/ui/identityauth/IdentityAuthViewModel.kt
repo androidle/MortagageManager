@@ -10,8 +10,8 @@ import com.leevinapp.monitor.mine.data.params.VerifyUserParams
 import com.leevinapp.monitor.mine.domain.MineRepository
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
 
 class IdentityAuthViewModel @Inject constructor(private val repository: MineRepository) :
     BaseViewModel() {
@@ -53,7 +53,7 @@ class IdentityAuthViewModel @Inject constructor(private val repository: MineRepo
             residenceId = identityNum.value
             familyAddress = homeAddress.value
             organizationName = companyName.value
-            supervisorUniformSocialCreditCode = supervisorSocialCode.value
+            uniformSocialCreditCode = supervisorSocialCode.value
         }
 
         repository.verifyUser(params)

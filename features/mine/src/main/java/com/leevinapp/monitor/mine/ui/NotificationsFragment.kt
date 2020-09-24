@@ -5,18 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
+import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.common.view.recycleview.HorizontalDividerItemDecoration
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFramentNotificationsBinding
+import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.model.NotificationModel
 import com.leevinapp.monitor.mine.ui.adapter.NotificationAdapter
 import kotlinx.android.synthetic.main.mine_frament_notifications.*
+import javax.inject.Inject
 
-class NotificationsFragment : BaseFragment() {
+class NotificationsFragment : ViewModelFragment() {
 
     private var viewBinding by autoCleared<MineFramentNotificationsBinding>()
+
+    @Inject
+    lateinit var viewModel:NotificationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +53,8 @@ class NotificationsFragment : BaseFragment() {
                 .sizeResId(R.dimen.dimen_common_margin_1)
                 .build()
         )
+
+        viewModel.getNotifications()
     }
 
     private fun getDummyData(): MutableList<NotificationModel> {
@@ -64,6 +72,14 @@ class NotificationsFragment : BaseFragment() {
         }
 
         return dummy
+    }
+
+    override fun getViewModel(): BaseViewModel {
+        return viewModel
+    }
+
+    override fun initDependencyInjection() {
+        buildComponent(this).inject(this)
     }
 
     override fun getTitleBarView(): View? {

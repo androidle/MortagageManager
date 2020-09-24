@@ -8,9 +8,11 @@ import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
 import com.leevinapp.monitor.mine.ui.ApplyParentInstitutionViewModel
 import com.leevinapp.monitor.mine.ui.GeneralInfoViewModel
 import com.leevinapp.monitor.mine.ui.MineViewModel
+import com.leevinapp.monitor.mine.ui.NotificationViewModel
 import com.leevinapp.monitor.mine.ui.SubInstitutionsViewModel
 import com.leevinapp.monitor.mine.ui.generalInfo.PersonalInfoViewModel
 import com.leevinapp.monitor.mine.ui.identityauth.IdentityAuthViewModel
+import com.leevinapp.monitor.mine.ui.ticket.TicketViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -53,6 +55,18 @@ abstract class MineViewModelModule {
     @FeatureScope
     @ViewModelKey(SubInstitutionsViewModel::class)
     internal abstract fun bindSubInstitutionsViewModel(viewModel: SubInstitutionsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @FeatureScope
+    @ViewModelKey(NotificationViewModel::class)
+    internal abstract fun bindNotificationViewModel(viewModel: NotificationViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @FeatureScope
+    @ViewModelKey(TicketViewModel::class)
+    internal abstract fun bindTicketViewModel(viewModel: TicketViewModel): ViewModel
 
     @Binds
     @FeatureScope

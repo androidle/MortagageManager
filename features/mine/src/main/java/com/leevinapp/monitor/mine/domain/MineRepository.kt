@@ -1,8 +1,8 @@
 package com.leevinapp.monitor.mine.domain
 
 import com.leevinapp.monitor.core.core.network.ApiResponse
+import com.leevinapp.monitor.mine.data.params.ApproveTicketParams
 import com.leevinapp.monitor.mine.data.params.GetTicketsParams
-import com.leevinapp.monitor.mine.data.params.RejectTicketParams
 import com.leevinapp.monitor.mine.data.params.RequestTicketParams
 import com.leevinapp.monitor.mine.data.params.UpdateUserProfileParams
 import com.leevinapp.monitor.mine.data.params.VerifyOrganizationParams
@@ -27,26 +27,17 @@ interface MineRepository {
 
     fun verifyOrganization(params: VerifyOrganizationParams): Single<ApiResponse<Any>>
 
-    fun getSubInstitution(): Single<ApiResponse<GetSubInstitutionResponse>>
+    fun getSubInstitution(): Single<ApiResponse<List<GetSubInstitutionResponse>>>
 
     fun getTickets(params: GetTicketsParams): Single<ApiResponse<List<GetTicketDetailsResponse>>>
 
     fun getTicketDetails(ticketId: String): Single<ApiResponse<GetTicketDetailsResponse>>
 
-    fun approveTicketByOrgan(params: GetTicketsParams): Single<ApiResponse<Any>>
+    fun approveTicket(params: ApproveTicketParams): Single<ApiResponse<Any>>
 
-    fun rejectTicketByOrgan(params: RejectTicketParams): Single<ApiResponse<Any>>
+    fun getNotifications(): Single<ApiResponse<GetNotificationsResponse>>
 
-    fun approveTicketByPlatform(params: RejectTicketParams): Single<ApiResponse<Any>>
-
-    fun rejectTicketByPlatform(params: RejectTicketParams): Single<ApiResponse<Any>>
-
-    fun getNotifications(userRole: String): Single<ApiResponse<GetNotificationsResponse>>
-
-    fun requestTicket(
-        userRole: String,
-        paramsRequest: RequestTicketParams
-    ): Single<ApiResponse<RaiseTicketResponse>>
+    fun requestTicket(paramsRequest: RequestTicketParams): Single<ApiResponse<RaiseTicketResponse>>
 
     fun getTicketOrNotificationQuantity(): Single<ApiResponse<Any>>
 
@@ -54,5 +45,5 @@ interface MineRepository {
 
     fun getUsersInOrg(): Single<ApiResponse<GetUserProfileResponse>>
 
-    fun getTicketInfo(userRole: String): Single<ApiResponse<GetTicketInfoResponse>>
+    fun getTicketInfo(): Single<ApiResponse<GetTicketInfoResponse>>
 }

@@ -1,10 +1,9 @@
 package com.leevinapp.monitor.mine.data
 
 import com.leevinapp.monitor.core.core.network.ApiResponse
-import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.data.api.MineService
+import com.leevinapp.monitor.mine.data.params.ApproveTicketParams
 import com.leevinapp.monitor.mine.data.params.GetTicketsParams
-import com.leevinapp.monitor.mine.data.params.RejectTicketParams
 import com.leevinapp.monitor.mine.data.params.RequestTicketParams
 import com.leevinapp.monitor.mine.data.params.UpdateUserProfileParams
 import com.leevinapp.monitor.mine.data.params.VerifyOrganizationParams
@@ -21,8 +20,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class MineRepositoryImpl(
-    private val mineService: MineService,
-    private val userManager: UserManager
+    private val mineService: MineService
 ) : MineRepository {
     override fun getUserProfile(): Single<ApiResponse<GetUserProfileResponse>> {
         return mineService.getUserProfile()
@@ -54,7 +52,7 @@ class MineRepositoryImpl(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun getSubInstitution(): Single<ApiResponse<GetSubInstitutionResponse>> {
+    override fun getSubInstitution(): Single<ApiResponse<List<GetSubInstitutionResponse>>> {
         return mineService.getSubInstitution()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -66,26 +64,8 @@ class MineRepositoryImpl(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun approveTicketByOrgan(params: GetTicketsParams): Single<ApiResponse<Any>> {
-        return mineService.approveTicketByOrgan(params)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
-
-    override fun rejectTicketByOrgan(params: RejectTicketParams): Single<ApiResponse<Any>> {
-        return mineService.rejectTicketByOrgan(params)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
-
-    override fun approveTicketByPlatform(params: RejectTicketParams): Single<ApiResponse<Any>> {
-        return mineService.approveTicketByPlatform(params)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
-
-    override fun rejectTicketByPlatform(params: RejectTicketParams): Single<ApiResponse<Any>> {
-        return mineService.rejectTicketByPlatform(params)
+    override fun approveTicket(params: ApproveTicketParams): Single<ApiResponse<Any>> {
+        return mineService.approveTicket(params)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
@@ -96,17 +76,14 @@ class MineRepositoryImpl(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun getNotifications(userRole: String): Single<ApiResponse<GetNotificationsResponse>> {
-        return mineService.getNotifications(userRole)
+    override fun getNotifications(): Single<ApiResponse<GetNotificationsResponse>> {
+        return mineService.getNotifications()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun requestTicket(
-        userRole: String,
-        paramsRequest: RequestTicketParams
-    ): Single<ApiResponse<RaiseTicketResponse>> {
-        return mineService.requestTicket(userRole, paramsRequest)
+    override fun requestTicket(paramsRequest: RequestTicketParams): Single<ApiResponse<RaiseTicketResponse>> {
+        return mineService.requestTicket(paramsRequest)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
@@ -129,8 +106,8 @@ class MineRepositoryImpl(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun getTicketInfo(userRole: String): Single<ApiResponse<GetTicketInfoResponse>> {
-        return mineService.getTicketInfo(userRole)
+    override fun getTicketInfo(): Single<ApiResponse<GetTicketInfoResponse>> {
+        return mineService.getTicketInfo()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

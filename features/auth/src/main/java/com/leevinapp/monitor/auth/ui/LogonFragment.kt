@@ -27,8 +27,8 @@ import com.leevinapp.monitor.core.core.config.Constants.KEY_PHONE_NUMBER
 import com.leevinapp.monitor.core.core.storage.Storage
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.core.core.utils.autoCleared
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.auth_fragment_logon.*
+import javax.inject.Inject
 
 class LogonFragment : ViewModelFragment() {
 
@@ -120,8 +120,8 @@ class LogonFragment : ViewModelFragment() {
         if (storage.getBoolean(KEY_IS_REMEMBER_LOGON_NAME)) {
             val phoneNumber = storage.getString(KEY_PHONE_NUMBER)
             val password = storage.getString(KEY_PASSWORD)
-            viewBinding.ievPhoneNumber.editValue = phoneNumber
-            viewBinding.ievPassword.editValue = password
+            viewModel.phoneNumber.value = phoneNumber
+            viewModel.password.value = password
             viewBinding.cbAutoLogin.isChecked = true
         }
     }

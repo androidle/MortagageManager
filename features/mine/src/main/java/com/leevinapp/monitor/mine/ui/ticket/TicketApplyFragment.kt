@@ -7,16 +7,22 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
-import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
+import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentTicketApplyBinding
+import com.leevinapp.monitor.mine.di.buildComponent
+import javax.inject.Inject
 
-class TicketApplyFragment : BaseFragment() {
+class TicketApplyFragment : ViewModelFragment() {
 
     private var viewBinding by autoCleared<MineFragmentTicketApplyBinding>()
 
     private var titles = mutableListOf("待处理", "已处理")
+
+    @Inject
+    lateinit var viewModel: TicketViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,6 +57,16 @@ class TicketApplyFragment : BaseFragment() {
                 tab.text = titles[position]
             })
             .attach()
+
+        viewModel.getTickets()
+    }
+
+    override fun getViewModel(): BaseViewModel {
+        return viewModel
+    }
+
+    override fun initDependencyInjection() {
+        buildComponent(this).inject(this)
     }
 
     override fun getTitleBarView(): View? {

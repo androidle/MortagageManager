@@ -8,8 +8,8 @@ import com.leevinapp.monitor.mine.domain.MineRepository
 import com.leevinapp.monitor.mine.domain.model.InstitutionModel
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
 
 class SubInstitutionsViewModel @Inject constructor(private val repository: MineRepository) :
     BaseViewModel() {
@@ -19,8 +19,8 @@ class SubInstitutionsViewModel @Inject constructor(private val repository: MineR
     fun getSubInstitutions() {
         repository.getSubInstitution()
             .applyIoSchedules()
-            .subscribe(object : SingleObserver<ApiResponse<GetSubInstitutionResponse>> {
-                override fun onSuccess(response: ApiResponse<GetSubInstitutionResponse>) {
+            .subscribe(object : SingleObserver<ApiResponse<List<GetSubInstitutionResponse>>> {
+                override fun onSuccess(response: ApiResponse<List<GetSubInstitutionResponse>>) {
                     Timber.d("==>$response")
                     if (response.success) {
                         val data = response.data
@@ -38,7 +38,7 @@ class SubInstitutionsViewModel @Inject constructor(private val repository: MineR
             })
     }
 
-    private fun convertToModel(data: GetSubInstitutionResponse): List<InstitutionModel>? {
+    private fun convertToModel(data: List<GetSubInstitutionResponse>): List<InstitutionModel>? {
         // TODO("Not yet implemented")
         return mutableListOf()
     }

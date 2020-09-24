@@ -27,8 +27,8 @@ import com.leevinapp.monitor.mine.domain.model.MenuModel.AUTH_ACCOUNT
 import com.leevinapp.monitor.mine.domain.model.MenuModel.PARENT_ORGANIZATION_APPLY
 import com.leevinapp.monitor.mine.ui.adapter.TextMenuAdapter
 import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthSelectionFragment
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.mine_fragment.*
+import javax.inject.Inject
 
 class MineFragment : ViewModelFragment() {
 
@@ -153,8 +153,10 @@ class MineFragment : ViewModelFragment() {
         viewModel.isLogged.postValue(userManager.isLogged)
 
         iv_settings.setOnClickListener {
-            requireActivity().showErrorDialog("System Error!!!")
+            requireActivity().showErrorDialog("Settings")
         }
+
+        viewModel
     }
 
     override fun getViewModel(): BaseViewModel {
