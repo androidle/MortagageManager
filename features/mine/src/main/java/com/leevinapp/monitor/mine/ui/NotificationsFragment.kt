@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
@@ -12,7 +13,6 @@ import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFramentNotificationsBinding
 import com.leevinapp.monitor.mine.di.buildComponent
-import com.leevinapp.monitor.mine.domain.model.NotificationModel
 import com.leevinapp.monitor.mine.ui.adapter.NotificationAdapter
 import kotlinx.android.synthetic.main.mine_frament_notifications.*
 import javax.inject.Inject
@@ -22,7 +22,7 @@ class NotificationsFragment : ViewModelFragment() {
     private var viewBinding by autoCleared<MineFramentNotificationsBinding>()
 
     @Inject
-    lateinit var viewModel:NotificationViewModel
+    lateinit var viewModel: NotificationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,15 +38,15 @@ class NotificationsFragment : ViewModelFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView_notifications.adapter = NotificationAdapter {
+        val notificationAdapter = NotificationAdapter {
             findNavController().navigate(
                 NotificationsFragmentDirections.mineActionMineNotificationsfragmentToMineNotificationdetailsfragment(
                     it
                 )
             )
-        }.apply {
-            updateData(getDummyData())
         }
+        recyclerView_notifications.adapter = notificationAdapter
+
         recyclerView_notifications.setHasFixedSize(true)
         recyclerView_notifications.addItemDecoration(
             HorizontalDividerItemDecoration.Builder(requireContext())
@@ -55,23 +55,10 @@ class NotificationsFragment : ViewModelFragment() {
         )
 
         viewModel.getNotifications()
-    }
 
-    private fun getDummyData(): MutableList<NotificationModel> {
-        val dummy = mutableListOf<NotificationModel>()
-        for (i in 0..15) {
-            dummy.add(
-                NotificationModel().apply {
-                    title = "申请机构用户名"
-                    date = "2020-03-05"
-                    applicant = "Leevin"
-                    phoneNumber = "18712345678"
-                    isRead = i % 3 == 0
-                }
-            )
-        }
-
-        return dummy
+        viewModel.notificationsResult.observe(viewLifecycleOwner, Observer {
+            notificationAdapter.updateData(it)
+        })
     }
 
     override fun getViewModel(): BaseViewModel {

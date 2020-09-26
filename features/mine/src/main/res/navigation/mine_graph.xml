@@ -155,9 +155,9 @@
         tools:layout="@layout/mine_frament_apply_attached_institution" />
     <fragment
         android:id="@+id/mine_ticketapplyfragment"
-        android:name="com.leevinapp.monitor.mine.ui.ticket.TicketApplyFragment"
+        android:name="com.leevinapp.monitor.mine.ui.ticket.TicketsFragment"
         android:label="ApplySheetsFragment"
-        tools:layout="@layout/mine_fragment_ticket_apply" />
+        tools:layout="@layout/mine_fragment_tickets" />
     <fragment
         android:id="@+id/mine_notificationsfragment"
         android:name="com.leevinapp.monitor.mine.ui.NotificationsFragment"

@@ -10,8 +10,8 @@ import com.leevinapp.monitor.mine.data.response.GetUserProfileResponse
 import com.leevinapp.monitor.mine.domain.MineRepository
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
 
 class PersonalInfoViewModel @Inject constructor(
     private val mineRepository: MineRepository,
@@ -34,7 +34,7 @@ class PersonalInfoViewModel @Inject constructor(
                     Timber.d("==>$response")
                     if (response.success) {
                         val data = response.data
-                        userManager.user = toUserModel(data)
+                        userManager.user = data.toModel()
                         userProfile.postValue(
                             userManager.user
                         )
@@ -57,10 +57,10 @@ class PersonalInfoViewModel @Inject constructor(
             userId = data.id,
             phoneNumber = data.telephone,
             nickname = data.nickname ?: "",
-            fullname = data.fullName ?: "",
+            fullName = data.fullName ?: "",
             organId = data.organizationId ?: 0,
             jobPosition = data.jobPosition ?: "",
-            email = data.email,
+            email = data.email?:"",
             isAuthenticated = data.isAuthenticated,
             residenceId = data.residenceId ?: "",
             homeAddress = data.homeAddress ?: "",

@@ -1,127 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/content_background_all_round"
-    android:paddingHorizontal="@dimen/dimen_common_margin_1"
-    android:paddingVertical="@dimen/dimen_common_margin"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tv_title_name"
-        style="@style/MonitorText.Title"
-        android:layout_width="0dp"
+    <data>
+        <variable
+            name="model"
+            type="com.leevinapp.monitor.mine.domain.model.InstitutionModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:paddingVertical="10dp"
-        tools:text="内蒙古银行股份有限公司"
-        android:layout_marginHorizontal="@dimen/dimen_common_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:drawableEnd="@drawable/ic_arrow_right"
-        android:textColor="#424242"/>
+        android:background="@drawable/content_background_all_round"
+        android:paddingHorizontal="@dimen/dimen_common_margin"
+        android:paddingVertical="@dimen/dimen_common_margin">
 
-    <LinearLayout
-        android:id="@+id/container_content"
-        android:layout_width="0dp"
-        android:orientation="vertical"
-        android:visibility="gone"
-        tools:visibility="visible"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_name"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/dimen_common_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="wrap_content">
-
-        <com.leevinapp.monitor.core.common.view.ItemEditView
-            android:id="@+id/iev_uniform_social_code"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_title_name"
+            style="@style/MonitorText.Title"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:isEditable="false"
-            app:name="@string/mine_social_code" />
+            android:drawableEnd="@{model.expand?@drawable/ic_arrow_down:@drawable/ic_arrow_right}"
+            android:paddingVertical="10dp"
+            android:textColor="#424242"
+            android:textSize="18sp"
+            android:text="@{model.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="内蒙古银行股份有限公司" />
 
-        <com.leevinapp.monitor.core.common.view.ItemEditView
-            android:id="@+id/iev_company_presenter"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/container_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:isEditable="false"
-            app:name="@string/mine_company_presenter" />
-
-        <com.leevinapp.monitor.core.common.view.ItemEditView
-            android:id="@+id/iev_registered_capital"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:isEditable="false"
-            app:name="@string/mine_registered_capital" />
-
-        <com.leevinapp.monitor.core.common.view.ItemEditView
-            android:id="@+id/iev_date_of_found"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:isEditable="false"
-            app:name="@string/mine_date_of_found" />
-
-        <com.leevinapp.monitor.core.common.view.ItemEditView
-            android:id="@+id/iev_operating_period"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:isEditable="false"
-            app:name="@string/mine_operating_period" />
-
-
-        <com.leevinapp.monitor.core.common.view.ItemEditView
-            android:id="@+id/iev_organ_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:isEditable="false"
-            app:name="@string/mine_organ_address" />
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layout_business_scope"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_common_margin"
             android:orientation="vertical"
-            android:paddingHorizontal="@dimen/dimen_common_margin"
-            app:counterEnabled="false"
-            app:hintEnabled="false"
-            android:enabled="false">
+            android:visibility="gone"
+            app:visible="@{model.expand}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_name"
+            tools:visibility="visible">
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_uniform_social_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isEditable="false"
+                app:editValue="@{model.uniformSocialCreditCode}"
+                app:name="@string/mine_social_code" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_company_presenter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isEditable="false"
+                app:editValue="@{model.legalRepresentative}"
+                app:name="@string/mine_company_presenter" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_registered_capital"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isEditable="false"
+                app:editValue="@{model.registeredCapital}"
+                app:name="@string/mine_registered_capital" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_date_of_found"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isEditable="false"
+                app:editValue="@{model.registeredDate.toString}"
+                app:name="@string/mine_date_of_found" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_business_period"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isEditable="false"
+                app:editValue="@{model.businessPeriod}"
+                app:name="@string/mine_operating_period" />
+
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_organ_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isEditable="false"
+                app:editValue="@{model.address}"
+                app:name="@string/mine_organ_address" />
 
             <TextView
-                android:id="@+id/tv_title"
+                android:id="@+id/tv_business_scope_title"
                 style="@style/MonitorText.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingVertical="@dimen/dimen_common_margin"
                 android:text="@string/mine_business_scope" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editText_business_scope"
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_business_scope"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint=""
                 android:enabled="false"
-                android:textSize="18sp" />
+                android:orientation="vertical"
+                app:counterEnabled="false"
+                app:hintEnabled="false">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_business_scope"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:text="@{model.businessScope}"
+                    android:textSize="18sp" />
 
-        <com.leevinapp.monitor.core.common.view.ItemEditView
-            android:id="@+id/iev_organ_administrator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:isEditable="false"
-            app:name="@string/mine_organ_administrator" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.leevinapp.monitor.core.common.view.ItemEditView
-            android:id="@+id/iev_administrator_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:isEditable="false"
-            app:name="@string/mine_organ_administrator_phone" />
-    </LinearLayout>
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_organ_administrator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isEditable="false"
+                app:editValue="@{model.adminName}"
+                app:name="@string/mine_organ_administrator" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_administrator_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isEditable="false"
+                app:editValue=""
+                app:name="@string/mine_organ_administrator_phone" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

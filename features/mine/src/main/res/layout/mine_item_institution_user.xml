@@ -1,87 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/content_background_all_round"
-    android:paddingHorizontal="@dimen/dimen_common_margin_1"
-    android:paddingVertical="@dimen/dimen_common_margin"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tv_title_name"
-        style="@style/MonitorText.Title"
-        android:layout_width="wrap_content"
+    <data>
+
+        <variable
+            name="model"
+            type="com.leevinapp.monitor.mine.domain.model.InstitutionUserModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:paddingVertical="10dp"
-        tools:text="王小华"
-        android:layout_marginHorizontal="@dimen/dimen_common_margin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="#424242"/>
+        android:background="@drawable/content_background_all_round"
+        android:paddingHorizontal="@dimen/dimen_common_margin"
+        android:paddingVertical="@dimen/dimen_common_margin">
 
-    <TextView
-        android:id="@+id/tv_sub_title"
-        style="@style/MonitorText.Content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingVertical="10dp"
-        tools:text="财务专员"
-        app:layout_constraintStart_toEndOf="@+id/tv_title_name"
-        app:layout_constraintTop_toTopOf="@+id/tv_title_name"
-        android:layout_marginStart="@dimen/dimen_common_margin"
-        android:layout_marginTop="@dimen/dimen_common_margin"
-        android:textColor="#424242"/>
-
-    <ImageView
-        android:id="@+id/iv_right_arrow"
-        android:layout_width="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_arrow_right"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_sub_title"
-        android:layout_height="wrap_content"/>
-
-    <LinearLayout
-        android:id="@+id/container_content"
-        android:layout_width="0dp"
-        android:orientation="vertical"
-        android:visibility="gone"
-        tools:visibility="visible"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_name"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/dimen_common_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="wrap_content">
-
-        <com.leevinapp.monitor.core.common.view.ItemEditView
-            android:id="@+id/iev_role"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_title_name"
+            style="@style/MonitorText.Title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:isEditable="false"
-            app:name="@string/mine_role" />
+            android:paddingVertical="10dp"
+            android:text="@{model.userModel.fullName}"
+            android:textColor="#424242"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="王小华" />
 
-        <com.leevinapp.monitor.core.common.view.ItemEditView
-            android:id="@+id/iev_identity_num"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_sub_title"
+            style="@style/MonitorText.Content"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:isEditable="false"
-            app:name="@string/mine_identity_num" />
+            android:layout_marginStart="@dimen/dimen_common_margin"
+            android:layout_marginTop="@dimen/dimen_common_margin"
+            android:paddingVertical="10dp"
+            android:text="@{model.userModel.jobPosition}"
+            android:textColor="#424242"
+            app:layout_constraintStart_toEndOf="@+id/tv_title_name"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title_name"
+            tools:text="财务专员" />
 
-        <com.leevinapp.monitor.core.common.view.ItemEditView
-            android:id="@+id/iev_home_address"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/iv_right_arrow"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:isEditable="false"
-            app:name="@string/mine_address" />
+            android:src="@{model.expand?@drawable/ic_arrow_down:@drawable/ic_arrow_right}"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_sub_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:src="@drawable/ic_arrow_right"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <com.leevinapp.monitor.core.common.view.ItemEditView
-            android:id="@+id/iev_phone_number"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/container_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:isEditable="false"
-            app:name="@string/mine_phone_number" />
-    </LinearLayout>
+            android:layout_marginTop="@dimen/dimen_common_margin"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_name"
+            app:visible="@{model.expand}"
+            tools:visibility="visible">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_role"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:editValue="@{model.userModel.role.desc}"
+                app:isEditable="false"
+                app:name="@string/mine_role" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_identity_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:editValue="@{model.userModel.residenceId}"
+                app:isEditable="false"
+                app:name="@string/mine_identity_num" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_home_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:editValue="@{model.userModel.homeAddress}"
+                app:isEditable="false"
+                app:name="@string/mine_address" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:editValue="@{model.userModel.phoneNumber}"
+                app:isEditable="false"
+                app:name="@string/mine_phone_number" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

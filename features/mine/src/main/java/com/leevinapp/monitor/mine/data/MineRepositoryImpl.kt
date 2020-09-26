@@ -3,7 +3,6 @@ package com.leevinapp.monitor.mine.data
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.mine.data.api.MineService
 import com.leevinapp.monitor.mine.data.params.ApproveTicketParams
-import com.leevinapp.monitor.mine.data.params.GetTicketsParams
 import com.leevinapp.monitor.mine.data.params.RequestTicketParams
 import com.leevinapp.monitor.mine.data.params.UpdateUserProfileParams
 import com.leevinapp.monitor.mine.data.params.VerifyOrganizationParams
@@ -58,8 +57,8 @@ class MineRepositoryImpl(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun getTickets(params: GetTicketsParams): Single<ApiResponse<List<GetTicketDetailsResponse>>> {
-        return mineService.getTickets(params)
+    override fun getTickets(status: String): Single<ApiResponse<List<GetTicketDetailsResponse>>> {
+        return mineService.getTickets(status)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
@@ -76,7 +75,7 @@ class MineRepositoryImpl(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun getNotifications(): Single<ApiResponse<GetNotificationsResponse>> {
+    override fun getNotifications(): Single<ApiResponse<List<GetNotificationsResponse>>> {
         return mineService.getNotifications()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -100,7 +99,7 @@ class MineRepositoryImpl(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun getUsersInOrg(): Single<ApiResponse<GetUserProfileResponse>> {
+    override fun getUsersInOrg(): Single<ApiResponse<List<GetUserProfileResponse>>> {
         return mineService.getUsersInOrg()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

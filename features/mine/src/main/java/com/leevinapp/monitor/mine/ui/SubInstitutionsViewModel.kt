@@ -14,7 +14,7 @@ import javax.inject.Inject
 class SubInstitutionsViewModel @Inject constructor(private val repository: MineRepository) :
     BaseViewModel() {
 
-    val subInstitutionsResult = MutableLiveData<List<InstitutionModel>>()
+    val subInstitutionsResult = MutableLiveData<MutableList<InstitutionModel>>()
 
     fun getSubInstitutions() {
         repository.getSubInstitution()
@@ -38,8 +38,13 @@ class SubInstitutionsViewModel @Inject constructor(private val repository: MineR
             })
     }
 
-    private fun convertToModel(data: List<GetSubInstitutionResponse>): List<InstitutionModel>? {
-        // TODO("Not yet implemented")
-        return mutableListOf()
+    private fun convertToModel(list: List<GetSubInstitutionResponse>): MutableList<InstitutionModel>? {
+        val mutableListOf = mutableListOf<InstitutionModel>()
+        list.forEach { data ->
+            mutableListOf.add(
+                data.toModel()
+            )
+        }
+        return mutableListOf
     }
 }

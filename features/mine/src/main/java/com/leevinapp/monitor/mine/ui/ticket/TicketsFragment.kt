@@ -11,13 +11,13 @@ import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
-import com.leevinapp.monitor.mine.databinding.MineFragmentTicketApplyBinding
+import com.leevinapp.monitor.mine.databinding.MineFragmentTicketsBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import javax.inject.Inject
 
-class TicketApplyFragment : ViewModelFragment() {
+class TicketsFragment : ViewModelFragment() {
 
-    private var viewBinding by autoCleared<MineFragmentTicketApplyBinding>()
+    private var viewBinding by autoCleared<MineFragmentTicketsBinding>()
 
     private var titles = mutableListOf("待处理", "已处理")
 
@@ -30,7 +30,7 @@ class TicketApplyFragment : ViewModelFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return MineFragmentTicketApplyBinding.inflate(inflater, container, false).apply {
+        return MineFragmentTicketsBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewBinding = this
         }.root
@@ -58,7 +58,7 @@ class TicketApplyFragment : ViewModelFragment() {
             })
             .attach()
 
-        viewModel.getTickets()
+        // viewModel.getTickets()
     }
 
     override fun getViewModel(): BaseViewModel {

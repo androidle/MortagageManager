@@ -112,7 +112,7 @@
                     app:value="@={viewModel.dateOfFounded}" />
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView
-                    android:id="@+id/iev_operating_period"
+                    android:id="@+id/iev_business_period"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:editValue="@={viewModel.businessPeriod}"
@@ -132,7 +132,7 @@
                     app:hintEnabled="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iev_operating_period">
+                    app:layout_constraintTop_toBottomOf="@+id/iev_business_period">
 
                     <TextView
                         android:id="@+id/tv_title"
@@ -157,7 +157,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:editHint=""
-                    app:editValue="@{userManager.user.fullname}"
+                    app:editValue="@{userManager.user.fullName}"
                     app:isEditable="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

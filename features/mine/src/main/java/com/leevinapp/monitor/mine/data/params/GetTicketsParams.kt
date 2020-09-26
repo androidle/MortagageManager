@@ -5,5 +5,5 @@ import com.leevinapp.monitor.mine.domain.model.TicketStatus
 data class GetTicketsParams(
     val current: Int,
     val pageSize: Int,
-    val status: TicketStatus
+    val status: TicketStatus?=null
 )

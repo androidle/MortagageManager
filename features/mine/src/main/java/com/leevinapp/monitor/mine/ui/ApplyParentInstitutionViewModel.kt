@@ -45,13 +45,8 @@ class ApplyParentInstitutionViewModel @Inject constructor(private val repository
     private fun toInstitutionModel(response: GetSubInstitutionResponse): List<InstitutionModel> {
         val result = mutableListOf<InstitutionModel>()
         result.add(
-            InstitutionModel(
-                username = response.name,
-                institutionName = response.name,
-                id = response.id
-                )
+            response.toModel()
         )
-
         return result
     }
 

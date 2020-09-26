@@ -2,7 +2,6 @@ package com.leevinapp.monitor.mine.domain
 
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.mine.data.params.ApproveTicketParams
-import com.leevinapp.monitor.mine.data.params.GetTicketsParams
 import com.leevinapp.monitor.mine.data.params.RequestTicketParams
 import com.leevinapp.monitor.mine.data.params.UpdateUserProfileParams
 import com.leevinapp.monitor.mine.data.params.VerifyOrganizationParams
@@ -29,13 +28,13 @@ interface MineRepository {
 
     fun getSubInstitution(): Single<ApiResponse<List<GetSubInstitutionResponse>>>
 
-    fun getTickets(params: GetTicketsParams): Single<ApiResponse<List<GetTicketDetailsResponse>>>
+    fun getTickets(status: String): Single<ApiResponse<List<GetTicketDetailsResponse>>>
 
     fun getTicketDetails(ticketId: String): Single<ApiResponse<GetTicketDetailsResponse>>
 
     fun approveTicket(params: ApproveTicketParams): Single<ApiResponse<Any>>
 
-    fun getNotifications(): Single<ApiResponse<GetNotificationsResponse>>
+    fun getNotifications(): Single<ApiResponse<List<GetNotificationsResponse>>>
 
     fun requestTicket(paramsRequest: RequestTicketParams): Single<ApiResponse<RaiseTicketResponse>>
 
@@ -43,7 +42,7 @@ interface MineRepository {
 
     fun searchUser(keyword: String): Single<ApiResponse<GetUserProfileResponse>>
 
-    fun getUsersInOrg(): Single<ApiResponse<GetUserProfileResponse>>
+    fun getUsersInOrg(): Single<ApiResponse<List<GetUserProfileResponse>>>
 
     fun getTicketInfo(): Single<ApiResponse<GetTicketInfoResponse>>
 }

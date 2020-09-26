@@ -23,8 +23,8 @@ class MineModule {
 
     @Provides
     @FeatureScope
-    fun providerRepository(@RealApi mineService: MineService, userManager: UserManager): MineRepository {
-        return MineRepositoryImpl(mineService, userManager)
+    fun providerRepository(@RealApi mineService: MineService): MineRepository {
+        return MineRepositoryImpl(mineService)
     }
 
     @RealApi

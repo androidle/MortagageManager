@@ -2,7 +2,6 @@ package com.leevinapp.monitor.mine.data.api
 
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.mine.data.params.ApproveTicketParams
-import com.leevinapp.monitor.mine.data.params.GetTicketsParams
 import com.leevinapp.monitor.mine.data.params.RequestTicketParams
 import com.leevinapp.monitor.mine.data.params.UpdateUserProfileParams
 import com.leevinapp.monitor.mine.data.params.VerifyOrganizationParams
@@ -17,6 +16,7 @@ import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MineService {
@@ -34,7 +34,7 @@ interface MineService {
     fun verifyOrganization(@Body params: VerifyOrganizationParams): Single<ApiResponse<Any>>
 
     @GET("app/notifyList")
-    fun getNotifications(): Single<ApiResponse<GetNotificationsResponse>>
+    fun getNotifications(): Single<ApiResponse<List<GetNotificationsResponse>>>
 
     @GET("app/org/subOrg")
     fun getSubInstitution(): Single<ApiResponse<List<GetSubInstitutionResponse>>>
@@ -53,13 +53,13 @@ interface MineService {
     fun getUser(@Query("keyword")keyword: String): Single<ApiResponse<GetUserProfileResponse>>
 
     @GET("app/userInOrg")
-    fun getUsersInOrg(): Single<ApiResponse<GetUserProfileResponse>>
+    fun getUsersInOrg(): Single<ApiResponse<List<GetUserProfileResponse>>>
 
     @GET("common/ticket/details")
     fun getTicketDetails(@Query("ticketId") ticketId: String): Single<ApiResponse<GetTicketDetailsResponse>>
 
-    @POST("common/ticket/list")
-    fun getTickets(@Body params: GetTicketsParams): Single<ApiResponse<List<GetTicketDetailsResponse>>>
+    @GET("app/ticket/list/{status}")
+    fun getTickets(@Path("status") status: String): Single<ApiResponse<List<GetTicketDetailsResponse>>>
 
     @POST("common/ticket/approve")
     fun approveTicket(@Body params: ApproveTicketParams): Single<ApiResponse<Any>>

@@ -5,7 +5,7 @@ class UserModel(
     var role: UserRole? = null,
     var phoneNumber: String = "",
     var nickname: String = "",
-    var fullname: String = "",
+    var fullName: String = "",
     var organName: String = "",
     var organId: Long = 0,
     var jobPosition: String = "",

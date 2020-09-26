@@ -13,6 +13,9 @@ class TicketsAdapter : RecyclerView.Adapter<TicketViewHolder>() {
 
     private var tickets = mutableListOf<TicketModel>()
 
+    private var approveCallback: ((Long) -> Unit)? = null
+    private var rejectCallback: ((Long) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketViewHolder {
         val binding = DataBindingUtil.inflate<MineItemTicketsBinding>(
             LayoutInflater.from(parent.context),
@@ -33,6 +36,14 @@ class TicketsAdapter : RecyclerView.Adapter<TicketViewHolder>() {
         notifyDataSetChanged()
     }
 
+    fun setApproveListener(approveCallback: (Long) -> Unit) {
+        this.approveCallback = approveCallback
+    }
+
+    fun setRejectCallback(rejectCallback: (Long) -> Unit) {
+        this.rejectCallback = rejectCallback
+    }
+
     override fun onBindViewHolder(holder: TicketViewHolder, position: Int) {
         holder.bindData(tickets[position])
     }
@@ -47,6 +58,14 @@ class TicketsAdapter : RecyclerView.Adapter<TicketViewHolder>() {
             binding.ivRightArrow.setOnClickListener {
                 model.isExpand = !model.isExpand
                 notifyDataSetChanged()
+            }
+
+            binding.buttonApprove.setOnClickListener {
+                approveCallback?.invoke(model.id)
+            }
+
+            binding.buttonReject.setOnClickListener {
+                rejectCallback?.invoke(model.id)
             }
         }
     }

@@ -27,8 +27,8 @@ import com.leevinapp.monitor.core.core.config.Constants.KEY_PHONE_NUMBER
 import com.leevinapp.monitor.core.core.storage.Storage
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.core.core.utils.autoCleared
-import kotlinx.android.synthetic.main.auth_fragment_logon.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.auth_fragment_logon.*
 
 class LogonFragment : ViewModelFragment() {
 
@@ -133,7 +133,7 @@ class LogonFragment : ViewModelFragment() {
             userId = it.id
             phoneNumber = it.telephone
             role = it.role
-            fullname = it.fullName ?: ""
+            fullName = it.fullName ?: ""
             email = it.email ?: ""
             nickname = it.nickname ?: ""
             organName = it.organizationName ?: ""

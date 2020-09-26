@@ -47,7 +47,7 @@
                android:layout_height="wrap_content"
                app:editHint="@string/mine_input_please"
                app:layout_constraintEnd_toEndOf="parent"
-               app:editValue="@={viewModel.userProfile.fullname}"
+               app:editValue="@={viewModel.userProfile.fullName}"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintTop_toBottomOf="@+id/iev_nick_name"
                app:name="真实性名" />

@@ -64,7 +64,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 tools:text="Leevin"
-                android:text="@{userManager.user.fullname}"
+                android:text="@{userManager.user.fullName}"
                 android:textSize="@dimen/text_size_small"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
                 app:layout_constraintEnd_toEndOf="parent"

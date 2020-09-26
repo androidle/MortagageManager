@@ -42,7 +42,7 @@
                 android:id="@+id/iev_real_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:editValue="@{userManager.user.fullname}"
+                app:editValue="@{userManager.user.fullName}"
                 app:isEditable="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

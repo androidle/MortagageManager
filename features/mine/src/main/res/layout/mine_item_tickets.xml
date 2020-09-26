@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_marginTop="15dp"
             android:gravity="start"
-            android:text="@{model.date}"
+            android:text="@{model.createDate.toString()}"
             android:textColor="#424242"
             app:layout_constraintStart_toStartOf="@+id/tv_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
@@ -72,7 +72,7 @@
             android:drawableStart="@drawable/mine_ic_phone"
             android:drawablePadding="5dp"
             android:gravity="start"
-            android:text="@{model.phonenumber}"
+            android:text="@{model.phoneNumber}"
             android:textColor="@color/color_monitor_text_blue"
             app:layout_constraintBaseline_toBaselineOf="@+id/tv_applicant"
             app:layout_constraintStart_toEndOf="@+id/tv_applicant"
@@ -126,7 +126,7 @@
                 android:id="@+id/iev_company_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:editValue="@{model.companyName}"
+                app:editValue="@{model.organName}"
                 app:isEditable="false"
                 app:name="@string/mine_company_full_name" />
 

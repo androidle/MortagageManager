@@ -7,6 +7,7 @@ import com.leevinapp.monitor.core.core.di.ViewModelKey
 import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
 import com.leevinapp.monitor.mine.ui.ApplyParentInstitutionViewModel
 import com.leevinapp.monitor.mine.ui.GeneralInfoViewModel
+import com.leevinapp.monitor.mine.ui.InstitutionUserViewModel
 import com.leevinapp.monitor.mine.ui.MineViewModel
 import com.leevinapp.monitor.mine.ui.NotificationViewModel
 import com.leevinapp.monitor.mine.ui.SubInstitutionsViewModel
@@ -61,6 +62,12 @@ abstract class MineViewModelModule {
     @FeatureScope
     @ViewModelKey(NotificationViewModel::class)
     internal abstract fun bindNotificationViewModel(viewModel: NotificationViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @FeatureScope
+    @ViewModelKey(InstitutionUserViewModel::class)
+    internal abstract fun bindInstitutionUserViewModel(viewModel: InstitutionUserViewModel): ViewModel
 
     @Binds
     @IntoMap
