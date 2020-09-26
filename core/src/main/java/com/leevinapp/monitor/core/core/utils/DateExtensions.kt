@@ -7,7 +7,7 @@ import java.util.Date
 import java.util.Locale
 
 fun Date.toString(
-    pattern: String = Constants.DATE_FORMAT_UTC,
+    pattern: String = Constants.DATE_FORMAT_NORMAL,
     local: Locale = Locale.getDefault()
 ): String = SimpleDateFormat(pattern, local).format(this)
 
