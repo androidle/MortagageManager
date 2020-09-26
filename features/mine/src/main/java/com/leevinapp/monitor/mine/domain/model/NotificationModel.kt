@@ -24,10 +24,6 @@ class NotificationModel(
     var comment:String = "",
     var type:TicketType,
 ) : Parcelable {
-    fun getTitle():String{
-        return applicant + type.desc
-    }
-
     fun toDateShow():String {
         return notifyDate.toYearMonthDay()
     }

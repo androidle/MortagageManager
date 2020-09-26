@@ -24,7 +24,7 @@
             style="@style/MonitorText.Title"
             android:layout_width="wrap_content"
             android:gravity="start"
-            android:text="@{model.titleName}"
+            android:text="@{model.applicant + model.type.desc}"
             android:textColor="#424242"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_marginTop="15dp"
             android:gravity="start"
-            android:text="@{model.createDate.toString()}"
+            android:text="@{model.updateDate.toString()?? model.createDate.toString()}"
             android:textColor="#424242"
             app:layout_constraintStart_toStartOf="@+id/tv_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
@@ -102,7 +102,7 @@
                 android:id="@+id/iev_identity_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:editValue="@{model.identityType}"
+                app:editValue="@{model.role.desc}"
                 app:isEditable="false"
                 app:name="@string/mine_identity_type" />
 
@@ -175,11 +175,11 @@
             android:layout_marginTop="@dimen/dimen_common_margin"
             android:paddingHorizontal="30dp"
             android:text="@string/mine_completed"
-            tools:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/container_content"
-            app:visible="@{model.status == TicketStatus.APPROVED}"/>
+            app:visible="@{model.status == TicketStatus.APPROVED}"
+            tools:visibility="gone" />
 
         <TextView
             android:id="@+id/tv_rejected"

@@ -13,7 +13,12 @@ class NotificationAdapter(private val itemClick: ((NotificationModel) -> Unit)? 
     private var notifications = mutableListOf<NotificationModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
-        return NotificationViewHolder.from(parent)
+        val binding = MineItemNotificationBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return NotificationViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -30,7 +35,7 @@ class NotificationAdapter(private val itemClick: ((NotificationModel) -> Unit)? 
         holder.bindData(notifications[position], itemClick)
     }
 
-    class NotificationViewHolder private constructor(private val binding: MineItemNotificationBinding) :
+    inner class NotificationViewHolder constructor(private val binding: MineItemNotificationBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindData(
@@ -40,21 +45,12 @@ class NotificationAdapter(private val itemClick: ((NotificationModel) -> Unit)? 
             binding.tvIsRead.isSelected = model.isRead
             binding.root.isSelected = model.isRead
             binding.root.setOnClickListener {
+                model.isRead = true
+                notifyDataSetChanged()
                 itemClick?.invoke(model)
             }
             binding.model = model
             binding.executePendingBindings()
-        }
-
-        companion object {
-            fun from(parent: ViewGroup): NotificationViewHolder {
-                val binding = MineItemNotificationBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-                return NotificationViewHolder(binding)
-            }
         }
     }
 }

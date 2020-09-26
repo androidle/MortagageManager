@@ -39,6 +39,7 @@ class NotificationsFragment : ViewModelFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val notificationAdapter = NotificationAdapter {
+            viewModel.stopFresh()
             findNavController().navigate(
                 NotificationsFragmentDirections.mineActionMineNotificationsfragmentToMineNotificationdetailsfragment(
                     it

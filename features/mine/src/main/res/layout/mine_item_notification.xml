@@ -22,7 +22,7 @@
             style="@style/MonitorText.Title"
             android:layout_width="wrap_content"
             android:gravity="start"
-            android:text="@{model.title}"
+            android:text="@{model.applicant + model.type.desc}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="XXX申请成本机构用户" />

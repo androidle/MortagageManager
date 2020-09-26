@@ -15,7 +15,7 @@ import javax.inject.Inject
 class TicketViewModel @Inject constructor(private val repository: MineRepository) :
     BaseViewModel() {
 
-    val ticketsResult = MutableLiveData<Map<String,MutableList<TicketModel>>>()
+    val ticketsResult = MutableLiveData<MutableList<TicketModel>>()
     
     fun getTickets(status:String) {
         repository.getTickets(status)
@@ -26,9 +26,7 @@ class TicketViewModel @Inject constructor(private val repository: MineRepository
                     if (!response.success) {
                         errorMessage.postValue(response.error)
                     } else {
-                        // TODO: 2020/9/26
-                        var map = HashMap<String, MutableList<TicketModel>>()
-                        map[status] = toModelList(response.data)
+                        ticketsResult.value = toModelList(response.data)
                     }
                 }
 

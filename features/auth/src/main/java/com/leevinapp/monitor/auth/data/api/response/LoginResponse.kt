@@ -18,8 +18,6 @@ data class LoginResponse(
     var password: String?,
     var residenceId: String? = null,
     var role: UserRole? = null,
-    var securityAnswer: String?,
-    var securityQuestion: String?,
     var telephone: String,
     var token: String,
     var uniformSocialCreditCode: String? = null,

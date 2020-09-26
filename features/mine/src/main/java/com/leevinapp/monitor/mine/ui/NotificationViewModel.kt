@@ -14,10 +14,12 @@ import javax.inject.Inject
 class NotificationViewModel @Inject constructor(private val repository: MineRepository) :
     BaseViewModel() {
 
+    val freshData  = MutableLiveData(true)
 
     val notificationsResult = MutableLiveData<MutableList<NotificationModel>>()
 
     fun getNotifications() {
+        if (freshData.value != true) return
         repository.getNotifications()
             .applyIoSchedules()
             .subscribe(object : SingleObserver<ApiResponse<List<GetNotificationsResponse>>> {
@@ -46,5 +48,9 @@ class NotificationViewModel @Inject constructor(private val repository: MineRepo
             )
         }
         return mutableListOf
+    }
+
+    fun stopFresh() {
+        freshData.value = false
     }
 }

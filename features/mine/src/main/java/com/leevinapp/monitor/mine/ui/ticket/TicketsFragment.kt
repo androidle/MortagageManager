@@ -57,8 +57,6 @@ class TicketsFragment : ViewModelFragment() {
                 tab.text = titles[position]
             })
             .attach()
-
-        // viewModel.getTickets()
     }
 
     override fun getViewModel(): BaseViewModel {
