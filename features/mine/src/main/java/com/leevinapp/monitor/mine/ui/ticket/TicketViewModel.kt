@@ -2,15 +2,13 @@ package com.leevinapp.monitor.mine.ui.ticket
 
 import androidx.lifecycle.MutableLiveData
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
-import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.mine.data.params.ApproveTicketParams
 import com.leevinapp.monitor.mine.data.response.GetTicketDetailsResponse
 import com.leevinapp.monitor.mine.domain.MineRepository
 import com.leevinapp.monitor.mine.domain.model.TicketModel
-import io.reactivex.SingleObserver
-import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Consumer
+import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
-import timber.log.Timber
 
 class TicketViewModel @Inject constructor(private val repository: MineRepository) :
     BaseViewModel() {
@@ -19,23 +17,15 @@ class TicketViewModel @Inject constructor(private val repository: MineRepository
 
     fun getTickets(status: String) {
         repository.getTickets(status)
-            .applyIoSchedules()
-            .subscribe(object : SingleObserver<ApiResponse<List<GetTicketDetailsResponse>>> {
-                override fun onSuccess(response: ApiResponse<List<GetTicketDetailsResponse>>) {
-                    Timber.d("==>$response")
-                    if (!response.success) {
-                        errorMessage.postValue(response.error)
-                    } else {
-                        ticketsResult.value = toModelList(response.data)
-                    }
-                }
-
-                override fun onSubscribe(d: Disposable) {
-                }
-
-                override fun onError(e: Throwable) {
+            .applyIoWithLoading()
+            .subscribe(Consumer { response ->
+                if (!response.success) {
+                    errorMessage.postValue(response.error)
+                } else {
+                    ticketsResult.value = toModelList(response.data)
                 }
             })
+            .addTo(compositeDisposable)
     }
 
     private fun toModelList(response: List<GetTicketDetailsResponse>): MutableList<TicketModel> {
@@ -66,22 +56,13 @@ class TicketViewModel @Inject constructor(private val repository: MineRepository
                 comment = comment
             )
         )
-            .applyIoSchedules()
+            .applyIoWithLoading()
             .subscribe(
-                object : SingleObserver<ApiResponse<Any>> {
-                    override fun onSuccess(response: ApiResponse<Any>) {
-                        Timber.d("==>$response")
-                        if (!response.success) {
-                            errorMessage.postValue(response.error)
-                        }
-                    }
-
-                    override fun onSubscribe(d: Disposable) {
-                    }
-
-                    override fun onError(e: Throwable) {
+                Consumer { response ->
+                    if (!response.success) {
+                        errorMessage.postValue(response.error)
                     }
                 }
-            )
+            ).addTo(compositeDisposable)
     }
 }

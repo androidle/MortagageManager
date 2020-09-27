@@ -1,13 +1,10 @@
 package com.leevinapp.monitor.mine.di
 
 import com.leevinapp.monitor.auth.data.PostAuthRepositoryImpl
-import com.leevinapp.monitor.auth.data.api.AuthService
 import com.leevinapp.monitor.auth.data.api.PostAuthService
 import com.leevinapp.monitor.auth.domain.PostAuthRepository
 import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
 import com.leevinapp.monitor.core.core.network.NetworkUtil
-import com.leevinapp.monitor.core.core.network.mock.MockApiUtil
-import com.leevinapp.monitor.core.core.network.qualifier.MockApi
 import com.leevinapp.monitor.core.core.network.qualifier.RealApi
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.data.MineRepositoryImpl
@@ -51,12 +48,5 @@ class MineModule {
     fun providerAuthService(retrofit: Retrofit, okHttpClient: OkHttpClient, userManager: UserManager): PostAuthService {
         val newRetrofit = NetworkUtil.postLogonRetrofit(retrofit, okHttpClient, userManager)
         return newRetrofit.create(PostAuthService::class.java)
-    }
-
-    @MockApi
-    @FeatureScope
-    @Provides
-    fun authMockApiService(mockApiUtil: MockApiUtil): AuthService {
-        TODO()
     }
 }

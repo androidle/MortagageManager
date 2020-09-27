@@ -8,51 +8,45 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.common.ui.extensions.hideKeyBoard
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
-import com.leevinapp.monitor.mine.databinding.MineFragmentApplyParentOrganBinding
+import com.leevinapp.monitor.mine.databinding.MineFragmentApplyAccessTransferBinding
 import com.leevinapp.monitor.mine.di.buildComponent
-import com.leevinapp.monitor.mine.ui.adapter.SearchResultAdapter
+import com.leevinapp.monitor.mine.ui.adapter.SearchUserAdapter
 import javax.inject.Inject
 
-class ApplyParentInstitutionFragment : ViewModelFragment() {
+class ApplyAccessTransferFragment : ViewModelFragment() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private var viewBinding by autoCleared<MineFragmentApplyAccessTransferBinding>()
 
     @Inject
     lateinit var userManager: UserManager
 
-    val viewModel: ApplyParentInstitutionViewModel by viewModels {
-        viewModelFactory
-    }
+    @Inject
+    lateinit var viewModel: ApplyAccessTransferViewModel
 
-    private var viewBinding by autoCleared<MineFragmentApplyParentOrganBinding>()
-
-    private lateinit var searchResultAdapter: SearchResultAdapter
-
-    override fun getViewModel(): BaseViewModel {
-        return viewModel
-    }
+    private lateinit var searchResultAdapter: SearchUserAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return MineFragmentApplyParentOrganBinding.inflate(inflater, container, false).apply {
+        return MineFragmentApplyAccessTransferBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
-            viewModel = this@ApplyParentInstitutionFragment.viewModel
-            userManager = this@ApplyParentInstitutionFragment.userManager
+            viewModel = this@ApplyAccessTransferFragment.viewModel
+            userManager = this@ApplyAccessTransferFragment.userManager
             viewBinding = this
         }.root
+    }
+
+    override fun getViewModel(): BaseViewModel {
+        return viewModel
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,9 +58,9 @@ class ApplyParentInstitutionFragment : ViewModelFragment() {
             viewModel.requestTicket()
         }
 
-        searchResultAdapter = SearchResultAdapter()
+        searchResultAdapter = SearchUserAdapter()
 
-        viewModel.result.observe(viewLifecycleOwner, Observer {
+        viewModel.userListResult.observe(viewLifecycleOwner, Observer {
             viewBinding.searchResultContainer.visibility = View.VISIBLE
             viewBinding.recyclerViewSearchResult.adapter = searchResultAdapter.apply {
                 viewBinding.searchResultTitle.text =
@@ -74,7 +68,7 @@ class ApplyParentInstitutionFragment : ViewModelFragment() {
                 updateResult(it)
                 setItemClick {
                     clearAndHideResultContainer()
-                    viewModel.targetInstitution(it)
+                    viewModel.targetUser(it)
                 }
             }
         })
@@ -84,11 +78,6 @@ class ApplyParentInstitutionFragment : ViewModelFragment() {
                 Toast.makeText(requireContext(), "已提交申请，等待管理员审核", Toast.LENGTH_LONG).show()
             }
         })
-    }
-
-    private fun clearAndHideResultContainer() {
-        searchResultAdapter.clear()
-        viewBinding.searchResultContainer.visibility = View.GONE
     }
 
     private fun initSearchInputListener() {
@@ -124,7 +113,16 @@ class ApplyParentInstitutionFragment : ViewModelFragment() {
         // Dismiss keyboard
         view.hideKeyBoard()
         viewModel.setQuery(query)
-        viewModel.searchInstitution()
+        viewModel.getSearchUser()
+    }
+
+    private fun clearAndHideResultContainer() {
+        searchResultAdapter.clear()
+        viewBinding.searchResultContainer.visibility = View.GONE
+    }
+
+    override fun initDependencyInjection() {
+        buildComponent(this).inject(this)
     }
 
     override fun getTitleBarView(): View? {
@@ -132,10 +130,6 @@ class ApplyParentInstitutionFragment : ViewModelFragment() {
     }
 
     override fun getTitleBarTitle(): String {
-        return getString(R.string.mine_apply_parent_institution)
-    }
-
-    override fun initDependencyInjection() {
-        buildComponent(this).inject(this)
+        return getString(R.string.mine_menu_access_transfer)
     }
 }

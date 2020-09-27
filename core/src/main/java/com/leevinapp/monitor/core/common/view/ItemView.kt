@@ -40,6 +40,19 @@ class ItemView @JvmOverloads constructor(
         iv_right.visibility = if (isShow) View.VISIBLE else View.GONE
     }
 
+    var messageCount: Int
+        get() {
+            return tv_message_count.text.toString().toInt()
+        }
+        set(value) {
+            if (value == 0) {
+                tv_message_count.visibility = View.GONE
+            } else {
+                tv_message_count.text = value.toString()
+                tv_message_count.visibility = View.VISIBLE
+            }
+        }
+
     private fun setStartIcon(drawable: Drawable?) {
         if (drawable != null) {
             iv_icon.visibility = View.VISIBLE
@@ -66,6 +79,9 @@ class ItemView @JvmOverloads constructor(
                             }
                             R.styleable.ItemView_startIcon -> {
                                 setStartIcon(typedArray.getDrawable(attr))
+                            }
+                            R.styleable.ItemView_messageCount -> {
+                                messageCount = typedArray.getInt(attr, 0)
                             }
                         }
                     }

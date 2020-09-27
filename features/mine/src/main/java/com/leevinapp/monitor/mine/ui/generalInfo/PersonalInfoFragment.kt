@@ -19,7 +19,7 @@ import com.leevinapp.monitor.mine.di.buildComponent
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.mine_fragment_personal_info.*
 
-class MinePersonalInfoFragment : ViewModelFragment() {
+class PersonalInfoFragment : ViewModelFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -40,8 +40,8 @@ class MinePersonalInfoFragment : ViewModelFragment() {
     ): View? {
         return MineFragmentPersonalInfoBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
-            viewModel = this@MinePersonalInfoFragment.viewModel
-            userManager = this@MinePersonalInfoFragment.userManager
+            viewModel = this@PersonalInfoFragment.viewModel
+            userManager = this@PersonalInfoFragment.userManager
             viewBinding = this
         }.root
     }

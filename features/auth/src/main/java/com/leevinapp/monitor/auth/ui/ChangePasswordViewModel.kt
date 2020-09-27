@@ -5,8 +5,8 @@ import com.leevinapp.monitor.auth.data.api.params.ChangePasswordParams
 import com.leevinapp.monitor.auth.domain.PostAuthRepository
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import io.reactivex.functions.Consumer
+import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
-import timber.log.Timber
 
 class ChangePasswordViewModel @Inject constructor(
     private val authRepository: PostAuthRepository
@@ -26,15 +26,12 @@ class ChangePasswordViewModel @Inject constructor(
                 confirmPassword = newConfirmPassword.value ?: ""
             )
         authRepository.changePassword(changePasswordParams)
-            .applyIoSchedules()
+            .applyIoWithLoading()
             .subscribe(Consumer {
                 changePasswordResult.postValue(it.success)
                 if (it.success.not()) {
                     errorMessage.postValue(it.error)
                 }
-                Timber.d("==changePassword==>$it")
-            }, Consumer {
-                Timber.d("==changePassword==>$it")
-            })
+            }).addTo(compositeDisposable)
     }
 }

@@ -12,7 +12,7 @@
 
         <variable
             name="viewModel"
-            type="com.leevinapp.monitor.mine.ui.ApplyParentInstitutionViewModel" />
+            type="com.leevinapp.monitor.mine.ui.ApplyAccessTransferViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,7 +46,7 @@
                 android:background="@null"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="5dp"
-                android:hint="请输入父机构/信用代码"
+                android:hint="请输入用户姓名"
                 android:imeOptions="actionSearch|actionDone"
                 android:paddingStart="5dp" />
 
@@ -74,32 +74,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hasArrow="false"
-                    app:label="本机构名称"
-                    app:value="@{userManager.user.organName}" />
+                    app:label="管理员"
+                    app:value="@{userManager.user.fullName}" />
 
                 <com.leevinapp.monitor.core.common.view.ItemView
-                    android:id="@+id/iv_parent_organ_name"
+                    android:id="@+id/iv_transfer_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hasArrow="false"
-                    app:label="父机构名称"
-                    app:value="@{String.valueOf(viewModel.currentRequestInstitution.name??@string/mine_empty_symbol)}" />
+                    app:label="授权管理员"
+                    app:value="@string/mine_empty_symbol" />
 
                 <com.leevinapp.monitor.core.common.view.ItemView
-                    android:id="@+id/iv_social_code"
+                    android:id="@+id/iv_transfer_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hasArrow="false"
-                    app:label="@string/mine_social_code"
-                    app:value="@{viewModel.currentRequestInstitution.uniformSocialCreditCode??@string/mine_empty_symbol}" />
-
-                <com.leevinapp.monitor.core.common.view.ItemView
-                    android:id="@+id/iev_organ_administrator"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:hasArrow="false"
-                    app:label="@string/mine_organ_administrator"
-                    app:value="@{viewModel.currentRequestInstitution.adminName??@string/mine_empty_symbol}" />
+                    app:label="@string/mine_phone_number"
+                    app:value="@string/mine_empty_symbol" />
 
                 <TextView
                     android:id="@+id/tv_title"

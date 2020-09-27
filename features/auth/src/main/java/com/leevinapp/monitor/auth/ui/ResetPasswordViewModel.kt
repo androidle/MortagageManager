@@ -7,11 +7,9 @@ import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.EMAIL
 import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.SMS
 import com.leevinapp.monitor.auth.domain.model.SMSType
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
-import com.leevinapp.monitor.core.core.network.ApiResponse
-import io.reactivex.SingleObserver
-import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Consumer
+import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
-import timber.log.Timber
 
 class ResetPasswordViewModel @Inject constructor(private val authRepository: AuthRepository) :
     BaseViewModel() {
@@ -40,62 +38,40 @@ class ResetPasswordViewModel @Inject constructor(private val authRepository: Aut
 
     fun sendSmsCode() {
         authRepository.sendSmsCode(phoneNumber.value ?: "", SMSType.RESET_PWD)
-            .subscribe(object : SingleObserver<ApiResponse<Any>> {
-                override fun onSuccess(response: ApiResponse<Any>) {
-                    Timber.d("====>$response")
-                    smsCodeResult.postValue(response.success)
-                    if (!response.success) {
-                        errorMessage.postValue(response.error)
-                    }
-                }
-
-                override fun onSubscribe(d: Disposable) {
-                }
-
-                override fun onError(e: Throwable) {
-                    Timber.e("====>${e.message}")
+            .applyIoWithoutLoading()
+            .subscribe(Consumer { response ->
+                smsCodeResult.postValue(response.success)
+                if (!response.success) {
+                    errorMessage.postValue(response.error)
                 }
             })
+            .addTo(compositeDisposable)
     }
 
     fun sendEmailCode() {
         authRepository.sendEmailCode(email.value ?: "")
-            .subscribe(object : SingleObserver<ApiResponse<Any>> {
-                override fun onSuccess(response: ApiResponse<Any>) {
-                    Timber.d("====>$response")
-                    emailCodeResult.postValue(response.success)
-                    if (!response.success) {
-                        errorMessage.postValue(response.error)
-                    }
-                }
-
-                override fun onSubscribe(d: Disposable) {
-                }
-
-                override fun onError(e: Throwable) {
+            .applyIoWithoutLoading()
+            .subscribe(Consumer { response ->
+                emailCodeResult.postValue(response.success)
+                if (!response.success) {
+                    errorMessage.postValue(response.error)
                 }
             })
+            .addTo(compositeDisposable)
     }
 
     fun resetPassword() {
         val resetPasswordParams = buildResetPasswordParams()
 
         authRepository.resetPassword(resetPasswordParams)
-            .applyIoSchedules()
-            .subscribe(object : SingleObserver<ApiResponse<Any>> {
-                override fun onSuccess(response: ApiResponse<Any>) {
-                    resetPasswordResultResult.postValue(response.success)
-                    if (!response.success) {
-                        errorMessage.postValue(response.error)
-                    }
-                }
-
-                override fun onSubscribe(d: Disposable) {
-                }
-
-                override fun onError(e: Throwable) {
+            .applyIoWithLoading()
+            .subscribe(Consumer { response ->
+                resetPasswordResultResult.postValue(response.success)
+                if (!response.success) {
+                    errorMessage.postValue(response.error)
                 }
             })
+            .addTo(compositeDisposable)
     }
 
     private fun buildResetPasswordParams(): ResetPasswordParams {

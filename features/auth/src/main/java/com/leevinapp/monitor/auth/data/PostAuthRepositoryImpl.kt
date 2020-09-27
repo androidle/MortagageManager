@@ -7,8 +7,6 @@ import com.leevinapp.monitor.auth.domain.PostAuthRepository
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.core.core.user.UserManager
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class PostAuthRepositoryImpl(
     private val postAuthService: PostAuthService,
@@ -16,22 +14,14 @@ class PostAuthRepositoryImpl(
 ) : PostAuthRepository {
 
     override fun logout(): Single<ApiResponse<Any>> {
-        return postAuthService.logout(userManager.user.userId)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+        return postAuthService.logout(userManager.user.id)
     }
 
     override fun changePassword(changePasswordParams: ChangePasswordParams): Single<ApiResponse<Any>> {
-        return postAuthService.changePassword(
-            params = changePasswordParams
-        )
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+        return postAuthService.changePassword(params = changePasswordParams)
     }
 
     override fun verifyNewEmail(params: VerifyNewEmailParams): Single<ApiResponse<Any>> {
         return postAuthService.verifyNewEmail(params)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
     }
 }

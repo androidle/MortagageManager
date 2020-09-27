@@ -3,15 +3,13 @@ package com.leevinapp.monitor.mine.ui.identityauth
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
-import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.core.core.user.UserRole
 import com.leevinapp.monitor.mine.data.params.VerifyOrganizationParams
 import com.leevinapp.monitor.mine.data.params.VerifyUserParams
 import com.leevinapp.monitor.mine.domain.MineRepository
-import io.reactivex.SingleObserver
-import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Consumer
+import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
-import timber.log.Timber
 
 class IdentityAuthViewModel @Inject constructor(private val repository: MineRepository) :
     BaseViewModel() {
@@ -57,22 +55,14 @@ class IdentityAuthViewModel @Inject constructor(private val repository: MineRepo
         }
 
         repository.verifyUser(params)
-            .applyIoSchedules()
-            .subscribe(object : SingleObserver<ApiResponse<Any>> {
-                override fun onSuccess(response: ApiResponse<Any>) {
-                    Timber.d("==>$response")
-                    verifyUserResult.postValue(response.success)
-                    if (!response.success) {
-                        errorMessage.postValue(response.error)
-                    }
-                }
-
-                override fun onSubscribe(d: Disposable) {
-                }
-
-                override fun onError(e: Throwable) {
+            .applyIoWithLoading()
+            .subscribe(Consumer { response ->
+                verifyUserResult.postValue(response.success)
+                if (!response.success) {
+                    errorMessage.postValue(response.error)
                 }
             })
+            .addTo(compositeDisposable)
     }
 
     fun verifyMortgageUser() {
@@ -85,22 +75,14 @@ class IdentityAuthViewModel @Inject constructor(private val repository: MineRepo
         }
 
         repository.verifyUser(params)
-            .applyIoSchedules()
-            .subscribe(object : SingleObserver<ApiResponse<Any>> {
-                override fun onSuccess(response: ApiResponse<Any>) {
-                    Timber.d("==>$response")
-                    verifyUserResult.postValue(response.success)
-                    if (!response.success) {
-                        errorMessage.postValue(response.error)
-                    }
-                }
-
-                override fun onSubscribe(d: Disposable) {
-                }
-
-                override fun onError(e: Throwable) {
+            .applyIoWithLoading()
+            .subscribe(Consumer { response ->
+                verifyUserResult.postValue(response.success)
+                if (!response.success) {
+                    errorMessage.postValue(response.error)
                 }
             })
+            .addTo(compositeDisposable)
     }
 
     fun verifyOrganization() {
@@ -116,22 +98,14 @@ class IdentityAuthViewModel @Inject constructor(private val repository: MineRepo
         }
 
         repository.verifyOrganization(params)
-            .applyIoSchedules()
-            .subscribe(object : SingleObserver<ApiResponse<Any>> {
-                override fun onSuccess(response: ApiResponse<Any>) {
-                    Timber.d("==>$response")
-                    verifyOrganResult.postValue(response.success)
-                    if (!response.success) {
-                        errorMessage.postValue(response.error)
-                    }
-                }
-
-                override fun onSubscribe(d: Disposable) {
-                }
-
-                override fun onError(e: Throwable) {
+            .applyIoWithLoading()
+            .subscribe(Consumer { response ->
+                verifyOrganResult.postValue(response.success)
+                if (!response.success) {
+                    errorMessage.postValue(response.error)
                 }
             })
+            .addTo(compositeDisposable)
     }
 
     fun setUserRole(userRole: UserRole) {

@@ -1,7 +1,7 @@
 package com.leevinapp.monitor.core.core.user
 
 class UserModel(
-    var userId: Long = 0,
+    var id: Long = 0,
     var role: UserRole? = null,
     var phoneNumber: String = "",
     var nickname: String = "",
@@ -13,6 +13,26 @@ class UserModel(
     var isAuthenticated: Boolean = false,
     var residenceId: String = "",
     var homeAddress: String = "",
-    var uniformSocialCreditCode: String = "",
+    var socialCode: String? = null,
     var watchOrganizationId: Long = 0
-)
+) {
+
+    fun copy(): UserModel {
+        return UserModel().apply {
+            id = this@UserModel.id
+            role = this@UserModel.role
+            phoneNumber = this@UserModel.phoneNumber
+            nickname = this@UserModel.nickname
+            fullName = this@UserModel.fullName
+            organName = this@UserModel.organName
+            organId = this@UserModel.organId
+            jobPosition = this@UserModel.jobPosition
+            email = this@UserModel.email
+            isAuthenticated = this@UserModel.isAuthenticated
+            residenceId = this@UserModel.residenceId
+            homeAddress = this@UserModel.homeAddress
+            socialCode = this@UserModel.socialCode
+            watchOrganizationId = this@UserModel.watchOrganizationId
+        }
+    }
+}

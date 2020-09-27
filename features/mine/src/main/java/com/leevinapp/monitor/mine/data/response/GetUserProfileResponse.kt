@@ -16,12 +16,13 @@ data class GetUserProfileResponse(
     var residenceId: String?,
     var role: UserRole,
     var telephone: String,
+    var uniformSocialCreditCode: String? = null,
     var watchOrganizationId: Long?
 ) {
 
     fun toModel(): UserModel {
         return UserModel().apply {
-            userId = this@GetUserProfileResponse.id
+            id = this@GetUserProfileResponse.id
             phoneNumber = this@GetUserProfileResponse.telephone
             email = this@GetUserProfileResponse.email ?: ""
             fullName = this@GetUserProfileResponse.fullName ?: ""
@@ -32,6 +33,7 @@ data class GetUserProfileResponse(
             organName = this@GetUserProfileResponse.organizationName ?: ""
             residenceId = this@GetUserProfileResponse.residenceId ?: ""
             role = this@GetUserProfileResponse.role
+            socialCode = this@GetUserProfileResponse.uniformSocialCreditCode
             watchOrganizationId = this@GetUserProfileResponse.watchOrganizationId ?: 0
         }
     }

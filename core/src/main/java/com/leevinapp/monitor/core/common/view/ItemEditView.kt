@@ -51,7 +51,13 @@ class ItemEditView @JvmOverloads constructor(
             return button_sms_code.visibility == View.VISIBLE
         }
         set(value) {
-            button_sms_code.visibility = if (value) View.VISIBLE else View.GONE
+            button_sms_code.visibility = if (value) {
+                setInputType(EditorInfo.TYPE_CLASS_NUMBER)
+                View.VISIBLE
+            } else {
+                setInputType(EditorInfo.TYPE_NULL)
+                View.GONE
+            }
         }
 
     val countDownTimer: CountDownTimer by lazy {

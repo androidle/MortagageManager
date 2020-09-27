@@ -2,14 +2,12 @@ package com.leevinapp.monitor.mine.ui
 
 import androidx.lifecycle.MutableLiveData
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
-import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.mine.data.response.GetNotificationsResponse
 import com.leevinapp.monitor.mine.domain.MineRepository
 import com.leevinapp.monitor.mine.domain.model.NotificationModel
-import io.reactivex.SingleObserver
-import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Consumer
+import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
-import timber.log.Timber
 
 class NotificationViewModel @Inject constructor(private val repository: MineRepository) :
     BaseViewModel() {
@@ -21,23 +19,15 @@ class NotificationViewModel @Inject constructor(private val repository: MineRepo
     fun getNotifications() {
         if (freshData.value != true) return
         repository.getNotifications()
-            .applyIoSchedules()
-            .subscribe(object : SingleObserver<ApiResponse<List<GetNotificationsResponse>>> {
-                override fun onSuccess(response: ApiResponse<List<GetNotificationsResponse>>) {
-                    Timber.d("==>$response")
-                    if (!response.success) {
-                        errorMessage.postValue(response.error)
-                    } else {
-                        notificationsResult.value = convertToModel(response.data)
-                    }
-                }
-
-                override fun onSubscribe(d: Disposable) {
-                }
-
-                override fun onError(e: Throwable) {
+            .applyIoWithLoading()
+            .subscribe(Consumer { response ->
+                if (!response.success) {
+                    errorMessage.postValue(response.error)
+                } else {
+                    notificationsResult.value = convertToModel(response.data)
                 }
             })
+            .addTo(compositeDisposable)
     }
 
     private fun convertToModel(response: List<GetNotificationsResponse>): MutableList<NotificationModel>? {

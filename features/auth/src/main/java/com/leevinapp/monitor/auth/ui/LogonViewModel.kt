@@ -5,11 +5,9 @@ import com.leevinapp.monitor.auth.data.api.response.LoginResponse
 import com.leevinapp.monitor.auth.domain.AuthRepository
 import com.leevinapp.monitor.auth.domain.model.SMSType
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
-import com.leevinapp.monitor.core.core.network.ApiResponse
-import io.reactivex.SingleObserver
-import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Consumer
+import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
-import timber.log.Timber
 
 class LogonViewModel @Inject constructor(private val authRepository: AuthRepository) : BaseViewModel() {
 
@@ -25,43 +23,26 @@ class LogonViewModel @Inject constructor(private val authRepository: AuthReposit
 
     fun login() {
         authRepository.login(phoneNumber.value ?: "", password.value ?: "", smsCode.value ?: "")
-            .applyIoSchedules()
-            .subscribe(object : SingleObserver<ApiResponse<LoginResponse>> {
-                override fun onSuccess(response: ApiResponse<LoginResponse>) {
-                    Timber.d("====>$response")
-                    if (response.success) {
-                        loginResponse.postValue(response.data)
-                    } else {
-                        loginResponse.postValue(null)
-                        errorMessage.postValue(response.error)
-                    }
-                }
-
-                override fun onSubscribe(d: Disposable) {
-                }
-
-                override fun onError(e: Throwable) {
+            .applyIoWithLoading()
+            .subscribe(Consumer { response ->
+                if (response.success) {
+                    loginResponse.postValue(response.data)
+                } else {
+                    loginResponse.postValue(null)
+                    errorMessage.postValue(response.error)
                 }
             })
+            .addTo(compositeDisposable)
     }
 
     fun sendSmsCode() {
         authRepository.sendSmsCode(phoneNumber.value ?: "", SMSType.LOGIN)
-            .subscribe(object : SingleObserver<ApiResponse<Any>> {
-                override fun onSuccess(response: ApiResponse<Any>) {
-                    Timber.d("====>$response")
-                    smsCodeResult.postValue(response.success)
-                    if (!response.success) {
-                        errorMessage.postValue(response.error)
-                    }
+            .applyIoWithoutLoading()
+            .subscribe(Consumer { response ->
+                smsCodeResult.postValue(response.success)
+                if (!response.success) {
+                    errorMessage.postValue(response.error)
                 }
-
-                override fun onSubscribe(d: Disposable) {
-                }
-
-                override fun onError(e: Throwable) {
-                    Timber.e("====>${e.message}")
-                }
-            })
+            }).addTo(compositeDisposable)
     }
 }

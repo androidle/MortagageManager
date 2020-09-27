@@ -21,6 +21,7 @@
         android:background="@null"
         android:gravity="end"
         tools:hint="请输入名称"
+        android:textColor="@color/value_text_color"
         android:textColorHint="@color/color_monitor_light_silver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_sms_code"

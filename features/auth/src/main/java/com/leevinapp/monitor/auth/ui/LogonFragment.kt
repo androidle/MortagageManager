@@ -130,7 +130,7 @@ class LogonFragment : ViewModelFragment() {
         userManager.isLogged = true
         userManager.token = it.token
         with(userManager.user) {
-            userId = it.id
+            id = it.id
             phoneNumber = it.telephone
             role = it.role
             fullName = it.fullName ?: ""

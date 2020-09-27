@@ -7,18 +7,18 @@ import android.view.ViewGroup
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
-import com.leevinapp.monitor.mine.databinding.MineFramentApplyAttachedInstitutionBinding
+import com.leevinapp.monitor.mine.databinding.MineFragmentApplyAttachedInstitutionBinding
 
 class ApplyAttachedInstitutionFragment : BaseFragment() {
 
-    private var viewBinding by autoCleared<MineFramentApplyAttachedInstitutionBinding>()
+    private var viewBinding by autoCleared<MineFragmentApplyAttachedInstitutionBinding>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return MineFramentApplyAttachedInstitutionBinding.inflate(inflater, container, false).apply {
+        return MineFragmentApplyAttachedInstitutionBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewBinding = this
         }.root

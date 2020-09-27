@@ -89,6 +89,7 @@ class MineFragment : ViewModelFragment() {
                         MineIdentityAuthSelectionFragment::class.simpleName
                     )
                 }
+                else -> {}
             }
         }
 
@@ -152,11 +153,13 @@ class MineFragment : ViewModelFragment() {
 
         viewModel.isLogged.postValue(userManager.isLogged)
 
+        if (userManager.isLogged) {
+            viewModel.getTicketInfo()
+        }
+
         iv_settings.setOnClickListener {
             requireActivity().showErrorDialog("Settings")
         }
-
-        viewModel
     }
 
     override fun getViewModel(): BaseViewModel {

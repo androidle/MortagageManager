@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/mine_minepersonalinfofragment"
-        android:name="com.leevinapp.monitor.mine.ui.generalInfo.MinePersonalInfoFragment"
+        android:name="com.leevinapp.monitor.mine.ui.generalInfo.PersonalInfoFragment"
         android:label="MinePersonalInfoFragment"
         tools:layout="@layout/mine_fragment_personal_info">
         <action
@@ -145,14 +145,14 @@
     </fragment>
     <fragment
         android:id="@+id/mine_accesstransferfragment"
-        android:name="com.leevinapp.monitor.mine.ui.AccessTransferFragment"
+        android:name="com.leevinapp.monitor.mine.ui.ApplyAccessTransferFragment"
         android:label="AccessTransferFragment"
-        tools:layout="@layout/mine_frament_access_transfer" />
+        tools:layout="@layout/mine_fragment_apply_access_transfer" />
     <fragment
         android:id="@+id/mine_applyattachedinstitutionfragment"
         android:name="com.leevinapp.monitor.mine.ui.ApplyAttachedInstitutionFragment"
         android:label="ApplyAttachedInstitutionFragment"
-        tools:layout="@layout/mine_frament_apply_attached_institution" />
+        tools:layout="@layout/mine_fragment_apply_attached_institution" />
     <fragment
         android:id="@+id/mine_ticketapplyfragment"
         android:name="com.leevinapp.monitor.mine.ui.ticket.TicketsFragment"

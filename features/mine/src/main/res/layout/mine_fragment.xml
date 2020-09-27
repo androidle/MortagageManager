@@ -123,6 +123,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:label="@string/mine_menu_apply_sheets"
+                    app:messageCount="@{viewModel.ticketInfoResult.ticketCount}"
                     app:startIcon="@drawable/ic_assignment"
                     app:layout_constraintTop_toBottomOf="@+id/view_divider"/>
 
@@ -132,6 +133,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:startIcon="@drawable/ic_assignment"
+                    app:messageCount="@{viewModel.ticketInfoResult.notifyCount}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:label="@string/mine_menu_notification"
                     app:layout_constraintTop_toBottomOf="@+id/iv_apply_sheets"/>

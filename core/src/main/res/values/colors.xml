@@ -25,6 +25,7 @@
     <color name="color_monitor_neutral_blue">#305A85</color>
 
     <color name="color_monitor_background_light">#D8D8D8</color>
+    <color name="color_monitor_message_background">#FF3737</color>
     <color name="color_monitor_heavy_blue">#3F69B2</color>
     <color name="color_monitor_blue">#2699FB</color>
     <color name="color_monitor_text_secondary">#424242</color>

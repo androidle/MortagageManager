@@ -40,7 +40,7 @@ interface MineRepository {
 
     fun getTicketOrNotificationQuantity(): Single<ApiResponse<Any>>
 
-    fun searchUser(keyword: String): Single<ApiResponse<GetUserProfileResponse>>
+    fun searchUser(keyword: String): Single<ApiResponse<List<GetUserProfileResponse>>>
 
     fun getUsersInOrg(): Single<ApiResponse<List<GetUserProfileResponse>>>
 

@@ -12,8 +12,6 @@ import com.leevinapp.monitor.auth.domain.model.SMSType
 import com.leevinapp.monitor.core.core.network.ApiResponse
 import com.leevinapp.monitor.core.core.user.UserManager
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 class AuthRepositoryImpl(
     private val authService: AuthService,
@@ -33,8 +31,6 @@ class AuthRepositoryImpl(
                 smsVerifyCode = smsCode
             )
         )
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
     }
 
     override fun sendSmsCode(phoneNumber: String, smsType: SMSType): Single<ApiResponse<Any>> {
@@ -44,25 +40,17 @@ class AuthRepositoryImpl(
                 smsType = smsType
             )
         )
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
     }
 
     override fun sendEmailCode(email: String): Single<ApiResponse<Any>> {
         return authService.sendEmailVerifyCode(email)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
     }
 
     override fun registerUser(registerUserParams: RegisterUserParams): Single<ApiResponse<RegisterUserResponse>> {
         return authService.registerUser(registerUserParams)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
     }
 
     override fun resetPassword(resetPasswordParams: ResetPasswordParams): Single<ApiResponse<Any>> {
         return authService.resetPassword(params = resetPasswordParams)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
     }
 }

@@ -40,6 +40,7 @@ class MineSecurityFragment : BaseFragment() {
                 CHANGE_SECURITY_REF -> {
                     findNavController().navigate(R.id.mine_action_mine_minesecurityfragment_to_changesecurityquestionfragment)
                 }
+                else -> {}
             }
         }
         recycler_view.addItemDecoration(

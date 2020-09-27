@@ -104,7 +104,7 @@ class OrganizationAuthFragment : ViewModelFragment() {
         viewBinding.ievDateOfFound.setOnClickListener {
             DatePickerDialog(
                 requireContext(),
-                OnDateSetListener { view, year, month, dayOfMonth ->
+                OnDateSetListener { _, year, month, dayOfMonth ->
                     viewBinding.ievDateOfFound.value = "$year-${month + 1}-$dayOfMonth"
                     currentYear = currentYear
                     currentMonth = currentMonth

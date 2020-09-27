@@ -50,7 +50,7 @@ interface MineService {
     fun getTicketOrNotificationQuantity(): Single<ApiResponse<Any>>
 
     @GET("app/user/list/search")
-    fun searchUser(@Query("keyword")keyword: String): Single<ApiResponse<GetUserProfileResponse>>
+    fun searchUser(@Query("keyword")keyword: String): Single<ApiResponse<List<GetUserProfileResponse>>>
 
     @GET("app/userInOrg")
     fun getUsersInOrg(): Single<ApiResponse<List<GetUserProfileResponse>>>

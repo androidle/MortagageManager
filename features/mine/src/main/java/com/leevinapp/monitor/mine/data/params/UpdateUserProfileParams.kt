@@ -1,10 +1,11 @@
 package com.leevinapp.monitor.mine.data.params
 
 data class UpdateUserProfileParams(
-    val email: String? = null,
-    val fullName: String? = null,
-    val homeAddress: String? = null,
-    val jobPosition: String? = null,
-    val nickname: String? = null,
-    val organizationName: String? = null
+    var email: String? = null,
+    var fullName: String? = null,
+    var homeAddress: String? = null,
+    var jobPosition: String? = null,
+    var nickname: String? = null,
+    var organizationName: String? = null,
+    var residenceId: String? = null
 )
