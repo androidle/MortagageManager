@@ -23,13 +23,13 @@ data class GetUserProfileResponse(
         return UserModel().apply {
             userId = this@GetUserProfileResponse.id
             phoneNumber = this@GetUserProfileResponse.telephone
-            email = this@GetUserProfileResponse.email?:""
+            email = this@GetUserProfileResponse.email ?: ""
             fullName = this@GetUserProfileResponse.fullName ?: ""
             nickname = this@GetUserProfileResponse.nickname ?: ""
             homeAddress = this@GetUserProfileResponse.homeAddress ?: ""
             isAuthenticated = this@GetUserProfileResponse.isAuthenticated
             jobPosition = this@GetUserProfileResponse.jobPosition ?: ""
-            organName = this@GetUserProfileResponse.organizationName?:""
+            organName = this@GetUserProfileResponse.organizationName ?: ""
             residenceId = this@GetUserProfileResponse.residenceId ?: ""
             role = this@GetUserProfileResponse.role
             watchOrganizationId = this@GetUserProfileResponse.watchOrganizationId ?: 0

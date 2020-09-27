@@ -9,15 +9,15 @@ import com.leevinapp.monitor.mine.domain.MineRepository
 import com.leevinapp.monitor.mine.domain.model.TicketModel
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
-import timber.log.Timber
 import javax.inject.Inject
+import timber.log.Timber
 
 class TicketViewModel @Inject constructor(private val repository: MineRepository) :
     BaseViewModel() {
 
     val ticketsResult = MutableLiveData<MutableList<TicketModel>>()
-    
-    fun getTickets(status:String) {
+
+    fun getTickets(status: String) {
         repository.getTickets(status)
             .applyIoSchedules()
             .subscribe(object : SingleObserver<ApiResponse<List<GetTicketDetailsResponse>>> {
@@ -49,16 +49,16 @@ class TicketViewModel @Inject constructor(private val repository: MineRepository
     }
 
     fun approveTicket(ticketId: Long) {
-        // TODO: 2020/9/25 comment 
-        processTicket(ticketId,true,"")
+        // TODO: 2020/9/25 comment
+        processTicket(ticketId, true, "")
     }
 
     fun rejectTicket(ticketId: Long) {
         // TODO: 2020/9/25
-        processTicket(ticketId,false,"")
+        processTicket(ticketId, false, "")
     }
 
-    private fun processTicket(ticketId: Long, isApprove: Boolean,comment:String) {
+    private fun processTicket(ticketId: Long, isApprove: Boolean, comment: String) {
         repository.approveTicket(
             ApproveTicketParams(
                 ticketId = ticketId,
@@ -84,6 +84,4 @@ class TicketViewModel @Inject constructor(private val repository: MineRepository
                 }
             )
     }
-
-
 }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/dimen_common_margin">
+    android:paddingHorizontal="@dimen/dimen_common_margin"
+    android:paddingVertical="30dp">
 
     <TextView
         android:id="@+id/tv_message"

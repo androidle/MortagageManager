@@ -1,23 +1,23 @@
 package com.leevinapp.monitor.mine.ui.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.leevinapp.monitor.mine.R
+import com.leevinapp.monitor.mine.databinding.MineItemSearchResultBinding
 import com.leevinapp.monitor.mine.domain.model.InstitutionModel
 import com.leevinapp.monitor.mine.domain.model.SearchResult
 import com.leevinapp.monitor.mine.ui.adapter.SearchResultAdapter.SearchResultViewHolder
-import kotlinx.android.synthetic.main.mine_item_search_result.view.*
 
 class SearchResultAdapter : RecyclerView.Adapter<SearchResultViewHolder>() {
 
     private var resultList = mutableListOf<SearchResult>()
 
+    private var itemClick: ((InstitutionModel) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.mine_item_search_result, parent, false)
-        return SearchResultViewHolder(view)
+        val binding =
+            MineItemSearchResultBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return SearchResultViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -30,15 +30,31 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultViewHolder>() {
         notifyDataSetChanged()
     }
 
-    override fun onBindViewHolder(holder: SearchResultViewHolder, position: Int) {
-        holder.bind(resultList[position])
+    fun clear() {
+        resultList.clear()
+        notifyDataSetChanged()
     }
 
-    inner class SearchResultViewHolder constructor(view: View) : RecyclerView.ViewHolder(view) {
+    fun setItemClick(callback: ((InstitutionModel) -> Unit)?) {
+        this.itemClick = callback
+    }
 
-        fun bind(searchResult: SearchResult) {
-            itemView.tv_name.text = searchResult.getName()
-            itemView.tv_value.text = searchResult.getValue()
+    override fun onBindViewHolder(holder: SearchResultViewHolder, position: Int) {
+        holder.bind(resultList[position] as InstitutionModel, itemClick)
+    }
+
+    inner class SearchResultViewHolder constructor(val binding: MineItemSearchResultBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(
+            searchResult: InstitutionModel,
+            itemClick: ((InstitutionModel) -> Unit)?
+        ) {
+            binding.root.setOnClickListener {
+                itemClick?.invoke(searchResult)
+            }
+            binding.model = searchResult
+            binding.executePendingBindings()
         }
     }
 }

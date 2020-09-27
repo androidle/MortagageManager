@@ -27,9 +27,9 @@ data class GetTicketDetailsResponse(
         return TicketModel(
             id = this@GetTicketDetailsResponse.id,
             createDate = this@GetTicketDetailsResponse.createdAt,
-            role = this@GetTicketDetailsResponse.requestUserRole?:BANK_USER,
+            role = this@GetTicketDetailsResponse.requestUserRole ?: BANK_USER,
             type = this@GetTicketDetailsResponse.type,
-            status = this@GetTicketDetailsResponse.status,
+            status = this@GetTicketDetailsResponse.status
         ).apply {
             updateDate = this@GetTicketDetailsResponse.updatedAt
             phoneNumber = this@GetTicketDetailsResponse.requestUserTelephone

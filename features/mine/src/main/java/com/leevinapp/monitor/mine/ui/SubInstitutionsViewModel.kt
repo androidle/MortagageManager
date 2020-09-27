@@ -8,8 +8,8 @@ import com.leevinapp.monitor.mine.domain.MineRepository
 import com.leevinapp.monitor.mine.domain.model.InstitutionModel
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
-import timber.log.Timber
 import javax.inject.Inject
+import timber.log.Timber
 
 class SubInstitutionsViewModel @Inject constructor(private val repository: MineRepository) :
     BaseViewModel() {

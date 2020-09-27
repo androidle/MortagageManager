@@ -4,6 +4,6 @@ import com.leevinapp.monitor.mine.domain.model.TicketType
 
 data class RequestTicketParams(
     var desc: String,
-    var targetId: Int,
+    var targetId: Long,
     var type: TicketType
 )

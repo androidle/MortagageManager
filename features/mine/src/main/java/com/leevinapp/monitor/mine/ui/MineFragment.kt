@@ -27,8 +27,8 @@ import com.leevinapp.monitor.mine.domain.model.MenuModel.AUTH_ACCOUNT
 import com.leevinapp.monitor.mine.domain.model.MenuModel.PARENT_ORGANIZATION_APPLY
 import com.leevinapp.monitor.mine.ui.adapter.TextMenuAdapter
 import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthSelectionFragment
-import kotlinx.android.synthetic.main.mine_fragment.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.mine_fragment.*
 
 class MineFragment : ViewModelFragment() {
 
@@ -103,10 +103,10 @@ class MineFragment : ViewModelFragment() {
                     findNavController().navigate(R.id.mine_action_minefragment_to_ordinaryuserauthfragment)
                 }
                 1 -> {
-                    findNavController().navigate(R.id.mine_action_minefragment_to_organizationauthfragment)
+                    findNavController().navigate(R.id.mine_action_minefragment_to_mortgageuserauthfragment)
                 }
                 2 -> {
-                    findNavController().navigate(R.id.mine_action_minefragment_to_mortgageuserauthfragment)
+                    findNavController().navigate(R.id.mine_action_minefragment_to_organizationauthfragment)
                 }
             }
         }

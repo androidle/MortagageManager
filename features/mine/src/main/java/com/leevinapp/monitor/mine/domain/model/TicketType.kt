@@ -1,6 +1,6 @@
 package com.leevinapp.monitor.mine.domain.model
 
-enum class TicketType(val desc:String) {
+enum class TicketType(val desc: String) {
     NORMAL_USER_VERIFY("申请注册为本机构用户"),
     BANK_USER_NO_ORG_VERIFY("申请注册为质权人独立用户"),
     ORG_PC_VERIFY("申请注册机构"),

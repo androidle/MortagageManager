@@ -12,7 +12,7 @@ import com.leevinapp.monitor.mine.data.response.GetSubInstitutionResponse
 import com.leevinapp.monitor.mine.data.response.GetTicketDetailsResponse
 import com.leevinapp.monitor.mine.data.response.GetTicketInfoResponse
 import com.leevinapp.monitor.mine.data.response.GetUserProfileResponse
-import com.leevinapp.monitor.mine.data.response.RaiseTicketResponse
+import com.leevinapp.monitor.mine.data.response.RequestTicketResponse
 import com.leevinapp.monitor.mine.domain.MineRepository
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -33,7 +33,7 @@ class MineRepositoryImpl(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun searchInstitution(search: String): Single<ApiResponse<GetSubInstitutionResponse>> {
+    override fun searchInstitution(search: String): Single<ApiResponse<List<GetSubInstitutionResponse>>> {
         return mineService.searchInstitution(search)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -81,7 +81,7 @@ class MineRepositoryImpl(
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun requestTicket(paramsRequest: RequestTicketParams): Single<ApiResponse<RaiseTicketResponse>> {
+    override fun requestTicket(paramsRequest: RequestTicketParams): Single<ApiResponse<RequestTicketResponse>> {
         return mineService.requestTicket(paramsRequest)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -94,7 +94,7 @@ class MineRepositoryImpl(
     }
 
     override fun searchUser(keyword: String): Single<ApiResponse<GetUserProfileResponse>> {
-        return mineService.getUser(keyword)
+        return mineService.searchUser(keyword)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

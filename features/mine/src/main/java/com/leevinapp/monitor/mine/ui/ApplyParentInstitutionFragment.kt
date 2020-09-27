@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.common.ui.extensions.hideKeyBoard
+import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentApplyParentOrganBinding
@@ -24,11 +27,16 @@ class ApplyParentInstitutionFragment : ViewModelFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    @Inject
+    lateinit var userManager: UserManager
+
     val viewModel: ApplyParentInstitutionViewModel by viewModels {
         viewModelFactory
     }
 
     private var viewBinding by autoCleared<MineFragmentApplyParentOrganBinding>()
+
+    private lateinit var searchResultAdapter: SearchResultAdapter
 
     override fun getViewModel(): BaseViewModel {
         return viewModel
@@ -42,6 +50,7 @@ class ApplyParentInstitutionFragment : ViewModelFragment() {
         return MineFragmentApplyParentOrganBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = this@ApplyParentInstitutionFragment.viewModel
+            userManager = this@ApplyParentInstitutionFragment.userManager
             viewBinding = this
         }.root
     }
@@ -51,12 +60,35 @@ class ApplyParentInstitutionFragment : ViewModelFragment() {
 
         initSearchInputListener()
 
+        viewBinding.buttonSubmit.setOnClickListener {
+            viewModel.requestTicket()
+        }
+
+        searchResultAdapter = SearchResultAdapter()
+
         viewModel.result.observe(viewLifecycleOwner, Observer {
             viewBinding.searchResultContainer.visibility = View.VISIBLE
-            viewBinding.recyclerViewSearchResult.adapter = SearchResultAdapter().apply {
+            viewBinding.recyclerViewSearchResult.adapter = searchResultAdapter.apply {
+                viewBinding.searchResultTitle.text =
+                    getString(R.string.mine_search_result_title, it.size)
                 updateResult(it)
+                setItemClick {
+                    clearAndHideResultContainer()
+                    viewModel.selectedInstitution(it)
+                }
             }
         })
+
+        viewModel.requestTicketResult.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                Toast.makeText(requireContext(), "已提交申请，等待管理员审核", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    private fun clearAndHideResultContainer() {
+        searchResultAdapter.clear()
+        viewBinding.searchResultContainer.visibility = View.GONE
     }
 
     private fun initSearchInputListener() {
@@ -76,6 +108,15 @@ class ApplyParentInstitutionFragment : ViewModelFragment() {
                 false
             }
         }
+
+        viewBinding.searchInput.addTextChangedListener(afterTextChanged = {
+            val searchKey = it.toString()
+            if (searchKey.isEmpty()) {
+                clearAndHideResultContainer()
+            } else {
+                viewBinding.recyclerViewSearchResult.visibility = View.VISIBLE
+            }
+        })
     }
 
     private fun doSearch(view: View) {

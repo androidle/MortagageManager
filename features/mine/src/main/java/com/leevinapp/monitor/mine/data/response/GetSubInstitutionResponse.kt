@@ -25,13 +25,13 @@ data class GetSubInstitutionResponse(
     fun toModel(): InstitutionModel {
         return InstitutionModel().apply {
             id = this@GetSubInstitutionResponse.id
-            adminName = this@GetSubInstitutionResponse.adminName ?: ""
+            adminName = this@GetSubInstitutionResponse.adminName
             adminUserId = this@GetSubInstitutionResponse.adminUserId
             businessPeriod = this@GetSubInstitutionResponse.businessPeriod
             businessScope = this@GetSubInstitutionResponse.businessScope ?: ""
             companyRegisterType = this@GetSubInstitutionResponse.companyRegisterType ?: ""
             legalRepresentative = this@GetSubInstitutionResponse.legalRepresentative
-            institutionName = this@GetSubInstitutionResponse.name ?: ""
+            name = this@GetSubInstitutionResponse.name ?: ""
             parentId = this@GetSubInstitutionResponse.parentId
             registeredCapital = this@GetSubInstitutionResponse.registeredCapital ?: ""
             registeredDate = this@GetSubInstitutionResponse.registeredDate

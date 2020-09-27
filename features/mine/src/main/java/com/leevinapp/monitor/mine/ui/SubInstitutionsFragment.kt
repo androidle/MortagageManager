@@ -37,7 +37,7 @@ class SubInstitutionsFragment : ViewModelFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = SubInstitutionAdapter().apply {
-           // updateData(getDummyData())
+            // updateData(getDummyData())
         }
         viewBinding.recyclerViewSubInstitution.adapter = adapter
 

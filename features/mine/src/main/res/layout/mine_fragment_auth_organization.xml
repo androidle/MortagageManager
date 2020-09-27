@@ -108,7 +108,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iev_registered_capital"
-                    app:name="@string/mine_date_of_found"
+                    app:label="@string/mine_date_of_found"
+                    app:hasArrow="true"
                     app:value="@={viewModel.dateOfFounded}" />
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView
@@ -121,6 +122,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/iev_date_of_found"
                     app:name="@string/mine_operating_period" />
 
+                <TextView
+                    android:id="@+id/tv_business_scope_title"
+                    style="@style/MonitorText.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/iev_business_period"
+                    app:layout_constraintTop_toBottomOf="@+id/iev_business_period"
+                    android:paddingVertical="@dimen/dimen_common_margin_1"
+                    android:text="@string/mine_business_scope" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/layout_business_scope"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -132,15 +143,7 @@
                     app:hintEnabled="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iev_business_period">
-
-                    <TextView
-                        android:id="@+id/tv_title"
-                        style="@style/MonitorText.Title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingVertical="@dimen/dimen_common_margin_1"
-                        android:text="@string/mine_business_scope" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_business_scope_title">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editText_business_scope"

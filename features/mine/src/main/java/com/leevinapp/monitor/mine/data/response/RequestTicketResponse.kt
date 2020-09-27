@@ -1,5 +1,5 @@
 package com.leevinapp.monitor.mine.data.response
 
-data class RaiseTicketResponse(
+data class RequestTicketResponse(
     var token: String
 )

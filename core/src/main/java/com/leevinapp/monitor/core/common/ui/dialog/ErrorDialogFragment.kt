@@ -1,12 +1,14 @@
 package com.leevinapp.monitor.core.common.ui.dialog
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
 import androidx.fragment.app.DialogFragment
-import com.leevinapp.monitor.common.UiUtil
 import com.leevinapp.monitor.core.R
+import com.leevinapp.monitor.core.core.utils.UiUtil
 import kotlinx.android.synthetic.main.fragment_error_dialog.*
 
 class ErrorDialogFragment : DialogFragment() {
@@ -31,6 +33,8 @@ class ErrorDialogFragment : DialogFragment() {
         arguments?.let {
             message = it.getString(KEY_MESSAGE, message)
         }
+
+        setStyle(STYLE_NO_FRAME, R.style.CommonDialogStyle)
     }
 
     override fun onCreateView(
@@ -40,7 +44,6 @@ class ErrorDialogFragment : DialogFragment() {
     ): View? {
         isCancelable = true
         if (root == null) {
-            // dialog?.window?.decorView?.setPadding(0,0,0,0)
             root = inflater.inflate(R.layout.fragment_error_dialog, container, false)
         }
         return root
@@ -60,7 +63,7 @@ class ErrorDialogFragment : DialogFragment() {
 
     override fun onStart() {
         super.onStart()
-        // resizeDialogFragment()
+        resizeDialogFragment()
     }
 
     private fun resizeDialogFragment() {
@@ -68,8 +71,32 @@ class ErrorDialogFragment : DialogFragment() {
             val window = it.window!!
             val lp = window.attributes
             lp.width = UiUtil.getScreenSize(requireContext())[0] * 8 / 10
-            lp.height = UiUtil.getScreenSize(requireContext())[1] * 1 / 3
-            window?.setLayout(lp.width, lp.height)
+            window.setLayout(lp.width, LayoutParams.WRAP_CONTENT)
+        }
+    }
+
+    private val SAVED_DIALOG_STATE_TAG = "android:savedDialogState"
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        if (showsDialog) {
+            showsDialog = false
+        }
+        super.onActivityCreated(savedInstanceState)
+        showsDialog = true
+        val view = view
+        if (view != null) {
+            check(view.parent == null) { "DialogFragment can not be attached to a container view" }
+            dialog!!.setContentView(view)
+        }
+        val activity: Activity? = activity
+        if (activity != null) {
+            dialog!!.setOwnerActivity(activity)
+        }
+        if (savedInstanceState != null) {
+            val dialogState = savedInstanceState.getBundle(SAVED_DIALOG_STATE_TAG)
+            if (dialogState != null) {
+                dialog!!.onRestoreInstanceState(dialogState)
+            }
         }
     }
 }

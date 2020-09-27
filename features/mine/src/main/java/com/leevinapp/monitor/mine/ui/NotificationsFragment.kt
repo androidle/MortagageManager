@@ -14,8 +14,8 @@ import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFramentNotificationsBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.ui.adapter.NotificationAdapter
-import kotlinx.android.synthetic.main.mine_frament_notifications.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.mine_frament_notifications.*
 
 class NotificationsFragment : ViewModelFragment() {
 

@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.leevinapp.monitor.common.UiUtil
 import com.leevinapp.monitor.core.BuildConfig
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.core.utils.UiUtil
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.domain.model.MenuModel.PRIVACY
 import com.leevinapp.monitor.mine.domain.model.MenuModel.SERVICE

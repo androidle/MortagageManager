@@ -1,4 +1,4 @@
-package com.leevinapp.monitor.common
+package com.leevinapp.monitor.core.core.utils
 
 import android.content.Context
 import android.content.res.Resources

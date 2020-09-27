@@ -32,7 +32,6 @@ abstract class BaseViewModel : ViewModel() {
             .doOnSubscribe { loading.postValue(true) }
             .doOnError { doOnException(exceptionHandler.handleException(it)) }
             .doFinally { loading.postValue(false) }
-
     }
 
     protected fun <T> Observable<T>.applyIoSchedules(): Observable<T> {

@@ -6,6 +6,11 @@
     <data>
 
         <variable
+            name="userManager"
+            type="com.leevinapp.monitor.core.core.user.UserManager" />
+
+
+        <variable
             name="viewModel"
             type="com.leevinapp.monitor.mine.ui.ApplyParentInstitutionViewModel" />
     </data>
@@ -38,6 +43,7 @@
                 android:id="@+id/search_input"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@null"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="5dp"
                 android:hint="请输入父机构/信用代码"
@@ -60,65 +66,66 @@
                 android:layout_margin="@dimen/dimen_common_margin"
                 android:background="@drawable/content_background_all_round"
                 android:minHeight="@dimen/dimen_sms_button_height"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_common_margin">
 
                 <com.leevinapp.monitor.core.common.view.ItemView
+                    android:id="@+id/iv_organ_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="@dimen/dimen_common_margin_1"
                     app:hasArrow="false"
-                    app:label="本机构名称" />
+                    app:label="本机构名称"
+                    app:value="@{userManager.user.organName}" />
 
                 <com.leevinapp.monitor.core.common.view.ItemView
+                    android:id="@+id/iv_parent_organ_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="@dimen/dimen_common_margin_1"
                     app:hasArrow="false"
                     app:label="父机构名称"
-                    app:value="-" />
+                    app:value="@{String.valueOf(viewModel.currentRequestInstitution.name??@string/mine_empty_symbol)}" />
 
                 <com.leevinapp.monitor.core.common.view.ItemView
+                    android:id="@+id/iv_social_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="@dimen/dimen_common_margin_1"
                     app:hasArrow="false"
                     app:label="@string/mine_social_code"
-                    app:value="-" />
+                    app:value="@{viewModel.currentRequestInstitution.uniformSocialCreditCode??@string/mine_empty_symbol}" />
 
                 <com.leevinapp.monitor.core.common.view.ItemView
+                    android:id="@+id/iev_organ_administrator"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="@dimen/dimen_common_margin_1"
                     app:hasArrow="false"
                     app:label="@string/mine_organ_administrator"
-                    app:value="-" />
+                    app:value="@{viewModel.currentRequestInstitution.adminName??@string/mine_empty_symbol}" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/MonitorText.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/dimen_common_margin_1"
+                    android:text="申请描述"
+                    android:textColor="#424242" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/layout_apply_des"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_white_background"
                     android:orientation="vertical"
-                    android:paddingHorizontal="@dimen/dimen_common_margin"
                     app:counterEnabled="true"
                     app:counterMaxLength="300"
                     app:hintEnabled="false">
-
-                    <TextView
-                        android:id="@+id/tv_title"
-                        style="@style/MonitorText.Title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingVertical="@dimen/dimen_common_margin_1"
-                        android:text="申请描述"
-                        android:textColor="#424242" />
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editText_business_scope"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="请输入"
+                        android:text="@{viewModel.requestDesc}"
                         android:textColorHint="#999999"
                         android:textSize="18sp" />
 
@@ -126,11 +133,11 @@
 
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_submit"
                     style="@style/MonitorButton.White"
                     android:layout_width="120dp"
                     android:layout_gravity="end"
-                    android:layout_margin="@dimen/dimen_common_margin"
-                    android:paddingHorizontal="@dimen/dimen_common_margin_1"
+                    android:layout_marginVertical="@dimen/dimen_common_margin"
                     android:text="@string/mine_submit" />
 
             </LinearLayout>
@@ -158,10 +165,10 @@
                 style="@style/MonitorText.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="搜索到4个结果"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/search_input_layout" />
+                app:layout_constraintTop_toBottomOf="@+id/search_input_layout"
+                tools:text="搜索到4个结果" />
 
 
             <androidx.recyclerview.widget.RecyclerView

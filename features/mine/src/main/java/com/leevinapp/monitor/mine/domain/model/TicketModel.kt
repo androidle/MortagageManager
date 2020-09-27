@@ -12,8 +12,8 @@ class TicketModel(
     var id: Long = 0,
     var applicant: String = "",
     var phoneNumber: String = "",
-    var createDate: Date?= null,
-    var updateDate: Date?= null,
+    var createDate: Date? = null,
+    var updateDate: Date? = null,
     var status: TicketStatus = AUDITING,
     var isExpand: Boolean = false,
     var realname: String = "",
@@ -23,7 +23,7 @@ class TicketModel(
     var socialCode: String = "",
     var jobPosition: String = "",
     var role: UserRole = BANK_USER,
-    var type:TicketType = NORMAL_USER_VERIFY,
+    var type: TicketType = NORMAL_USER_VERIFY
 ) {
     fun isApproved(): Boolean = status == APPROVED
 

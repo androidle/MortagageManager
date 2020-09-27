@@ -11,5 +11,4 @@ class TicketOfPendingFragment : TicketStatusFragment() {
             return TicketOfPendingFragment()
         }
     }
-
 }

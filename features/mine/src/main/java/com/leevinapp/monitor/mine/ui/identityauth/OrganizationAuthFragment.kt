@@ -1,5 +1,7 @@
 package com.leevinapp.monitor.mine.ui.identityauth
 
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +21,7 @@ import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.databinding.MineFragmentAuthOrganizationBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.MineConstants
+import java.util.Calendar
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.mine_fragment_auth_organization.*
 
@@ -28,6 +31,7 @@ class OrganizationAuthFragment : ViewModelFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
     @Inject
     lateinit var userManager: UserManager
 
@@ -88,6 +92,26 @@ class OrganizationAuthFragment : ViewModelFragment() {
                 findNavController().navigateUp()
             }
         })
+
+        initDatePicker()
+    }
+
+    private var currentYear: Int = Calendar.getInstance().get(Calendar.YEAR)
+    private var currentMonth = Calendar.getInstance().get(Calendar.MONTH)
+    private var currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+
+    private fun initDatePicker() {
+        viewBinding.ievDateOfFound.setOnClickListener {
+            DatePickerDialog(
+                requireContext(),
+                OnDateSetListener { view, year, month, dayOfMonth ->
+                    viewBinding.ievDateOfFound.value = "$year-${month + 1}-$dayOfMonth"
+                    currentYear = currentYear
+                    currentMonth = currentMonth
+                    currentDay = dayOfMonth
+                }, currentYear, currentMonth, currentDay
+            ).show()
+        }
     }
 
     override fun getViewModel(): BaseViewModel {

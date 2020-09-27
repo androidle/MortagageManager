@@ -11,7 +11,7 @@ import com.leevinapp.monitor.mine.data.response.GetSubInstitutionResponse
 import com.leevinapp.monitor.mine.data.response.GetTicketDetailsResponse
 import com.leevinapp.monitor.mine.data.response.GetTicketInfoResponse
 import com.leevinapp.monitor.mine.data.response.GetUserProfileResponse
-import com.leevinapp.monitor.mine.data.response.RaiseTicketResponse
+import com.leevinapp.monitor.mine.data.response.RequestTicketResponse
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -40,17 +40,17 @@ interface MineService {
     fun getSubInstitution(): Single<ApiResponse<List<GetSubInstitutionResponse>>>
 
     @GET("app/org/list/search")
-    fun searchInstitution(@Query("keyword")keyword: String): Single<ApiResponse<GetSubInstitutionResponse>>
+    fun searchInstitution(@Query("keyword")keyword: String): Single<ApiResponse<List<GetSubInstitutionResponse>>>
 
     @POST("app/ticket/request")
     fun requestTicket(@Body paramsRequest: RequestTicketParams):
-        Single<ApiResponse<RaiseTicketResponse>>
+        Single<ApiResponse<RequestTicketResponse>>
 
     @GET("app/ticket/ticketOrNotifyQty")
     fun getTicketOrNotificationQuantity(): Single<ApiResponse<Any>>
 
     @GET("app/user/list/search")
-    fun getUser(@Query("keyword")keyword: String): Single<ApiResponse<GetUserProfileResponse>>
+    fun searchUser(@Query("keyword")keyword: String): Single<ApiResponse<GetUserProfileResponse>>
 
     @GET("app/userInOrg")
     fun getUsersInOrg(): Single<ApiResponse<List<GetUserProfileResponse>>>

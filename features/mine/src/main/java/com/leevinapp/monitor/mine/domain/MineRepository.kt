@@ -11,7 +11,7 @@ import com.leevinapp.monitor.mine.data.response.GetSubInstitutionResponse
 import com.leevinapp.monitor.mine.data.response.GetTicketDetailsResponse
 import com.leevinapp.monitor.mine.data.response.GetTicketInfoResponse
 import com.leevinapp.monitor.mine.data.response.GetUserProfileResponse
-import com.leevinapp.monitor.mine.data.response.RaiseTicketResponse
+import com.leevinapp.monitor.mine.data.response.RequestTicketResponse
 import io.reactivex.Single
 
 interface MineRepository {
@@ -20,7 +20,7 @@ interface MineRepository {
 
     fun updateUserProfile(params: UpdateUserProfileParams): Single<ApiResponse<Any>>
 
-    fun searchInstitution(search: String): Single<ApiResponse<GetSubInstitutionResponse>>
+    fun searchInstitution(search: String): Single<ApiResponse<List<GetSubInstitutionResponse>>>
 
     fun verifyUser(params: VerifyUserParams): Single<ApiResponse<Any>>
 
@@ -36,7 +36,7 @@ interface MineRepository {
 
     fun getNotifications(): Single<ApiResponse<List<GetNotificationsResponse>>>
 
-    fun requestTicket(paramsRequest: RequestTicketParams): Single<ApiResponse<RaiseTicketResponse>>
+    fun requestTicket(paramsRequest: RequestTicketParams): Single<ApiResponse<RequestTicketResponse>>
 
     fun getTicketOrNotificationQuantity(): Single<ApiResponse<Any>>
 

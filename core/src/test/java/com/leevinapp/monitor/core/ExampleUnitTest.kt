@@ -78,5 +78,4 @@ class ExampleUnitTest {
             mock.methodC()
         }
     }
-
 }

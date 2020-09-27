@@ -20,9 +20,9 @@ data class GetNotificationsResponse(
     val role: UserRole,
     val type: TicketType,
     val uniformSocialCreditCode: String?,
-    val notifyDate:Date,
+    val notifyDate: Date,
     val userId: Long?,
-    val telephone:String
+    val telephone: String
 ) {
 
     fun toModel(): NotificationModel {
@@ -39,7 +39,7 @@ data class GetNotificationsResponse(
             jobPosition = this@GetNotificationsResponse.jobPosition ?: "",
             notifyDate = this@GetNotificationsResponse.notifyDate,
             phoneNumber = this@GetNotificationsResponse.telephone,
-            homeAddress = this@GetNotificationsResponse.homeAddress?:"",
+            homeAddress = this@GetNotificationsResponse.homeAddress ?: ""
         )
     }
 }
