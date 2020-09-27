@@ -40,12 +40,12 @@ class RegisterViewModel @Inject constructor(private val authRepository: AuthRepo
             )
         authRepository.registerUser(params)
             .applyIoWithLoading()
-            .subscribe(Consumer { response ->
+            .subscribe({ response ->
                 registerSuccess.postValue(response.success)
                 if (!response.success) {
                     errorMessage.postValue(response.error)
                 }
-            }).addTo(compositeDisposable)
+            }, {}).addTo(compositeDisposable)
     }
 
     fun sendSmsCode() {

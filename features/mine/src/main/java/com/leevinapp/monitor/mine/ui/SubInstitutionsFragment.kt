@@ -43,6 +43,7 @@ class SubInstitutionsFragment : ViewModelFragment() {
 
         viewBinding.recyclerViewSubInstitution.addItemDecoration(
             HorizontalDividerItemDecoration.Builder(requireContext())
+                .showLastDivider()
                 .sizeResId(R.dimen.dimen_common_margin_1)
                 .build()
         )

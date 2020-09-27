@@ -6,7 +6,6 @@ import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.core.core.user.UserModel
 import com.leevinapp.monitor.mine.data.params.UpdateUserProfileParams
 import com.leevinapp.monitor.mine.domain.MineRepository
-import io.reactivex.functions.Consumer
 import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
 
@@ -26,7 +25,7 @@ class PersonalInfoViewModel @Inject constructor(
     fun getUserProfile() {
         mineRepository.getUserProfile()
             .applyIoWithLoading()
-            .subscribe(Consumer { response ->
+            .subscribe({ response ->
                 if (response.success) {
                     val data = response.data
                     userManager.user = data.toModel()
@@ -36,19 +35,19 @@ class PersonalInfoViewModel @Inject constructor(
                 } else {
                     errorMessage.postValue(response.error)
                 }
-            })
+            }, {})
             .addTo(compositeDisposable)
     }
 
     fun updateUserProfile() {
         mineRepository.updateUserProfile(buildUpdateProfileParams())
             .applyIoWithLoading()
-            .subscribe(Consumer { response ->
+            .subscribe({ response ->
                 updateProfileResult.postValue(response.success)
                 if (!response.success) {
                     errorMessage.postValue(response.error)
                 }
-            })
+            }, {})
             .addTo(compositeDisposable)
     }
 

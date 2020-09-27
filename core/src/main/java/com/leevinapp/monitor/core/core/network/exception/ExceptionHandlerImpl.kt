@@ -12,7 +12,7 @@ class ExceptionHandlerImpl : ExceptionHandler {
     override fun handleException(throwable: Throwable): ResponseException {
         var responseException: ResponseException
         when (throwable) {
-            is HttpException -> responseException = ResponseException(NETWORK, throwable.message())
+            is HttpException -> responseException = ResponseException(NETWORK, throwable.message ?: "")
             is JsonParseException, is JSONException, is ParseException -> {
                 responseException =
                     ResponseException(JSON_PARSE, throwable.message ?: JSON_ERROR_MESSAGE)

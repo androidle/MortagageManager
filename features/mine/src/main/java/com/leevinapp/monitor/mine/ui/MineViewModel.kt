@@ -10,7 +10,10 @@ import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
 import timber.log.Timber
 
-class MineViewModel @Inject constructor(private val repository: MineRepository, private val userManager: UserManager) :
+class MineViewModel @Inject constructor(
+    private val repository: MineRepository,
+    private val userManager: UserManager
+) :
     BaseViewModel() {
 
     var refreshData = true
@@ -47,14 +50,14 @@ class MineViewModel @Inject constructor(private val repository: MineRepository, 
         if (refreshData.not()) return
         repository.getTicketInfo()
             .applyIoWithLoading()
-            .subscribe { t ->
+            .subscribe({ t ->
                 if (t.success.not()) {
                     errorMessage.value = t.error
                 } else {
                     refreshData = false
                     ticketInfoResult.value = t.data
                 }
-            }
+            }, {})
             .addTo(compositeDisposable)
     }
 }

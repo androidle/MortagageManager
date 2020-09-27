@@ -6,7 +6,6 @@ import com.leevinapp.monitor.mine.data.params.ApproveTicketParams
 import com.leevinapp.monitor.mine.data.response.GetTicketDetailsResponse
 import com.leevinapp.monitor.mine.domain.MineRepository
 import com.leevinapp.monitor.mine.domain.model.TicketModel
-import io.reactivex.functions.Consumer
 import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
 
@@ -18,13 +17,13 @@ class TicketViewModel @Inject constructor(private val repository: MineRepository
     fun getTickets(status: String) {
         repository.getTickets(status)
             .applyIoWithLoading()
-            .subscribe(Consumer { response ->
+            .subscribe({ response ->
                 if (!response.success) {
                     errorMessage.postValue(response.error)
                 } else {
                     ticketsResult.value = toModelList(response.data)
                 }
-            })
+            }, {})
             .addTo(compositeDisposable)
     }
 
@@ -57,12 +56,11 @@ class TicketViewModel @Inject constructor(private val repository: MineRepository
             )
         )
             .applyIoWithLoading()
-            .subscribe(
-                Consumer { response ->
-                    if (!response.success) {
-                        errorMessage.postValue(response.error)
-                    }
+            .subscribe({ response ->
+                if (!response.success) {
+                    errorMessage.postValue(response.error)
                 }
+            }, {}
             ).addTo(compositeDisposable)
     }
 }

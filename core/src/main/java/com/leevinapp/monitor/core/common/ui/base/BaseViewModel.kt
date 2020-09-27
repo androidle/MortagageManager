@@ -54,7 +54,7 @@ abstract class BaseViewModel : ViewModel() {
     }
 
     open fun handleCommonException(exception: ResponseException) {
-        Timber.e("====>${exception.message}")
+        Timber.e("==afterHandler==>${exception.message}")
         errorMessage.postValue(exception.message)
     }
 

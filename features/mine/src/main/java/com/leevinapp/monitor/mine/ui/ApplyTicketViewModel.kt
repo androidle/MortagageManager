@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.mine.data.params.RequestTicketParams
 import com.leevinapp.monitor.mine.domain.MineRepository
-import io.reactivex.functions.Consumer
 import io.reactivex.rxkotlin.addTo
 import java.util.Locale
 
@@ -24,12 +23,12 @@ abstract class ApplyTicketViewModel(private val repository: MineRepository) :
             requestTicketParams()
         )
             .applyIoWithLoading()
-            .subscribe(Consumer { t ->
+            .subscribe({ t ->
                 requestTicketResult.postValue(t.success)
                 if (t.success.not()) {
                     errorMessage.postValue(t.error)
                 }
-            })
+            }, {})
             .addTo(compositeDisposable)
     }
 

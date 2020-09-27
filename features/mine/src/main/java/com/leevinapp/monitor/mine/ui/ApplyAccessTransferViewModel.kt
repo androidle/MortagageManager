@@ -6,7 +6,6 @@ import com.leevinapp.monitor.mine.data.params.RequestTicketParams
 import com.leevinapp.monitor.mine.data.response.GetUserProfileResponse
 import com.leevinapp.monitor.mine.domain.MineRepository
 import com.leevinapp.monitor.mine.domain.model.TicketType.PERMISSION_TRANSFER
-import io.reactivex.functions.Consumer
 import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
 
@@ -27,13 +26,13 @@ class ApplyAccessTransferViewModel @Inject constructor(private val repository: M
     fun getSearchUser() {
         repository.searchUser(query.value ?: "")
             .applyIoWithLoading()
-            .subscribe(Consumer {
+            .subscribe({
                 if (it.success) {
                     userListResult.postValue(toModel(it.data))
                 } else {
                     errorMessage.postValue(it.error)
                 }
-            }).addTo(compositeDisposable)
+            }, {}).addTo(compositeDisposable)
     }
 
     fun targetUser(it: UserModel) {

@@ -7,7 +7,6 @@ import com.leevinapp.monitor.core.core.user.UserRole
 import com.leevinapp.monitor.mine.data.params.VerifyOrganizationParams
 import com.leevinapp.monitor.mine.data.params.VerifyUserParams
 import com.leevinapp.monitor.mine.domain.MineRepository
-import io.reactivex.functions.Consumer
 import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
 
@@ -56,32 +55,33 @@ class IdentityAuthViewModel @Inject constructor(private val repository: MineRepo
 
         repository.verifyUser(params)
             .applyIoWithLoading()
-            .subscribe(Consumer { response ->
+            .subscribe({ response ->
                 verifyUserResult.postValue(response.success)
                 if (!response.success) {
                     errorMessage.postValue(response.error)
                 }
-            })
+            }, {})
             .addTo(compositeDisposable)
     }
 
     fun verifyMortgageUser() {
-        val params = VerifyUserParams(userRole = _userRole.value ?: UserRole.BANK_USER_NO_ORG).apply {
-            residenceId = identityNum.value
-            familyAddress = homeAddress.value
-            organizationName = companyName.value
-            supervisorOrganizationName = supervisorOrgan.value
-            supervisorUniformSocialCreditCode = supervisorSocialCode.value
-        }
+        val params =
+            VerifyUserParams(userRole = _userRole.value ?: UserRole.BANK_USER_NO_ORG).apply {
+                residenceId = identityNum.value
+                familyAddress = homeAddress.value
+                organizationName = companyName.value
+                supervisorOrganizationName = supervisorOrgan.value
+                supervisorUniformSocialCreditCode = supervisorSocialCode.value
+            }
 
         repository.verifyUser(params)
             .applyIoWithLoading()
-            .subscribe(Consumer { response ->
+            .subscribe({ response ->
                 verifyUserResult.postValue(response.success)
                 if (!response.success) {
                     errorMessage.postValue(response.error)
                 }
-            })
+            }, {})
             .addTo(compositeDisposable)
     }
 
@@ -99,12 +99,12 @@ class IdentityAuthViewModel @Inject constructor(private val repository: MineRepo
 
         repository.verifyOrganization(params)
             .applyIoWithLoading()
-            .subscribe(Consumer { response ->
+            .subscribe({ response ->
                 verifyOrganResult.postValue(response.success)
                 if (!response.success) {
                     errorMessage.postValue(response.error)
                 }
-            })
+            }, {})
             .addTo(compositeDisposable)
     }
 

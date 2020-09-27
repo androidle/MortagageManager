@@ -5,7 +5,6 @@ import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.mine.data.response.GetNotificationsResponse
 import com.leevinapp.monitor.mine.domain.MineRepository
 import com.leevinapp.monitor.mine.domain.model.NotificationModel
-import io.reactivex.functions.Consumer
 import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
 
@@ -20,13 +19,13 @@ class NotificationViewModel @Inject constructor(private val repository: MineRepo
         if (freshData.value != true) return
         repository.getNotifications()
             .applyIoWithLoading()
-            .subscribe(Consumer { response ->
+            .subscribe({ response ->
                 if (!response.success) {
                     errorMessage.postValue(response.error)
                 } else {
                     notificationsResult.value = convertToModel(response.data)
                 }
-            })
+            }, {})
             .addTo(compositeDisposable)
     }
 
