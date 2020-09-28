@@ -3,12 +3,11 @@ package com.leevinapp.monitor.core.common.ui.base
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import com.leevinapp.monitor.core.common.ui.dialog.LoadingDialogFragment
+import com.leevinapp.monitor.core.common.ui.extensions.hideLoadingDialog
 import com.leevinapp.monitor.core.common.ui.extensions.showErrorDialog
+import com.leevinapp.monitor.core.common.ui.extensions.showLoadingDialog
 
 abstract class ViewModelFragment : BaseFragment() {
-
-    private var loadingDialogFragment = LoadingDialogFragment()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -18,12 +17,9 @@ abstract class ViewModelFragment : BaseFragment() {
     private fun registerCommonEvents() {
         getViewModel().loading.observe(viewLifecycleOwner, Observer {
             if (it) {
-                loadingDialogFragment.show(
-                    childFragmentManager,
-                    LoadingDialogFragment::class.simpleName
-                )
-            } else if (loadingDialogFragment.isAdded) {
-                loadingDialogFragment.dismissAllowingStateLoss()
+                requireActivity().showLoadingDialog()
+            } else {
+                requireActivity().hideLoadingDialog()
             }
         })
 
