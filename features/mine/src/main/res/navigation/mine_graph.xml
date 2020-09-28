@@ -118,7 +118,7 @@
         android:id="@+id/mine_applyparentorganfragment"
         android:name="com.leevinapp.monitor.mine.ui.ApplyParentInstitutionFragment"
         android:label="ApplyParentOrganFragment"
-        tools:layout="@layout/mine_fragment_apply_parent_organ" />
+        tools:layout="@layout/mine_fragment_apply_institution" />
     <fragment
         android:id="@+id/mine_minegeneralinfofragment"
         android:name="com.leevinapp.monitor.mine.ui.GeneralInfoFragment"

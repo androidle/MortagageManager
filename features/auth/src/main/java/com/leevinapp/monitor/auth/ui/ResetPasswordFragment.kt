@@ -14,12 +14,12 @@ import com.leevinapp.monitor.auth.databinding.AuthFragmentResetPasswordBinding
 import com.leevinapp.monitor.auth.di.buildComponent
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import javax.inject.Inject
-import kotlinx.android.synthetic.main.auth_fragment_reset_password.*
 
 class ResetPasswordFragment : ViewModelFragment() {
 
-    private lateinit var viewBinding: AuthFragmentResetPasswordBinding
+    private var viewBinding by autoCleared<AuthFragmentResetPasswordBinding>()
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -42,7 +42,7 @@ class ResetPasswordFragment : ViewModelFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        button_completed.setOnClickListener {
+        viewBinding.buttonCompleted.setOnClickListener {
             viewModel.resetPassword()
         }
 

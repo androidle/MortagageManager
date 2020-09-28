@@ -16,12 +16,13 @@ import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.EMAIL
 import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.SMS
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.core.user.UserManager
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.auth_fragment_forgot_password.*
 
 class ForgotPasswordFragment : BaseFragment() {
 
-    private lateinit var viewBinding: AuthFragmentForgotPasswordBinding
+    private var viewBinding by autoCleared<AuthFragmentForgotPasswordBinding>()
 
     @Inject
     lateinit var userManager: UserManager
@@ -51,24 +52,22 @@ class ForgotPasswordFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tv_change_email.setOnClickListener {
+        viewBinding.tvChangeEmail.setOnClickListener {
             container_email.visibility = View.VISIBLE
             container_sms_code.visibility = View.GONE
             viewModel.resetType = EMAIL
         }
 
-        tv_change_sms_code.setOnClickListener {
+        viewBinding.tvChangeSmsCode.setOnClickListener {
             container_email.visibility = View.GONE
             container_sms_code.visibility = View.VISIBLE
             viewModel.resetType = SMS
         }
 
-        iev_sms_code.setSmsCodeClickListener {
-            iev_sms_code.startTimer()
+        viewBinding.ievSmsCode.setSmsCodeClickListener {
             viewModel.sendSmsCode()
         }
-        iev_email_verify_code.setSmsCodeClickListener {
-            iev_email_verify_code.startTimer()
+        viewBinding.ievEmailVerifyCode.setSmsCodeClickListener {
             viewModel.sendEmailCode()
         }
 
@@ -97,9 +96,9 @@ class ForgotPasswordFragment : BaseFragment() {
         findNavController().navigate(R.id.auth_action_auth_forgotpasswordfragment_to_resetpasswordfragment)
     }
 
-    override fun onDestroy() {
-        iev_sms_code?.cancelTimer()
-        iev_email?.cancelTimer()
-        super.onDestroy()
+    override fun onStop() {
+        super.onStop()
+        viewBinding.ievSmsCode.cancelTimer()
+        viewBinding.ievEmailVerifyCode.cancelTimer()
     }
 }

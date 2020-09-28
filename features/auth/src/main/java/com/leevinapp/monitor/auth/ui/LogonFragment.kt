@@ -28,7 +28,6 @@ import com.leevinapp.monitor.core.core.storage.Storage
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import javax.inject.Inject
-import kotlinx.android.synthetic.main.auth_fragment_logon.*
 
 class LogonFragment : ViewModelFragment() {
 
@@ -88,13 +87,12 @@ class LogonFragment : ViewModelFragment() {
         )
 
         viewBinding.tvToRegister.text = spannableString
-        tv_to_register.movementMethod = LinkMovementMethod.getInstance()
-        tv_forgot_password.setOnClickListener {
+        viewBinding.tvToRegister.movementMethod = LinkMovementMethod.getInstance()
+        viewBinding.tvForgotPassword.setOnClickListener {
             findNavController().navigate(R.id.auth_action_logonfragment_to_forgotpasswordfragment)
         }
 
         viewBinding.ievSmsCode.setSmsCodeClickListener {
-            iev_sms_code.startTimer()
             viewModel.sendSmsCode()
         }
 
@@ -154,8 +152,8 @@ class LogonFragment : ViewModelFragment() {
         return viewModel
     }
 
-    override fun onDestroy() {
-        iev_sms_code?.cancelTimer()
-        super.onDestroy()
+    override fun onStop() {
+        super.onStop()
+        viewBinding.ievSmsCode.cancelTimer()
     }
 }

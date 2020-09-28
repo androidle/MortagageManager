@@ -37,8 +37,9 @@ dependencies {
     implementation "androidx.security:security-crypto:$versions.securityCropto"
 
     // Stetho debug bridge for applications via Chrome Developer Tools
-    debugImplementation deps.stesho
-    debugImplementation deps.stesho_okhttp
+    // todo look into debugImplementation stesho
+    implementation deps.stesho
+    implementation deps.stesho_okhttp
     debugImplementation deps.leakcanary
 
     // test todo

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.leevinapp.monitor.auth.di.AuthViewModelFactory
 import com.leevinapp.monitor.core.core.di.ViewModelKey
 import com.leevinapp.monitor.core.core.di.scopes.FeatureScope
+import com.leevinapp.monitor.mine.ui.ApplyAttachedInstitutionViewModel
 import com.leevinapp.monitor.mine.ui.ApplyParentInstitutionViewModel
 import com.leevinapp.monitor.mine.ui.GeneralInfoViewModel
 import com.leevinapp.monitor.mine.ui.InstitutionUserViewModel
@@ -74,6 +75,12 @@ abstract class MineViewModelModule {
     @FeatureScope
     @ViewModelKey(TicketViewModel::class)
     internal abstract fun bindTicketViewModel(viewModel: TicketViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @FeatureScope
+    @ViewModelKey(ApplyAttachedInstitutionViewModel::class)
+    internal abstract fun bindApplyAttachedInstitutionViewModel(viewModel: ApplyAttachedInstitutionViewModel): ViewModel
 
     @Binds
     @FeatureScope

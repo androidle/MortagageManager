@@ -16,7 +16,6 @@ import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import javax.inject.Inject
-import kotlinx.android.synthetic.main.auth_fragment_verify_email.*
 
 class VerifyEmailFragment : ViewModelFragment() {
 
@@ -43,8 +42,7 @@ class VerifyEmailFragment : ViewModelFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        iev_email_verify_code.setSmsCodeClickListener {
-            iev_email_verify_code.startTimer()
+        viewBinding.ievEmailVerifyCode.setSmsCodeClickListener {
             viewModel.sendEmailCode()
         }
 
@@ -52,7 +50,7 @@ class VerifyEmailFragment : ViewModelFragment() {
             Toast.makeText(requireContext(), if (it) "发送成功" else "发送失败", Toast.LENGTH_SHORT)
         })
 
-        button_completed.setOnClickListener {
+        viewBinding.buttonCompleted.setOnClickListener {
             viewModel.verifyEmail()
         }
 
@@ -80,8 +78,8 @@ class VerifyEmailFragment : ViewModelFragment() {
         return viewModel
     }
 
-    override fun onDestroy() {
-        iev_email_verify_code?.cancelTimer()
-        super.onDestroy()
+    override fun onStop() {
+        super.onStop()
+        viewBinding.ievEmailVerifyCode.cancelTimer()
     }
 }

@@ -11,7 +11,7 @@ import io.reactivex.functions.Consumer
 import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
 
-class ApplyParentInstitutionViewModel @Inject constructor(val repository: MineRepository) :
+open class ApplyParentInstitutionViewModel @Inject constructor(val repository: MineRepository) :
     ApplyTicketViewModel(repository) {
 
     private val _result = MutableLiveData<List<InstitutionModel>>()

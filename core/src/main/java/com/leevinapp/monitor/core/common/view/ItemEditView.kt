@@ -129,6 +129,7 @@ class ItemEditView @JvmOverloads constructor(
         }
 
         button_sms_code.setOnClickListener {
+            startTimer()
             smsClickCallback?.invoke()
         }
     }

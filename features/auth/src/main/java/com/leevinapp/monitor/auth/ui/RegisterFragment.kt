@@ -13,12 +13,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.auth.R
 import com.leevinapp.monitor.auth.databinding.AuthFragmentRegisterBinding
-import com.leevinapp.monitor.auth.di.AuthModule
-import com.leevinapp.monitor.auth.di.DaggerAuthComponent
+import com.leevinapp.monitor.auth.di.buildComponent
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.common.view.CustomClickableSpan
-import com.leevinapp.monitor.core.core.di.CoreInjectHelper
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import javax.inject.Inject
@@ -57,7 +55,6 @@ class RegisterFragment : ViewModelFragment() {
         }
 
         binding.ievSmsCode.setSmsCodeClickListener {
-            binding.ievSmsCode.startTimer()
             viewModel.sendSmsCode()
         }
 
@@ -87,19 +84,15 @@ class RegisterFragment : ViewModelFragment() {
     }
 
     override fun initDependencyInjection() {
-        DaggerAuthComponent.builder()
-            .coreComponent(CoreInjectHelper.provideCoreComponent(requireContext()))
-            .authModule(AuthModule(this))
-            .build()
-            .inject(this)
-    }
-
-    override fun onDestroy() {
-        binding?.ievSmsCode?.cancelTimer()
-        super.onDestroy()
+        buildComponent(this).inject(this)
     }
 
     override fun getViewModel(): BaseViewModel {
         return viewModel
+    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.ievSmsCode.cancelTimer()
     }
 }

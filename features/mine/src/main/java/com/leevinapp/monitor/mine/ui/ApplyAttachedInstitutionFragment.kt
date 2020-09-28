@@ -1,38 +1,37 @@
 package com.leevinapp.monitor.mine.ui
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.leevinapp.monitor.core.common.ui.base.BaseFragment
-import com.leevinapp.monitor.core.core.utils.autoCleared
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.mine.R
-import com.leevinapp.monitor.mine.databinding.MineFragmentApplyAttachedInstitutionBinding
+import com.leevinapp.monitor.mine.di.buildComponent
+import javax.inject.Inject
 
-class ApplyAttachedInstitutionFragment : BaseFragment() {
+class ApplyAttachedInstitutionFragment : ApplyInstitutionFragment() {
 
-    private var viewBinding by autoCleared<MineFragmentApplyAttachedInstitutionBinding>()
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return MineFragmentApplyAttachedInstitutionBinding.inflate(inflater, container, false).apply {
-            lifecycleOwner = viewLifecycleOwner
-            viewBinding = this
-        }.root
+    @Inject
+    lateinit var userManager: UserManager
+
+    val viewModel: ApplyAttachedInstitutionViewModel by viewModels {
+        viewModelFactory
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun getApplyViewModel(): ApplyParentInstitutionViewModel {
+        return viewModel
     }
 
-    override fun getTitleBarView(): View? {
-        return viewBinding.toolbarContainer.toolbar
+    override fun userManager(): UserManager {
+        return userManager
     }
 
     override fun getTitleBarTitle(): String {
         return getString(R.string.mine_menu_apply_attached_institution)
+    }
+
+    override fun initDependencyInjection() {
+        buildComponent(this).inject(this)
     }
 }
