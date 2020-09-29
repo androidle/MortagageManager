@@ -41,3 +41,4 @@ task clean(type: Delete) {
     }
 }
 
+apply from: './install-git-hooks.gradle'
