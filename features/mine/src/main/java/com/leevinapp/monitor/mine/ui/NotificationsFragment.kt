@@ -11,15 +11,14 @@ import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.common.view.recycleview.HorizontalDividerItemDecoration
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
-import com.leevinapp.monitor.mine.databinding.MineFramentNotificationsBinding
+import com.leevinapp.monitor.mine.databinding.MineFragmentNotificationsBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.ui.adapter.NotificationAdapter
 import javax.inject.Inject
-import kotlinx.android.synthetic.main.mine_frament_notifications.*
 
 class NotificationsFragment : ViewModelFragment() {
 
-    private var viewBinding by autoCleared<MineFramentNotificationsBinding>()
+    private var viewBinding by autoCleared<MineFragmentNotificationsBinding>()
 
     @Inject
     lateinit var viewModel: NotificationViewModel
@@ -29,7 +28,7 @@ class NotificationsFragment : ViewModelFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return MineFramentNotificationsBinding.inflate(inflater, container, false).apply {
+        return MineFragmentNotificationsBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewBinding = this
         }.root
@@ -46,14 +45,14 @@ class NotificationsFragment : ViewModelFragment() {
                 )
             )
         }
-        recyclerView_notifications.adapter = notificationAdapter
-
-        recyclerView_notifications.setHasFixedSize(true)
-        recyclerView_notifications.addItemDecoration(
-            HorizontalDividerItemDecoration.Builder(requireContext())
-                .sizeResId(R.dimen.dimen_common_margin_1)
-                .build()
-        )
+        viewBinding.recyclerView.apply {
+            adapter = notificationAdapter
+            addItemDecoration(
+                HorizontalDividerItemDecoration.Builder(requireContext())
+                    .sizeResId(R.dimen.dimen_common_margin_1)
+                    .build()
+            )
+        }
 
         viewModel.getNotifications()
 

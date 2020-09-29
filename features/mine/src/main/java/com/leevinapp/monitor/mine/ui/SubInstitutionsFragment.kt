@@ -10,14 +10,14 @@ import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.common.view.recycleview.HorizontalDividerItemDecoration
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
-import com.leevinapp.monitor.mine.databinding.MineFramentSubInstitutionsBinding
+import com.leevinapp.monitor.mine.databinding.MineFragmentSubInstitutionsBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.ui.adapter.SubInstitutionAdapter
 import javax.inject.Inject
 
 class SubInstitutionsFragment : ViewModelFragment() {
 
-    private var viewBinding by autoCleared<MineFramentSubInstitutionsBinding>()
+    private var viewBinding by autoCleared<MineFragmentSubInstitutionsBinding>()
 
     @Inject
     lateinit var viewModel: SubInstitutionsViewModel
@@ -27,7 +27,7 @@ class SubInstitutionsFragment : ViewModelFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return MineFramentSubInstitutionsBinding.inflate(inflater, container, false).apply {
+        return MineFragmentSubInstitutionsBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewBinding = this
         }.root
@@ -39,14 +39,14 @@ class SubInstitutionsFragment : ViewModelFragment() {
         val adapter = SubInstitutionAdapter().apply {
             // updateData(getDummyData())
         }
-        viewBinding.recyclerViewSubInstitution.adapter = adapter
-
-        viewBinding.recyclerViewSubInstitution.addItemDecoration(
-            HorizontalDividerItemDecoration.Builder(requireContext())
-                .showLastDivider()
-                .sizeResId(R.dimen.dimen_common_margin_1)
-                .build()
-        )
+        viewBinding.recyclerView.apply {
+            this.adapter = adapter
+            addItemDecoration(
+                HorizontalDividerItemDecoration.Builder(requireContext())
+                    .sizeResId(R.dimen.dimen_common_margin_1)
+                    .build()
+            )
+        }
 
         viewModel.getSubInstitutions()
 

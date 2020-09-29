@@ -23,7 +23,6 @@ import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.MineConstants
 import java.util.Calendar
 import javax.inject.Inject
-import kotlinx.android.synthetic.main.mine_fragment_auth_organization.*
 
 class OrganizationAuthFragment : ViewModelFragment() {
 
@@ -35,11 +34,13 @@ class OrganizationAuthFragment : ViewModelFragment() {
     @Inject
     lateinit var userManager: UserManager
 
+    private var currentYear: Int = Calendar.getInstance().get(Calendar.YEAR)
+    private var currentMonth = Calendar.getInstance().get(Calendar.MONTH)
+    private var currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+
     val viewModel: IdentityAuthViewModel by viewModels {
         viewModelFactory
     }
-
-    private var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,29 +58,7 @@ class OrganizationAuthFragment : ViewModelFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewBinding.ivIdentityType.setOnClickListener {
-            identityAuthSelectionFragment?.show(
-                childFragmentManager,
-                MineIdentityAuthSelectionFragment::class.simpleName
-            )
-        }
-
-        if (identityAuthSelectionFragment == null) {
-            identityAuthSelectionFragment =
-                MineIdentityAuthSelectionFragment.newInstance(MineConstants.organ_identity_types)
-        }
-        identityAuthSelectionFragment?.setSelectedCallback { option ->
-            iv_identity_type.value = option.name
-            when (option.id) {
-                0 -> {
-                    viewModel.setUserRole(BANK)
-                }
-                1 -> {
-                    viewModel.setUserRole(BORROWER)
-                }
-                2 -> {
-                    viewModel.setUserRole(SUPERVISOR)
-                }
-            }
+            showSelectionPage()
         }
 
         viewBinding.buttonSubmit.setOnClickListener {
@@ -96,9 +75,29 @@ class OrganizationAuthFragment : ViewModelFragment() {
         initDatePicker()
     }
 
-    private var currentYear: Int = Calendar.getInstance().get(Calendar.YEAR)
-    private var currentMonth = Calendar.getInstance().get(Calendar.MONTH)
-    private var currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+    private fun showSelectionPage() {
+        MineIdentityAuthSelectionFragment.newInstance(MineConstants.organ_identity_types)
+            .apply {
+                setSelectedCallback { option ->
+                    viewBinding.ivIdentityType.value = option.name
+                    when (option.id) {
+                        0 -> {
+                            viewModel.setUserRole(BANK)
+                        }
+                        1 -> {
+                            viewModel.setUserRole(BORROWER)
+                        }
+                        2 -> {
+                            viewModel.setUserRole(SUPERVISOR)
+                        }
+                    }
+                }
+            }
+            .show(
+                childFragmentManager,
+                MineIdentityAuthSelectionFragment::class.simpleName
+            )
+    }
 
     private fun initDatePicker() {
         viewBinding.ievDateOfFound.setOnClickListener {

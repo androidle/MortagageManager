@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="java.util.Date"/>
+
         <variable
             name="model"
             type="com.leevinapp.monitor.mine.domain.model.NotificationModel" />

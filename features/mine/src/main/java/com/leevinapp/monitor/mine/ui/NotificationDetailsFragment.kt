@@ -8,12 +8,12 @@ import androidx.navigation.fragment.navArgs
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
-import com.leevinapp.monitor.mine.databinding.MineFramentNotificationDetailsBinding
+import com.leevinapp.monitor.mine.databinding.MineFragmentNotificationDetailsBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 
 class NotificationDetailsFragment : BaseFragment() {
 
-    private var viewBinding by autoCleared<MineFramentNotificationDetailsBinding>()
+    private var viewBinding by autoCleared<MineFragmentNotificationDetailsBinding>()
 
     val args: NotificationDetailsFragmentArgs by navArgs()
 
@@ -22,7 +22,7 @@ class NotificationDetailsFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return MineFramentNotificationDetailsBinding.inflate(inflater, container, false).apply {
+        return MineFragmentNotificationDetailsBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             model = args.model
             viewBinding = this

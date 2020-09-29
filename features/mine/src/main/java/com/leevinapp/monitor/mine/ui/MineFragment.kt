@@ -45,8 +45,6 @@ class MineFragment : ViewModelFragment() {
         viewModelFactory
     }
 
-    private var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment? = null
-
     private val menusHorizontal = mutableListOf(
         PARENT_ORGANIZATION_APPLY,
         ACCESS_TRANSFER,
@@ -84,31 +82,9 @@ class MineFragment : ViewModelFragment() {
                     findNavController().navigate(R.id.mine_action_minefragment_to_applyattachedinstitutionfragment)
                 }
                 AUTH_ACCOUNT -> {
-                    identityAuthSelectionFragment?.show(
-                        childFragmentManager,
-                        MineIdentityAuthSelectionFragment::class.simpleName
-                    )
+                    showIdentitySelectionPage()
                 }
                 else -> {}
-            }
-        }
-
-        if (identityAuthSelectionFragment == null) {
-            identityAuthSelectionFragment =
-                MineIdentityAuthSelectionFragment.newInstance(MineConstants.auth_ways)
-        }
-
-        identityAuthSelectionFragment?.setSelectedCallback { option ->
-            when (option.id) {
-                0 -> {
-                    findNavController().navigate(R.id.mine_action_minefragment_to_ordinaryuserauthfragment)
-                }
-                1 -> {
-                    findNavController().navigate(R.id.mine_action_minefragment_to_mortgageuserauthfragment)
-                }
-                2 -> {
-                    findNavController().navigate(R.id.mine_action_minefragment_to_organizationauthfragment)
-                }
             }
         }
 
@@ -140,16 +116,7 @@ class MineFragment : ViewModelFragment() {
             }
         }
 
-        if (BuildConfig.DEBUG) {
-            iv_avatar.setOnLongClickListener(object : OnLongClickListener {
-                override fun onLongClick(v: View?): Boolean {
-                    val isNoNeedLogon = storage.getBoolean(Constants.KEY_IS_NO_NEED_LOGON)
-                    storage.setBoolean(Constants.KEY_IS_NO_NEED_LOGON, !isNoNeedLogon)
-                    Toast.makeText(requireContext(), if (!isNoNeedLogon) "开启免登录" else "关闭免登录", Toast.LENGTH_SHORT).show()
-                    return true
-                }
-            })
-        }
+        debugFeature()
 
         viewModel.isLogged.postValue(userManager.isLogged)
 
@@ -160,6 +127,46 @@ class MineFragment : ViewModelFragment() {
         iv_settings.setOnClickListener {
             requireActivity().showErrorDialog("Settings")
         }
+    }
+
+    private fun debugFeature() {
+        if (BuildConfig.DEBUG) {
+            iv_avatar.setOnLongClickListener(object : OnLongClickListener {
+                override fun onLongClick(v: View?): Boolean {
+                    val isNoNeedLogon = storage.getBoolean(Constants.KEY_IS_NO_NEED_LOGON)
+                    storage.setBoolean(Constants.KEY_IS_NO_NEED_LOGON, !isNoNeedLogon)
+                    Toast.makeText(
+                        requireContext(),
+                        if (!isNoNeedLogon) "开启免登录" else "关闭免登录",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return true
+                }
+            })
+        }
+    }
+
+    private fun showIdentitySelectionPage() {
+        MineIdentityAuthSelectionFragment.newInstance(MineConstants.auth_ways)
+            .apply {
+                setSelectedCallback { option ->
+                    when (option.id) {
+                        0 -> {
+                            findNavController().navigate(R.id.mine_action_minefragment_to_ordinaryuserauthfragment)
+                        }
+                        1 -> {
+                            findNavController().navigate(R.id.mine_action_minefragment_to_mortgageuserauthfragment)
+                        }
+                        2 -> {
+                            findNavController().navigate(R.id.mine_action_minefragment_to_organizationauthfragment)
+                        }
+                    }
+                }
+            }
+            .show(
+                childFragmentManager,
+                MineIdentityAuthSelectionFragment::class.simpleName
+            )
     }
 
     override fun getViewModel(): BaseViewModel {

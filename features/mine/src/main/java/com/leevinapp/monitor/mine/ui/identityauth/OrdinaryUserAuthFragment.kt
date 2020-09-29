@@ -20,7 +20,6 @@ import com.leevinapp.monitor.mine.databinding.MineFragmentAuthOrdinaryUserBindin
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.MineConstants
 import javax.inject.Inject
-import kotlinx.android.synthetic.main.mine_fragment_auth_ordinary_user.*
 
 class OrdinaryUserAuthFragment : ViewModelFragment() {
 
@@ -31,8 +30,6 @@ class OrdinaryUserAuthFragment : ViewModelFragment() {
 
     @Inject
     lateinit var userManager: UserManager
-
-    private var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment? = null
 
     val viewModel: IdentityAuthViewModel by viewModels {
         viewModelFactory
@@ -54,30 +51,9 @@ class OrdinaryUserAuthFragment : ViewModelFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.setUserRole(BANK_USER)
-        viewBinding.ivIdentityType.setOnClickListener {
-            identityAuthSelectionFragment?.show(
-                childFragmentManager,
-                MineIdentityAuthSelectionFragment::class.simpleName
-            )
-        }
 
-        if (identityAuthSelectionFragment == null) {
-            identityAuthSelectionFragment =
-                MineIdentityAuthSelectionFragment.newInstance(MineConstants.user_identity_types)
-        }
-        identityAuthSelectionFragment?.setSelectedCallback { option ->
-            iv_identity_type.value = option.name
-            when (option.id) {
-                0 -> {
-                    viewModel.setUserRole(BANK_USER)
-                }
-                1 -> {
-                    viewModel.setUserRole(SUPERVISOR_USER)
-                }
-                2 -> {
-                    viewModel.setUserRole(BORROWER_USER)
-                }
-            }
+        viewBinding.ivIdentityType.setOnClickListener {
+            showIdentitySelectionPage()
         }
 
         viewBinding.buttonSubmit.setOnClickListener {
@@ -90,6 +66,30 @@ class OrdinaryUserAuthFragment : ViewModelFragment() {
                 findNavController().navigateUp()
             }
         })
+    }
+
+    private fun showIdentitySelectionPage() {
+        MineIdentityAuthSelectionFragment.newInstance(MineConstants.user_identity_types)
+            .apply {
+                setSelectedCallback { option ->
+                    viewBinding.ivIdentityType.value = option.name
+                    when (option.id) {
+                        0 -> {
+                            viewModel.setUserRole(BANK_USER)
+                        }
+                        1 -> {
+                            viewModel.setUserRole(BORROWER_USER)
+                        }
+                        2 -> {
+                            viewModel.setUserRole(SUPERVISOR_USER)
+                        }
+                    }
+                }
+            }
+            .show(
+                childFragmentManager,
+                MineIdentityAuthSelectionFragment::class.simpleName
+            )
     }
 
     override fun getTitleBarView(): View? {

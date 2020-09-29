@@ -12,7 +12,7 @@ import com.leevinapp.monitor.mine.domain.model.MenuModel.PRIVACY
 import com.leevinapp.monitor.mine.domain.model.MenuModel.SERVICE
 import com.leevinapp.monitor.mine.domain.model.MenuModel.VERSION
 import com.leevinapp.monitor.mine.ui.adapter.MineMenuAdapter
-import kotlinx.android.synthetic.main.mine_frament_about.*
+import kotlinx.android.synthetic.main.mine_fragment_about.*
 
 class MineAboutFragment : BaseFragment() {
 
@@ -27,7 +27,7 @@ class MineAboutFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.mine_frament_about, container, false)
+        return inflater.inflate(R.layout.mine_fragment_about, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

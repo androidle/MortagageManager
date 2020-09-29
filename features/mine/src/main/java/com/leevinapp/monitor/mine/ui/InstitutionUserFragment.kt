@@ -10,14 +10,14 @@ import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.common.view.recycleview.HorizontalDividerItemDecoration
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
-import com.leevinapp.monitor.mine.databinding.MineFramentInstitutionUserBinding
+import com.leevinapp.monitor.mine.databinding.MineFragmentInstitutionUserBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.ui.adapter.InstitutionUserAdapter
 import javax.inject.Inject
 
 class InstitutionUserFragment : ViewModelFragment() {
 
-    private var viewBinding by autoCleared<MineFramentInstitutionUserBinding>()
+    private var viewBinding by autoCleared<MineFragmentInstitutionUserBinding>()
 
     @Inject
     lateinit var viewModel: InstitutionUserViewModel
@@ -27,7 +27,7 @@ class InstitutionUserFragment : ViewModelFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return MineFramentInstitutionUserBinding.inflate(inflater, container, false).apply {
+        return MineFragmentInstitutionUserBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewBinding = this
         }.root
@@ -37,11 +37,10 @@ class InstitutionUserFragment : ViewModelFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val institutionUserAdapter = InstitutionUserAdapter()
-        viewBinding.recyclerViewInstitutionUser.adapter = institutionUserAdapter
+        viewBinding.recyclerView.adapter = institutionUserAdapter
 
-        viewBinding.recyclerViewInstitutionUser.addItemDecoration(
+        viewBinding.recyclerView.addItemDecoration(
             HorizontalDividerItemDecoration.Builder(requireContext())
-                .showLastDivider()
                 .sizeResId(R.dimen.dimen_common_margin_1)
                 .build()
         )

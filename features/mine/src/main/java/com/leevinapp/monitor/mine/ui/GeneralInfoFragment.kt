@@ -15,8 +15,8 @@ import com.leevinapp.monitor.mine.databinding.MineFragmentGeneralInfoBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.MineConstants
 import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthSelectionFragment
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.mine_fragment_general_info.*
+import javax.inject.Inject
 
 class GeneralInfoFragment : BaseFragment() {
 
@@ -31,8 +31,6 @@ class GeneralInfoFragment : BaseFragment() {
     }
 
     private var viewBinding by autoCleared<MineFragmentGeneralInfoBinding>()
-
-    private var identityAuthSelectionFragment: MineIdentityAuthSelectionFragment? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,10 +56,7 @@ class GeneralInfoFragment : BaseFragment() {
         }
 
         iv_identity_or_organ_auth.setOnClickListener {
-            identityAuthSelectionFragment?.show(
-                childFragmentManager,
-                MineIdentityAuthSelectionFragment::class.simpleName
-            )
+            showIdentitySelectionPage()
         }
 
         iv_security.setOnClickListener {
@@ -77,25 +72,29 @@ class GeneralInfoFragment : BaseFragment() {
             userManager.reset()
             findNavController().navigateUp()
         }
+    }
 
-        if (identityAuthSelectionFragment == null) {
-            identityAuthSelectionFragment =
-                MineIdentityAuthSelectionFragment.newInstance(MineConstants.auth_ways)
-        }
-
-        identityAuthSelectionFragment?.setSelectedCallback { option ->
-            when (option.id) {
-                0 -> {
-                    findNavController().navigate(R.id.mine_action_mine_minegeneralinfofragment_to_ordinaryuserauthfragment)
-                }
-                1 -> {
-                    findNavController().navigate(R.id.mine_action_mine_minegeneralinfofragment_to_mortgageuserauthfragment)
-                }
-                2 -> {
-                    findNavController().navigate(R.id.mine_action_mine_minegeneralinfofragment_to_organizationauthfragment)
+    private fun showIdentitySelectionPage() {
+        MineIdentityAuthSelectionFragment.newInstance(MineConstants.auth_ways)
+            .apply {
+                setSelectedCallback { option ->
+                    when (option.id) {
+                        0 -> {
+                            findNavController().navigate(R.id.mine_action_mine_minegeneralinfofragment_to_ordinaryuserauthfragment)
+                        }
+                        1 -> {
+                            findNavController().navigate(R.id.mine_action_mine_minegeneralinfofragment_to_mortgageuserauthfragment)
+                        }
+                        2 -> {
+                            findNavController().navigate(R.id.mine_action_mine_minegeneralinfofragment_to_organizationauthfragment)
+                        }
+                    }
                 }
             }
-        }
+            .show(
+                childFragmentManager,
+                MineIdentityAuthSelectionFragment::class.simpleName
+            )
     }
 
     override fun getTitleBarView(): View? {
