@@ -26,8 +26,11 @@ fun FragmentActivity.hideErrorDialog() {
     }
 }
 
-fun FragmentActivity.showErrorDialog(errorMessage: String? = "络网错误") {
+fun FragmentActivity.showErrorDialog(message: String? = "络网错误") {
     supportFragmentManager.beginTransaction()
-        .add(ErrorDialogFragment.newInstance(errorMessage), LoadingDialogFragment::class.simpleName)
+        .add(ErrorDialogFragment.newInstance()
+            .apply {
+                errorMessage(message)
+            }, LoadingDialogFragment::class.simpleName)
         .commitAllowingStateLoss()
 }
