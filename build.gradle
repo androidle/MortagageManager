@@ -5,9 +5,9 @@ buildscript {
     dependencies {
         classpath deps.android_gradle_plugin
         classpath deps.kotlin.plugin
+        classpath deps.navigation.safe_args_plugin
 
         classpath deps.spotless_gradle_plugin
-        classpath deps.navigation.safe_args_plugin
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -27,7 +27,15 @@ subprojects {
     apply from: rootProject.file('./spotless.gradle')
     apply from: rootProject.file('./detekt.gradle')
     apply from: rootProject.file('./ktlint.gradle')
-    apply plugin:"com.github.ben-manes.versions"
+    apply plugin: "com.github.ben-manes.versions"
+
+    tasks.named("dependencyUpdates").configure {
+        // optional parameters
+        checkForGradleUpdate = true
+        outputFormatter = "json"
+        outputDir = "build/dependencyUpdates"
+        reportfileName = "report"
+    }
 
     afterEvaluate { project ->
         project.apply from: rootProject.file('./jacoco.gradle')
@@ -36,7 +44,7 @@ subprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-    rootProject.allprojects.forEach{
+    rootProject.allprojects.forEach {
         project -> delete project.buildDir
     }
 }

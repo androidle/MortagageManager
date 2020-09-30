@@ -55,6 +55,7 @@ versions.rxkotlin = "2.4.0"
 versions.coordinatorlayout = "1.1.0"
 versions.viewpager2 = "1.0.0"
 versions.securityCropto = "1.1.0-alpha02"
+versions.gson = "2.8.6"
 ext.versions = versions
 
 def build_versions = [:]
@@ -129,7 +130,7 @@ deps.hamcrest = "org.hamcrest:hamcrest-all:$versions.hamcrest"
 deps.junit = "junit:junit:$versions.junit"
 
 def kotlin = [:]
-kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
 kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
 kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
 kotlin.allopen = "org.jetbrains.kotlin:kotlin-allopen:$versions.kotlin"
