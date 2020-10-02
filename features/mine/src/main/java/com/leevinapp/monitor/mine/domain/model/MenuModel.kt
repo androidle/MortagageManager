@@ -12,7 +12,7 @@ enum class MenuModel(
     // security
     CHANGE_PASSWORD("修改密码"),
     FORGOT_PASSWORD("找回密码"),
-    CHANGE_SECURITY_REF("修改安全问题和答案"),
+    CHANGE_EMAIL("修改邮箱"),
 
     //
     PARENT_ORGANIZATION_APPLY("父机构申请"),

@@ -7,6 +7,9 @@ import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.EMAIL
 import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.SMS
 import com.leevinapp.monitor.auth.domain.model.SMSType
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
+import com.leevinapp.monitor.core.core.utils.vaidation.EmailRule
+import com.leevinapp.monitor.core.core.utils.vaidation.PhoneNumberRule
+import com.leevinapp.monitor.core.core.utils.vaidation.VerifyCodeRule
 import io.reactivex.functions.Consumer
 import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
@@ -61,6 +64,7 @@ class ResetPasswordViewModel @Inject constructor(private val authRepository: Aut
     }
 
     fun resetPassword() {
+
         val resetPasswordParams = buildResetPasswordParams()
 
         authRepository.resetPassword(resetPasswordParams)
@@ -94,6 +98,15 @@ class ResetPasswordViewModel @Inject constructor(private val authRepository: Aut
                     verifyCode = emailVerifyCode.value ?: ""
                 )
             }
+        }
+    }
+
+    fun validate(): Boolean {
+        val validPhoneNumber = PhoneNumberRule().validate(phoneNumber.value ?: "")
+        val validEmail = EmailRule().validate(phoneNumber.value ?: "")
+        return when (resetType) {
+            SMS -> validPhoneNumber && VerifyCodeRule().validate(smsCode.value ?: "")
+            EMAIL -> validEmail && VerifyCodeRule().validate(emailVerifyCode.value ?: "")
         }
     }
 }

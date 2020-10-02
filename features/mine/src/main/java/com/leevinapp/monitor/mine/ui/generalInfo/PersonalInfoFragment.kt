@@ -17,7 +17,6 @@ import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentPersonalInfoBinding
 import com.leevinapp.monitor.mine.di.buildComponent
 import javax.inject.Inject
-import kotlinx.android.synthetic.main.mine_fragment_personal_info.*
 
 class PersonalInfoFragment : ViewModelFragment() {
 
@@ -48,11 +47,6 @@ class PersonalInfoFragment : ViewModelFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        iv_mail.setOnClickListener {
-            // verify email
-            findNavController().navigate(R.id.mine_action_mine_minepersonalinfofragment_to_verifyemailfragment)
-        }
-
         viewModel.updateProfileResult.observe(viewLifecycleOwner, Observer {
             if (it) {
                 Toast.makeText(requireContext(), if (it) "更新成功" else "更新失败", Toast.LENGTH_LONG)

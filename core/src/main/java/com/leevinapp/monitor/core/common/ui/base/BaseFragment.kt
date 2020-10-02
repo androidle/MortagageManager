@@ -29,6 +29,8 @@ abstract class BaseFragment : Fragment(), Injector, WithToolbar {
             val ivBack = toolbar.findViewById(R.id.iv_back) as ImageView
             val toolbarTitleTextView = toolbar.findViewById(R.id.tv_title) as TextView
             val rightTextView = toolbar.findViewById(R.id.tv_right) as TextView
+            val righterImage = toolbar.findViewById(R.id.iv_righter) as ImageView
+            val rightestImage = toolbar.findViewById(R.id.iv_rightest) as ImageView
             if (toolbarTitle.isNotEmpty()) {
                 toolbarTitleTextView.visibility = View.VISIBLE
                 toolbarTitleTextView.text = toolbarTitle
@@ -48,6 +50,25 @@ abstract class BaseFragment : Fragment(), Injector, WithToolbar {
                 rightTextView.visibility = View.GONE
             }
 
+            if (getRightestIconRes() != 0) {
+                rightestImage.visibility = View.VISIBLE
+                rightestImage.setImageResource(getRightestIconRes())
+                rightestImage.setOnClickListener {
+                    onRightestIconClick()
+                }
+                if (getRighterIconRes() != 0) {
+                    righterImage.setImageResource(getRighterIconRes())
+                    righterImage.visibility = View.VISIBLE
+                    righterImage.setOnClickListener {
+                        onRighterIconClick()
+                    }
+                } else {
+                    righterImage.visibility = View.GONE
+                }
+            } else {
+                rightestImage.visibility = View.GONE
+            }
+
             if (isShowBackIcon()) {
                 ivBack.visibility = View.VISIBLE
                 ivBack.setOnClickListener {
@@ -65,6 +86,12 @@ abstract class BaseFragment : Fragment(), Injector, WithToolbar {
     }
 
     open fun onRightTextClick() {
+    }
+
+    open fun onRighterIconClick() {
+    }
+
+    open fun onRightestIconClick() {
     }
 
     override fun initDependencyInjection() {

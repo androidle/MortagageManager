@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+<<<<<<< Updated upstream
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/title_constraint"
     android:layout_width="match_parent"
@@ -26,3 +27,186 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+||||||| merged common ancestors
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="userManager"
+            type="com.leevinapp.monitor.core.core.user.UserManager" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/title_constraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_monitor_heavy_blue"
+        tools:layout_editor_absoluteY="81dp">
+
+        <include
+            android:id="@+id/toolbar_container"
+            layout="@layout/toolbar_binding"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            tools:visibility="gone"
+            app:visible="@{userManager.isLogged}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_container">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                style="@style/TabLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tabGravity="fill"
+                app:tabIndicatorFullWidth="true"
+                app:tabMode="fixed" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_empty"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_container"
+            app:visible="@{!userManager.isLogged}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/color_monitor_white"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="0dp">
+
+            <ImageView
+                android:id="@+id/iv_empty"
+                android:layout_width="wrap_content"
+                android:src="@drawable/project_empty"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/tv_empty"
+                app:layout_constraintVertical_chainStyle="packed"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_empty"
+                style="@style/MonitorText.ContentGray"
+                android:gravity="center_horizontal"
+                android:text="@string/project_empty"
+                android:textAllCaps="false"
+                android:layout_marginTop="@dimen/dimen_common_margin"
+                android:textSize="@dimen/text_size_small"
+                android:layout_marginBottom="@dimen/dimen_common_margin"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_empty" />
+
+            <ImageView
+                android:id="@+id/iv_icon_empty"
+                android:layout_width="wrap_content"
+                android:src="@drawable/project_ic_empty"
+                app:layout_constraintStart_toStartOf="@+id/iv_empty"
+                app:layout_constraintTop_toTopOf="@+id/iv_empty"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_empty"
+                app:layout_constraintEnd_toEndOf="@+id/iv_empty"
+                android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
+=======
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="userManager"
+            type="com.leevinapp.monitor.core.core.user.UserManager" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/title_constraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_monitor_heavy_blue"
+        tools:layout_editor_absoluteY="81dp">
+
+        <include
+            android:id="@+id/toolbar_container"
+            layout="@layout/toolbar_binding"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            tools:visibility="visible"
+            android:layout_marginTop="@dimen/dimen_common_margin"
+            app:visible="@{userManager.isLogged}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_container">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                style="@style/TabLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tabGravity="fill"
+                app:tabIndicatorFullWidth="true"
+                app:tabMode="fixed" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/color_monitor_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <include
+            layout="@layout/project_layout_empty"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            tools:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_container"
+            app:visible="@{!userManager.isLogged}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
+>>>>>>> Stashed changes

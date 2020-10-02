@@ -46,12 +46,12 @@ class VerifyEmailViewModel @Inject constructor(
             )
         )
             .applyIoWithLoading()
-            .subscribe(Consumer { t ->
+            .subscribe({ t ->
                 verifyEmailResult.postValue(t.success)
                 if (!t.success) {
                     errorMessage.postValue(t.error)
                 }
-            })
+            }, {})
             .addTo(compositeDisposable)
     }
 }

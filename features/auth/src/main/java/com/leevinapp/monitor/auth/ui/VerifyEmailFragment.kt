@@ -55,8 +55,8 @@ class VerifyEmailFragment : ViewModelFragment() {
         }
 
         viewModel.verifyEmailResult.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(requireContext(), if (it) "验证成功" else "验证失败", Toast.LENGTH_SHORT)
             if (it) {
+                Toast.makeText(requireContext(), if (it) "验证成功" else "验证失败", Toast.LENGTH_SHORT)
                 findNavController().navigateUp()
             }
         })

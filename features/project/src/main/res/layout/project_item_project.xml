@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.leevinapp.monitor.project.domain.model.ProjectModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/dimen_common_margin">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_assignment"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_project_name"
+            style="@style/MonitorText.Content"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="@dimen/dimen_common_margin"
+            android:layout_marginBottom="4dp"
+            android:text="@{model.name}"
+            app:layout_constraintBottom_toTopOf="@+id/tv_create_date"
+            app:layout_constraintStart_toEndOf="@+id/iv_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="项目名称" />
+
+        <TextView
+            android:id="@+id/tv_create_date"
+            style="@style/MonitorText.ContentGray"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{@string/project_create_date(model.convertLocalDate())}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_project_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_project_name"
+            tools:text="创建时间：2020-03-15" />
+
+        <TextView
+            android:id="@+id/tv_sub_institution_name"
+            style="@style/MonitorText.ContentGray"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="@dimen/dimen_common_margin"
+            android:text="@{@string/project_sub_institution_name(model.subInstitutionName)}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_create_date"
+            app:layout_constraintStart_toEndOf="@+id/tv_create_date"
+            tools:text="下级机构名称：长安银行" />
+
+        <TextView
+            android:id="@+id/tv_project_manager_name"
+            style="@style/MonitorText.ContentGray"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="@dimen/dimen_common_margin"
+            android:text="@{@string/project_manager_name(model.managerName)}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_create_date"
+            app:layout_constraintStart_toEndOf="@+id/tv_create_date"
+            tools:text="项目经理：李小明" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="@dimen/dimen_circle"
+            android:layout_height="@dimen/dimen_circle"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/project_circle_normal"
+            android:gravity="center"
+            android:textColor="@color/color_monitor_white"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_project_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_project_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_project_name" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_right"
+            android:tint="@color/color_monitor_heavy_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

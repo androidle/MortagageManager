@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="project">project</string>
+<<<<<<< Updated upstream
+||||||| merged common ancestors
+    <string name="project_empty">项目为空</string>
+    <string name="project_mine">我的项目</string>
+    <string name="project_sub_intitution">下级机构项目</string>
+=======
+    <string name="project_empty">项目为空</string>
+    <string name="project_mine">我的项目</string>
+    <string name="project_sub_intitution">下级机构项目</string>
+    <string name="project_info">项目信息</string>
+    <string name="project_pawn">质押物</string>
+    <string name="project_account_info">台账信息</string>
+    <string name="project_create_new">创建项目</string>
+    <string name="project_sub_institution_project_title">下级机构项目共计%1$d个</string>
+    <string name="project_mine_project_title">我参与的项目共计%1$d个</string>
+    <string name="project_create_date">创建时间：%1$s</string>
+    <string name="project_sub_institution_name">下级机构名称：%1$s</string>
+    <string name="project_manager_name">项目经理：%1$s</string>
+>>>>>>> Stashed changes
 </resources>

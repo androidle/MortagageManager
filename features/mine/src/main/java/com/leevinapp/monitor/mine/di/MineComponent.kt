@@ -12,7 +12,6 @@ import com.leevinapp.monitor.mine.ui.NotificationDetailsFragment
 import com.leevinapp.monitor.mine.ui.NotificationsFragment
 import com.leevinapp.monitor.mine.ui.SubInstitutionsFragment
 import com.leevinapp.monitor.mine.ui.generalInfo.PersonalInfoFragment
-import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthFragment
 import com.leevinapp.monitor.mine.ui.identityauth.MortgageUserAuthFragment
 import com.leevinapp.monitor.mine.ui.identityauth.OrdinaryUserAuthFragment
 import com.leevinapp.monitor.mine.ui.identityauth.OrganizationAuthFragment
@@ -25,7 +24,6 @@ import dagger.Component
 interface MineComponent {
     fun inject(fragment: MineFragment)
     fun inject(fragment: PersonalInfoFragment)
-    fun inject(fragment: MineIdentityAuthFragment)
     fun inject(fragment: MortgageUserAuthFragment)
     fun inject(fragment: OrdinaryUserAuthFragment)
     fun inject(fragment: OrganizationAuthFragment)

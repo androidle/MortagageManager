@@ -129,7 +129,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="@+id/iev_business_period"
                     app:layout_constraintTop_toBottomOf="@+id/iev_business_period"
-                    android:paddingVertical="@dimen/dimen_common_margin_1"
+                    android:paddingVertical="@dimen/dimen_common_margin_10"
                     android:text="@string/mine_business_scope" />
 
                 <com.google.android.material.textfield.TextInputLayout

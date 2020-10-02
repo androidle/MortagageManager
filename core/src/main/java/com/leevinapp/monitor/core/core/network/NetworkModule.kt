@@ -33,6 +33,7 @@ class NetworkModule {
     @Provides
     fun providerRetrofit(client: OkHttpClient, baseUrl: String): Retrofit {
         val gson = GsonBuilder()
+            .setPrettyPrinting()
             .setDateFormat(Constants.DATE_FORMAT_NORMAL)
             .create()
 

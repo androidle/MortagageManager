@@ -58,42 +58,26 @@
         android:name="com.leevinapp.monitor.mine.ui.generalInfo.MineSecurityFragment"
         android:label="MineSecurityFragment"
         tools:layout="@layout/mine_fragment_security">
-        <action
-            android:id="@+id/mine_action_mine_minesecurityfragment_to_changesecurityquestionfragment"
-            app:destination="@id/mine_changesecurityquestionfragment" />
+
         <action
             android:id="@+id/mine_action_mine_minesecurityfragment_to_changepasswordfragment"
             app:destination="@id/mine_changepasswordfragment" />
+        <action
+            android:id="@+id/mine_action_mine_minesecurityfragment_to_verifyemailfragment"
+            app:destination="@id/mine_verifyemailfragment" />
     </fragment>
     <fragment
         android:id="@+id/mine_minepersonalinfofragment"
         android:name="com.leevinapp.monitor.mine.ui.generalInfo.PersonalInfoFragment"
         android:label="MinePersonalInfoFragment"
         tools:layout="@layout/mine_fragment_personal_info">
-        <action
-            android:id="@+id/mine_action_mine_minepersonalinfofragment_to_verifyemailfragment"
-            app:destination="@id/mine_verifyemailfragment" />
     </fragment>
-    <fragment
-        android:id="@+id/mine_mineauthfragment"
-        android:name="com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthFragment"
-        android:label="MineAuthFragment"
-        tools:layout="@layout/mine_fragment_auth">
-        <argument
-            android:name="authModel"
-            app:argType="com.leevinapp.monitor.mine.domain.model.OptionModel"
-            app:nullable="false" />
-    </fragment>
+
     <fragment
         android:id="@+id/mine_changepasswordfragment"
         android:name="com.leevinapp.monitor.auth.ui.ChangePasswordFragment"
         android:label="ChangePasswordFragment"
         tools:layout="@layout/auth_fragment_change_password" />
-    <fragment
-        android:id="@+id/mine_changesecurityquestionfragment"
-        android:name="com.leevinapp.monitor.auth.ui.ChangeSecurityQuestionFragment"
-        android:label="ChangeSecurityQuestionFragment"
-        tools:layout="@layout/auth_fragment_change_security_question" />
     <fragment
         android:id="@+id/mine_verifyemailfragment"
         android:name="com.leevinapp.monitor.auth.ui.VerifyEmailFragment"

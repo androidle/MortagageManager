@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="dimen_common_margin">20dp</dimen>
-    <dimen name="dimen_common_margin_1">10dp</dimen>
+    <dimen name="dimen_common_margin_10">10dp</dimen>
     <dimen name="dimen_divider">1dp</dimen>
     <dimen name="dimen_button_height">52dp</dimen>
     <dimen name="dimen_item_height">52dp</dimen>
     <dimen name="dimen_corner">24dp</dimen>
     <dimen name="dimen_sms_button_height">32dp</dimen>
+    <dimen name="dimen_circle">15dp</dimen>
 
     <dimen name="dimen_radius_4">4dp</dimen>
     <dimen name="dimen_radius_8">8dp</dimen>
@@ -17,6 +18,7 @@
     <dimen name="text_size_small">14sp</dimen>
     <dimen name="text_size_smaller">12sp</dimen>
     <dimen name="text_size_smallest">10sp</dimen>
+    <dimen name="dimen_radius_12">12dp</dimen>
 
 
 </resources>

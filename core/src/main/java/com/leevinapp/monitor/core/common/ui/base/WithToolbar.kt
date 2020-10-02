@@ -1,6 +1,7 @@
 package com.leevinapp.monitor.core.common.ui.base
 
 import android.view.View
+import androidx.annotation.DrawableRes
 
 interface WithToolbar {
     fun getTitleBarView(): View? = null
@@ -12,6 +13,8 @@ interface WithToolbar {
     fun isShowRightActionText(): Boolean = false
 
     fun getRightText(): String = ""
-
-    fun getToolBarRightIconRes(): Int = 0
+    @DrawableRes
+    fun getRighterIconRes(): Int = 0
+    @DrawableRes
+    fun getRightestIconRes(): Int = 0
 }

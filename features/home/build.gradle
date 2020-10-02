@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply from: rootProject.file('./scripts/android_common.gradle')
 apply from: rootProject.file('./scripts/shared_dependencies.gradle')
 

@@ -5,7 +5,6 @@ import com.leevinapp.monitor.auth.data.api.params.RegisterUserParams
 import com.leevinapp.monitor.auth.domain.AuthRepository
 import com.leevinapp.monitor.auth.domain.model.SMSType
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
-import io.reactivex.functions.Consumer
 import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
 
@@ -51,12 +50,12 @@ class RegisterViewModel @Inject constructor(private val authRepository: AuthRepo
     fun sendSmsCode() {
         authRepository.sendSmsCode(phoneNumber.value ?: "", SMSType.REGISTER)
             .applyIoWithoutLoading()
-            .subscribe(Consumer { response ->
+            .subscribe({ response ->
                 smsCodeResult.postValue(response.success)
                 if (!response.success) {
                     errorMessage.postValue(response.error)
                 }
-            })
+            }, {})
             .addTo(compositeDisposable)
     }
 }

@@ -1,6 +1,7 @@
 package com.leevinapp.monitor.core.core.network.exception
 
 import com.leevinapp.monitor.core.core.network.exception.ExceptionType.NETWORK
+import com.leevinapp.monitor.core.core.network.exception.ExceptionType.RESULT
 
 open class ResponseException(
     private val type: ExceptionType,
@@ -10,6 +11,10 @@ open class ResponseException(
     companion object {
         fun noNetworkException(): ResponseException {
             return NoNetworkConnectionException()
+        }
+
+        fun resultException(message: String): ResponseException {
+            return ResponseException(RESULT, message)
         }
     }
 }

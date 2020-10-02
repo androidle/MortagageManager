@@ -93,7 +93,9 @@ class ForgotPasswordFragment : BaseFragment() {
     }
 
     override fun onRightTextClick() {
-        findNavController().navigate(R.id.auth_action_auth_forgotpasswordfragment_to_resetpasswordfragment)
+        if (viewModel.validate()) {
+            findNavController().navigate(R.id.auth_action_auth_forgotpasswordfragment_to_resetpasswordfragment)
+        }
     }
 
     override fun onStop() {

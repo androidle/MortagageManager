@@ -16,7 +16,6 @@ import com.leevinapp.monitor.mine.di.buildComponent
 import com.leevinapp.monitor.mine.domain.MineConstants
 import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthSelectionFragment
 import javax.inject.Inject
-import kotlinx.android.synthetic.main.mine_fragment_general_info.*
 
 class GeneralInfoFragment : BaseFragment() {
 
@@ -51,23 +50,23 @@ class GeneralInfoFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        iv_personal_info.setOnClickListener {
+        viewBinding.ivPersonalInfo.setOnClickListener {
             findNavController().navigate(R.id.mine_action_mine_minegeneralinfofragment_to_minepersonalinfofragment)
         }
 
-        iv_identity_or_organ_auth.setOnClickListener {
+        viewBinding.ivIdentityOrOrganAuth.setOnClickListener {
             showIdentitySelectionPage()
         }
 
-        iv_security.setOnClickListener {
+        viewBinding.ivSecurity.setOnClickListener {
             findNavController().navigate(R.id.mine_action_mine_minegeneralinfofragment_to_minesecurityfragment)
         }
 
-        iv_about.setOnClickListener {
+        viewBinding.ivAbout.setOnClickListener {
             findNavController().navigate(R.id.mine_action_mine_minegeneralinfofragment_to_mineaboutfragment)
         }
 
-        btn_logout.setOnClickListener {
+        viewBinding.btnLogout.setOnClickListener {
             viewModel.logout()
             userManager.reset()
             findNavController().navigateUp()

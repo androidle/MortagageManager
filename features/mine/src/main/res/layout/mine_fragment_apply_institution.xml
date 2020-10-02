@@ -106,7 +106,7 @@
                     style="@style/MonitorText.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingVertical="@dimen/dimen_common_margin_1"
+                    android:paddingVertical="@dimen/dimen_common_margin_10"
                     android:text="申请描述"
                     android:textColor="#424242" />
 

@@ -7,46 +7,55 @@ import android.view.ViewGroup
 import com.leevinapp.monitor.core.BuildConfig
 import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.core.utils.UiUtil
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
+import com.leevinapp.monitor.mine.databinding.MineFragmentAboutBinding
+import com.leevinapp.monitor.mine.domain.model.MenuModel
 import com.leevinapp.monitor.mine.domain.model.MenuModel.PRIVACY
 import com.leevinapp.monitor.mine.domain.model.MenuModel.SERVICE
 import com.leevinapp.monitor.mine.domain.model.MenuModel.VERSION
 import com.leevinapp.monitor.mine.ui.adapter.MineMenuAdapter
-import kotlinx.android.synthetic.main.mine_fragment_about.*
 
 class MineAboutFragment : BaseFragment() {
 
-    private val menus = mutableListOf(
-        SERVICE,
-        PRIVACY,
-        VERSION
-    )
+    var viewBinding by autoCleared<MineFragmentAboutBinding>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.mine_fragment_about, container, false)
+        return MineFragmentAboutBinding.inflate(inflater, container, false).apply {
+            viewBinding = this
+        }
+            .root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recycler_view.setHasFixedSize(true)
-        recycler_view.adapter = MineMenuAdapter(menus) {
+        viewBinding.recyclerView.setHasFixedSize(true)
+        viewBinding.recyclerView.adapter = MineMenuAdapter(getMenus()) {
             // TODO: 2020/9/3
         }
 
-        recycler_view.addItemDecoration(
+        viewBinding.recyclerView.addItemDecoration(
             UiUtil.getDividerDecoration(requireContext())
         )
 
-        tv_version.text = getString(R.string.mine_version, BuildConfig.VERSION_NAME)
+        viewBinding.tvVersion.text = getString(R.string.mine_version, BuildConfig.VERSION_NAME)
+    }
+
+    private fun getMenus(): MutableList<MenuModel> {
+        return mutableListOf(
+            SERVICE,
+            PRIVACY,
+            VERSION
+        )
     }
 
     override fun getTitleBarView(): View? {
-        return toolbar_container
+        return viewBinding.toolbarContainer.toolbar
     }
 
     override fun getTitleBarTitle(): String {

@@ -2,6 +2,7 @@ package com.leevinapp.monitor.core.core.di
 
 import android.content.Context
 import com.leevinapp.monitor.core.core.network.NetworkModule
+import com.leevinapp.monitor.core.core.network.mock.MockApiUtil
 import com.leevinapp.monitor.core.core.storage.Storage
 import com.leevinapp.monitor.core.core.user.UserManager
 import dagger.Component
@@ -17,4 +18,5 @@ interface CoreComponent {
     fun retrofit(): Retrofit
     fun userManager(): UserManager
     fun storage(): Storage
+    fun mockApiUtil(): MockApiUtil
 }

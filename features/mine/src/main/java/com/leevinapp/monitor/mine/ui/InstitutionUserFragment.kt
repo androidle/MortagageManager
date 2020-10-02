@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.common.view.recycleview.HorizontalDividerItemDecoration
@@ -20,7 +22,11 @@ class InstitutionUserFragment : ViewModelFragment() {
     private var viewBinding by autoCleared<MineFragmentInstitutionUserBinding>()
 
     @Inject
-    lateinit var viewModel: InstitutionUserViewModel
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    val viewModel: InstitutionUserViewModel by viewModels {
+        viewModelFactory
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +47,7 @@ class InstitutionUserFragment : ViewModelFragment() {
 
         viewBinding.recyclerView.addItemDecoration(
             HorizontalDividerItemDecoration.Builder(requireContext())
-                .sizeResId(R.dimen.dimen_common_margin_1)
+                .sizeResId(R.dimen.dimen_common_margin_10)
                 .build()
         )
 

@@ -42,5 +42,6 @@
 
     <color name="color_monitor_text_blue_light">#5698E2</color>
     <color name="color_monitor_text_blue">@color/color_monitor_blue</color>
+    <color name="color_monitor_status_normal">#33DC39</color>
 
 </resources>

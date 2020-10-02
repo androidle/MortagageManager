@@ -49,7 +49,7 @@ class NotificationsFragment : ViewModelFragment() {
             adapter = notificationAdapter
             addItemDecoration(
                 HorizontalDividerItemDecoration.Builder(requireContext())
-                    .sizeResId(R.dimen.dimen_common_margin_1)
+                    .sizeResId(R.dimen.dimen_common_margin_10)
                     .build()
             )
         }
