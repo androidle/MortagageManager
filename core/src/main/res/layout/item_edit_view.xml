@@ -11,22 +11,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintWidth_percent="0.4"
         tools:text="姓名" />
 
     <EditText
         android:id="@+id/et_value"
         style="@style/MonitorText.Title"
-        android:layout_marginEnd="10dp"
         android:background="@null"
         android:gravity="end"
-        tools:hint="请输入名称"
+        android:hint="请输入"
+        android:layout_marginEnd="10dp"
         android:textColor="@color/value_text_color"
         android:textColorHint="@color/color_monitor_light_silver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_sms_code"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.5" />
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintWidth_percent="0.6" />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_sms_code"
@@ -37,12 +39,26 @@
         android:text="获取验证码"
         android:textSize="@dimen/text_size_medium"
         android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/iv_right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="gone" />
 
+    <ImageView
+        android:id="@+id/iv_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="end|center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_search"
+        tools:visibility="gone" />
+
     <View
+        android:id="@+id/bottom_line"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_divider"
         android:background="@color/color_monitor_pearl"

@@ -39,7 +39,7 @@ class ProjectBlueprintFragment : BaseFragment() {
 
     private fun getTitles(): MutableList<String> {
         return mutableListOf(
-            getString(string.project_info),
+            getString(string.project_detail_info),
             getString(string.project_pawn),
             getString(string.project_account_info)
         )

@@ -10,5 +10,7 @@ interface PostAuthRepository {
 
     fun changePassword(changePasswordParams: ChangePasswordParams): Single<ApiResponse<Any>>
 
+    fun sendEmailVerifyCode(email: String): Single<ApiResponse<Any>>
+
     fun verifyNewEmail(params: VerifyNewEmailParams): Single<ApiResponse<Any>>
 }

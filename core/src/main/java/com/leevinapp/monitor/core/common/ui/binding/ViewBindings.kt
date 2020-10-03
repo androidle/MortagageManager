@@ -2,6 +2,8 @@ package com.leevinapp.monitor.core.common.ui.binding
 
 import android.view.View
 import android.widget.ImageView
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 
@@ -11,16 +13,16 @@ fun visible(view: View, visible: Boolean) {
 }
 
 @BindingAdapter("src")
-fun setSrc(view: ImageView, resId: Int) {
+fun setSrc(view: ImageView, @DrawableRes resId: Int) {
     view.setImageResource(resId)
 }
 
 @BindingAdapter("background")
-fun setBackground(view: View, id: Int) {
+fun setBackground(view: View, @DrawableRes id: Int) {
     view.setBackgroundResource(id)
 }
 
 @BindingAdapter("backgroundColor")
-fun setBackgroundColor(view: View, id: Int) {
+fun setBackgroundColor(view: View, @ColorRes id: Int) {
     view.setBackgroundColor(ContextCompat.getColor(view.context, id))
 }

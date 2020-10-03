@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">押品管家</string>
+    <string name="common_choose_please">请选择</string>
+    <string name="common_submit">提交</string>
+    <string name="common_done">完成</string>
+    <string name="common_phone_number">手机号码</string>
+    <string name="common_job_position">工作职位</string>
 </resources>

@@ -32,8 +32,20 @@ class ProjectCreateNewFragment : ViewModelFragment() {
     ): View? {
         return ProjectFragmentCreateNewBinding.inflate(inflater, container, false).apply {
             viewBinding = this
+            viewModel = this@ProjectCreateNewFragment.viewModel
         }
             .root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewBinding.buttonSubmit.setOnClickListener {
+            // TODO: 2020/10/2
+        }
+
+        viewBinding.ievProjectManagerName.setOnRightIconClickListener {
+            // TODO: 2020/10/2 goto search dialog fragment
+        }
     }
 
     override fun getViewModel(): BaseViewModel {

@@ -2,7 +2,7 @@ package com.leevinapp.monitor.project.data.response
 
 import com.leevinapp.monitor.project.domain.model.ProjectModel
 import com.leevinapp.monitor.project.domain.model.ProjectStatus
-import com.leevinapp.monitor.project.domain.model.ProjectStatus.OTHER
+import com.leevinapp.monitor.project.domain.model.ProjectStatus.OTHERS
 import java.util.Date
 
 data class GetProjectsResponse(
@@ -19,7 +19,7 @@ data class GetProjectsResponse(
             name = this@GetProjectsResponse.name ?: ""
             createDate = this@GetProjectsResponse.createDate
             managerName = this@GetProjectsResponse.managerName ?: ""
-            status = this@GetProjectsResponse.status ?: OTHER
+            status = this@GetProjectsResponse.status ?: OTHERS
             subInstitutionName = this@GetProjectsResponse.subInstitutionName ?: ""
         }
     }

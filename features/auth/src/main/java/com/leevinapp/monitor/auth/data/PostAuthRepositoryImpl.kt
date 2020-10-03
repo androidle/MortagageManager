@@ -24,4 +24,8 @@ class PostAuthRepositoryImpl(
     override fun verifyNewEmail(params: VerifyNewEmailParams): Single<ApiResponse<Any>> {
         return postAuthService.verifyNewEmail(params)
     }
+
+    override fun sendEmailVerifyCode(email: String): Single<ApiResponse<Any>> {
+        return postAuthService.sendEmailVerifyCode(email)
+    }
 }

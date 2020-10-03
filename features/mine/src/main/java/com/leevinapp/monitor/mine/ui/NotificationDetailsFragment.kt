@@ -9,7 +9,6 @@ import com.leevinapp.monitor.core.common.ui.base.BaseFragment
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
 import com.leevinapp.monitor.mine.databinding.MineFragmentNotificationDetailsBinding
-import com.leevinapp.monitor.mine.di.buildComponent
 
 class NotificationDetailsFragment : BaseFragment() {
 
@@ -35,9 +34,5 @@ class NotificationDetailsFragment : BaseFragment() {
 
     override fun getTitleBarTitle(): String {
         return getString(R.string.mine_menu_notification)
-    }
-
-    override fun initDependencyInjection() {
-        buildComponent(this).inject(this)
     }
 }

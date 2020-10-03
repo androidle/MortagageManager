@@ -1,6 +1,7 @@
 package com.leevinapp.monitor.core.common.view
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
@@ -76,8 +77,14 @@ class ItemEditView @JvmOverloads constructor(
 
     var smsClickCallback: (() -> Unit)? = null
 
+    var rightIconClickCallback: (() -> Unit)? = null
+
     fun setSmsCodeClickListener(smsClickCallback: (() -> Unit)? = null) {
         this.smsClickCallback = smsClickCallback
+    }
+
+    fun setOnRightIconClickListener(rightIconClickCallback: (() -> Unit)? = null) {
+        this.rightIconClickCallback = rightIconClickCallback
     }
 
     fun startTimer() {
@@ -94,6 +101,15 @@ class ItemEditView @JvmOverloads constructor(
 
     fun setInputType(type: Int) {
         et_value.inputType = type
+    }
+
+    private fun setEndIcon(drawable: Drawable?) {
+        if (drawable != null) {
+            iv_right.visibility = View.VISIBLE
+            iv_right.setImageDrawable(drawable)
+        } else {
+            iv_right.visibility = View.GONE
+        }
     }
 
     init {
@@ -123,6 +139,14 @@ class ItemEditView @JvmOverloads constructor(
                         R.styleable.ItemEditView_isIncludeSmsCode -> {
                             isIncludeSmsCode = typedArray.getBoolean(attr, false)
                         }
+
+                        R.styleable.ItemEditView_endIcon -> {
+                            setEndIcon(typedArray.getDrawable(attr))
+                        }
+
+                        R.styleable.ItemEditView_isShowBottomLine -> {
+                            setBottomLineVisibility(typedArray.getBoolean(attr, true))
+                        }
                     }
                 }
             }
@@ -132,6 +156,14 @@ class ItemEditView @JvmOverloads constructor(
             startTimer()
             smsClickCallback?.invoke()
         }
+
+        iv_right.setOnClickListener {
+            rightIconClickCallback?.invoke()
+        }
+    }
+
+    private fun setBottomLineVisibility(isShow: Boolean) {
+        if (isShow) bottom_line.visibility = View.VISIBLE else View.GONE
     }
 
     companion object {

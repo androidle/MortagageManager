@@ -7,6 +7,8 @@
 
         <import type="com.leevinapp.monitor.project.domain.model.ProjectType" />
 
+        <import type="com.leevinapp.monitor.project.domain.model.ProjectStatus" />
+
         <variable
             name="viewModel"
             type="com.leevinapp.monitor.project.ui.ProjectViewModel" />
@@ -34,6 +36,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_goneMarginTop="@dimen/dimen_common_margin"
                 app:visible="@{viewModel.projectType == ProjectType.SUB_INSTITUTION_PROJECT}"
                 tools:visibility="visible">
 
@@ -64,28 +67,59 @@
                 app:layout_constraintTop_toBottomOf="@+id/ll_container_search"
                 tools:text="下级机构项目共计32个" />
 
-            <TextView
-                android:id="@+id/tv_normal_count"
-                android:layout_width="@dimen/dimen_circle"
-                android:layout_height="@dimen/dimen_circle"
-                android:background="@drawable/project_circle_normal"
-                android:gravity="center"
-                android:textColor="@color/color_monitor_white"
-                app:layout_constraintStart_toStartOf="@+id/tv_project_title"
-                app:layout_constraintTop_toBottomOf="@+id/tv_project_title"
-                tools:text="5" />
-
-            <TextView
-                android:id="@+id/tv_normal_desc"
-                style="@style/MonitorText.ContentGray"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/container_status"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:gravity="center"
-                android:text="正常"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_normal_count"
-                app:layout_constraintStart_toEndOf="@+id/tv_normal_count"
-                app:layout_constraintTop_toTopOf="@+id/tv_normal_count" />
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="@+id/tv_project_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_project_title">
+
+
+                <com.leevinapp.monitor.project.ui.widget.StatusView
+                    android:id="@+id/status_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:statusColor="@{ProjectStatus.NORMAL.colorId}"
+                    app:statusCount="@{viewModel.projectNumberInfo.numberOfNormal}"
+                    app:statusDesc="@{ProjectStatus.NORMAL.desc}" />
+
+                <com.leevinapp.monitor.project.ui.widget.StatusView
+                    android:id="@+id/status_extended"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_height="wrap_content"
+                    app:statusColor="@{ProjectStatus.EXTENDED.colorId}"
+                    app:statusCount="@{viewModel.projectNumberInfo.numberOfExtended}"
+                    app:statusDesc="@{ProjectStatus.EXTENDED.desc}" />
+
+                <com.leevinapp.monitor.project.ui.widget.StatusView
+                    android:id="@+id/status_overdue"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_height="wrap_content"
+                    app:statusColor="@{ProjectStatus.OVERDUE.colorId}"
+                    app:statusCount="@{viewModel.projectNumberInfo.numberOfOverdue}"
+                    app:statusDesc="@{ProjectStatus.OVERDUE.desc}" />
+
+                <com.leevinapp.monitor.project.ui.widget.StatusView
+                    android:id="@+id/status_done"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_height="wrap_content"
+                    app:statusColor="@{ProjectStatus.DONE.colorId}"
+                    app:statusCount="@{viewModel.projectNumberInfo.numberOfDone}"
+                    app:statusDesc="@{ProjectStatus.DONE.desc}" />
+
+                <com.leevinapp.monitor.project.ui.widget.StatusView
+                    android:id="@+id/status_others"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:statusColor="@{ProjectStatus.OTHERS.colorId}"
+                    app:statusCount="@{viewModel.projectNumberInfo.numberOfOthers}"
+                    app:statusDesc="@{ProjectStatus.OTHERS.desc}" />
+            </LinearLayout>
 
             <View
                 android:id="@+id/divider_top"
@@ -95,16 +129,16 @@
                 android:background="@color/color_monitor_divider"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_normal_count" />
+                app:layout_constraintTop_toBottomOf="@+id/container_status" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:paddingHorizontal="@dimen/dimen_common_margin"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:paddingHorizontal="@dimen/dimen_common_margin"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/divider_top"
                 tools:listitem="@layout/project_item_project" />

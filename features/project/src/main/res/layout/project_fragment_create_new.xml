@@ -24,12 +24,74 @@
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/dimen_common_margin"
             android:background="@drawable/content_background"
+            android:padding="@dimen/dimen_common_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_container">
 
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_new_project_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:editHint=""
+                app:editValue="@={viewModel.projectName}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:name="@string/project_name" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_project_manager_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:editHint="@string/common_choose_please"
+                app:endIcon="@drawable/ic_search"
+                app:isShowBottomLine="false"
+                app:isEditable="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/iev_new_project_name"
+                app:layout_constraintTop_toBottomOf="@+id/iev_new_project_name"
+                app:name="@string/project_manager"
+                app:editValue="@={viewModel.projectManagerName}" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_phone_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:editHint="@string/common_choose_please"
+                app:isEditable="false"
+                app:isShowBottomLine="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/iev_new_project_name"
+                app:layout_constraintTop_toBottomOf="@+id/iev_project_manager_name"
+                app:name="@string/common_phone_number"
+                app:editValue="@={viewModel.phoneNumber}" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iv_job_position"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:editHint=""
+                app:isEditable="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/iev_new_project_name"
+                app:layout_constraintTop_toBottomOf="@+id/iev_phone_number"
+                app:name="@string/common_job_position"
+                app:editValue="@={viewModel.jobPosition}" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_submit"
+            style="@style/MonitorButton.Blue"
+            android:layout_marginBottom="50dp"
+            android:text="@string/common_submit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.8" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

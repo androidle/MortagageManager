@@ -9,6 +9,7 @@ import com.leevinapp.monitor.auth.domain.model.SMSType
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.core.utils.vaidation.EmailRule
 import com.leevinapp.monitor.core.core.utils.vaidation.PhoneNumberRule
+import com.leevinapp.monitor.core.core.utils.vaidation.Validator
 import com.leevinapp.monitor.core.core.utils.vaidation.VerifyCodeRule
 import io.reactivex.functions.Consumer
 import io.reactivex.rxkotlin.addTo
@@ -54,12 +55,12 @@ class ResetPasswordViewModel @Inject constructor(private val authRepository: Aut
     fun sendEmailCode() {
         authRepository.sendEmailCode(email.value ?: "")
             .applyIoWithoutLoading()
-            .subscribe(Consumer { response ->
+            .subscribe({ response ->
                 emailCodeResult.postValue(response.success)
                 if (!response.success) {
                     errorMessage.postValue(response.error)
                 }
-            })
+            }, {})
             .addTo(compositeDisposable)
     }
 
@@ -69,12 +70,12 @@ class ResetPasswordViewModel @Inject constructor(private val authRepository: Aut
 
         authRepository.resetPassword(resetPasswordParams)
             .applyIoWithLoading()
-            .subscribe(Consumer { response ->
+            .subscribe({ response ->
                 resetPasswordResultResult.postValue(response.success)
                 if (!response.success) {
                     errorMessage.postValue(response.error)
                 }
-            })
+            }, {})
             .addTo(compositeDisposable)
     }
 
@@ -102,11 +103,21 @@ class ResetPasswordViewModel @Inject constructor(private val authRepository: Aut
     }
 
     fun validate(): Boolean {
-        val validPhoneNumber = PhoneNumberRule().validate(phoneNumber.value ?: "")
-        val validEmail = EmailRule().validate(phoneNumber.value ?: "")
+        val validatorSms = Validator().addRule(PhoneNumberRule(phoneNumber.value ?: ""), VerifyCodeRule(smsCode.value ?: ""))
+            .addErrorCallback {
+                errorMessage.value = it
+            }
+        val validatorEmail = Validator().addRule(EmailRule(email.value ?: ""), VerifyCodeRule(emailVerifyCode.value ?: ""))
+            .addErrorCallback {
+                errorMessage.value = it
+            }
         return when (resetType) {
-            SMS -> validPhoneNumber && VerifyCodeRule().validate(smsCode.value ?: "")
-            EMAIL -> validEmail && VerifyCodeRule().validate(emailVerifyCode.value ?: "")
+            SMS -> {
+                validatorSms.check()
+            }
+            EMAIL -> {
+                validatorEmail.check()
+            }
         }
     }
 }

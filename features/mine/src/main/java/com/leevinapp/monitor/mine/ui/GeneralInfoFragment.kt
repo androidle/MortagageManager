@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
+import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.mine.R
@@ -17,7 +18,7 @@ import com.leevinapp.monitor.mine.domain.MineConstants
 import com.leevinapp.monitor.mine.ui.identityauth.MineIdentityAuthSelectionFragment
 import javax.inject.Inject
 
-class GeneralInfoFragment : BaseFragment() {
+class GeneralInfoFragment : ViewModelFragment() {
 
     @Inject
     lateinit var userManager: UserManager
@@ -94,6 +95,10 @@ class GeneralInfoFragment : BaseFragment() {
                 childFragmentManager,
                 MineIdentityAuthSelectionFragment::class.simpleName
             )
+    }
+
+    override fun getViewModel(): BaseViewModel {
+        return viewModel
     }
 
     override fun getTitleBarView(): View? {

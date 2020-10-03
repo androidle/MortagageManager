@@ -7,20 +7,22 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
+import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.common.ui.extensions.setupWithNavController
 import com.leevinapp.monitor.core.core.di.CoreInjectHelper
+import com.leevinapp.monitor.core.core.utils.autoCleared
 import com.leevinapp.monitor.databinding.FragmentMainBinding
 import com.leevinapp.monitor.di.DaggerMainComponent
 import com.leevinapp.monitor.di.MainModule
 import javax.inject.Inject
 
-class MainFragment : BaseFragment() {
+class MainFragment : ViewModelFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    lateinit var viewBinding: FragmentMainBinding
+    var viewBinding by autoCleared<FragmentMainBinding>()
 
     val viewModel: MainViewModel by viewModels {
         viewModelFactory
@@ -74,6 +76,10 @@ class MainFragment : BaseFragment() {
                 }
             }
         })
+    }
+
+    override fun getViewModel(): BaseViewModel {
+        return viewModel
     }
 
     override fun initDependencyInjection() {

@@ -8,7 +8,6 @@ tasks.create(name: 'gitExecutableHooks') {
 }
 
 task installGitHooks(type: Copy) {
-    println "=======installGitHooks======"
     from new File(rootProject.rootDir, 'pre-commit')
     into { new File(rootProject.rootDir, '.git/hooks') }
 }

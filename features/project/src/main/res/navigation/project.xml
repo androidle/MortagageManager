@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/projectFragment"
-        android:name="com.leevinapp.monitor.project.ProjectFragment"
+        android:name="com.leevinapp.monitor.project.ui.ProjectFragment"
         android:label="@string/project"
         tools:layout="@layout/project_fragment">
         <deepLink

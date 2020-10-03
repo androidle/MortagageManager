@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="project_StatusView">
+        <attr name="project_count" format="integer" />
+        <attr name="project_color" format="reference|color" />
+        <attr name="project_desc" format="reference|string" />
+        <attr name="project_isShowCount" format="boolean" />
+        <attr name="project_isShowDesc" format="boolean" />
+    </declare-styleable>
+</resources>

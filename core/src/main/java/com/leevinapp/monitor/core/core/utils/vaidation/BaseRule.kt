@@ -2,7 +2,9 @@ package com.leevinapp.monitor.core.core.utils.vaidation
 
 interface BaseRule {
 
-    fun validate(value: String): Boolean
+    var value: String
+
+    fun validate(value: String = this.value): Boolean
 
     var errorMessage: String
 }

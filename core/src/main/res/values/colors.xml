@@ -39,9 +39,12 @@
     <color name="color_monitor_text_gray_2">#D8D8D8</color>
     <color name="color_monitor_text_yellow">@color/color_monitor_warning_amber</color>
 
-
     <color name="color_monitor_text_blue_light">#5698E2</color>
     <color name="color_monitor_text_blue">@color/color_monitor_blue</color>
+    // todo to be location
     <color name="color_monitor_status_normal">#33DC39</color>
-
+    <color name="color_monitor_status_extended">#FF8080</color>
+    <color name="color_monitor_status_overdue">#E9B230</color>
+    <color name="color_monitor_status_done">#2699FB</color>
+    <color name="color_monitor_status_others">@color/color_monitor_text_gray_light</color>
 </resources>

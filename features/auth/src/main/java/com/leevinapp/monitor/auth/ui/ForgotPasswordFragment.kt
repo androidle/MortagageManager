@@ -14,13 +14,13 @@ import com.leevinapp.monitor.auth.databinding.AuthFragmentForgotPasswordBinding
 import com.leevinapp.monitor.auth.di.buildComponent
 import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.EMAIL
 import com.leevinapp.monitor.auth.domain.model.ResetPasswordType.SMS
-import com.leevinapp.monitor.core.common.ui.base.BaseFragment
+import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
+import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.core.user.UserManager
 import com.leevinapp.monitor.core.core.utils.autoCleared
 import javax.inject.Inject
-import kotlinx.android.synthetic.main.auth_fragment_forgot_password.*
 
-class ForgotPasswordFragment : BaseFragment() {
+class ForgotPasswordFragment : ViewModelFragment() {
 
     private var viewBinding by autoCleared<AuthFragmentForgotPasswordBinding>()
 
@@ -53,14 +53,14 @@ class ForgotPasswordFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewBinding.tvChangeEmail.setOnClickListener {
-            container_email.visibility = View.VISIBLE
-            container_sms_code.visibility = View.GONE
+            viewBinding.containerEmail.visibility = View.VISIBLE
+            viewBinding.containerSmsCode.visibility = View.GONE
             viewModel.resetType = EMAIL
         }
 
         viewBinding.tvChangeSmsCode.setOnClickListener {
-            container_email.visibility = View.GONE
-            container_sms_code.visibility = View.VISIBLE
+            viewBinding.containerEmail.visibility = View.GONE
+            viewBinding.containerSmsCode.visibility = View.VISIBLE
             viewModel.resetType = SMS
         }
 
@@ -78,6 +78,10 @@ class ForgotPasswordFragment : BaseFragment() {
         viewModel.emailCodeResult.observe(viewLifecycleOwner, Observer {
             Toast.makeText(requireContext(), if (it) "发送成功" else "发送失败", Toast.LENGTH_SHORT)
         })
+    }
+
+    override fun getViewModel(): BaseViewModel {
+        return viewModel
     }
 
     override fun getTitleBarView(): View? {

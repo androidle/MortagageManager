@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.project.domain.ProjectRepository
 import com.leevinapp.monitor.project.domain.model.ProjectModel
+import com.leevinapp.monitor.project.domain.model.ProjectNumModel
 import com.leevinapp.monitor.project.domain.model.ProjectType
 import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
@@ -19,6 +20,10 @@ class ProjectViewModel @Inject constructor(private val repository: ProjectReposi
 
     val projects: MutableLiveData<MutableList<ProjectModel>> by lazy {
         MutableLiveData(mutableListOf())
+    }
+
+    val projectNumberInfo: MutableLiveData<ProjectNumModel> by lazy {
+        MutableLiveData(ProjectNumModel())
     }
 
     fun getProjects() {
