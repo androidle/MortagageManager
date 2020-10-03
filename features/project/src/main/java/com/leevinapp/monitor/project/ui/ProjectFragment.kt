@@ -61,8 +61,8 @@ class ProjectFragment : BaseFragment() {
 
     private fun getFragments(): MutableList<Fragment> {
         return mutableListOf(
-            ProjectMineProjectFragment.newInstance(),
-            ProjectSubInstitutionProjectFragment.newInstance()
+            ProjectMineFragment.newInstance(),
+            ProjectSubInstitutionFragment.newInstance()
         )
     }
 

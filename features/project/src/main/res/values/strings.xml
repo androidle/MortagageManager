@@ -16,4 +16,6 @@
     <string name="project_manager_name">项目经理：%1$s</string>
     <string name="project_manager">项目经理</string>
     <string name="project_name">项目名称</string>
+    <string name="project_supervisor_way">监管方式</string>
+
 </resources>

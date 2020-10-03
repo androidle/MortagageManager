@@ -47,9 +47,9 @@ class ProjectBlueprintFragment : BaseFragment() {
 
     private fun getFragments(): MutableList<Fragment> {
         return mutableListOf(
-            ProjectInfoFragment.newInstance(),
-            ProjectPawnFragment.newInstance(),
-            ProjectAccountInfoFragment.newInstance()
+            ProjectDetailsFragment.newInstance(),
+            ProjectCollateralFragment.newInstance(),
+            ProjectDailyLogFragment.newInstance()
         )
     }
 

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.leevinapp.monitor.project.ui.blueprint.ProjectDetailViewModel" />
+
+        <variable
+            name="userManager"
+            type="com.leevinapp.monitor.core.core.user.UserManager" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/container_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/dimen_common_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="动态监管"
+                    app:endIcon="@drawable/ic_arrow_right"
+                    app:name="@string/project_supervisor_way" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="内蒙古自治区呼伦贝尔市海拉尔区"
+                    app:endIcon="@drawable/ic_arrow_right"
+                    app:name="监管地域" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="管理员"
+                    app:name="项目经理职务" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="王小华"
+                    app:name="@string/project_manager" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="18812345678"
+                    app:name="项目经理手机号码" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="XXX银行"
+                    app:endIcon="@drawable/ic_search"
+                    app:name="金融机构" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="5人"
+                    app:endIcon="@drawable/ic_arrow_right"
+                    app:name="金融机构用户" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="XXX企业"
+                    app:endIcon="@drawable/ic_search"
+                    app:name="贷款企业" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="12人"
+                    app:endIcon="@drawable/ic_search"
+                    app:name="贷款企业用户" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="86.7%"
+                    app:name="质（抵）押率 " />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="4000万"
+                    app:name="最低控货值/量" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="5000万"
+                    app:name="授信额度" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="2015/10/02- 2015/10/10 "
+                    app:endIcon="@drawable/ic_arrow_right"
+                    app:name="贷款起止日期" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="2015/10/02- 2015/10/10 "
+                    app:endIcon="@drawable/ic_arrow_right"
+                    app:name="监管起止日期" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="2015/10/02- 2015/10/10 "
+                    app:name="协议编号" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="123456789123456"
+                    app:name="借款合同编号" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="123456789123456"
+                    app:name="中证登记编号" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:editValue="正常"
+                    app:name="监管状态" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_completed"
+                style="@style/MonitorButton.Blue"
+                android:layout_marginBottom="50dp"
+                android:text="@string/common_submit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/container_details"
+                app:layout_constraintWidth_percent="0.8" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

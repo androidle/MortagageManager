@@ -19,7 +19,7 @@ class ProjectViewModel @Inject constructor(private val repository: ProjectReposi
     val projectType = MutableLiveData(ProjectType.MINE_PROJECT)
 
     val projects: MutableLiveData<MutableList<ProjectModel>> by lazy {
-        MutableLiveData(mutableListOf())
+        MutableLiveData(mutableListOf<ProjectModel>())
     }
 
     val projectNumberInfo: MutableLiveData<ProjectNumModel> by lazy {

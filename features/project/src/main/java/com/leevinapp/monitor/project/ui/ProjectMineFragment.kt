@@ -17,7 +17,7 @@ import com.leevinapp.monitor.project.domain.model.ProjectType.MINE_PROJECT
 import com.leevinapp.monitor.project.ui.adapter.ProjectAdapter
 import javax.inject.Inject
 
-open class ProjectMineProjectFragment : ViewModelFragment() {
+open class ProjectMineFragment : ViewModelFragment() {
 
     var viewBinding by autoCleared<ProjectFragmentProjectBinding>()
 
@@ -34,7 +34,7 @@ open class ProjectMineProjectFragment : ViewModelFragment() {
         savedInstanceState: Bundle?
     ): View? {
         return ProjectFragmentProjectBinding.inflate(inflater, container, false).apply {
-            viewModel = this@ProjectMineProjectFragment.viewModel
+            viewModel = this@ProjectMineFragment.viewModel
             viewBinding = this
         }.root
     }
@@ -72,8 +72,8 @@ open class ProjectMineProjectFragment : ViewModelFragment() {
     }
 
     companion object {
-        fun newInstance(): ProjectMineProjectFragment {
-            return ProjectMineProjectFragment()
+        fun newInstance(): ProjectMineFragment {
+            return ProjectMineFragment()
         }
     }
 }
