@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.leevinapp.monitor.core.core.user.UserModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/dimen_common_margin">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/MonitorText.Content"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="@dimen/dimen_common_margin"
+            android:layout_marginBottom="4dp"
+            android:text="@{model.fullName}"
+            app:layout_constraintBottom_toTopOf="@+id/tv_role"
+            app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+            app:layout_constraintTop_toTopOf="@+id/iv_avatar"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="王小华" />
+
+        <TextView
+            android:id="@+id/tv_role"
+            style="@style/MonitorText.ContentGray"
+            android:layout_width="wrap_content"
+            android:text="@{model.role.desc}"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
+            app:layout_constraintStart_toStartOf="@+id/tv_name"
+            tools:text="机构管理员" />
+
+        <TextView
+            android:id="@+id/tv_phone_number"
+            style="@style/MonitorText.Content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/ic_phone"
+            android:drawablePadding="5dp"
+            android:gravity="start|center_vertical"
+            android:text="@{model.phoneNumber}"
+            android:layout_marginEnd="@dimen/dimen_common_margin_10"
+            android:textColor="@color/color_monitor_text_blue"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_role"
+            app:layout_constraintEnd_toStartOf="@+id/iv_delete"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            tools:text="18712345678" />
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_circle"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_goneMarginStart="@dimen/dimen_common_margin_10"
+            android:layout_marginStart="@dimen/dimen_common_margin_10"
+            android:tint="@color/color_monitor_heavy_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

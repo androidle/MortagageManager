@@ -154,6 +154,8 @@
                 style="@style/MonitorButton.Blue"
                 android:layout_marginBottom="50dp"
                 android:text="@string/common_submit"
+                android:layout_marginVertical="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/container_details"

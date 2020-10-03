@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_marginStart="@dimen/dimen_common_margin"
             android:layout_marginTop="15dp"
-            android:drawableStart="@drawable/mine_ic_phone"
+            android:drawableStart="@drawable/ic_phone"
             android:drawablePadding="5dp"
             android:gravity="start"
             android:text="@{model.phoneNumber}"
