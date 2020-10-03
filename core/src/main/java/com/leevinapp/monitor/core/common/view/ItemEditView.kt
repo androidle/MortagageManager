@@ -75,9 +75,9 @@ class ItemEditView @JvmOverloads constructor(
         }
     }
 
-    var smsClickCallback: (() -> Unit)? = null
+    private var smsClickCallback: (() -> Unit)? = null
 
-    var rightIconClickCallback: (() -> Unit)? = null
+    private var rightIconClickCallback: (() -> Unit)? = null
 
     fun setSmsCodeClickListener(smsClickCallback: (() -> Unit)? = null) {
         this.smsClickCallback = smsClickCallback

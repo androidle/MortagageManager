@@ -91,7 +91,7 @@ class ProjectFragment : BaseFragment() {
     }
 
     override fun onRighterIconClick() {
-        findNavController().navigate(R.id.project_action_projectfragment_to_projectblueprintfragment)
+        findNavController().navigate(R.id.project_action_projectfragment_to_projectinternalactivity)
     }
 
     override fun onRightestIconClick() {

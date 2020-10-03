@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/project_interal.xml"
+    app:startDestination="@id/project_projectblueprintfragment">
+
+    <fragment
+        android:id="@+id/project_projectblueprintfragment"
+        android:name="com.leevinapp.monitor.project.ui.blueprint.ProjectBlueprintFragment"
+        android:label="ProjectInfoFragment"
+        tools:layout="@layout/project_fragment_blueprint">
+        <action
+            android:id="@+id/project_action_projectblueprintfragment_to_projectaddcollateralfragment"
+            app:destination="@id/project_projectaddcollateralfragment" />
+        <action
+            android:id="@+id/project_action_projectblueprintfragment_to_projectsendnotificationfragment"
+            app:destination="@id/project_projectsendnotificationfragment" />
+        <action
+            android:id="@+id/project_action_projectblueprintfragment_to_projecttypeloginfofragment"
+            app:destination="@id/project_projecttypeloginfofragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/project_projectaddcollateralfragment"
+        android:name="com.leevinapp.monitor.project.ui.ProjectAddCollateralFragment"
+        android:label="ProjectAddCollateralFragment"
+        tools:layout="@layout/project_fragment_add_callateral"/>
+    <fragment
+        android:id="@+id/project_projectuserlistfragment"
+        android:name="com.leevinapp.monitor.project.ui.ProjectUserListFragment"
+        android:label="ProjectUserListFragment"
+        tools:layout="@layout/project_fragment_user_list"/>
+    <fragment
+        android:id="@+id/project_projectsendnotificationfragment"
+        android:name="com.leevinapp.monitor.project.ui.ProjectSendNotificationFragment"
+        android:label="ProjectSendNotificationFragment"
+        tools:layout="@layout/project_fragment_send_notification"/>
+    <fragment
+        android:id="@+id/project_projecttypeloginfofragment"
+        android:name="com.leevinapp.monitor.project.ui.ProjectTypeLogInfoFragment"
+        android:label="ProjectTypeLogInfoFragment"
+        tools:layout="@layout/project_fragment_type_log_info"/>
+</navigation>

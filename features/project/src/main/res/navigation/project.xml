@@ -11,10 +11,6 @@
         android:name="com.leevinapp.monitor.project.ui.ProjectFragment"
         android:label="@string/project"
         tools:layout="@layout/project_fragment">
-        <deepLink
-            android:id="@+id/deepLink"
-            app:uri="www.example.com/user/{userName}"
-            android:autoVerify="true"/>
         <argument
             android:name="userName"
             app:argType="string"/>
@@ -22,8 +18,8 @@
             android:id="@+id/project_action_projectfragment_to_projectcreatenewfragment"
             app:destination="@id/projectCreateNewFragment" />
         <action
-            android:id="@+id/project_action_projectfragment_to_projectblueprintfragment"
-            app:destination="@id/projectBlueprintFragment" />
+            android:id="@+id/project_action_projectfragment_to_projectinternalactivity"
+            app:destination="@id/project_projectinternalactivity" />
     </fragment>
 
     <fragment
@@ -32,10 +28,11 @@
         android:label="@string/project_create_new"
         tools:layout="@layout/project_fragment_create_new">
     </fragment>
-    <fragment
-        android:id="@+id/projectBlueprintFragment"
-        android:name="com.leevinapp.monitor.project.ui.blueprint.ProjectBlueprintFragment"
-        android:label="ProjectInfoFragment"
+
+    <activity
+        android:id="@+id/project_projectinternalactivity"
+        android:name="com.leevinapp.monitor.project.ui.blueprint.ProjectInternalActivity"
+        android:label="ProjectInternalActivity"
         tools:layout="@layout/project_fragment_blueprint"/>
 
 

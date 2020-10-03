@@ -2,14 +2,14 @@ package com.leevinapp.monitor.core.common.ui.dialog
 
 import android.view.View
 import com.leevinapp.monitor.core.R
-import com.leevinapp.monitor.core.databinding.FragmentErrorDialogBinding
+import com.leevinapp.monitor.core.databinding.FragmentDialogErrorBinding
 
-class ErrorDialogFragment : BaseDialogFragment<FragmentErrorDialogBinding>() {
+class ErrorDialogFragment : BaseDialogFragment<FragmentDialogErrorBinding>() {
 
     private var message: String? = null
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_error_dialog
+        return R.layout.fragment_dialog_error
     }
 
     override fun initView(view: View) {

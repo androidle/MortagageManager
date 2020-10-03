@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
@@ -33,6 +34,19 @@ class ProjectDetailsFragment : ViewModelFragment() {
             viewBing = this
         }
             .root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewBing.ievBankUser.setOnRightIconClickListener {
+            Toast.makeText(requireContext(), "ievBankUser", Toast.LENGTH_LONG).show()
+            // 1. todo is need to change to dialog fragment to implement the navigation
+            // 2. todo change viewPager with tab view
+        }
+
+        viewBing.ievEnterpriseUser.setOnRightIconClickListener {
+            Toast.makeText(requireContext(), "ievBankUser", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun initDependencyInjection() {

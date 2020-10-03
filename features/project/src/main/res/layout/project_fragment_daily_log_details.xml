@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_monitor_heavy_blue">
+
+        <include
+            android:id="@+id/toolbar_container"
+            layout="@layout/toolbar_binding" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dimen_common_margin"
+            android:background="@drawable/content_background"
+            android:padding="@dimen/dimen_common_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_container">
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_collateral_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:editHint=""
+                app:editValue=""
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:name="质押物名称" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_collateral_category"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:editHint="@string/common_choose_please"
+                app:endIcon="@drawable/ic_arrow_right"
+                app:isShowBottomLine="false"
+                app:isEditable="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/iev_collateral_name"
+                app:layout_constraintTop_toBottomOf="@+id/iev_collateral_name"
+                app:name="质押物类别"
+                app:editValue="" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iev_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:editHint="@string/common_choose_please"
+                app:isEditable="false"
+                app:isShowBottomLine="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/iev_collateral_name"
+                app:layout_constraintTop_toBottomOf="@+id/iev_collateral_category"
+                app:name="单价"
+                app:editValue="" />
+
+            <com.leevinapp.monitor.core.common.view.ItemEditView
+                android:id="@+id/iv_link_camera"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:editHint="@string/common_choose_please"
+                app:endIcon="@drawable/ic_arrow_right"
+                app:isEditable="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/iev_collateral_name"
+                app:layout_constraintTop_toBottomOf="@+id/iev_price"
+                app:name="关联摄像头"
+                app:editValue="" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

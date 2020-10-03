@@ -72,12 +72,16 @@ abstract class BaseFragment : Fragment(), Injector, WithToolbar {
             if (isShowBackIcon()) {
                 ivBack.visibility = View.VISIBLE
                 ivBack.setOnClickListener {
+                    onClickUp()
                     findNavController().navigateUp()
                 }
             } else {
                 ivBack.visibility = View.GONE
             }
         }
+    }
+
+    open fun onClickUp() {
     }
 
     override fun onAttach(context: Context) {
