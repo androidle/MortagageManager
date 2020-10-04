@@ -7,20 +7,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingHorizontal="@dimen/dimen_common_margin"
         android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dimen_common_margin"
         android:paddingVertical="30dp">
 
         <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_button_height"/>
+            android:layout_height="@dimen/dimen_button_height"
+            android:background="@drawable/background_gray_shape"
+            android:gravity="center_vertical"
+            app:iconifiedByDefault="false"
+            app:queryHint="@string/common_input_please"
+            app:searchIcon="@drawable/ic_search" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_search_result"
-            android:layout_height="match_parent"/>
+            tools:listitem="@layout/item_search_result" />
 
     </LinearLayout>
 </layout>

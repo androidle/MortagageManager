@@ -7,13 +7,12 @@ import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface PostAuthService {
 
-    @POST("common/auth/logout/user/{userId}")
-    fun logout(@Path("userId") userId: Long): Single<ApiResponse<Any>>
+    @POST("common/auth/logout/user")
+    fun logout(): Single<ApiResponse<Any>>
 
     @POST("app/user/changePassword")
     fun changePassword(

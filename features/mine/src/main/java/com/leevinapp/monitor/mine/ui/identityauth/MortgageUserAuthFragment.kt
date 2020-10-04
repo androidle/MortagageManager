@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.core.user.UserManager
@@ -49,6 +52,13 @@ class MortgageUserAuthFragment : ViewModelFragment() {
         viewBinding.buttonSubmit.setOnClickListener {
             viewModel.verifyMortgageUser()
         }
+
+        viewModel.verifyUserResult.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                Toast.makeText(requireContext(), "认证成功", Toast.LENGTH_LONG).show()
+                findNavController().navigateUp()
+            }
+        })
     }
 
     override fun getViewModel(): BaseViewModel {

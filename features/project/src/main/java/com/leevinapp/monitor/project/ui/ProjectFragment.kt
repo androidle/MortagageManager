@@ -45,10 +45,9 @@ class ProjectFragment : BaseFragment() {
     private fun initViewPager() {
         val titles = getTitles()
         viewBinding.viewPager.adapter = FragmentAdapter(this, getFragments())
-        TabLayoutMediator(viewBinding.tabLayout, viewBinding.viewPager,
-            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                tab.text = titles[position]
-            })
+        TabLayoutMediator(viewBinding.tabLayout, viewBinding.viewPager) { tab, position ->
+            tab.text = titles[position]
+        }
             .attach()
     }
 

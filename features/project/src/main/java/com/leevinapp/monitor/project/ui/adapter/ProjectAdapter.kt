@@ -7,7 +7,7 @@ import com.leevinapp.monitor.project.databinding.ProjectItemProjectBinding
 import com.leevinapp.monitor.project.domain.model.ProjectModel
 import com.leevinapp.monitor.project.ui.adapter.ProjectAdapter.ProjectViewHolder
 
-class ProjectAdapter : RecyclerView.Adapter<ProjectViewHolder>() {
+class ProjectAdapter(private val itemClick: (() -> Unit)? = null) : RecyclerView.Adapter<ProjectViewHolder>() {
 
     private var data = mutableListOf<ProjectModel>()
 
@@ -37,6 +37,9 @@ class ProjectAdapter : RecyclerView.Adapter<ProjectViewHolder>() {
         fun bindData(model: ProjectModel) {
             binding.model = model
             binding.executePendingBindings()
+            binding.root.setOnClickListener {
+                itemClick?.invoke()
+            }
         }
     }
 }

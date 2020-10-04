@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.core.utils.autoCleared
+import com.leevinapp.monitor.project.R
 import com.leevinapp.monitor.project.databinding.ProjectFragmentDetailsBinding
 import com.leevinapp.monitor.project.di.buildComponent
 import javax.inject.Inject
@@ -42,10 +44,13 @@ class ProjectDetailsFragment : ViewModelFragment() {
             Toast.makeText(requireContext(), "ievBankUser", Toast.LENGTH_LONG).show()
             // 1. todo is need to change to dialog fragment to implement the navigation
             // 2. todo change viewPager with tab view
+            Toast.makeText(requireContext(), "ievBankUser", Toast.LENGTH_LONG).show()
+            findNavController().navigate(R.id.project_action_projectblueprintfragment_to_projectuserlistfragment)
         }
 
         viewBing.ievEnterpriseUser.setOnRightIconClickListener {
             Toast.makeText(requireContext(), "ievBankUser", Toast.LENGTH_LONG).show()
+            findNavController().navigate(R.id.project_action_projectblueprintfragment_to_projectuserlistfragment)
         }
     }
 

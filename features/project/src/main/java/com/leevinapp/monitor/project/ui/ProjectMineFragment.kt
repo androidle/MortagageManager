@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
 import com.leevinapp.monitor.core.core.utils.UiUtil
 import com.leevinapp.monitor.core.core.utils.autoCleared
+import com.leevinapp.monitor.project.R
 import com.leevinapp.monitor.project.databinding.ProjectFragmentProjectBinding
 import com.leevinapp.monitor.project.di.buildComponent
 import com.leevinapp.monitor.project.domain.model.ProjectType.MINE_PROJECT
@@ -42,7 +44,9 @@ open class ProjectMineFragment : ViewModelFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initProjectType()
-        val projectAdapter = ProjectAdapter()
+        val projectAdapter = ProjectAdapter {
+            findNavController().navigate(R.id.project_action_projectfragment_to_projectblueprintfragment)
+        }
         with(viewBinding.recyclerView) {
             adapter = projectAdapter
             addItemDecoration(

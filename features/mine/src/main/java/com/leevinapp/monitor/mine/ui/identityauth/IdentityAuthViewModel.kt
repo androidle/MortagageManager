@@ -33,6 +33,7 @@ class IdentityAuthViewModel @Inject constructor(private val repository: MineRepo
     val supervisorOrgan = MutableLiveData("")
     val organRepresentative = MutableLiveData("")
     val registeredCapital = MutableLiveData("")
+    val companyRegisterType = MutableLiveData("")
     val dateOfFounded = MutableLiveData("")
     val businessPeriod = MutableLiveData("")
     val businessScope = MutableLiveData("")
@@ -91,6 +92,7 @@ class IdentityAuthViewModel @Inject constructor(private val repository: MineRepo
             uniformSocialCreditCode = supervisorSocialCode.value
             address = organAddress.value
             legalRepresentative = organRepresentative.value
+            companyRegisterType = this@IdentityAuthViewModel.companyRegisterType.value
             registeredCapital = this@IdentityAuthViewModel.registeredCapital.value
             registeredDate = dateOfFounded.value
             businessPeriod = this@IdentityAuthViewModel.businessPeriod.value

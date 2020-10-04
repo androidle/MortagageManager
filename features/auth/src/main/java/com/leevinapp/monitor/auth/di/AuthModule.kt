@@ -33,11 +33,8 @@ class AuthModule(val fragment: Fragment) {
 
     @Provides
     @FeatureScope
-    fun providerPostAuthRepository(
-        @RealApi authService: PostAuthService,
-        userManager: UserManager
-    ): PostAuthRepository {
-        return PostAuthRepositoryImpl(authService, userManager)
+    fun providerPostAuthRepository(@RealApi authService: PostAuthService): PostAuthRepository {
+        return PostAuthRepositoryImpl(authService)
     }
 
     @RealApi

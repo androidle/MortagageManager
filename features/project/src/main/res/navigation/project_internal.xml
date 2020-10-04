@@ -19,6 +19,9 @@
         <action
             android:id="@+id/project_action_projectblueprintfragment_to_projecttypeloginfofragment"
             app:destination="@id/project_projecttypeloginfofragment" />
+        <action
+            android:id="@+id/project_action_projectblueprintfragment_to_projectuserlistfragment2"
+            app:destination="@id/project_projectuserlistfragment" />
     </fragment>
     <fragment
         android:id="@+id/project_projectaddcollateralfragment"

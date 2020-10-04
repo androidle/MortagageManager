@@ -5,16 +5,14 @@ import com.leevinapp.monitor.auth.data.api.params.ChangePasswordParams
 import com.leevinapp.monitor.auth.data.api.params.VerifyNewEmailParams
 import com.leevinapp.monitor.auth.domain.PostAuthRepository
 import com.leevinapp.monitor.core.core.network.ApiResponse
-import com.leevinapp.monitor.core.core.user.UserManager
 import io.reactivex.Single
 
 class PostAuthRepositoryImpl(
-    private val postAuthService: PostAuthService,
-    private val userManager: UserManager
+    private val postAuthService: PostAuthService
 ) : PostAuthRepository {
 
     override fun logout(): Single<ApiResponse<Any>> {
-        return postAuthService.logout(userManager.user.id)
+        return postAuthService.logout()
     }
 
     override fun changePassword(changePasswordParams: ChangePasswordParams): Single<ApiResponse<Any>> {

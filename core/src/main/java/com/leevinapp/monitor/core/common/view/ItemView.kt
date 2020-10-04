@@ -36,6 +36,10 @@ class ItemView @JvmOverloads constructor(
             tv_value.text = value
         }
 
+    private fun setValueHint(hint: String?) {
+        tv_value.hint = hint
+    }
+
     fun setArrowVisibility(isShow: Boolean) {
         iv_right.visibility = if (isShow) View.VISIBLE else View.GONE
     }
@@ -82,6 +86,9 @@ class ItemView @JvmOverloads constructor(
                             }
                             R.styleable.ItemView_messageCount -> {
                                 messageCount = typedArray.getInt(attr, 0)
+                            }
+                            R.styleable.ItemView_valueHint -> {
+                                setValueHint(typedArray.getString(attr))
                             }
                         }
                     }

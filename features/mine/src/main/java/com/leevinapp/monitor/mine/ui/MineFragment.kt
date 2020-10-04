@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.leevinapp.monitor.core.common.ui.base.BaseViewModel
 import com.leevinapp.monitor.core.common.ui.base.ViewModelFragment
+import com.leevinapp.monitor.core.common.ui.dialog.SearchDialogFragment
 import com.leevinapp.monitor.core.common.ui.extensions.navigationToLogonFragment
 import com.leevinapp.monitor.core.common.ui.extensions.showErrorDialog
 import com.leevinapp.monitor.core.core.config.Constants
@@ -126,6 +127,7 @@ class MineFragment : ViewModelFragment() {
 
         iv_settings.setOnClickListener {
             requireActivity().showErrorDialog("Settings")
+            SearchDialogFragment().show(childFragmentManager, SearchDialogFragment::class.simpleName)
         }
     }
 

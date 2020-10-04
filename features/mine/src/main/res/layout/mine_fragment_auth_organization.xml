@@ -72,13 +72,23 @@
                     app:name="@string/mine_social_code" />
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView
+                    android:id="@+id/iev_company_register_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:editValue="@={viewModel.companyRegisterType}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iev_uniform_social_code"
+                    app:name="@string/mine_company_register_type" />
+
+                <com.leevinapp.monitor.core.common.view.ItemEditView
                     android:id="@+id/iev_organ_address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:editValue="@={viewModel.organAddress}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iev_uniform_social_code"
+                    app:layout_constraintTop_toBottomOf="@+id/iev_company_register_type"
                     app:name="@string/mine_organ_address" />
 
                 <com.leevinapp.monitor.core.common.view.ItemEditView
@@ -109,6 +119,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iev_registered_capital"
                     app:label="@string/mine_date_of_found"
+                    app:valueHint="@string/common_choose_please"
                     app:hasArrow="true"
                     app:value="@={viewModel.dateOfFounded}" />
 
@@ -149,9 +160,9 @@
                         android:id="@+id/editText_business_scope"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="请输入"
+                        android:hint="@string/mine_business_hint"
                         android:text="@={viewModel.businessScope}"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

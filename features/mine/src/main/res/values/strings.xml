@@ -19,7 +19,7 @@
     <string name="mine_address">家庭住址</string>
     <string name="mine_company_full_name">单位全称</string>
     <string name="mine_identity_type">身份类别</string>
-    <string name="mine_social_code">社会统一信用代码</string>
+    <string name="mine_social_code">统一社会信用代码</string>
     <string name="mine_role">角色</string>
     <string name="mine_job_position">工作职务</string>
     <string name="mine_monitor_organ_social_code">监管机构统一社会信用代码</string>
@@ -52,6 +52,8 @@
     <string name="mine_approve">通过</string>
     <string name="mine_search_result_title">搜索到%1$d个结果</string>
     <string name="mine_empty_symbol">-</string>
+    <string name="mine_company_register_type">机构注册类型</string>
+    <string name="mine_business_hint">请输入经营范围,最多可输入300个字符</string>
 
 
     <string-array name="mine_auth_way">

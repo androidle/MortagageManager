@@ -1,7 +1,6 @@
 package com.leevinapp.monitor.mine.ui.identityauth
 
 import android.app.DatePickerDialog
-import android.app.DatePickerDialog.OnDateSetListener
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -65,7 +64,7 @@ class OrganizationAuthFragment : ViewModelFragment() {
             viewModel.verifyOrganization()
         }
 
-        viewModel.verifyUserResult.observe(viewLifecycleOwner, Observer {
+        viewModel.verifyOrganResult.observe(viewLifecycleOwner, Observer {
             if (it) {
                 Toast.makeText(requireContext(), "认证成功", Toast.LENGTH_LONG).show()
                 findNavController().navigateUp()
@@ -102,8 +101,7 @@ class OrganizationAuthFragment : ViewModelFragment() {
     private fun initDatePicker() {
         viewBinding.ievDateOfFound.setOnClickListener {
             DatePickerDialog(
-                requireContext(),
-                OnDateSetListener { _, year, month, dayOfMonth ->
+                requireContext(), { _, year, month, dayOfMonth ->
                     viewBinding.ievDateOfFound.value = "$year-${month + 1}-$dayOfMonth"
                     currentYear = currentYear
                     currentMonth = currentMonth

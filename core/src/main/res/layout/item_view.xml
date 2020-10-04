@@ -49,13 +49,14 @@
         android:id="@+id/tv_value"
         style="@style/MonitorText.Title"
         android:gravity="end"
+        tools:hint="@string/common_choose_please"
         android:textColorHint="@color/color_monitor_light_silver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/iv_right"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.5"
-        tools:text="Leevin" />
+        />
 
     <ImageView
         android:id="@+id/iv_right"
