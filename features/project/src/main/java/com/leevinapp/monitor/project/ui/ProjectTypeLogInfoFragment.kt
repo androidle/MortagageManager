@@ -24,10 +24,6 @@ class ProjectTypeLogInfoFragment : BaseFragment() {
             .root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     override fun getTitleBarView(): View? {
         return viewBinging.toolbarContainer.toolbar
     }

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -41,15 +40,10 @@ class ProjectDetailsFragment : ViewModelFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewBing.ievBankUser.setOnRightIconClickListener {
-            Toast.makeText(requireContext(), "ievBankUser", Toast.LENGTH_LONG).show()
-            // 1. todo is need to change to dialog fragment to implement the navigation
-            // 2. todo change viewPager with tab view
-            Toast.makeText(requireContext(), "ievBankUser", Toast.LENGTH_LONG).show()
             findNavController().navigate(R.id.project_action_projectblueprintfragment_to_projectuserlistfragment)
         }
 
         viewBing.ievEnterpriseUser.setOnRightIconClickListener {
-            Toast.makeText(requireContext(), "ievBankUser", Toast.LENGTH_LONG).show()
             findNavController().navigate(R.id.project_action_projectblueprintfragment_to_projectuserlistfragment)
         }
     }
