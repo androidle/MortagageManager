@@ -17,7 +17,7 @@ versions.atsl_rules = "1.2.0"
 versions.atsl_runner = "1.2.0"
 versions.benchmark = "1.0.0"
 versions.cardview = "1.0.0"
-versions.constraint_layout = "1.1.3"
+versions.constraint_layout = "2.0.1"
 versions.core_ktx = "1.3.0"
 versions.coroutines = "1.3.3"
 versions.dagger = "2.27"
@@ -33,9 +33,8 @@ versions.material = "1.2.0"
 versions.mockito = "2.25.0"
 versions.mockito_all = "1.10.19"
 versions.mockito_android = "2.25.0"
-versions.mockwebserver = "4.8.0"
+versions.okhttp = "4.9.0"
 versions.navigation = "2.3.0"
-versions.okhttp_logging_interceptor = "4.8.0"
 versions.paging = "2.1.1"
 versions.recyclerview = "1.1.0"
 versions.retrofit = "2.9.0"
@@ -49,7 +48,7 @@ versions.truth = "1.0.1"
 versions.work = "2.2.0"
 versions.spotless_gradle_plugin = "4.4.0"
 versions.stesho = "1.5.1"
-versions.leakcanary = "2.2"
+versions.leakcanary = "2.4"
 versions.mockk = "1.10.0"
 versions.rxkotlin = "2.4.0"
 versions.coordinatorlayout = "1.1.0"
@@ -147,7 +146,8 @@ deps.lifecycle = lifecycle
 
 deps.material = "com.google.android.material:material:$versions.material"
 
-deps.mock_web_server = "com.squareup.okhttp3:mockwebserver:$versions.mockwebserver"
+deps.mock_web_server = "com.squareup.okhttp3:mockwebserver:$versions.okhttp"
+deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}"
 
 def navigation = [:]
 navigation.runtime = "androidx.navigation:navigation-runtime:$versions.navigation"
@@ -159,8 +159,6 @@ navigation.ui = "androidx.navigation:navigation-ui:$versions.navigation"
 navigation.ui_ktx = "androidx.navigation:navigation-ui-ktx:$versions.navigation"
 navigation.safe_args_plugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation"
 deps.navigation = navigation
-
-deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_logging_interceptor}"
 
 deps.paging_ktx = "androidx.paging:paging-runtime-ktx:$versions.paging"
 

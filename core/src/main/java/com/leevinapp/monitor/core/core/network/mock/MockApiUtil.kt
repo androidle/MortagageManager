@@ -1,8 +1,7 @@
 package com.leevinapp.monitor.core.core.network.mock
 
 import android.content.Context
-import com.google.gson.Gson
-import java.lang.reflect.Type
+import com.leevinapp.monitor.core.core.network.ApiResponse
 import java.nio.charset.StandardCharsets
 import okio.BufferedSource
 import okio.buffer
@@ -10,9 +9,22 @@ import okio.source
 
 class MockApiUtil(val context: Context) {
 
-    fun <T> getMockResponse(filename: String, type: Type): T {
-        val resultJson: String = readStringFromAssets(filename)
-        return Gson().fromJson(resultJson, type)
+    private val convertUtil = ConvertUtil()
+
+    fun <T> fromJsonObject(json: String, clazz: Class<T>): T {
+        return convertUtil.fromJsonObject(json, clazz)
+    }
+
+    fun <T> fromJsonArray(json: String, clazz: Class<T>): List<T> {
+        return convertUtil.fromJsonArray(json, clazz)
+    }
+
+    fun <T> fromJsonObjectToApiResponse(json: String, clazz: Class<T>): ApiResponse<T> {
+        return convertUtil.fromJsonObjectToApiResponse(json, clazz)
+    }
+
+    fun <T> fromJsonArrayToApiResponse(json: String, clazz: Class<T>): ApiResponse<List<T>> {
+        return convertUtil.fromJsonArrayToApiResponse(json, clazz)
     }
 
     private fun readStringFromAssets(filename: String): String {

@@ -11,12 +11,12 @@ class ProjectRepositoryImpl(private val projectService: ProjectService) : Projec
 
     override fun getProjects(projectType: ProjectType?): Single<MutableList<ProjectModel>> {
         return projectService.getProjects(projectType)
-            .map {
+            .map { it ->
                 if (!it.success) {
                     throw ResponseException.resultException(it.error)
                 }
-                var resultList = mutableListOf<ProjectModel>()
-                it.data.forEach {
+                val resultList = mutableListOf<ProjectModel>()
+                it.data?.forEach {
                     resultList.add(it.toModel())
                 }
 

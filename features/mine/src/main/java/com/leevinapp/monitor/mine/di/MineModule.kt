@@ -38,8 +38,8 @@ class MineModule {
 
     @Provides
     @FeatureScope
-    fun providerAuthRepository(@RealApi authService: PostAuthService, userManager: UserManager): PostAuthRepository {
-        return PostAuthRepositoryImpl(authService, userManager)
+    fun providerAuthRepository(@RealApi authService: PostAuthService): PostAuthRepository {
+        return PostAuthRepositoryImpl(authService)
     }
 
     @RealApi
