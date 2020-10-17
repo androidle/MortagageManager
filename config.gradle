@@ -54,6 +54,7 @@ versions.rxkotlin = "2.4.0"
 versions.coordinatorlayout = "1.1.0"
 versions.viewpager2 = "1.0.0"
 versions.securityCropto = "1.1.0-alpha02"
+versions.gson = "2.8.6"
 ext.versions = versions
 
 def build_versions = [:]
