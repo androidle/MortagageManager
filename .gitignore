@@ -16,3 +16,4 @@ libs/
 .idea/modules/
 app/src/main/res/navigation/
 features/home/src/main/res/drawable/
+/repo/

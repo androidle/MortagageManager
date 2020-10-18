@@ -30,7 +30,9 @@ subprojects {
     apply plugin:"com.github.ben-manes.versions"
 
     afterEvaluate { project ->
-        project.apply from: rootProject.file('./jacoco.gradle')
+        if (!project.name == "helloplugin") {
+            project.apply from: rootProject.file('./jacoco.gradle')
+        }
     }
 }
 

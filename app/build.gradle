@@ -6,9 +6,27 @@ apply from: rootProject.file('./scripts/android_common.gradle')
 apply from: rootProject.file('./scripts/shared_dependencies.gradle')
 
 //apply plugin: MyPlugin
-
-//apply plugin: MyPlugin
 apply plugin: "com.leevin.myplugin"
+
+apply plugin: "com.leevin.helloplugin"
+
+buildscript {
+    repositories {
+        maven {
+            url '../repo'
+        }
+    }
+    dependencies {
+        //引入helloplugin
+        classpath 'com.leevin:helloplugin:2.0.0'
+    }
+
+    tasks.withType(JavaCompile) {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
 ext {
     jacocoCoverageThreshold = 0.0
 }

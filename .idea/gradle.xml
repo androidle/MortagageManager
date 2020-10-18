@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/features/home" />
             <option value="$PROJECT_DIR$/features/mine" />
             <option value="$PROJECT_DIR$/features/project" />
+            <option value="$PROJECT_DIR$/helloplugin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

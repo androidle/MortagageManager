@@ -1,0 +1,45 @@
+plugins {
+    id 'groovy'
+    id 'maven-publish'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+//task javadocJar(type: Jar, dependsOn: groovydoc) {
+//    archiveClassifier = 'javadoc'
+//    from "${buildDir}/javadoc"
+//}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    archiveClassifier = 'sources'
+}
+
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            groupId = 'com.leevin'
+            artifactId = 'helloplugin'
+            version = '2.0.0'
+
+            artifact sourcesJar
+            //artifact javadocJar
+        }
+    }
+
+    repositories {
+        maven {
+            url = "../repo"
+        }
+    }
+}
+
+dependencies {
+    implementation gradleApi()
+}

@@ -6,7 +6,7 @@ class MyPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
         println("=======project========" + project.name)
-        project.tasks.create("hello") {
+        project.tasks.create("myHello") {
             println("=======hello========" + "hello say")
         }
         project.afterEvaluate {
