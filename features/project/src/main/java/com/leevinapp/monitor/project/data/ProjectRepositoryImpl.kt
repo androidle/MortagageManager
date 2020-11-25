@@ -16,7 +16,7 @@ class ProjectRepositoryImpl(private val projectService: ProjectService) : Projec
                     throw ResponseException.resultException(it.error)
                 }
                 val resultList = mutableListOf<ProjectModel>()
-                it.data?.forEach {
+                it.data.forEach {
                     resultList.add(it.toModel())
                 }
 

@@ -8,6 +8,12 @@ android {
         versionCode 1
         versionName "1.0"
 
+        def isApp = project.plugins.hasPlugin("com.android.application")
+        if (!isApp) {
+            buildConfigField 'String', "VERSION_NAME", "\"${versionName}\""
+            buildConfigField 'int', "VERSION_CODE", "${versionCode}"
+        }
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
     }
